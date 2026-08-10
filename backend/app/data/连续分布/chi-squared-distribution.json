@@ -1,0 +1,91 @@
+{
+  "kind": "distribution",
+  "slug": "chi-squared-distribution",
+  "name_zh": "卡方分布",
+  "name_en": "Chi-squared distribution",
+  "category": "连续分布",
+  "subcategory": "",
+  "sort_order": 5,
+  "summary": "独立标准正态变量平方和的分布，是数理统计中最重要的抽样分布之一。",
+  "type": "continuous",
+  "support": "x \\in (0,+\\infty)",
+  "params": [
+    {
+      "name": "n",
+      "latex": "n",
+      "description": "自由度（正整数）",
+      "default": 5,
+      "min": 1,
+      "max": 100,
+      "step": 1
+    }
+  ],
+  "pmf_or_pdf_latex": "f(x)=\\frac{1}{2^{n/2}\\Gamma(n/2)}x^{n/2-1}e^{-x/2},\\quad x>0",
+  "cdf_latex": "F(x)=\\frac{\\gamma\\left(\\frac{n}{2},\\frac{x}{2}\\right)}{\\Gamma\\left(\\frac{n}{2}\\right)},\\quad x>0",
+  "mean_formula": "E(X)=n",
+  "variance_formula": "Var(X)=2n",
+  "mgf_formula": "M_X(t)=(1-2t)^{-n/2},\\quad t<\\frac{1}{2}",
+  "graph_config": {
+    "discrete": false,
+    "x_range": [
+      0,
+      30
+    ],
+    "default_params": {
+      "n": 5
+    },
+    "notes": "若 X1,...,Xn 独立且 Xi~N(0,1)，则 ΣXi²~χ²(n)"
+  },
+  "aliases": [
+    {
+      "alias": "卡方分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Chi-squared distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "chi^2(n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "χ²(n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "X~χ²(n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "皮尔逊卡方分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 70
+    },
+    {
+      "alias": "Pearson's chi-squared",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 55
+    }
+  ],
+  "examples": [
+    {
+      "title": "平方和分布",
+      "question": "设 $X_1,\\ldots,X_{10}$ 为来自 $N(0,1)$ 的独立样本，求 $P\\left(\\sum_{i=1}^{10}X_i^2>18.307\\right)$。",
+      "solution": "由卡方分布的定义 $\\sum_{i=1}^{10}X_i^2\\sim\\chi^2(10)$。查 $\\chi^2$ 分布表得 $\\chi^2_{0.05}(10)=18.307$，故 $P\\left(\\sum_{i=1}^{10}X_i^2>18.307\\right)=0.05$。",
+      "answer": "$0.05$"
+    }
+  ]
+}

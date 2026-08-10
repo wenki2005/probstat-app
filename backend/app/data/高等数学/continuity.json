@@ -1,0 +1,129 @@
+{
+  "kind": "knowledge",
+  "slug": "continuity",
+  "name_zh": "函数的连续性",
+  "name_en": "Continuity of Functions",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 3,
+  "summary": "自变量微变则函数值微变；闭区间连续函数必有最值、介值与零点。",
+  "definition": "设函数 $f(x)$ 在 $x_0$ 的某邻域内有定义，若 $\\lim\\limits_{x\\to x_0}f(x)=f(x_0)$，则称 $f(x)$ 在点 $x_0$ 处连续。令 $\\Delta x=x-x_0$、$\\Delta y=f(x_0+\\Delta x)-f(x_0)$，连续性等价于 $\\lim\\limits_{\\Delta x\\to0}\\Delta y=0$，即自变量改变量趋于零时函数值改变量也趋于零。若 $f(x)$ 在区间 $I$ 上每一点都连续，则称其在 $I$ 上连续。若 $\\lim\\limits_{x\\to x_0}f(x)$ 不存在，或存在但不等于 $f(x_0)$，则称 $x_0$ 为**间断点**：左右极限都存在的间断点（可去型或跳跃型）为第一类间断点，其余（无穷型、振荡型）为第二类间断点。",
+  "formula_latex": "\\lim_{\\Delta x\\to0}\\Delta y=0\\iff\\lim_{x\\to x_0}f(x)=f(x_0)",
+  "properties": [
+    {
+      "title": "四则运算保持连续",
+      "latex": "f,g\\ \\text{连续}\\Rightarrow f\\pm g,\\ fg,\\ \\frac{f}{g}\\ (g\\neq0)\\ \\text{连续}",
+      "description": "连续函数的和、差、积、商（分母不为零处）仍连续"
+    },
+    {
+      "title": "复合函数连续",
+      "latex": "u=g(x)\\ \\text{连续},\\ y=f(u)\\ \\text{连续}\\Rightarrow y=f(g(x))\\ \\text{连续}",
+      "description": "连续函数的复合仍为连续函数"
+    },
+    {
+      "title": "最大值最小值定理",
+      "latex": "f\\in C[a,b]\\Rightarrow\\exists x_1,x_2\\in[a,b],\\ f(x_1)=\\min f,\\ f(x_2)=\\max f",
+      "description": "闭区间上连续函数必能取到最大值与最小值"
+    },
+    {
+      "title": "零点定理",
+      "latex": "f\\in C[a,b],\\ f(a)f(b)<0\\Rightarrow\\exists c\\in(a,b),\\ f(c)=0",
+      "description": "闭区间上连续函数端点值异号时区间内至少有一个零点"
+    },
+    {
+      "title": "介值定理",
+      "latex": "f\\in C[a,b],\\ \\mu\\ \\text{介于}\\ f(a)\\ \\text{与}\\ f(b)\\ \\text{之间}\\Rightarrow\\exists c,\\ f(c)=\\mu",
+      "description": "连续函数可取遍端点函数值之间的每一个中间值"
+    }
+  ],
+  "derivation": "零点定理证明思路（用确界原理）：不妨设 $f(a)<0<f(b)$，令 $E=\\{x\\in[a,b]\\mid f(x)<0\\}$，则 $E$ 非空有上界，设 $c=\\sup E$。由 $f$ 的连续性知 $f(c)=0$：若 $f(c)<0$，则由保号性存在 $c$ 右侧的点仍使 $f<0$，与 $c$ 为上界矛盾；若 $f(c)>0$，则由保号性存在 $\\delta>0$ 使 $(c-\\delta,c]$ 上 $f>0$，与 $c=\\sup E$ 矛盾。介值定理可由零点定理应用于 $f(x)-\\mu$ 直接推出；最值定理由闭区间紧致性（或确界原理）保证。",
+  "applications": [
+    "证明方程根的存在性",
+    "闭区间上最值问题的理论基础",
+    "二分法等数值求根方法",
+    "经济学中均衡价格存在性的定性证明"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x**2",
+        "label": "y = x²（处处连续）",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -3,
+      3
+    ],
+    "y_range": [
+      -1,
+      9
+    ],
+    "notes": "多项式函数处处连续；可用「极限、连续」知识对比间断点类型。"
+  },
+  "aliases": [
+    {
+      "alias": "函数的连续性",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Continuity of Functions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "连续函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Continuous function",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "间断点",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "零点定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "介值定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "Intermediate Value Theorem",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "C[a,b]",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "用零点定理证明方程有实根",
+      "question": "证明方程 $x^3-x-1=0$ 在区间 $(1,2)$ 内至少有一个实根。",
+      "solution": "设 $f(x)=x^3-x-1$，它是多项式，在 $[1,2]$ 上连续。计算得 $f(1)=1-1-1=-1<0$，$f(2)=8-2-1=5>0$，故 $f(1)f(2)<0$。由零点定理，存在 $c\\in(1,2)$ 使 $f(c)=0$，即 $c$ 是方程 $x^3-x-1=0$ 的实根。",
+      "answer": "方程在 $(1,2)$ 内至少有一个实根。"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "knowledge",
+  "slug": "independent-events",
+  "name_zh": "事件的独立性",
+  "name_en": "Independence of events",
+  "category": "基础概率",
+  "subcategory": "独立性",
+  "sort_order": 5,
+  "summary": "A 发生不改变 B 发生的概率，即 P(AB)=P(A)P(B)。",
+  "definition": "设 $A$、$B$ 为两个事件，若 $$P(A\\cap B)=P(A)P(B)$$ 则称 $A$ 与 $B$ **相互独立**。当 $P(B)>0$ 时，独立等价于 $P(A|B)=P(A)$，即 $B$ 的发生不改变 $A$ 的概率。对 $n$ 个事件 $A_1,A_2,\\dots,A_n$，若对其中任意 $k$ 个（$2\\le k\\le n$）事件都有它们的交的概率等于各自概率之积，则称这 $n$ 个事件**相互独立**。注意：两两独立推不出相互独立。",
+  "formula_latex": "P(A\\cap B)=P(A)P(B)",
+  "properties": [
+    {"title": "等价定义", "latex": "P(A|B)=P(A)\\ (P(B)>0)", "description": "条件概率等于无条件概率，即 B 不影响 A"},
+    {"title": "与补事件的独立", "latex": "P(A\\cap\\overline{B})=P(A)P(\\overline{B})", "description": "A 与 B 独立时，A 与 B 的补事件也独立"},
+    {"title": "两两独立", "latex": "P(A_i\\cap A_j)=P(A_i)P(A_j)", "description": "任意两个事件独立，但不保证相互独立"},
+    {"title": "相互独立", "latex": "P(A_{i_1}\\cap\\cdots\\cap A_{i_k})=\\prod_{j=1}^{k}P(A_{i_j})", "description": "对任意 k 个事件的交都成立"},
+    {"title": "独立与互斥", "latex": "P(A)>0,\\ P(B)>0 \\Rightarrow A,B\\text{ 不可能既独立又互斥}", "description": "互斥要求交为空，独立要求交的概率为正"}
+  ],
+  "derivation": "证明独立时补事件也独立：若 $P(A\\cap B)=P(A)P(B)$，则 $$P(A\\cap\\overline{B})=P(A)-P(A\\cap B)=P(A)-P(A)P(B)=P(A)(1-P(B))=P(A)P(\\overline{B})$$ 同理可证 $\\overline{A}$ 与 $B$、$\\overline{A}$ 与 $\\overline{B}$ 也独立。",
+  "applications": ["n 重伯努利试验中成功次数的建模（二项分布）", "串联、并联系统的可靠度计算", "有放回抽样保证各次抽样独立", "蒙特卡洛模拟中独立随机数的生成"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "事件的独立性", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Independence of events", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "相互独立", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "独立事件", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "independence", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "P(A∩B)=P(A)P(B)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "两两独立", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "两两独立不等于相互独立",
+      "question": "将一枚均匀硬币掷两次，设 $A$=第一次出现正面，$B$=第二次出现正面，$C$=两次结果相同。验证 $A,B,C$ 两两独立，但三个事件不相互独立。",
+      "solution": "样本空间 $\\Omega=\\{HH,HT,TH,TT\\}$，$P(A)=P(B)=\\frac12$，$C=\\{HH,TT\\}$，$P(C)=\\frac12$。而 $$A\\cap B=\\{HH\\},\\ B\\cap C=\\{HH\\},\\ A\\cap C=\\{HH\\}$$ 三者概率均为 $\\frac14=P(A)P(B)=P(B)P(C)=P(A)P(C)$，故两两独立。但 $A\\cap B\\cap C=\\{HH\\}$，$P(A\\cap B\\cap C)=\\frac14\\neq\\frac18=P(A)P(B)P(C)$，故三事件不相互独立。",
+      "answer": "两两独立成立；三事件不相互独立，因为 $P(A\\cap B\\cap C)=1/4\\neq 1/8$。"
+    }
+  ]
+}

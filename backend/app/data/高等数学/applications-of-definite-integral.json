@@ -1,0 +1,139 @@
+{
+  "kind": "knowledge",
+  "slug": "applications-of-definite-integral",
+  "name_zh": "定积分应用",
+  "name_en": "Applications of the definite integral",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 6,
+  "summary": "用定积分计算面积、旋转体体积与弧长，核心方法是微元法。",
+  "definition": "定积分应用的核心是**微元法**：把所求量 $Q$ 分割为许多微小部分，每部分近似为微元 $dQ$，再在区间上无限累加（积分）得到 $Q$。设曲线 $y=f(x)$、$y=g(x)$（$f(x)\\ge g(x)$）与直线 $x=a$、$x=b$ 围成平面图形，其面积为 $$S=\\int_a^b[f(x)-g(x)]\\,dx$$ 由曲线 $y=f(x)$、$x$ 轴及直线 $x=a$、$x=b$ 围成的图形绕 $x$ 轴旋转一周所得**旋转体体积**为 $$V=\\pi\\int_a^b[f(x)]^2\\,dx$$ 光滑曲线 $y=f(x)$ 从 $x=a$ 到 $x=b$ 的**弧长**为 $$s=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx$$",
+  "formula_latex": "S=\\int_a^b[f(x)-g(x)]\\,dx,\\qquad V=\\pi\\int_a^b[f(x)]^2\\,dx,\\qquad s=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx",
+  "properties": [
+    {
+      "title": "X 型区域面积",
+      "latex": "S=\\int_a^b[f(x)-g(x)]\\,dx",
+      "description": "上曲线减下曲线，对 x 积分"
+    },
+    {
+      "title": "Y 型区域面积",
+      "latex": "S=\\int_c^d[\\varphi(y)-\\psi(y)]\\,dy",
+      "description": "右曲线减左曲线，对 y 积分"
+    },
+    {
+      "title": "绕 x 轴旋转体体积（圆片法）",
+      "latex": "V=\\pi\\int_a^b[f(x)]^2\\,dx",
+      "description": "体积微元 dV=π[f(x)]^2 dx"
+    },
+    {
+      "title": "垫片法（两曲线）",
+      "latex": "V=\\pi\\int_a^b\\{[f(x)]^2-[g(x)]^2\\}\\,dx",
+      "description": "外半径平方减内半径平方后乘 π"
+    },
+    {
+      "title": "直角坐标弧长",
+      "latex": "s=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx",
+      "description": "弧长微元 ds=√(1+f'^2) dx"
+    },
+    {
+      "title": "参数方程弧长",
+      "latex": "s=\\int_{\\alpha}^{\\beta}\\sqrt{[x'(t)]^2+[y'(t)]^2}\\,dt",
+      "description": "微元 ds=√(dx^2+dy^2)"
+    }
+  ],
+  "derivation": "微元法的依据是定积分定义：把区间 $[a,b]$ 分割后，第 $i$ 个小区间上面积的近似值为 $[f(\\xi_i)-g(\\xi_i)]\\Delta x_i$，取极限即得面积公式。旋转体体积：在小区间上把薄片近似看作圆柱，体积微元 $dV=\\pi[f(\\xi_i)]^2\\Delta x_i$，极限求和得 $V=\\pi\\int_a^b[f(x)]^2\\,dx$；两曲线情形取内外半径之差 $\\pi(R^2-r^2)$。弧长：曲线微元近似为直线段，$ds=\\sqrt{(dx)^2+(dy)^2}=\\sqrt{1+(y')^2}\\,dx$，积分取极限即得弧长公式。",
+  "applications": [
+    "几何：求平面图形面积、旋转体体积、曲线弧长",
+    "物理：变力做功、水压力、质心与转动惯量",
+    "工程：旋转曲面零件体积的测算",
+    "概率统计：由密度函数积分求概率即求面积"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x^2",
+        "label": "y = x^2",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "x",
+        "label": "y = x",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      -1,
+      2
+    ],
+    "y_range": [
+      -1,
+      2.5
+    ],
+    "notes": "y = x 与 y = x² 交于 (0,0) 与 (1,1)，两条曲线围成的平面图形面积可用定积分计算：∫₀¹ (x - x²) dx = 1/6。"
+  },
+  "aliases": [
+    {
+      "alias": "定积分应用",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Applications of definite integral",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "微元法",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "平面图形面积",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "旋转体体积",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "弧长",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "arc length",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 75
+    },
+    {
+      "alias": "washer method",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 65
+    }
+  ],
+  "examples": [
+    {
+      "title": "求面积与旋转体体积",
+      "question": "求由 $y=x^2$ 与 $y=x$ 围成的平面图形面积，以及该图形绕 $x$ 轴旋转一周所得旋转体的体积。",
+      "solution": "由 $x^2=x$ 得交点 $x=0,1$。面积（上曲线 $y=x$，下曲线 $y=x^2$）：$$S=\\int_0^1(x-x^2)\\,dx=\\left.\\left(\\frac{x^2}{2}-\\frac{x^3}{3}\\right)\\right|_0^1=\\frac{1}{2}-\\frac{1}{3}=\\frac{1}{6}$$ 旋转体体积（外半径 $x$，内半径 $x^2$，用垫片法）：$$V=\\pi\\int_0^1\\left[x^2-(x^2)^2\\right]dx=\\pi\\int_0^1(x^2-x^4)\\,dx=\\pi\\left(\\frac{1}{3}-\\frac{1}{5}\\right)=\\frac{2\\pi}{15}$$",
+      "answer": "面积 $S=\\frac{1}{6}$，体积 $V=\\frac{2\\pi}{15}$。"
+    },
+    {
+      "title": "求曲线弧长",
+      "question": "求曲线 $y=\\frac{2}{3}x^{3/2}$ 从 $x=0$ 到 $x=1$ 的弧长。",
+      "solution": "$y'=x^{1/2}$，由弧长公式 $$s=\\int_0^1\\sqrt{1+(y')^2}\\,dx=\\int_0^1\\sqrt{1+x}\\,dx=\\left.\\frac{2}{3}(1+x)^{3/2}\\right|_0^1=\\frac{2}{3}(2\\sqrt{2}-1)$$",
+      "answer": "$s=\\frac{2}{3}(2\\sqrt{2}-1)$。"
+    }
+  ]
+}

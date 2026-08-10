@@ -1,0 +1,40 @@
+{
+  "kind": "knowledge",
+  "slug": "continuous-random-variable",
+  "name_zh": "连续型随机变量",
+  "name_en": "Continuous random variable",
+  "category": "随机变量",
+  "subcategory": "连续型",
+  "sort_order": 4,
+  "summary": "取值充满区间的随机变量，由概率密度函数 f(x) 描述。",
+  "definition": "若随机变量 $X$ 的分布函数 $F(x)$ 可表示为 $$F(x)=\\int_{-\\infty}^{x}f(t)\\,dt$$ 其中 $f(t)\\ge 0$ 称为 $X$ 的**概率密度函数（PDF）**，则称 $X$ 为**连续型随机变量**。密度函数满足归一性 $\\int_{-\\infty}^{+\\infty}f(x)\\,dx=1$。连续型随机变量取任一单点值的概率为 0：$P(X=a)=0$，因此 $$P(a<X\\le b)=P(a\\le X<b)=\\int_{a}^{b}f(x)\\,dx=F(b)-F(a)$$ 注意 $f(x)$ 在某点的值不是概率，必须通过积分求概率。",
+  "formula_latex": "f(x)\\ge 0,\\quad \\int_{-\\infty}^{+\\infty}f(x)\\,dx=1",
+  "properties": [
+    {"title": "密度非负", "latex": "f(x)\\ge 0", "description": "密度函数非负"},
+    {"title": "归一性", "latex": "\\int_{-\\infty}^{+\\infty}f(x)\\,dx=1", "description": "总面积为 1"},
+    {"title": "区间概率", "latex": "P(a<X\\le b)=\\int_{a}^{b}f(x)\\,dx", "description": "概率等于密度曲线下的面积"},
+    {"title": "单点概率为 0", "latex": "P(X=a)=0", "description": "连续型变量取任何单点值的概率为零"},
+    {"title": "密度与分布函数", "latex": "F^{\\prime}(x)=f(x)", "description": "在 f 连续处，分布函数导数等于密度"}
+  ],
+  "derivation": "由定义 $F(x)=\\int_{-\\infty}^{x}f(t)\\,dt$，在 $f$ 连续处由微积分基本定理得 $F^{\\prime}(x)=f(x)$。单点概率：对 $h>0$，$$0\\le P(X=a)\\le P(a-h<X\\le a)=F(a)-F(a-h)\\to F(a)-F(a)=0\\ (h\\to 0^+)$$ 故 $P(X=a)=0$。区间概率由 $F$ 的差给出：$P(a<X\\le b)=F(b)-F(a)=\\int_{a}^{b}f(x)\\,dx$。",
+  "applications": ["测量误差（正态分布）", "电子元件寿命（指数分布）", "随机到达时刻（均匀分布）", "统计推断中连续统计量的密度估计"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "连续型随机变量", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Continuous random variable", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "概率密度函数", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "PDF", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "probability density function", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "密度函数", "lang": "zh", "kind": "alias", "weight": 80},
+    {"alias": "f(x)", "lang": "math", "kind": "notation", "weight": 85}
+  ],
+  "examples": [
+    {
+      "title": "由归一性确定密度常数",
+      "question": "设 $X$ 的密度函数为 $f(x)=kx,\\ 0<x<1$；$f(x)=0$，其他。求常数 $k$ 与 $P(0.2<X<0.8)$。",
+      "solution": "由归一性 $$\\int_{-\\infty}^{+\\infty}f(x)\\,dx=\\int_{0}^{1}kx\\,dx=\\frac{k}{2}=1\\Rightarrow k=2$$ 于是 $$P(0.2<X<0.8)=\\int_{0.2}^{0.8}2x\\,dx=x^2\\Big|_{0.2}^{0.8}=0.64-0.04=0.6$$",
+      "answer": "$k=2$，$P(0.2<X<0.8)=0.6$。"
+    }
+  ]
+}

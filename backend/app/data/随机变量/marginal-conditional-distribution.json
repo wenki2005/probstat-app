@@ -1,0 +1,118 @@
+{
+  "kind": "knowledge",
+  "slug": "marginal-conditional-distribution",
+  "name_zh": "边缘分布与条件分布",
+  "name_en": "Marginal and conditional distributions",
+  "category": "随机变量",
+  "subcategory": "多维随机变量",
+  "sort_order": 9,
+  "summary": "由联合分布求和/积分得边缘分布，固定一变量得条件分布。",
+  "definition": "由联合分布可得到单个变量的**边缘分布**：离散型 $p_{i\\cdot}=P\\{X=x_i\\}=\\sum_{j}p_{ij}$，$p_{\\cdot j}=P\\{Y=y_j\\}=\\sum_{i}p_{ij}$；连续型 $f_X(x)=\\int_{-\\infty}^{+\\infty}f(x,y)\\,dy$，$f_Y(y)=\\int_{-\\infty}^{+\\infty}f(x,y)\\,dx$。给定 $Y=y_j$ 时 $X$ 的**条件分布律**为 $P\\{X=x_i|Y=y_j\\}=p_{ij}/p_{\\cdot j}$；连续型条件密度为 $f_{X|Y}(x|y)=f(x,y)/f_Y(y)$（$f_Y(y)>0$）。边缘分布与条件分布都可由联合分布唯一确定。",
+  "formula_latex": "f_X(x)=\\int_{-\\infty}^{+\\infty}f(x,y)\\,dy,\\qquad f_{X|Y}(x|y)=\\frac{f(x,y)}{f_Y(y)}\\ \\ (f_Y(y)>0)",
+  "properties": [
+    {
+      "title": "边缘分布律",
+      "latex": "p_{i\\cdot}=\\sum_{j}p_{ij},\\qquad p_{\\cdot j}=\\sum_{i}p_{ij}",
+      "description": "对另一变量求和得到边缘分布律"
+    },
+    {
+      "title": "边缘密度",
+      "latex": "f_X(x)=\\int_{-\\infty}^{+\\infty}f(x,y)\\,dy",
+      "description": "边缘密度是联合密度对另一变量的积分"
+    },
+    {
+      "title": "条件分布律",
+      "latex": "P\\{X=x_i|Y=y_j\\}=\\frac{p_{ij}}{p_{\\cdot j}}",
+      "description": "联合概率除以边缘概率"
+    },
+    {
+      "title": "条件密度",
+      "latex": "f_{X|Y}(x|y)=\\frac{f(x,y)}{f_Y(y)}",
+      "description": "联合密度除以边缘密度（分母大于 0）"
+    },
+    {
+      "title": "乘法公式",
+      "latex": "f(x,y)=f_X(x)\\,f_{Y|X}(y|x)=f_Y(y)\\,f_{X|Y}(x|y)",
+      "description": "联合分布可由边缘与条件分布还原"
+    }
+  ],
+  "derivation": "边缘分布的推导：事件 $\\{X=x_i\\}$ 可分解为互不相交事件 $\\{X=x_i,Y=y_j\\}$（$j=1,2,\\dots$）的并，由概率的可加性 $$P\\{X=x_i\\}=\\sum_{j}P\\{X=x_i,Y=y_j\\}=\\sum_{j}p_{ij}$$ 连续情形：令联合分布函数中 $y\\to+\\infty$，$$F_X(x)=F(x,+\\infty)=\\int_{-\\infty}^{x}\\left(\\int_{-\\infty}^{+\\infty}f(u,v)\\,dv\\right)du$$ 对 $x$ 求导得 $f_X(x)=\\int f(x,y)\\,dy$。条件分布由条件概率公式 $P(A|B)=P(AB)/P(B)$ 推广到分布函数与密度而得到。",
+  "applications": [
+    "由联合分布求单变量的边缘统计特征",
+    "贝叶斯推断中先验/后验分布的切换",
+    "缺失数据场景下按条件分布进行补全",
+    "图像处理中按行或列求和得到边缘灰度分布"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "边缘分布与条件分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Marginal and conditional distributions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "边缘分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "条件分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "marginal distribution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "conditional distribution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "f_X(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "f_{X|Y}(x|y)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "边缘分布律",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "由联合分布律求边缘与条件分布",
+      "question": "设 $(X,Y)$ 的联合分布律为：$P(X=0,Y=1)=0.05$，$P(X=0,Y=2)=0.10$，$P(X=0,Y=3)=0.15$，$P(X=1,Y=1)=0.15$，$P(X=1,Y=2)=0.25$，$P(X=1,Y=3)=0.30$。求 $X$、$Y$ 的边缘分布律及 $P(Y=2|X=1)$。",
+      "solution": "边缘分布律对行、列求和：$$P(X=0)=0.05+0.10+0.15=0.30,\\quad P(X=1)=0.15+0.25+0.30=0.70$$ $$P(Y=1)=0.05+0.15=0.20,\\quad P(Y=2)=0.10+0.25=0.35,\\quad P(Y=3)=0.15+0.30=0.45$$ 条件概率 $$P(Y=2|X=1)=\\frac{P(X=1,Y=2)}{P(X=1)}=\\frac{0.25}{0.70}=\\frac{5}{14}$$",
+      "answer": "$X$ 的边缘分布为 $P(X=0)=0.30$、$P(X=1)=0.70$；$Y$ 的边缘分布为 $P(Y=1)=0.20$、$P(Y=2)=0.35$、$P(Y=3)=0.45$；$P(Y=2|X=1)=5/14$。"
+    },
+    {
+      "title": "连续型边缘密度与条件密度",
+      "question": "设 $(X,Y)$ 的联合密度为 $f(x,y)=4xy$（$0\\le x\\le1,\\ 0\\le y\\le1$），求边缘密度 $f_X(x)$、$f_Y(y)$ 及条件密度 $f_{Y|X}(y|x)$。",
+      "solution": "$$f_X(x)=\\int_0^1 4xy\\,dy=4x\\cdot\\frac{y^2}{2}\\Big|_{0}^{1}=2x\\quad(0\\le x\\le1)$$ $$f_Y(y)=\\int_0^1 4xy\\,dx=2y\\quad(0\\le y\\le1)$$ 对 $x\\in(0,1)$，$$f_{Y|X}(y|x)=\\frac{f(x,y)}{f_X(x)}=\\frac{4xy}{2x}=2y\\quad(0\\le y\\le1)$$ 条件密度与 $x$ 无关且等于边缘密度 $f_Y(y)$，说明 $X$、$Y$ 独立。",
+      "answer": "$f_X(x)=2x$（$0\\le x\\le1$），$f_Y(y)=2y$（$0\\le y\\le1$）；$f_{Y|X}(y|x)=2y$（$0\\le y\\le1$）。"
+    }
+  ]
+}

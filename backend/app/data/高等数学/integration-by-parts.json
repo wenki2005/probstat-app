@@ -1,0 +1,106 @@
+{
+  "kind": "knowledge",
+  "slug": "integration-by-parts",
+  "name_zh": "分部积分法",
+  "name_en": "Integration by parts",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 4,
+  "summary": "分部积分的乘积型积分公式，LIATE 决定 u 的选取。",
+  "definition": "由乘积求导法则可得分部积分公式 $$\\int u\\,dv=uv-\\int v\\,du$$ 它把不易直接积分的 $\\int u\\,dv$ 转化为 $\\int v\\,du$，关键在于 $u$ 与 $dv$ 的选取。常用 **LIATE 原则**选择 $u$：按 **L**ogarithm（对数函数）、**I**nverse trigonometric（反三角函数）、**A**lgebraic（代数函数）、**T**rigonometric（三角函数）、**E**xponential（指数函数）的顺序，排在前面的选作 $u$，余下部分作为 $dv$。",
+  "formula_latex": "\\int u\\,dv=uv-\\int v\\,du",
+  "properties": [
+    {
+      "title": "分部积分公式",
+      "latex": "\\int u\\,dv=uv-\\int v\\,du",
+      "description": "把 ∫u dv 转化为 ∫v du"
+    },
+    {
+      "title": "等价写法",
+      "latex": "\\int u v'\\,dx=uv-\\int v u'\\,dx",
+      "description": "dv=v'(x)dx 时的常用形式"
+    },
+    {
+      "title": "LIATE 选择顺序",
+      "latex": "L\\to I\\to A\\to T\\to E",
+      "description": "对数、反三角优先作 u，指数函数最后"
+    },
+    {
+      "title": "降幂型",
+      "latex": "\\int x^n e^x\\,dx,\\qquad\\int x^n\\sin x\\,dx",
+      "description": "反复分部积分使 x^n 幂次逐次降低"
+    },
+    {
+      "title": "循环型",
+      "latex": "\\int e^x\\sin x\\,dx",
+      "description": "两次分部积分后出现原积分，移项解出"
+    }
+  ],
+  "derivation": "由乘积求导法则 $(uv)'=u'v+uv'$ 移项得 $uv'=(uv)'-u'v$，两边对 $x$ 积分：$$\\int uv'\\,dx=uv-\\int u'v\\,dx$$ 写成微分形式即 $\\int u\\,dv=uv-\\int v\\,du$。LIATE 原则的依据：把求导后变得更易处理的函数选作 $u$——对数函数与反三角函数求导后化为有理函数，容易继续积分；而把本身容易积分的函数（如 $e^x$、$\\sin x$）选作 $dv$。",
+  "applications": [
+    "计算 ∫x^n e^x dx、∫x^n ln x dx 等乘积型积分",
+    "概率论中伽马函数、指数分布期望的推导",
+    "由分部积分推导递推公式",
+    "求 ∫e^x sin x dx 等循环型积分"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "分部积分法",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Integration by parts",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "∫udv=uv-∫vdu",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "∫udv",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "LIATE",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "循环积分",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    },
+    {
+      "alias": "integration by parts formula",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "∫x e^x dx（降幂型）",
+      "question": "求 $\\int x e^x\\,dx$。",
+      "solution": "令 $u=x$（代数函数，优先于指数函数），$dv=e^x\\,dx$，则 $du=dx$，$v=e^x$。$$\\int x e^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=e^x(x-1)+C$$",
+      "answer": "$e^x(x-1)+C$。"
+    },
+    {
+      "title": "∫x ln x dx（对数优先）",
+      "question": "求 $\\int x\\ln x\\,dx$。",
+      "solution": "按 LIATE 原则令 $u=\\ln x$（对数函数），$dv=x\\,dx$，则 $du=\\frac{dx}{x}$，$v=\\frac{x^2}{2}$。$$\\int x\\ln x\\,dx=\\frac{x^2}{2}\\ln x-\\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx=\\frac{x^2}{2}\\ln x-\\frac{1}{2}\\int x\\,dx=\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C$$",
+      "answer": "$\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C$。"
+    }
+  ]
+}

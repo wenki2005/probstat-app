@@ -1,0 +1,128 @@
+{
+  "kind": "knowledge",
+  "slug": "double-integral",
+  "name_zh": "二重积分",
+  "name_en": "Double Integrals",
+  "category": "高等数学",
+  "subcategory": "多元微积分",
+  "sort_order": 17,
+  "summary": "二重积分是区域上函数的累积求和，化为累次积分或极坐标计算。",
+  "definition": "设 $f(x,y)$ 在有界闭区域 $D$ 上有定义，将 $D$ 任意分成 $n$ 个小闭区域 $\\Delta\\sigma_1,\\dots,\\Delta\\sigma_n$，记第 $i$ 个小区域的直径为 $d_i$，$\\lambda=\\max\\{d_i\\}$，在每个小区域上任取一点 $(\\xi_i,\\eta_i)$ 作和 $\\sum_{i=1}^{n}f(\\xi_i,\\eta_i)\\Delta\\sigma_i$。若当 $\\lambda\\to0$ 时该和的极限存在且与区域的分法及点 $(\\xi_i,\\eta_i)$ 的取法无关，则称此极限为 $f$ 在 $D$ 上的**二重积分**，记作 $$\\iint_D f(x,y)\\,d\\sigma=\\lim_{\\lambda\\to0}\\sum_{i=1}^{n}f(\\xi_i,\\eta_i)\\Delta\\sigma_i$$ 其中 $d\\sigma$ 为面积元素，$f\\equiv1$ 时 $\\iint_D d\\sigma$ 即区域 $D$ 的面积。",
+  "formula_latex": "\\iint_D f(x,y)\\,d\\sigma=\\int_a^b\\!\\left(\\int_{\\varphi_1(x)}^{\\varphi_2(x)}f(x,y)\\,dy\\right)dx",
+  "properties": [
+    {
+      "title": "直角坐标（X 型区域）",
+      "latex": "\\iint_D f\\,d\\sigma=\\int_a^b\\!\\int_{\\varphi_1(x)}^{\\varphi_2(x)}f(x,y)\\,dy\\,dx",
+      "description": "D: a≤x≤b，φ_1(x)≤y≤φ_2(x)，先对 y 后对 x 积分"
+    },
+    {
+      "title": "直角坐标（Y 型区域）",
+      "latex": "\\iint_D f\\,d\\sigma=\\int_c^d\\!\\int_{\\psi_1(y)}^{\\psi_2(y)}f(x,y)\\,dx\\,dy",
+      "description": "D: c≤y≤d，ψ_1(y)≤x≤ψ_2(y)，先对 x 后对 y 积分"
+    },
+    {
+      "title": "极坐标变换",
+      "latex": "\\iint_D f(x,y)\\,dxdy=\\iint_{D'}f(r\\cos\\theta,\\ r\\sin\\theta)\\,r\\,dr\\,d\\theta",
+      "description": "面积元素 dσ=r dr dθ，适合圆域与含 x²+y² 的被积函数"
+    },
+    {
+      "title": "线性性",
+      "latex": "\\iint_D(\\alpha f+\\beta g)\\,d\\sigma=\\alpha\\iint_D f\\,d\\sigma+\\beta\\iint_D g\\,d\\sigma",
+      "description": "被积函数的线性组合可拆开分别积分"
+    },
+    {
+      "title": "区域可加性",
+      "latex": "\\iint_{D_1\\cup D_2}f\\,d\\sigma=\\iint_{D_1}f\\,d\\sigma+\\iint_{D_2}f\\,d\\sigma",
+      "description": "D 分成不重叠的 D_1、D_2 时积分相加"
+    },
+    {
+      "title": "二重积分中值定理",
+      "latex": "\\iint_D f\\,d\\sigma=f(\\xi,\\eta)\\,S_D",
+      "description": "f 在 D 上连续时存在点 (ξ,η)∈D 使积分等于函数值乘面积"
+    },
+    {
+      "title": "区域面积",
+      "latex": "S_D=\\iint_D\\,d\\sigma",
+      "description": "被积函数恒为 1 时二重积分的值即区域面积"
+    }
+  ],
+  "derivation": "直角坐标化累次积分的思路：对 X 型区域用平行于 y 轴的直线将其“切成薄片”，固定 x 后先对 y 从下边界 φ_1(x) 积到上边界 φ_2(x)，得到该薄片的累积值，再对 x 从 a 积到 b，即“先 y 后 x”；交换积分次序的实质是重新描述积分区域，把 X 型表达式改写成 Y 型（或反之），并相应调整上下限。极坐标变换的推导：由 $x=r\\cos\\theta,\\ y=r\\sin\\theta$ 及雅可比行列式 $$J=\\frac{\\partial(x,y)}{\\partial(r,\\theta)}=\\begin{vmatrix}\\cos\\theta&-r\\sin\\theta\\\\\\sin\\theta&r\\cos\\theta\\end{vmatrix}=r$$ 得面积元素 $d\\sigma=|J|\\,dr\\,d\\theta=r\\,dr\\,d\\theta$，再把区域 D' 按 r、θ 的范围化为累次积分。被积函数含 $x^2+y^2$ 或区域为圆域时，极坐标往往使计算大幅简化。",
+  "applications": [
+    "求曲顶柱体的体积与曲面面积",
+    "求平面薄片的质量、质心与转动惯量",
+    "概率论中二维连续型随机变量的概率计算（对密度函数做二重积分）",
+    "几何概率与物理中的通量、平均值的计算"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "二重积分",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Double integral",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "∬",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "累次积分",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Iterated integral",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "极坐标",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "交换积分次序",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "∫∫_D f(x,y) dxdy",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "直角坐标累次积分",
+      "question": "计算 $\\iint_D xy\\,d\\sigma$，其中 $D$ 由 $y=x$、$x=1$、$y=0$ 围成。",
+      "solution": "D 为 X 型区域 $0\\le x\\le1,\\ 0\\le y\\le x$，故 $$\\iint_D xy\\,d\\sigma=\\int_0^1\\!\\int_0^x xy\\,dy\\,dx=\\int_0^1\\left[\\frac{xy^2}{2}\\right]_{y=0}^{x}dx=\\int_0^1\\frac{x^3}{2}\\,dx=\\frac{1}{8}$$",
+      "answer": "$\\iint_D xy\\,d\\sigma=\\frac{1}{8}$。"
+    },
+    {
+      "title": "交换积分次序",
+      "question": "交换积分次序 $I=\\int_0^1\\!\\int_x^1 f(x,y)\\,dy\\,dx$。",
+      "solution": "原积分区域为 $0\\le x\\le1$ 且 $x\\le y\\le1$，即 $y\\in[0,1]$ 且 $0\\le x\\le y$，改写成 Y 型区域得 $$I=\\int_0^1\\!\\int_0^y f(x,y)\\,dx\\,dy$$",
+      "answer": "$I=\\int_0^1\\!\\int_0^y f(x,y)\\,dx\\,dy$。"
+    },
+    {
+      "title": "极坐标变换",
+      "question": "计算 $\\iint_D e^{-(x^2+y^2)}\\,d\\sigma$，其中 $D: x^2+y^2\\le1$。",
+      "solution": "令 $x=r\\cos\\theta,\\ y=r\\sin\\theta$，则 $D'$ 为 $0\\le r\\le1,\\ 0\\le\\theta\\le2\\pi$，$d\\sigma=r\\,dr\\,d\\theta$，于是 $$\\iint_D e^{-(x^2+y^2)}\\,d\\sigma=\\int_0^{2\\pi}\\!\\int_0^1 e^{-r^2}r\\,dr\\,d\\theta=2\\pi\\left[-\\frac{e^{-r^2}}{2}\\right]_0^1=\\pi(1-e^{-1})$$",
+      "answer": "$\\pi(1-e^{-1})$。"
+    }
+  ]
+}

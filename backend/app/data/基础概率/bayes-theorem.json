@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "bayes-theorem",
+  "name_zh": "贝叶斯公式",
+  "name_en": "Bayes' theorem",
+  "category": "基础概率",
+  "subcategory": "条件概率",
+  "sort_order": 10,
+  "summary": "由结果反推原因的概率公式，是统计推断与机器学习分类的核心工具。",
+  "definition": "设 $A_1,A_2,\\dots,A_n$ 是样本空间 $\\Omega$ 的一个划分（完备事件组），且 $P(A_i)>0$，则对任意事件 $B$（$P(B)>0$），有 $$P(A_i|B)=\\frac{P(B|A_i)P(A_i)}{\\sum_{j=1}^{n}P(B|A_j)P(A_j)}$$ 其中 $P(A_i)$ 称为**先验概率**，$P(A_i|B)$ 称为**后验概率**，$P(B|A_i)$ 称为**似然**。",
+  "formula_latex": "P(A_i|B)=\\frac{P(B|A_i)P(A_i)}{\\sum_{j=1}^{n}P(B|A_j)P(A_j)}",
+  "properties": [
+    {"title": "先验概率", "latex": "P(A_i)", "description": "观察到证据 B 之前对原因 A_i 的概率估计"},
+    {"title": "后验概率", "latex": "P(A_i|B)", "description": "观察到 B 之后修正的概率，即“反推原因”"},
+    {"title": "归一性", "latex": "\\sum_{i=1}^{n}P(A_i|B)=1", "description": "后验概率之和仍为 1"},
+    {"title": "与全概率公式的联系", "latex": "P(B)=\\sum_{j=1}^{n}P(B|A_j)P(A_j)", "description": "贝叶斯公式分母即全概率公式"}
+  ],
+  "derivation": "由条件概率定义 $$P(A_i|B)=\\frac{P(A_i\\cap B)}{P(B)}$$ 分子用乘法公式 $P(A_i\\cap B)=P(B|A_i)P(A_i)$，分母用全概率公式 $P(B)=\\sum_{j=1}^{n}P(B|A_j)P(A_j)$ 展开，即得贝叶斯公式。",
+  "applications": ["医学诊断：检测阳性后推算真实患病概率", "垃圾邮件过滤：根据词语出现反推垃圾邮件概率", "机器学习：朴素贝叶斯分类器", "法庭证据与决策分析"],
+  "visualization_type": "bayes",
+  "graph_config": {
+    "prior": [0.3, 0.7],
+    "likelihood": [0.9, 0.2]
+  },
+  "aliases": [
+    {"alias": "贝叶斯公式", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Bayes' theorem", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "贝叶斯定理", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "bayes", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "P(A|B)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "后验概率", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "检测阳性后真实患病概率",
+      "question": "某疾病患病率为 0.1%；检测试剂对患病者阳性率 99%，对健康者误报率 1%。某人检测为阳性，求其真实患病的概率。",
+      "solution": "设 $A$=患病，$B$=检测阳性。$P(A)=0.001$，$P(B|A)=0.99$，$P(B|\\bar A)=0.01$。由贝叶斯公式：$$P(A|B)=\\frac{0.99\\times0.001}{0.99\\times0.001+0.01\\times0.999}\\approx0.0902$$",
+      "answer": "约 9.02%，可见患病率低时即使检测阳性，真实患病概率也不高。"
+    }
+  ]
+}

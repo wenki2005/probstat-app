@@ -1,0 +1,110 @@
+{
+  "kind": "knowledge",
+  "slug": "law-of-large-numbers",
+  "name_zh": "大数定律",
+  "name_en": "Law of Large Numbers",
+  "category": "定理",
+  "subcategory": "",
+  "sort_order": 1,
+  "summary": "大量随机现象平均结果具有稳定性：样本均值依概率收敛于期望。",
+  "definition": "**大数定律**描述随机变量序列在大量重复下平均结果的稳定性：当试验次数 $n$ 充分大时，样本均值（或事件频率）将依概率收敛于其数学期望（或事件概率）。常用形式：**切比雪夫大数定律**——设 $X_1,X_2,\\dots$ 两两不相关（或相互独立），方差一致有界 $Var(X_i)\\le C$，则对任意 $\\varepsilon>0$，$$\\lim_{n\\to\\infty}P\\left(\\left|\\frac{1}{n}\\sum_{i=1}^{n}X_i-\\frac{1}{n}\\sum_{i=1}^{n}E(X_i)\\right|<\\varepsilon\\right)=1$$ **辛钦大数定律**——设 $X_1,X_2,\\dots$ 独立同分布且 $E(X)=\\mu$ 存在，则 $$\\bar X=\\frac{1}{n}\\sum_{i=1}^{n}X_i\\xrightarrow{P}\\mu$$ **伯努利大数定律**——$n$ 次独立重复试验中事件 $A$ 发生的频率 $f_n(A)=\\frac{n_A}{n}\\xrightarrow{P}p$（其中 $p=P(A)$）。",
+  "formula_latex": "\\bar X=\\frac{1}{n}\\sum_{i=1}^{n}X_i \\xrightarrow{P} \\mu",
+  "properties": [
+    {
+      "title": "依概率收敛的定义",
+      "latex": "\\lim_{n\\to\\infty}P(|X_n-X|\\ge\\varepsilon)=0",
+      "description": "对任意 ε>0，偏差超过 ε 的概率趋于 0"
+    },
+    {
+      "title": "切比雪夫不等式",
+      "latex": "P(|X-\\mu|\\ge\\varepsilon)\\le\\frac{\\sigma^2}{\\varepsilon^2}",
+      "description": "证明切比雪夫大数定律的核心工具"
+    },
+    {
+      "title": "切比雪夫大数定律",
+      "latex": "\\bar X-\\frac{1}{n}\\sum_{i=1}^{n}E(X_i)\\xrightarrow{P}0,\\quad Var(X_i)\\le C",
+      "description": "只需两两不相关且方差一致有界"
+    },
+    {
+      "title": "辛钦大数定律",
+      "latex": "\\bar X\\xrightarrow{P}\\mu,\\quad X_i\\ \\text{iid},\\ E(X)=\\mu",
+      "description": "独立同分布且期望存在即可，不要求方差存在"
+    },
+    {
+      "title": "伯努利大数定律",
+      "latex": "\\frac{n_A}{n}\\xrightarrow{P}p",
+      "description": "频率稳定于概率，是“频率的稳定性”的理论根据"
+    }
+  ],
+  "derivation": "（1）切比雪夫大数定律的证明思路：令 $\\bar X=\\frac{1}{n}\\sum_{i=1}^{n}X_i$，则 $E(\\bar X)=\\frac{1}{n}\\sum_{i=1}^{n}E(X_i)$，且由两两不相关与方差一致有界 $Var(\\bar X)=\\frac{1}{n^2}\\sum_{i=1}^{n}Var(X_i)\\le\\frac{C}{n}\\to0$。由切比雪夫不等式 $$P\\left(|\\bar X-E(\\bar X)|\\ge\\varepsilon\\right)\\le\\frac{Var(\\bar X)}{\\varepsilon^2}\\le\\frac{C}{n\\varepsilon^2}\\to0$$ 即得 $\\bar X-E(\\bar X)\\xrightarrow{P}0$。（2）辛钦大数定律的证明思路：用特征函数。设 $X_i$ 的特征函数为 $\\varphi(t)$，因 $E(X)=\\mu$，$\\varphi(t)$ 在 $t=0$ 处可展开为 $\\varphi(t)=1+i\\mu t+o(t)$。样本均值 $\\bar X$ 的特征函数为 $$\\varphi_{\\bar X}(t)=\\left[\\varphi\\left(\\frac{t}{n}\\right)\\right]^n\\to\\left(1+\\frac{i\\mu t}{n}\\right)^n\\to e^{i\\mu t}$$ 即 $\\bar X$ 依分布收敛于常数 $\\mu$；而依分布收敛于常数等价于依概率收敛，故 $\\bar X\\xrightarrow{P}\\mu$。（3）伯努利大数定律是辛钦大数定律的特例：令 $X_i=\\mathbf{1}_{\\{A\\text{ 第 }i\\text{ 次发生}\\}}$，则 $X_1,\\dots,X_n$ iid，$E(X_i)=p$，$\\frac{n_A}{n}=\\bar X\\xrightarrow{P}p$。",
+  "applications": [
+    "用频率估计概率的理论依据（如抛硬币正面频率趋于 0.5）",
+    "Monte Carlo 数值积分与随机模拟的基础",
+    "统计中样本矩估计总体矩的合理性依据",
+    "保险精算与风险理论中的平均赔付稳定性"
+  ],
+  "visualization_type": "lln",
+  "graph_config": {
+    "default_n": 1000,
+    "p": 0.5,
+    "seed": 42
+  },
+  "aliases": [
+    {
+      "alias": "大数定律",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Law of Large Numbers",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "LLN",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "切比雪夫大数定律",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "辛钦大数定律",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "伯努利大数定律",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "依概率收敛",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "频率的稳定性",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "用切比雪夫不等式估计频率偏差",
+      "question": "独立重复掷一枚均匀硬币 1000 次，设正面出现次数为 $S$，用切比雪夫不等式估计频率 $S/1000$ 与 $p=0.5$ 之差的绝对值小于 0.1 的概率至少为多少？",
+      "solution": "设 $X_i=\\mathbf{1}_{\\{第i次为正面\\}}$，则 $S=\\sum_{i=1}^{1000}X_i$，$E(S)=500$，$Var(S)=1000\\times0.5\\times0.5=250$。频率 $\\bar X=S/1000$，$E(\\bar X)=0.5$，$Var(\\bar X)=250/1000^2=0.00025$。由切比雪夫不等式 $$P\\left(\\left|\\frac{S}{1000}-0.5\\right|<0.1\\right)\\ge1-\\frac{Var(\\bar X)}{0.1^2}=1-0.025=0.975$$",
+      "answer": "至少 97.5%。可见试验次数足够多时，频率以很大概率接近概率 0.5。"
+    }
+  ]
+}

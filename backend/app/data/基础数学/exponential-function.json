@@ -1,0 +1,121 @@
+{
+  "kind": "knowledge",
+  "slug": "exponential-function",
+  "name_zh": "指数函数",
+  "name_en": "Exponential function",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 3,
+  "summary": "形如 y=a^x (a>0, a≠1) 的函数，增长与衰减的数学模型。",
+  "definition": "一般地，形如 $y=a^x$（$a>0$ 且 $a\\ne1$）的函数称为指数函数，其定义域为 $\\mathbb{R}$，值域为 $(0,+\\infty)$。底数 $a>1$ 时函数递增，$0<a<1$ 时函数递减，图象都过定点 $(0,1)$。特别地，以自然常数 $e\\approx2.71828$ 为底的 $y=e^x$ 在微积分与概率论中最为常用，它满足 $\\frac{d}{dx}e^x=e^x$ 且 $e^x=\\sum_{k=0}^{\\infty}\\frac{x^k}{k!}$。",
+  "formula_latex": "y=a^x\\quad(a>0,\\ a\\ne 1)",
+  "properties": [
+    {
+      "title": "定义域与值域",
+      "latex": "D=\\mathbb{R},\\quad R=(0,+\\infty)",
+      "description": "定义域为全体实数，值域为正实数"
+    },
+    {
+      "title": "过定点",
+      "latex": "f(0)=a^0=1",
+      "description": "图象恒过点 (0,1)"
+    },
+    {
+      "title": "单调性",
+      "latex": "a>1\\Rightarrow a^{x_1}<a^{x_2}\\ (x_1<x_2)",
+      "description": "a>1 时在 R 上严格递增，0<a<1 时严格递减"
+    },
+    {
+      "title": "运算法则",
+      "latex": "a^{m+n}=a^m a^n,\\quad (a^m)^n=a^{mn},\\quad a^{-n}=\\frac{1}{a^n}",
+      "description": "指数加减、乘除运算的基本法则"
+    },
+    {
+      "title": "与对数互为反函数",
+      "latex": "y=a^x\\iff x=\\log_a y",
+      "description": "指数函数与同底对数函数互为反函数"
+    }
+  ],
+  "derivation": "设 $a>1$，对 $x_1<x_2$ 有 $a^{x_2}-a^{x_1}=a^{x_1}(a^{x_2-x_1}-1)$，因 $a^{x_1}>0$ 且 $a^{x_2-x_1}>1$，差为正，故函数严格递增；同理 $0<a<1$ 时 $a^{x_2-x_1}<1$，函数严格递减。指数运算法则来自幂的定义：$a^{m+n}$ 表示 $m+n$ 个 $a$ 相乘，即 $a^m$ 与 $a^n$ 的乘积。由 $y=a^x$ 解得 $x=\\log_a y$，故 $y=a^x$ 与 $y=\\log_a x$ 互为反函数，图象关于直线 $y=x$ 对称。",
+  "applications": [
+    "复利计算 A=P(1+r)^n 与分期付款",
+    "放射性衰变与碳-14 定年",
+    "细菌繁殖与人口增长模型",
+    "指数分布与泊松过程的时间间隔"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "a^x",
+        "label": "y = a^x",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -3,
+      3
+    ],
+    "y_range": [
+      -1,
+      10
+    ],
+    "params": [
+      {
+        "name": "a",
+        "latex": "a",
+        "default": 2,
+        "min": 0.1,
+        "max": 5,
+        "step": 0.1
+      }
+    ],
+    "notes": "拖动滑块改变底数 a；a>1 时函数递增，0<a<1 时递减，图象恒过点 (0,1)。"
+  },
+  "aliases": [
+    {
+      "alias": "指数函数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Exponential function",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "指数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "a^x",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "e^x",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "exp(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    }
+  ],
+  "examples": [
+    {
+      "title": "细菌繁殖模型",
+      "question": "某种细菌每小时数量变为原来的 2 倍，初始有 1000 个。(1) 求 5 小时后的数量；(2) 大约多少小时后数量超过 100000 个？",
+      "solution": "数量为 $N(t)=1000\\cdot 2^t$（$t$ 以小时计）。(1) $N(5)=1000\\times2^5=32000$。(2) 令 $1000\\cdot2^t>100000$，即 $2^t>100$，$t>\\log_2 100\\approx6.64$，故约 7 小时后。",
+      "answer": "(1) 32000 个；(2) 约 7 小时后。"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "kind": "knowledge",
+  "slug": "central-limit-theorem",
+  "name_zh": "中心极限定理",
+  "name_en": "Central Limit Theorem",
+  "category": "定理",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "大量独立随机变量之和近似服从正态分布，是正态近似的理论依据。",
+  "definition": "**中心极限定理**（CLT）说明：大量相互独立的随机变量之和（或其均值）经标准化后近似服从标准正态分布。**林德伯格—列维（独立同分布）中心极限定理**：设 $X_1,X_2,\\dots$ 独立同分布，$E(X_i)=\\mu$，$Var(X_i)=\\sigma^2>0$，则对任意实数 $x$，$$\\lim_{n\\to\\infty}P\\left(\\frac{\\sum_{i=1}^{n}X_i-n\\mu}{\\sqrt{n}\\sigma}\\le x\\right)=\\Phi(x)$$ 即标准化和依分布收敛于 $N(0,1)$。等价地，$\\frac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\xrightarrow{d}N(0,1)$；当 $n$ 较大时 $\\sum_{i=1}^{n}X_i\\dot\\sim N(n\\mu,n\\sigma^2)$、$\\bar X\\dot\\sim N(\\mu,\\sigma^2/n)$。**棣莫弗—拉普拉斯定理**是二项分布的正态近似：若 $S_n\\sim B(n,p)$，则 $\\frac{S_n-np}{\\sqrt{np(1-p)}}\\xrightarrow{d}N(0,1)$。",
+  "formula_latex": "\\frac{\\sum_{i=1}^{n}X_i-n\\mu}{\\sqrt{n}\\sigma}\\xrightarrow{d}N(0,1)",
+  "properties": [
+    {
+      "title": "标准化和的极限分布",
+      "latex": "Z_n=\\frac{\\sum_{i=1}^{n}X_i-n\\mu}{\\sqrt n\\sigma}\\xrightarrow{d}N(0,1)",
+      "description": "不管总体分布如何，标准化和的极限都是标准正态"
+    },
+    {
+      "title": "样本均值的近似分布",
+      "latex": "\\bar X\\dot\\sim N\\left(\\mu,\\frac{\\sigma^2}{n}\\right)",
+      "description": "n 较大时样本均值近似正态，是大样本推断的基础"
+    },
+    {
+      "title": "棣莫弗-拉普拉斯定理",
+      "latex": "\\frac{S_n-np}{\\sqrt{np(1-p)}}\\xrightarrow{d}N(0,1),\\quad S_n\\sim B(n,p)",
+      "description": "二项分布的正态近似，p 不太接近 0 或 1 时适用"
+    },
+    {
+      "title": "连续性修正",
+      "latex": "P(a\\le S_n\\le b)\\approx\\Phi\\left(\\frac{b+0.5-np}{\\sqrt{npq}}\\right)-\\Phi\\left(\\frac{a-0.5-np}{\\sqrt{npq}}\\right)",
+      "description": "离散分布用正态近似时加减 0.5 修正可提高精度，q=1-p"
+    }
+  ],
+  "derivation": "证明思路（特征函数法）。设 $X_i$ 的特征函数为 $\\varphi(t)$，标准化变量 $Y_i=\\frac{X_i-\\mu}{\\sigma}$ 满足 $E(Y_i)=0$、$Var(Y_i)=1$，其特征函数 $\\varphi_1(t)$ 在 $t=0$ 附近展开 $$\\varphi_1(t)=1-\\frac{t^2}{2}+o(t^2)$$ 标准化和 $Z_n=\\frac{\\sum_{i=1}^{n}(X_i-\\mu)}{\\sqrt n\\sigma}=\\frac{1}{\\sqrt n}\\sum_{i=1}^{n}Y_i$ 的特征函数为 $$\\varphi_{Z_n}(t)=\\left[\\varphi_1\\left(\\frac{t}{\\sqrt n}\\right)\\right]^n=\\left[1-\\frac{t^2}{2n}+o\\left(\\frac{t^2}{n}\\right)\\right]^n\\to e^{-t^2/2}$$ 而 $e^{-t^2/2}$ 恰为标准正态分布 $N(0,1)$ 的特征函数。由**勒维连续性定理**（特征函数与分布函数一一对应且极限对应分布），$Z_n$ 依分布收敛于 $N(0,1)$。对二项分布 $S_n=\\sum_{i=1}^{n}X_i$（$X_i\\sim B(1,p)$ iid），代入上式即得棣莫弗—拉普拉斯定理。",
+  "applications": [
+    "大样本下总体均值与总和的近似概率计算",
+    "质量控制中控制图的 ±3σ 原理",
+    "保险赔付总额的近似正态建模",
+    "民意调查与抽样误差估计"
+  ],
+  "visualization_type": "clt",
+  "graph_config": {
+    "sample_sizes": [
+      1,
+      2,
+      5,
+      10,
+      30,
+      100
+    ],
+    "population": "exponential",
+    "default_n": 30,
+    "reps": 10000
+  },
+  "aliases": [
+    {
+      "alias": "中心极限定理",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Central Limit Theorem",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "CLT",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "林德伯格-列维定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "Lindeberg-Levy CLT",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "棣莫弗-拉普拉斯定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "正态近似",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "normal approximation",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 70
+    },
+    {
+      "alias": "N(0,1)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "二项分布的正态近似",
+      "question": "某产品合格率为 0.9，独立抽查 100 件。利用中心极限定理（棣莫弗—拉普拉斯）近似计算合格品数不少于 85 件的概率。",
+      "solution": "设合格品数 $S_{100}\\sim B(100,0.9)$，则 $np=90$，$\\sqrt{npq}=\\sqrt{100\\times0.9\\times0.1}=3$。由连续性修正 $$P(S_{100}\\ge85)=P(S_{100}\\ge84.5)\\approx1-\\Phi\\left(\\frac{84.5-90}{3}\\right)=1-\\Phi(-1.8333)=\\Phi(1.8333)\\approx0.9666$$",
+      "answer": "约 0.9666，即合格品数不少于 85 件的概率约为 96.7%。"
+    }
+  ]
+}

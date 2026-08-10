@@ -1,0 +1,118 @@
+{
+  "kind": "knowledge",
+  "slug": "chebyshev-inequality",
+  "name_zh": "切比雪夫不等式",
+  "name_en": "Chebyshev's Inequality",
+  "category": "定理",
+  "subcategory": "",
+  "sort_order": 3,
+  "summary": "随机变量偏离期望超过 ε 的概率不超过方差除以 ε²。",
+  "definition": "**切比雪夫不等式**：设随机变量 $X$ 的数学期望 $E(X)=\\mu$、方差 $Var(X)=\\sigma^2$ 存在，则对任意 $\\varepsilon>0$，有 $$P(|X-\\mu|\\ge\\varepsilon)\\le\\frac{\\sigma^2}{\\varepsilon^2}$$ 等价形式：$P(|X-\\mu|<\\varepsilon)\\ge1-\\frac{\\sigma^2}{\\varepsilon^2}$。它说明方差越小的随机变量越集中在期望附近；当取 $\\varepsilon=3\\sigma$ 时，$P(|X-\\mu|<3\\sigma)\\ge\\frac89$。该不等式只用期望与方差，对任何分布都成立，适用范围广，但给出的界通常较粗。它的证明依赖更基本的**马尔可夫不等式**：对非负随机变量 $Y$ 与任意 $a>0$，$P(Y\\ge a)\\le\\frac{E(Y)}{a}$。",
+  "formula_latex": "P(|X-E(X)|\\ge\\varepsilon)\\le\\frac{Var(X)}{\\varepsilon^2}",
+  "properties": [
+    {
+      "title": "马尔可夫不等式",
+      "latex": "P(Y\\ge a)\\le\\frac{E(Y)}{a},\\quad Y\\ge0,\\ a>0",
+      "description": "切比雪夫不等式的证明基础"
+    },
+    {
+      "title": "等价形式",
+      "latex": "P(|X-\\mu|<\\varepsilon)\\ge1-\\frac{\\sigma^2}{\\varepsilon^2}",
+      "description": "偏差小于 ε 的概率下界"
+    },
+    {
+      "title": "3σ 界",
+      "latex": "P(|X-\\mu|<3\\sigma)\\ge\\frac{8}{9}",
+      "description": "任何分布下取值在期望 ±3 倍标准差内的概率至少 8/9"
+    },
+    {
+      "title": "单侧切比雪夫不等式",
+      "latex": "P(X-\\mu\\ge\\varepsilon)\\le\\frac{\\sigma^2}{\\sigma^2+\\varepsilon^2}",
+      "description": "坎泰利不等式，给出单侧偏差上界"
+    },
+    {
+      "title": "依概率收敛的判定",
+      "latex": "Var(X_n)\\to0,\\ E(X_n)\\to\\mu\\Rightarrow X_n\\xrightarrow{P}\\mu",
+      "description": "证明大数定律与估计量相合性的核心工具"
+    }
+  ],
+  "derivation": "**马尔可夫不等式**：设 $Y\\ge0$ 有密度 $f(y)$，则 $$E(Y)=\\int_0^\\infty y\\,f(y)dy\\ge\\int_a^\\infty y\\,f(y)dy\\ge a\\int_a^\\infty f(y)dy=a\\,P(Y\\ge a)$$ 故 $P(Y\\ge a)\\le E(Y)/a$。**切比雪夫不等式**：令 $Y=(X-\\mu)^2$、$a=\\varepsilon^2$，则 $Y$ 非负且 $E(Y)=Var(X)=\\sigma^2$，代入马尔可夫不等式 $$P(|X-\\mu|\\ge\\varepsilon)=P((X-\\mu)^2\\ge\\varepsilon^2)\\le\\frac{E[(X-\\mu)^2]}{\\varepsilon^2}=\\frac{\\sigma^2}{\\varepsilon^2}$$ 证毕。切比雪夫大数定律即由此推出：若 $X_1,X_2,\\dots$ 两两不相关、方差一致有界 $Var(X_i)\\le C$，则 $Var(\\bar X)\\le C/n\\to0$，于是 $P(|\\bar X-E(\\bar X)|\\ge\\varepsilon)\\le\\frac{C}{n\\varepsilon^2}\\to0$，故 $\\bar X-E(\\bar X)\\xrightarrow{P}0$。",
+  "applications": [
+    "证明切比雪夫大数定律与估计量的相合性",
+    "分布未知时给出概率偏差的粗略上界",
+    "“3σ 原则”的理论依据",
+    "排队论与可靠性分析中的保守估计"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "切比雪夫不等式",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Chebyshev's Inequality",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "Chebyshev inequality",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "马尔可夫不等式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Markov's Inequality",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "单侧切比雪夫不等式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "\\varepsilon",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "\\sigma^2/\\varepsilon^2",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "P(|X-\\mu|\\ge\\varepsilon)\\le Var(X)/\\varepsilon^2",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 75
+    },
+    {
+      "alias": "3σ 原则",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "用切比雪夫不等式估计 3σ 下界",
+      "question": "设随机变量 $X$ 的数学期望 $E(X)=\\mu$，方差 $Var(X)=\\sigma^2$。估计概率 $P(|X-\\mu|<3\\sigma)$ 的下界。",
+      "solution": "取 $\\varepsilon=3\\sigma$，由切比雪夫不等式的等价形式 $$P(|X-\\mu|<3\\sigma)\\ge1-\\frac{\\sigma^2}{(3\\sigma)^2}=1-\\frac{1}{9}=\\frac{8}{9}$$ 即对任意分布的随机变量，其取值落在期望的 3 倍标准差之内的概率至少为 $8/9$；对正态分布该概率约为 0.9973，可见切比雪夫给出的界较保守但普适。",
+      "answer": "$P(|X-\\mu|<3\\sigma)\\ge\\frac{8}{9}\\approx0.889$。"
+    }
+  ]
+}

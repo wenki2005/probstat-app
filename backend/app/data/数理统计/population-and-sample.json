@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "population-and-sample",
+  "name_zh": "总体与样本",
+  "name_en": "Population and Sample",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 1,
+  "summary": "统计推断的起点：总体是研究对象的全体，样本是其随机代表。",
+  "definition": "在数理统计中，把研究对象的**全体**称为**总体**（population），组成总体的每个成员称为**个体**。实际关心的往往是总体的某个数量指标 $X$，它是一个随机变量，称 $X$ 的分布为**总体分布**。从总体中抽取 $n$ 个个体 $X_1,X_2,\\dots,X_n$，称为容量为 $n$ 的**样本**（sample）；若 $X_1,\\dots,X_n$ 相互独立且每个 $X_i$ 都与总体 $X$ 同分布，则称为**简单随机样本**（独立同分布样本，记作 $X_1,\\dots,X_n\\stackrel{iid}{\\sim}F$）。样本的具体观测值 $x_1,x_2,\\dots,x_n$ 称为**样本值**。统计推断就是利用样本信息对总体分布或其参数作出估计与检验。",
+  "formula_latex": "X_1,X_2,\\dots,X_n \\stackrel{\\text{iid}}{\\sim} F",
+  "properties": [
+    {"title": "代表性", "latex": "X_i \\sim F,\\ i=1,\\dots,n", "description": "每个样本分量与总体同分布，样本携带总体信息"},
+    {"title": "独立性", "latex": "X_1,\\dots,X_n \\ \\text{相互独立}", "description": "各次抽样互不影响，是简单随机样本的核心要求"},
+    {"title": "联合分布", "latex": "f(x_1,\\dots,x_n)=\\prod_{i=1}^{n}f(x_i)", "description": "简单随机样本的联合密度（或联合分布列）等于各分量之积"},
+    {"title": "总体矩与样本矩的联系", "latex": "A_k=\\frac{1}{n}\\sum_{i=1}^{n}X_i^k \\xrightarrow{P} E(X^k)", "description": "大数定律保证样本矩依概率收敛于总体矩，是矩估计的基础"}
+  ],
+  "derivation": "抽样过程可看作独立重复试验：每次从总体中随机抽取一个个体，其取值就是一个与总体同分布的随机变量；有放回（或总体充分大时的无放回）抽样保证各次抽取相互独立。因此简单随机样本的联合分布函数为 $F(x_1,\\dots,x_n)=\\prod_{i=1}^{n}F(x_i)$；对连续型总体，联合密度为 $\\prod_{i=1}^{n}f(x_i)$；对离散型总体，联合分布列为 $\\prod_{i=1}^{n}p(x_i)$。这一“独立同分布”结构使得可以用样本均值、样本方差等统计量去逼近总体的特征，从而建立从样本到总体的推断桥梁。",
+  "applications": ["民意调查：从少数受访者推断全体选民态度", "产品质量抽检：由样本合格率推断整批合格率", "医学临床试验：用样本疗效推断药物总体效果", "可靠性工程：抽样估计元件平均寿命"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "总体与样本", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Population and Sample", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "总体", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "样本", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "population", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "sample", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "简单随机样本", "lang": "zh", "kind": "keyword", "weight": 85},
+    {"alias": "iid", "lang": "en", "kind": "notation", "weight": 70},
+    {"alias": "X1,...,Xn ~ F", "lang": "math", "kind": "notation", "weight": 70}
+  ],
+  "examples": [
+    {
+      "title": "写出学生身高的总体与样本",
+      "question": "某校共有 5000 名学生，现随机抽取 50 名测量身高，用以估计全校学生平均身高。设全校学生身高为总体 $X$，写出该问题的总体、个体、样本与样本容量。",
+      "solution": "总体 $X$ 为全校 5000 名学生的身高这一数量指标，身高近似服从正态分布 $X\\sim N(\\mu,\\sigma^2)$，其中 $\\mu,\\sigma^2$ 未知；每个学生的身高是一个个体；抽取的 50 名学生的身高 $X_1,X_2,\\dots,X_{50}$ 构成样本，它们相互独立且均与 $X$ 同分布，即 $X_1,\\dots,X_{50}\\stackrel{iid}{\\sim}N(\\mu,\\sigma^2)$；样本容量 $n=50$。",
+      "answer": "总体为全校身高指标 $X\\sim N(\\mu,\\sigma^2)$，样本为 50 名学生的身高 $X_1,\\dots,X_{50}$（$iid$），样本容量 $n=50$。"
+    }
+  ]
+}

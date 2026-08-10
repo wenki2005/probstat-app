@@ -1,0 +1,50 @@
+{
+  "kind": "distribution",
+  "slug": "normal-distribution",
+  "name_zh": "正态分布",
+  "name_en": "Normal distribution",
+  "category": "连续分布",
+  "subcategory": "",
+  "sort_order": 1,
+  "summary": "最重要的连续分布，由均值 μ 与标准差 σ 决定，自然界大量现象近似服从正态分布。",
+  "type": "continuous",
+  "support": "x \\in (-\\infty, +\\infty)",
+  "params": [
+    {"name": "mu", "latex": "\\mu", "description": "均值（位置参数）", "default": 0, "min": -5, "max": 5, "step": 0.1},
+    {"name": "sigma", "latex": "\\sigma", "description": "标准差（尺度参数，σ>0）", "default": 1, "min": 0.2, "max": 3, "step": 0.1}
+  ],
+  "pmf_or_pdf_latex": "f(x)=\\frac{1}{\\sqrt{2\\pi}\\sigma}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}",
+  "cdf_latex": "F(x)=\\Phi\\left(\\frac{x-\\mu}{\\sigma}\\right)",
+  "mean_formula": "E(X)=\\mu",
+  "variance_formula": "Var(X)=\\sigma^2",
+  "mgf_formula": "M_X(t)=e^{\\mu t+\\frac{1}{2}\\sigma^2 t^2}",
+  "graph_config": {
+    "discrete": false,
+    "x_range": [-5, 5],
+    "default_params": {"mu": 0, "sigma": 1},
+    "notes": "标准正态 N(0,1) 记作 Φ(x)"
+  },
+  "aliases": [
+    {"alias": "正态分布", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Normal distribution", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "高斯分布", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "normal", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "N(mu,sigma^2)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "N(μ,σ²)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "钟形曲线", "lang": "zh", "kind": "keyword", "weight": 50}
+  ],
+  "examples": [
+    {
+      "title": "标准正态概率计算",
+      "question": "设 $X\\sim N(0,1)$，求 $P(X<1.96)$。",
+      "solution": "查标准正态分布表或利用对称性：$\\Phi(1.96)=0.9750$，因此 $P(X<1.96)=0.975$。",
+      "answer": "0.975"
+    },
+    {
+      "title": "68-95-99.7 法则",
+      "question": "设 $X\\sim N(\\mu,\\sigma^2)$，求 $P(|X-\\mu|<\\sigma)$、$P(|X-\\mu|<2\\sigma)$、$P(|X-\\mu|<3\\sigma)$。",
+      "solution": "$P(|X-\\mu|<k\\sigma)=P(|Z|<k)$，$Z\\sim N(0,1)$。查表得：$P(|Z|<1)\\approx0.6827$，$P(|Z|<2)\\approx0.9545$，$P(|Z|<3)\\approx0.9973$。",
+      "answer": "约 68.27%、95.45%、99.73%"
+    }
+  ]
+}

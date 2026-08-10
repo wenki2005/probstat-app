@@ -1,0 +1,117 @@
+{
+  "kind": "knowledge",
+  "slug": "limit-of-function",
+  "name_zh": "函数极限",
+  "name_en": "Limit of a Function",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 1,
+  "summary": "用 ε-δ 刻画函数在某点的趋近行为，是微积分的基石。",
+  "definition": "设函数 $f(x)$ 在点 $x_0$ 的某去心邻域内有定义。若存在常数 $A$，使得对任意 $\\varepsilon>0$，总存在 $\\delta>0$，当 $0<|x-x_0|<\\delta$ 时恒有 $|f(x)-A|<\\varepsilon$，则称当 $x\\to x_0$ 时 $f(x)$ 以 $A$ 为极限，记作 $\\lim\\limits_{x\\to x_0}f(x)=A$。类似地可定义右极限 $\\lim\\limits_{x\\to x_0^+}f(x)$、左极限 $\\lim\\limits_{x\\to x_0^-}f(x)$，以及 $x\\to\\infty$ 时的极限 $\\lim\\limits_{x\\to\\infty}f(x)=A$。极限存在当且仅当左右极限存在且相等。",
+  "formula_latex": "\\lim_{x\\to x_0}f(x)=A\\iff\\forall\\varepsilon>0,\\ \\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow|f(x)-A|<\\varepsilon",
+  "properties": [
+    {
+      "title": "极限唯一性",
+      "latex": "\\lim_{x\\to x_0}f(x)=A,\\ \\lim_{x\\to x_0}f(x)=B\\Rightarrow A=B",
+      "description": "函数在某点的极限若存在则必唯一"
+    },
+    {
+      "title": "局部有界性",
+      "latex": "\\lim_{x\\to x_0}f(x)=A\\Rightarrow f(x)\\ \\text{在}\\ x_0\\ \\text{某去心邻域内有界}",
+      "description": "极限存在的函数在极限点附近必局部有界"
+    },
+    {
+      "title": "局部保号性",
+      "latex": "A>0\\Rightarrow\\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow f(x)>0",
+      "description": "极限大于零时函数在附近保持同号"
+    },
+    {
+      "title": "四则运算法则",
+      "latex": "\\lim(f\\pm g)=\\lim f\\pm\\lim g,\\ \\lim(fg)=\\lim f\\cdot\\lim g,\\ \\lim\\frac{f}{g}=\\frac{\\lim f}{\\lim g}\\ (\\lim g\\neq0)",
+      "description": "极限存在时和、差、积、商的极限分别等于极限的和、差、积、商"
+    },
+    {
+      "title": "夹逼准则",
+      "latex": "g(x)\\le f(x)\\le h(x),\\ \\lim g=\\lim h=A\\Rightarrow\\lim f=A",
+      "description": "函数被两个极限相同的函数夹在中间时其极限相同"
+    }
+  ],
+  "derivation": "ε-δ 定义的证明思路以 $\\lim\\limits_{x\\to2}(3x-1)=5$ 为例：对任意 $\\varepsilon>0$，取 $\\delta=\\frac{\\varepsilon}{3}$，当 $0<|x-2|<\\delta$ 时 $|(3x-1)-5|=3|x-2|<3\\delta=\\varepsilon$，故极限为 5。第一个重要极限 $\\lim\\limits_{x\\to0}\\frac{\\sin x}{x}=1$ 由单位圆中扇形与三角形面积不等式 $\\cos x<\\frac{\\sin x}{x}<1$ 配合夹逼准则得到；第二个重要极限 $\\lim\\limits_{x\\to\\infty}\\left(1+\\frac{1}{x}\\right)^{x}=e$ 由单调有界准则与夹逼准则得到。求极限的一般思路：先化简，再用四则运算法则、两个重要极限与夹逼准则。",
+  "applications": [
+    "求函数在一点及无穷远处的趋势",
+    "为导数、连续性的严格定义提供基础",
+    "判断数列极限与级数收敛",
+    "物理中瞬时速度、瞬时功率等极限模型"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "sin(x)/x",
+        "label": "y = sin(x)/x",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -10,
+      10
+    ],
+    "y_range": [
+      -0.5,
+      1.2
+    ],
+    "notes": "两个重要极限：lim(x→0) sin(x)/x = 1 与 lim(x→∞)(1+1/x)^x = e。y = sin(x)/x 在 x = 0 处无定义（可去奇点），绘制时跳过 x = 0 即可，图中可见当 x→0 时函数值趋于 1。"
+  },
+  "aliases": [
+    {
+      "alias": "函数极限",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Limit of a Function",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "极限",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "lim",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "ε-δ 定义",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "epsilon-delta",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 70
+    },
+    {
+      "alias": "两个重要极限",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "利用重要极限求极限",
+      "question": "求 $\\lim\\limits_{x\\to0}\\frac{\\sin 3x}{x}$。",
+      "solution": "令 $t=3x$，则 $x\\to0$ 时 $t\\to0$，由 $\\lim\\limits_{t\\to0}\\frac{\\sin t}{t}=1$，得 $$\\lim_{x\\to0}\\frac{\\sin 3x}{x}=\\lim_{t\\to0}\\frac{\\sin t}{t/3}=3\\lim_{t\\to0}\\frac{\\sin t}{t}=3\\times1=3$$",
+      "answer": "极限为 3。"
+    }
+  ]
+}

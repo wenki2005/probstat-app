@@ -1,0 +1,42 @@
+{
+  "kind": "knowledge",
+  "slug": "regression-analysis",
+  "name_zh": "回归分析",
+  "name_en": "Regression Analysis",
+  "category": "数理统计",
+  "subcategory": "一元线性回归",
+  "sort_order": 8,
+  "summary": "研究变量间相关关系并建立定量表达式，最常用的是最小二乘直线拟合。",
+  "definition": "**回归分析**研究变量之间的**相关关系**并建立定量表达式。**一元线性回归**考虑两个变量 $x$ 与 $Y$：$$Y=\\beta_0+\\beta_1 x+\\varepsilon,\\qquad \\varepsilon\\stackrel{iid}{\\sim}N(0,\\sigma^2)$$ 其中 $x$ 为可控自变量（设计变量），$Y$ 为因变量（响应），$\\beta_0,\\beta_1$ 为回归系数，$\\varepsilon$ 为随机误差。对 $n$ 组观测 $(x_i,y_i)$，用**最小二乘法**（最小化残差平方和 $Q=\\sum_{i=1}^{n}(y_i-\\beta_0-\\beta_1x_i)^2$）求系数估计：$$\\hat\\beta_1=\\frac{S_{xy}}{S_{xx}},\\qquad \\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x$$ 其中 $S_{xx}=\\sum_{i=1}^{n}(x_i-\\bar x)^2$，$S_{xy}=\\sum_{i=1}^{n}(x_i-\\bar x)(y_i-\\bar y)$。回归方程 $\\hat y=\\hat\\beta_0+\\hat\\beta_1 x$ 可用于预测。",
+  "formula_latex": "\\hat y=\\hat\\beta_0+\\hat\\beta_1 x,\\qquad \\hat\\beta_1=\\frac{S_{xy}}{S_{xx}},\\quad \\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x",
+  "properties": [
+    {"title": "斜率估计", "latex": "\\hat\\beta_1=\\frac{\\sum_{i=1}^{n}(x_i-\\bar x)(y_i-\\bar y)}{\\sum_{i=1}^{n}(x_i-\\bar x)^2}=\\frac{S_{xy}}{S_{xx}}", "description": "最小二乘解，表示 x 每变化一个单位时 y 的平均变化量"},
+    {"title": "截距估计", "latex": "\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x", "description": "回归直线必过样本中心点 $(\\bar x,\\bar y)$"},
+    {"title": "残差平方和", "latex": "SSE=\\sum_{i=1}^{n}(y_i-\\hat y_i)^2", "description": "观测值与回归值之差的平方和，自由度 n-2"},
+    {"title": "决定系数", "latex": "R^2=\\frac{SSR}{SST}=1-\\frac{SSE}{SST}", "description": "衡量回归解释总变异的比例，0≤R²≤1，越接近 1 拟合越好"},
+    {"title": "回归系数显著性检验", "latex": "T=\\frac{\\hat\\beta_1}{\\hat\\sigma/\\sqrt{S_{xx}}}\\sim t(n-2)", "description": "检验 H0: β1=0 判断线性关系是否显著，σ̂²=SSE/(n-2)"}
+  ],
+  "derivation": "最小二乘估计的推导：令 $Q(\\beta_0,\\beta_1)=\\sum_{i=1}^{n}(y_i-\\beta_0-\\beta_1x_i)^2$，对 $\\beta_0,\\beta_1$ 求偏导并令其为零：$$\\frac{\\partial Q}{\\partial\\beta_0}=-2\\sum_{i=1}^{n}(y_i-\\beta_0-\\beta_1x_i)=0$$ $$\\frac{\\partial Q}{\\partial\\beta_1}=-2\\sum_{i=1}^{n}x_i(y_i-\\beta_0-\\beta_1x_i)=0$$ 得正规方程 $$n\\beta_0+\\beta_1\\sum_{i=1}^{n}x_i=\\sum_{i=1}^{n}y_i,\\qquad \\beta_0\\sum_{i=1}^{n}x_i+\\beta_1\\sum_{i=1}^{n}x_i^2=\\sum_{i=1}^{n}x_iy_i$$ 解之得 $\\hat\\beta_1=\\frac{S_{xy}}{S_{xx}}$、$\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x$。可验证 Hessian 矩阵正定，故所得为最小值点。",
+  "applications": ["广告投入与销售额的预测", "气温与用电量的关系建模", "学习时间与考试成绩的相关分析", "经济指标的时间序列线性趋势外推"],
+  "visualization_type": "formula",
+  "graph_config": {"show_fitted_line": true},
+  "aliases": [
+    {"alias": "回归分析", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Regression Analysis", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "一元线性回归", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "Simple Linear Regression", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "最小二乘法", "lang": "zh", "kind": "alias", "weight": 80},
+    {"alias": "least squares", "lang": "en", "kind": "keyword", "weight": 75},
+    {"alias": "R^2", "lang": "math", "kind": "notation", "weight": 80},
+    {"alias": "β1", "lang": "math", "kind": "notation", "weight": 75},
+    {"alias": "回归直线", "lang": "zh", "kind": "keyword", "weight": 70}
+  ],
+  "examples": [
+    {
+      "title": "广告费与销售额的回归直线",
+      "question": "某公司 5 个月的广告费 $x$（万元）与销售额 $y$（万元）数据为：(1,10),(2,13),(3,16),(4,19),(5,22)。求销售额对广告费的一元线性回归方程，并预测广告费为 6 万元时的销售额。",
+      "solution": "$\\sum_{i=1}^{5}x_i=15$，$\\sum_{i=1}^{5}y_i=80$，故 $\\bar x=3$，$\\bar y=16$。$$S_{xx}=\\sum(x_i-3)^2=4+1+0+1+4=10$$ $$S_{xy}=\\sum(x_i-3)(y_i-16)=(-2)(-6)+(-1)(-3)+0\\times0+1\\times3+2\\times6=12+3+0+3+12=30$$ $$\\hat\\beta_1=\\frac{30}{10}=3,\\qquad \\hat\\beta_0=16-3\\times3=7$$ 回归方程为 $\\hat y=7+3x$。当 $x=6$ 时，$\\hat y=7+3\\times6=25$。",
+      "answer": "$\\hat y=7+3x$；广告费为 6 万元时预测销售额约为 25 万元。"
+    }
+  ]
+}

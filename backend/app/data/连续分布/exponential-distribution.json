@@ -1,0 +1,91 @@
+{
+  "kind": "distribution",
+  "slug": "exponential-distribution",
+  "name_zh": "指数分布",
+  "name_en": "Exponential distribution",
+  "category": "连续分布",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "描述寿命与等待时间的分布，具有无记忆性，是可靠性理论的基础。",
+  "type": "continuous",
+  "support": "x \\in (0,+\\infty)",
+  "params": [
+    {
+      "name": "lambda",
+      "latex": "\\lambda",
+      "description": "率参数（失效率，λ>0）",
+      "default": 1,
+      "min": 0.05,
+      "max": 5,
+      "step": 0.05
+    }
+  ],
+  "pmf_or_pdf_latex": "f(x)=\\lambda e^{-\\lambda x},\\quad x>0",
+  "cdf_latex": "F(x)=1-e^{-\\lambda x},\\quad x>0",
+  "mean_formula": "E(X)=\\frac{1}{\\lambda}",
+  "variance_formula": "Var(X)=\\frac{1}{\\lambda^2}",
+  "mgf_formula": "M_X(t)=\\frac{\\lambda}{\\lambda-t},\\quad t<\\lambda",
+  "graph_config": {
+    "discrete": false,
+    "x_range": [
+      0,
+      10
+    ],
+    "default_params": {
+      "lambda": 1
+    },
+    "notes": "指数分布是伽马分布 Γ(1,λ) 的特例"
+  },
+  "aliases": [
+    {
+      "alias": "指数分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Exponential distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "Exp(lambda)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "X~E(λ)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "寿命分布",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 60
+    },
+    {
+      "alias": "无记忆性",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 55
+    },
+    {
+      "alias": "memoryless",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 55
+    }
+  ],
+  "examples": [
+    {
+      "title": "电子元件寿命",
+      "question": "某电子元件寿命（千小时）$X\\sim \\mathrm{Exp}(0.1)$，求其寿命超过 10 千小时的概率与平均寿命。",
+      "solution": "$P(X>10)=1-F(10)=e^{-0.1\\times10}=e^{-1}\\approx0.3679$。平均寿命 $E(X)=\\frac{1}{0.1}=10$（千小时）。",
+      "answer": "$P(X>10)=e^{-1}\\approx0.3679$，平均寿命 10 千小时"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "kind": "knowledge",
+  "slug": "taylor-formula",
+  "name_zh": "泰勒公式与麦克劳林展开",
+  "name_en": "Taylor's Formula and Maclaurin Expansion",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 8,
+  "summary": "用多项式局部逼近函数并给出余项，是近似计算与极限分析的基础。",
+  "definition": "设 $f(x)$ 在含有 $x_0$ 的开区间内具有直到 $n+1$ 阶的导数，则对该区间内任意 $x$，有**泰勒公式** $$f(x)=f(x_0)+f'(x_0)(x-x_0)+\\frac{f''(x_0)}{2!}(x-x_0)^2+\\cdots+\\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+R_n(x)$$ 其中 $R_n(x)$ 为余项：**拉格朗日余项** $R_n(x)=\\frac{f^{(n+1)}(\\xi)}{(n+1)!}(x-x_0)^{n+1}$（$\\xi$ 介于 $x_0$ 与 $x$ 之间），**佩亚诺余项** $R_n(x)=o\\big((x-x_0)^n\\big)$。当 $x_0=0$ 时称为**麦克劳林公式**。",
+  "formula_latex": "f(x)=\\sum_{k=0}^{n}\\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+R_n(x)",
+  "properties": [
+    {
+      "title": "麦克劳林展开 e^x",
+      "latex": "e^x=1+x+\\frac{x^2}{2!}+\\cdots+\\frac{x^n}{n!}+o(x^n)",
+      "description": "指数函数在 0 处的展开，收敛半径无穷大"
+    },
+    {
+      "title": "麦克劳林展开 sinx",
+      "latex": "\\sin x=x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\cdots+(-1)^m\\frac{x^{2m+1}}{(2m+1)!}+o(x^{2m+2})",
+      "description": "正弦函数只含奇次项，符号交替"
+    },
+    {
+      "title": "麦克劳林展开 cosx",
+      "latex": "\\cos x=1-\\frac{x^2}{2!}+\\frac{x^4}{4!}-\\cdots+(-1)^m\\frac{x^{2m}}{(2m)!}+o(x^{2m+1})",
+      "description": "余弦函数只含偶次项，符号交替"
+    },
+    {
+      "title": "麦克劳林展开 ln(1+x)",
+      "latex": "\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\cdots+(-1)^{n-1}\\frac{x^n}{n}+o(x^n)",
+      "description": "对数函数在 0 附近展开，-1<x≤1 时成立"
+    },
+    {
+      "title": "麦克劳林展开 (1+x)^α",
+      "latex": "(1+x)^\\alpha=1+\\alpha x+\\frac{\\alpha(\\alpha-1)}{2!}x^2+\\cdots+\\frac{\\alpha(\\alpha-1)\\cdots(\\alpha-n+1)}{n!}x^n+o(x^n)",
+      "description": "二项式定理向任意实数指数的推广"
+    }
+  ],
+  "derivation": "构造思路：要求 $n$ 次多项式 $P_n(x)$ 与 $f$ 在 $x_0$ 处有相同的函数值及一至 $n$ 阶导数值，即 $P_n^{(k)}(x_0)=f^{(k)}(x_0)\\ (k=0,1,\\dots,n)$，逐项求导可唯一确定系数 $a_k=\\frac{f^{(k)}(x_0)}{k!}$，故泰勒多项式由这些条件唯一决定。佩亚诺余项的证明：记 $R_n(x)=f(x)-P_n(x)$，由构造知 $R_n(x_0)=R_n'(x_0)=\\cdots=R_n^{(n)}(x_0)=0$，对 $\\frac{R_n(x)}{(x-x_0)^n}$ 连续使用 $n$ 次洛必达法则可得极限为 0，故 $R_n(x)=o\\big((x-x_0)^n\\big)$。拉格朗日余项可通过对 $R_n$ 反复使用柯西中值定理（或由积分余项）得到。",
+  "applications": [
+    "函数的近似计算与误差估计",
+    "求较复杂未定式极限（配合洛必达）",
+    "数值分析中的多项式插值与逼近",
+    "证明不等式、估计函数值的大小"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "exp(x)",
+        "label": "e^x",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "1+x+x^2/2+x^3/6",
+        "label": "麦克劳林3阶",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      -3,
+      3
+    ],
+    "y_range": [
+      -2,
+      10
+    ],
+    "notes": "e^x 在 x = 0 处的三阶麦克劳林展开 1 + x + x^2/2 + x^3/6 在 x = 0 附近与原函数高度吻合，离 0 越远误差越大。"
+  },
+  "aliases": [
+    {
+      "alias": "泰勒公式",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Taylor's Formula",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "麦克劳林展开",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Maclaurin expansion",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "Taylor",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "佩亚诺余项",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "拉格朗日余项",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "T_n(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "用麦克劳林展开求极限",
+      "question": "利用 $\\sin x$ 的麦克劳林展开求 $\\lim\\limits_{x\\to0}\\frac{\\sin x-x}{x^3}$。",
+      "solution": "由 $\\sin x$ 的三阶麦克劳林展开 $\\sin x=x-\\frac{x^3}{3!}+o(x^3)$，代入得 $$\\lim_{x\\to0}\\frac{\\sin x-x}{x^3}=\\lim_{x\\to0}\\frac{-\\frac{x^3}{6}+o(x^3)}{x^3}=-\\frac{1}{6}$$",
+      "answer": "极限为 $-\\frac{1}{6}$。"
+    }
+  ]
+}

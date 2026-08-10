@@ -1,0 +1,138 @@
+{
+  "kind": "knowledge",
+  "slug": "definite-integral",
+  "name_zh": "定积分",
+  "name_en": "Definite integral",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 5,
+  "summary": "分割求和取极限定义，牛顿-莱布尼茨公式把积分化为原函数之差。",
+  "definition": "设 $f(x)$ 在 $[a,b]$ 上有界。将 $[a,b]$ 任意分割为 $n$ 个小区间 $[x_{i-1},x_i]$，记 $\\Delta x_i=x_i-x_{i-1}$，$\\lambda=\\max\\limits_{1\\le i\\le n}\\Delta x_i$，在每个小区间上任取一点 $\\xi_i$，作和式 $\\sum\\limits_{i=1}^{n}f(\\xi_i)\\Delta x_i$。若当 $\\lambda\\to0$ 时该和式的极限存在且与分割、取点无关，则称 $f$ 在 $[a,b]$ 上**可积**，此极限称为 $f$ 在 $[a,b]$ 上的**定积分**，记作 $$\\int_a^b f(x)\\,dx=\\lim_{\\lambda\\to0}\\sum_{i=1}^{n}f(\\xi_i)\\Delta x_i$$ 若 $f$ 在 $[a,b]$ 上连续，则**变上限函数** $\\Phi(x)=\\int_a^x f(t)\\,dt$ 可导且 $\\Phi'(x)=f(x)$；设 $F$ 是 $f$ 的任一原函数，则**牛顿-莱布尼茨公式**成立：$$\\int_a^b f(x)\\,dx=F(b)-F(a)$$",
+  "formula_latex": "\\int_a^b f(x)\\,dx=F(b)-F(a)",
+  "properties": [
+    {
+      "title": "线性性",
+      "latex": "\\int_a^b[k_1f(x)+k_2g(x)]\\,dx=k_1\\int_a^b f(x)\\,dx+k_2\\int_a^b g(x)\\,dx",
+      "description": "定积分对线性组合可拆项"
+    },
+    {
+      "title": "区间可加性",
+      "latex": "\\int_a^b f\\,dx=\\int_a^c f\\,dx+\\int_c^b f\\,dx",
+      "description": "对任意 c 成立，并约定 ∫_b^a f dx=-∫_a^b f dx"
+    },
+    {
+      "title": "保序性",
+      "latex": "f(x)\\le g(x)\\Rightarrow\\int_a^b f(x)\\,dx\\le\\int_a^b g(x)\\,dx",
+      "description": "函数不等式积分后保持不等号"
+    },
+    {
+      "title": "绝对值不等式",
+      "latex": "\\left|\\int_a^b f(x)\\,dx\\right|\\le\\int_a^b |f(x)|\\,dx",
+      "description": "和的绝对值不超过绝对值的和"
+    },
+    {
+      "title": "估值定理",
+      "latex": "m(b-a)\\le\\int_a^b f(x)\\,dx\\le M(b-a)",
+      "description": "m、M 分别为 f 在 [a,b] 上的最小值与最大值"
+    },
+    {
+      "title": "积分中值定理",
+      "latex": "\\int_a^b f(x)\\,dx=f(\\xi)(b-a),\\quad \\xi\\in(a,b)",
+      "description": "f 连续时存在 ξ，几何上表示存在等高矩形"
+    }
+  ],
+  "derivation": "先证变上限积分可导：$\\Phi(x+h)-\\Phi(x)=\\int_x^{x+h}f(t)\\,dt$，由积分中值定理等于 $f(\\xi)h$（$\\xi$ 介于 $x$ 与 $x+h$ 之间），除以 $h$ 后令 $h\\to0$，由 $f$ 连续得 $\\Phi'(x)=f(x)$，故 $\\Phi$ 是 $f$ 的一个原函数。设 $F$ 为 $f$ 的任一原函数，则 $F(x)-\\Phi(x)=C$，取 $x=a$ 得 $C=F(a)-\\Phi(a)=F(a)$（因 $\\Phi(a)=0$），于是 $\\Phi(x)=F(x)-F(a)$，从而 $$\\int_a^b f(x)\\,dx=\\Phi(b)=F(b)-F(a)$$ 即牛顿-莱布尼茨公式把定积分计算归结为求原函数并代入上下限。",
+  "applications": [
+    "求平面图形的面积、旋转体体积与弧长",
+    "物理中由速度积分求位移、由力积分求做功",
+    "概率论中由概率密度求分布函数与区间概率",
+    "经济学中由边际函数积分求总量"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x^2",
+        "label": "y = x^2",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -1,
+      2
+    ],
+    "y_range": [
+      -0.5,
+      4
+    ],
+    "integral": [
+      0,
+      1
+    ],
+    "notes": "阴影部分表示定积分 ∫₀¹ x² dx = 1/3，即曲线 y = x² 与 x 轴在 [0,1] 上围成的面积。"
+  },
+  "aliases": [
+    {
+      "alias": "定积分",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Definite integral",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "牛顿-莱布尼茨公式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Newton-Leibniz formula",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "变上限积分",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "∫_a^b",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "F(b)-F(a)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "Riemann integral",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "用牛顿-莱布尼茨公式计算定积分",
+      "question": "计算 $\\int_0^1 x^2\\,dx$ 与 $\\int_0^{\\pi}\\sin x\\,dx$。",
+      "solution": "由牛顿-莱布尼茨公式：$$\\int_0^1 x^2\\,dx=\\left.\\frac{x^3}{3}\\right|_0^1=\\frac{1}{3}$$ $$\\int_0^{\\pi}\\sin x\\,dx=\\left[-\\cos x\\right]_0^{\\pi}=(-\\cos\\pi)-(-\\cos0)=1+1=2$$",
+      "answer": "$\\int_0^1 x^2\\,dx=\\frac{1}{3}$，$\\int_0^{\\pi}\\sin x\\,dx=2$。"
+    },
+    {
+      "title": "变上限积分的导数",
+      "question": "设 $\\Phi(x)=\\int_0^x t^2\\,dt$，求 $\\Phi'(x)$。",
+      "solution": "由 $\\Phi'(x)=f(x)$（被积函数在 $t=x$ 处的值），得 $\\Phi'(x)=x^2$。也可先算 $\\Phi(x)=\\left.\\frac{t^3}{3}\\right|_0^x=\\frac{x^3}{3}$，再求导得 $x^2$。",
+      "answer": "$\\Phi'(x)=x^2$。"
+    }
+  ]
+}

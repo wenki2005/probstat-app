@@ -1,0 +1,38 @@
+{
+  "kind": "knowledge",
+  "slug": "sample-space",
+  "name_zh": "样本空间",
+  "name_en": "Sample space",
+  "category": "基础概率",
+  "subcategory": "",
+  "sort_order": 1,
+  "summary": "随机试验全部可能结果构成的集合，是概率论讨论的基本空间。",
+  "definition": "在一个随机试验中，把试验的**每一个可能结果**称为一个**样本点**（基本事件），记为 $\\omega$；全体样本点组成的集合称为**样本空间**，记为 $\\Omega$。即 $$\\Omega=\\{\\omega\\mid \\omega\\text{ 是试验的一个可能结果}\\}$$ 样本空间可以是有限集、可数无限集或不可数无限集（如实数区间）。确定样本空间是概率计算的起点。",
+  "formula_latex": "\\Omega=\\{\\omega_1,\\omega_2,\\dots\\}",
+  "properties": [
+    {"title": "穷尽性", "latex": "\\Omega\\text{ 包含试验的所有可能结果}", "description": "任何一次试验的结果必属于样本空间"},
+    {"title": "基本事件互斥", "latex": "\\{\\omega_i\\}\\cap\\{\\omega_j\\}=\\varnothing\\;(i\\neq j)", "description": "一次试验只出现一个样本点，不同基本事件互斥"},
+    {"title": "有限或无限", "latex": "|\\Omega|<\\infty\\ \\text{或}\\ |\\Omega|=+\\infty", "description": "样本空间可为有限集、可数无限集或不可数无限集"},
+    {"title": "事件是子集", "latex": "A\\subseteq\\Omega", "description": "随机事件是样本空间的子集，事件发生当且仅当结果属于该子集"}
+  ],
+  "derivation": "复合试验的样本空间可用**乘法原理**构建。例如掷两枚骰子，样本点记为 $(i,j)$，其中 $i,j\\in\\{1,2,\\dots,6\\}$。第一枚骰子有 6 种结果，第二枚也有 6 种，两两组合互不相同，故 $$|\\Omega|=6\\times 6=36$$ 一般地，若试验分 $k$ 步完成，第 $r$ 步有 $n_r$ 种可能结果，则样本点总数为 $n_1n_2\\cdots n_k$。",
+  "applications": ["掷骰子、抛硬币等随机试验结果的建模", "电路可靠性分析中失效模式的全枚举", "测量误差取值集合的设定", "概率计算前先明确基本事件空间"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "样本空间", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Sample space", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "基本事件空间", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "Ω", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "Omega", "lang": "en", "kind": "notation", "weight": 80},
+    {"alias": "样本点集合", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "掷两枚硬币的样本空间",
+      "question": "将一枚均匀硬币连掷两次，写出该试验的样本空间，并说明其中样本点的个数。",
+      "solution": "用 $H$ 表示正面、$T$ 表示反面，区分次序后样本点为 $(H,H),(H,T),(T,H),(T,T)$，故 $$\\Omega=\\{(H,H),(H,T),(T,H),(T,T)\\}$$ 由乘法原理，$|\\Omega|=2\\times2=4$。若只关心结果不区分次序，则可写成 $\\{HH,HT,TT\\}$，但此时三个样本点概率并不相同。",
+      "answer": "$\\Omega=\\{(H,H),(H,T),(T,H),(T,T)\\}$，共 4 个样本点。"
+    }
+  ]
+}

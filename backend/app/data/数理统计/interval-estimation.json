@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "interval-estimation",
+  "name_zh": "区间估计",
+  "name_en": "Interval Estimation",
+  "category": "数理统计",
+  "subcategory": "参数估计",
+  "sort_order": 5,
+  "summary": "给出参数所在区间及可信程度，比点估计多提供精度与可靠性信息。",
+  "definition": "设 $\\theta$ 为总体 $X$ 的未知参数，$X_1,\\dots,X_n$ 为样本。对给定的置信水平 $1-\\alpha$（$0<\\alpha<1$），若统计量 $\\hat\\theta_L=\\hat\\theta_L(X_1,\\dots,X_n)$ 与 $\\hat\\theta_U=\\hat\\theta_U(X_1,\\dots,X_n)$ 满足 $$P(\\hat\\theta_L \\le \\theta \\le \\hat\\theta_U)=1-\\alpha$$ 则称随机区间 $[\\hat\\theta_L,\\hat\\theta_U]$ 为 $\\theta$ 的置信水平为 $1-\\alpha$ 的**置信区间**，$\\hat\\theta_L$、$\\hat\\theta_U$ 分别为**置信下限**与**置信上限**，$1-\\alpha$ 称为**置信水平**（置信度）。构造置信区间最常用的方法是**枢轴量法**：找一个分布已知且不含未知参数的样本函数（枢轴量），再由分位数反解出参数的区间。",
+  "formula_latex": "P(\\hat\\theta_L \\le \\theta \\le \\hat\\theta_U)=1-\\alpha",
+  "properties": [
+    {"title": "均值 μ 的置信区间（σ² 已知）", "latex": "\\left[\\bar X-z_{\\alpha/2}\\frac{\\sigma}{\\sqrt n},\\ \\bar X+z_{\\alpha/2}\\frac{\\sigma}{\\sqrt n}\\right]", "description": "枢轴量 Z=(X̄-μ)/(σ/√n)~N(0,1)，z_{α/2} 为标准正态上 α/2 分位点"},
+    {"title": "均值 μ 的置信区间（σ² 未知）", "latex": "\\left[\\bar X-t_{\\alpha/2}(n-1)\\frac{S}{\\sqrt n},\\ \\bar X+t_{\\alpha/2}(n-1)\\frac{S}{\\sqrt n}\\right]", "description": "枢轴量 T=(X̄-μ)/(S/√n)~t(n-1)，t_{α/2}(n-1) 为 t 分布双侧分位点"},
+    {"title": "方差 σ² 的置信区间", "latex": "\\left[\\frac{(n-1)S^2}{\\chi^2_{\\alpha/2}(n-1)},\\ \\frac{(n-1)S^2}{\\chi^2_{1-\\alpha/2}(n-1)}\\right]", "description": "枢轴量 χ²=(n-1)S²/σ²~χ²(n-1)，适用于正态总体"},
+    {"title": "置信水平与区间长度", "latex": "L=2z_{\\alpha/2}\\frac{\\sigma}{\\sqrt n}", "description": "σ² 已知时：置信水平越高区间越长；样本量 n 越大区间越短"}
+  ],
+  "derivation": "以“方差未知时正态总体均值 $\\mu$ 的置信区间”为例。由 $\\bar X\\sim N\\left(\\mu,\\frac{\\sigma^2}{n}\\right)$、$\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2(n-1)$ 且二者独立，构造枢轴量 $$T=\\frac{\\bar X-\\mu}{S/\\sqrt n}\\sim t(n-1)$$ 对置信水平 $1-\\alpha$，取 $t$ 分布双侧分位点 $t_{\\alpha/2}(n-1)$，使 $$P\\left(\\left|\\frac{\\bar X-\\mu}{S/\\sqrt n}\\right|<t_{\\alpha/2}(n-1)\\right)=1-\\alpha$$ 即 $$P\\left(\\bar X-t_{\\alpha/2}(n-1)\\frac{S}{\\sqrt n}<\\mu<\\bar X+t_{\\alpha/2}(n-1)\\frac{S}{\\sqrt n}\\right)=1-\\alpha$$ 从而得到 $\\mu$ 的置信区间。",
+  "applications": ["药品疗效均值的置信区间报告", "产品寿命与质量的区间估计", "民意调查的抽样误差范围（±3%）", "工程中结构强度参数的区间控制"],
+  "visualization_type": "formula",
+  "graph_config": {"show_interval": true},
+  "aliases": [
+    {"alias": "区间估计", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Interval Estimation", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "置信区间", "lang": "zh", "kind": "alias", "weight": 95},
+    {"alias": "Confidence Interval", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "CI", "lang": "en", "kind": "notation", "weight": 85},
+    {"alias": "置信水平", "lang": "zh", "kind": "keyword", "weight": 75},
+    {"alias": "confidence level", "lang": "en", "kind": "keyword", "weight": 70},
+    {"alias": "枢轴量", "lang": "zh", "kind": "keyword", "weight": 70},
+    {"alias": "[θ_L, θ_U]", "lang": "math", "kind": "notation", "weight": 65}
+  ],
+  "examples": [
+    {
+      "title": "方差未知时均值的置信区间（t 区间）",
+      "question": "某食品厂抽查 16 袋方便面重量（g），得样本均值 $\\bar x=99.8$，样本标准差 $s=2.0$。假定重量服从正态分布，求平均重量 $\\mu$ 的 95% 置信区间。",
+      "solution": "$n=16$，$\\alpha=0.05$，查 t 分布表 $t_{0.025}(15)=2.131$。区间为 $$\\bar x\\pm t_{\\alpha/2}(n-1)\\frac{s}{\\sqrt n}=99.8\\pm2.131\\times\\frac{2.0}{4}=99.8\\pm1.0655$$ 即 $[98.7345,\\,100.8655]$。",
+      "answer": "平均重量的 95% 置信区间约为 $(98.73,\\,100.87)$（g）。"
+    }
+  ]
+}

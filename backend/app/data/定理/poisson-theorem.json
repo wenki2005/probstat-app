@@ -1,0 +1,129 @@
+{
+  "kind": "knowledge",
+  "slug": "poisson-theorem",
+  "name_zh": "泊松定理",
+  "name_en": "Poisson Theorem",
+  "category": "定理",
+  "subcategory": "",
+  "sort_order": 4,
+  "summary": "n 很大 p 很小时，二项分布可用参数 λ=np 的泊松分布近似。",
+  "definition": "**泊松定理**：设随机变量 $X_n\\sim B(n,p_n)$（$n=1,2,\\dots$），若 $\\lim_{n\\to\\infty}np_n=\\lambda>0$（常数），则对任意固定的非负整数 $k$，$$\\lim_{n\\to\\infty}P(X_n=k)=\\lim_{n\\to\\infty}\\binom{n}{k}p_n^k(1-p_n)^{n-k}=\\frac{\\lambda^k e^{-\\lambda}}{k!}$$ 实际应用中，当试验次数 $n$ 很大、成功概率 $p$ 很小时，二项分布 $B(n,p)$ 可用参数为 $\\lambda=np$ 的泊松分布 $P(\\lambda)$ 近似：$$P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\approx\\frac{\\lambda^k e^{-\\lambda}}{k!},\\qquad \\lambda=np$$ 经验准则为 $n\\ge20$ 且 $p\\le0.05$（或 $n\\ge100$、$np\\le10$）时近似效果良好。泊松分布由此成为描述“稀有事件”发生次数的基本模型。",
+  "formula_latex": "P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\approx\\frac{\\lambda^k e^{-\\lambda}}{k!},\\qquad \\lambda=np",
+  "properties": [
+    {
+      "title": "极限形式",
+      "latex": "\\lim_{n\\to\\infty}\\binom{n}{k}p_n^k(1-p_n)^{n-k}=\\frac{\\lambda^k e^{-\\lambda}}{k!},\\quad \\lambda=\\lim_{n\\to\\infty}np_n",
+      "description": "泊松定理的精确陈述"
+    },
+    {
+      "title": "近似准则",
+      "latex": "n\\ge20,\\ p\\le0.05\\ (\\text{或 }n\\ge100,\\ np\\le10)",
+      "description": "常用经验条件，满足时近似误差很小"
+    },
+    {
+      "title": "泊松分布的数字特征",
+      "latex": "E(X)=Var(X)=\\lambda",
+      "description": "二项分布 np 与 npq 在 p 很小时均接近 λ"
+    },
+    {
+      "title": "可加性",
+      "latex": "X\\sim P(\\lambda_1),\\ Y\\sim P(\\lambda_2)\\Rightarrow X+Y\\sim P(\\lambda_1+\\lambda_2)",
+      "description": "独立泊松变量之和仍为泊松分布"
+    },
+    {
+      "title": "稀有事件",
+      "latex": "P(X\\ge1)=1-e^{-\\lambda}\\approx\\lambda\\ (\\lambda\\ \\text{较小时})",
+      "description": "泊松模型刻画稀有事件发生次数的依据"
+    }
+  ],
+  "derivation": "设 $\\lambda_n=np_n\\to\\lambda$，把 $p_n=\\lambda_n/n$ 代入二项概率并整理：$$P(X_n=k)=\\frac{n(n-1)\\cdots(n-k+1)}{k!}p_n^k(1-p_n)^{n-k}=\\frac{\\lambda_n^k}{k!}\\cdot\\frac{n(n-1)\\cdots(n-k+1)}{n^k}\\cdot\\left(1-\\frac{\\lambda_n}{n}\\right)^n\\cdot\\left(1-\\frac{\\lambda_n}{n}\\right)^{-k}$$ 对固定的 $k$，有 $\\frac{n(n-1)\\cdots(n-k+1)}{n^k}\\to1$，$\\left(1-\\frac{\\lambda_n}{n}\\right)^n\\to e^{-\\lambda}$，$\\left(1-\\frac{\\lambda_n}{n}\\right)^{-k}\\to1$，$\\lambda_n^k\\to\\lambda^k$，因此 $$\\lim_{n\\to\\infty}P(X_n=k)=\\frac{\\lambda^k}{k!}e^{-\\lambda}$$ 这就是泊松定理。它表明二项分布列以泊松分布列为极限分布，是小概率事件大量重复试验的数学模型。",
+  "applications": [
+    "大量产品中废品件数、单位面积疵点数的建模",
+    "电话交换台呼叫次数、交通事故件数等稀有事件计数",
+    "n 很大时二项分布概率的近似计算（避免大阶乘）",
+    "保险精算中稀有索赔事件的计数模型"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "exp(-3)*3**k / k!",
+        "label": "泊松 P(k)",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      0,
+      12
+    ],
+    "y_range": [
+      0,
+      0.25
+    ],
+    "notes": "提示：expr 中的 k! 可用 gamma(k+1) 表示；如 sympy 无法解析请改为 visualization_type='none' 并删去 graph_config"
+  },
+  "aliases": [
+    {
+      "alias": "泊松定理",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Poisson Theorem",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "泊松近似",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "二项分布的泊松近似",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "Poisson approximation",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "\\lambda=np",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "e^{-\\lambda}",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "稀有事件",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "泊松分布逼近",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "废品件数的泊松近似计算",
+      "question": "某种大量生产的电子元件废品率为 $p=0.005$，一箱装 $n=200$ 件，求一箱中废品件数不超过 1 件的概率。",
+      "solution": "废品数 $X\\sim B(200,0.005)$。因 $n=200$ 大、$p=0.005$ 小，用泊松定理近似，$\\lambda=np=200\\times0.005=1$。$$P(X\\le1)=P(X=0)+P(X=1)\\approx\\frac{1^0e^{-1}}{0!}+\\frac{1^1e^{-1}}{1!}=2e^{-1}\\approx0.7358$$ 精确二项值为 $0.995^{200}+200\\times0.005\\times0.995^{199}\\approx0.3670+0.3688=0.7358$，两者非常接近。",
+      "answer": "$P(X\\le1)\\approx0.7358$（精确值约 0.7358）。"
+    }
+  ]
+}

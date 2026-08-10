@@ -1,0 +1,100 @@
+{
+  "kind": "knowledge",
+  "slug": "sets",
+  "name_zh": "集合及其运算",
+  "name_en": "Sets and set operations",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 1,
+  "summary": "集合的基本概念与交、并、补等运算，概率论中事件即集合。",
+  "definition": "集合是由确定的对象（元素）组成的整体，常用大写字母 $A,B,C$ 表示集合，小写字母 $a,b,c$ 表示元素。若 $a$ 是集合 $A$ 的元素，记 $a \\in A$；否则记 $a \\notin A$。不含任何元素的集合称为空集，记 $\\emptyset$。设 $U$ 为全集，$A,B \\subseteq U$，则 $$A \\cap B = \\{x \\mid x \\in A \\text{ 且 } x \\in B\\}, \\qquad A \\cup B = \\{x \\mid x \\in A \\text{ 或 } x \\in B\\}$$ 补集 $\\bar{A}=U\\setminus A$，差集 $A\\setminus B=\\{x \\mid x \\in A \\text{ 且 } x \\notin B\\}$。",
+  "formula_latex": "A \\cap B=\\{x\\mid x\\in A\\ \\text{且}\\ x\\in B\\},\\quad A\\cup B=\\{x\\mid x\\in A\\ \\text{或}\\ x\\in B\\}",
+  "properties": [
+    {
+      "title": "交换律",
+      "latex": "A\\cup B=B\\cup A,\\quad A\\cap B=B\\cap A",
+      "description": "并集与交集满足交换律"
+    },
+    {
+      "title": "结合律",
+      "latex": "(A\\cup B)\\cup C=A\\cup(B\\cup C),\\quad (A\\cap B)\\cap C=A\\cap(B\\cap C)",
+      "description": "并集与交集满足结合律"
+    },
+    {
+      "title": "分配律",
+      "latex": "A\\cap(B\\cup C)=(A\\cap B)\\cup(A\\cap C)",
+      "description": "交集对并集的分配律，并集对交集也成立"
+    },
+    {
+      "title": "德摩根律",
+      "latex": "\\overline{A\\cup B}=\\bar{A}\\cap\\bar{B},\\quad \\overline{A\\cap B}=\\bar{A}\\cup\\bar{B}",
+      "description": "并的补等于补的交，交的补等于补的并"
+    },
+    {
+      "title": "容斥原理",
+      "latex": "|A\\cup B|=|A|+|B|-|A\\cap B|",
+      "description": "两个集合元素个数的不重不漏计数公式"
+    }
+  ],
+  "derivation": "集合运算律可用元素的属于关系验证。例如分配律：$x \\in A\\cap(B\\cup C) \\iff x\\in A$ 且 $x\\in B\\cup C \\iff x\\in A$ 且 $(x\\in B \\text{ 或 } x\\in C) \\iff (x\\in A\\cap B) \\text{ 或 } (x\\in A\\cap C) \\iff x\\in(A\\cap B)\\cup(A\\cap C)$，故 $A\\cap(B\\cup C)=(A\\cap B)\\cup(A\\cap C)$。容斥原理：计算 $|A|+|B|$ 时，$A\\cap B$ 中的元素被重复计了一次，减去 $|A\\cap B|$ 即得 $|A\\cup B|=|A|+|B|-|A\\cap B|$。",
+  "applications": [
+    "概率论中事件即样本空间的子集，事件运算对应集合运算",
+    "容斥原理用于不重不漏的计数",
+    "数据库查询中的交、并、补运算",
+    "逻辑与布尔代数基础"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "集合",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Set",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "集",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "∈",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "∩",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "∪",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "空集",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "集合的交、并、补与差运算",
+      "question": "设全集 $U=\\{1,2,3,4,5,6,7,8\\}$，$A=\\{1,2,3,4\\}$，$B=\\{3,4,5,6\\}$。求 $A\\cap B$、$A\\cup B$、$\\bar{A}$ 与 $A\\setminus B$。",
+      "solution": "按定义直接计算：$A\\cap B=\\{3,4\\}$；$A\\cup B=\\{1,2,3,4,5,6\\}$；$\\bar{A}=U\\setminus A=\\{5,6,7,8\\}$；$A\\setminus B=\\{1,2\\}$。",
+      "answer": "$A\\cap B=\\{3,4\\}$，$A\\cup B=\\{1,2,3,4,5,6\\}$，$\\bar{A}=\\{5,6,7,8\\}$，$A\\setminus B=\\{1,2\\}$。"
+    }
+  ]
+}

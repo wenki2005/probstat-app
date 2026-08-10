@@ -1,0 +1,111 @@
+{
+  "kind": "knowledge",
+  "slug": "sequences",
+  "name_zh": "数列（等差与等比数列）",
+  "name_en": "Sequences (arithmetic and geometric)",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 7,
+  "summary": "按顺序排列的一列数，重点研究等差与等比数列及其求和。",
+  "definition": "按一定次序排列的一列数 $a_1,a_2,\\dots,a_n,\\dots$ 称为数列，记为 $\\{a_n\\}$，其中 $a_n$ 称为通项（第 $n$ 项）。若 $a_{n+1}-a_n=d$（常数），则称 $\\{a_n\\}$ 为**等差数列**，$d$ 为公差；若 $\\frac{a_{n+1}}{a_n}=q$（常数，$q\\ne0$），则称 $\\{a_n\\}$ 为**等比数列**，$q$ 为公比。",
+  "formula_latex": "a_n=a_1+(n-1)d,\\quad S_n=\\frac{n(a_1+a_n)}{2}",
+  "properties": [
+    {
+      "title": "等差通项",
+      "latex": "a_n=a_1+(n-1)d",
+      "description": "等差数列第 n 项公式"
+    },
+    {
+      "title": "等差求和",
+      "latex": "S_n=\\frac{n(a_1+a_n)}{2}=na_1+\\frac{n(n-1)}{2}d",
+      "description": "等差数列前 n 项和公式"
+    },
+    {
+      "title": "等差中项",
+      "latex": "2b=a+c",
+      "description": "a,b,c 成等差数列当且仅当 2b=a+c"
+    },
+    {
+      "title": "等比通项",
+      "latex": "a_n=a_1 q^{n-1}",
+      "description": "等比数列第 n 项公式"
+    },
+    {
+      "title": "等比求和",
+      "latex": "S_n=\\frac{a_1(1-q^n)}{1-q}\\quad(q\\ne1)",
+      "description": "等比数列前 n 项和公式（q=1 时 S_n=na_1）"
+    },
+    {
+      "title": "等比中项",
+      "latex": "b^2=ac",
+      "description": "a,b,c 成等比数列当且仅当 b^2=ac"
+    }
+  ],
+  "derivation": "等差数列通项由递推式累加：$a_n=a_1+(a_2-a_1)+\\cdots+(a_n-a_{n-1})=a_1+(n-1)d$。求和用**倒序相加**：$S_n=a_1+\\cdots+a_n$ 与 $S_n=a_n+\\cdots+a_1$ 相加，第 $k$ 对 $a_k+a_{n+1-k}=a_1+a_n$，故 $2S_n=n(a_1+a_n)$，即 $S_n=\\frac{n(a_1+a_n)}{2}$。等比数列通项由递推式累乘：$a_n=a_1q^{n-1}$。求和用**错位相减**：$S_n=a_1+a_1q+\\cdots+a_1q^{n-1}$，两边乘 $q$ 得 $qS_n=a_1q+\\cdots+a_1q^n$，相减得 $(1-q)S_n=a_1(1-q^n)$，故 $S_n=\\frac{a_1(1-q^n)}{1-q}$。",
+  "applications": [
+    "分期付款与复利计算",
+    "斐波那契数列与黄金分割",
+    "算法复杂度分析中 1+2+...+n 的求和",
+    "概率论中几何分布的等比级数求和"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "数列",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Sequence",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "等差数列",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "等比数列",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "a_n",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "通项公式",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    },
+    {
+      "alias": "arithmetic progression",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 70
+    },
+    {
+      "alias": "geometric progression",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "等差数列的通项与前 n 项和",
+      "question": "已知等差数列 $\\{a_n\\}$ 中 $a_3=7$，$a_7=19$，求通项 $a_n$ 与前 10 项和 $S_{10}$。",
+      "solution": "设公差为 $d$，则 $a_7-a_3=4d=12$，$d=3$；$a_1=a_3-2d=7-6=1$。故 $a_n=1+(n-1)\\times3=3n-2$。$a_{10}=28$，$S_{10}=\\frac{10(a_1+a_{10})}{2}=5\\times29=145$。",
+      "answer": "$a_n=3n-2$，$S_{10}=145$。"
+    }
+  ]
+}

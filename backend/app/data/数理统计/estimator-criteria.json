@@ -1,0 +1,137 @@
+{
+  "kind": "knowledge",
+  "slug": "estimator-criteria",
+  "name_zh": "估计量的评选标准",
+  "name_en": "Criteria for Evaluating Estimators",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 9,
+  "summary": "从无偏性、有效性、相合性三方面评选参数估计量的优劣。",
+  "definition": "对总体参数 $\\theta$ 的估计量 $\\hat\\theta=\\hat\\theta(X_1,\\dots,X_n)$，通常用以下三个标准衡量其优劣。**无偏性**：若 $E(\\hat\\theta)=\\theta$，则称 $\\hat\\theta$ 为 $\\theta$ 的**无偏估计**，否则为有偏估计；偏差定义为 $E(\\hat\\theta)-\\theta$。若 $\\lim_{n\\to\\infty}E(\\hat\\theta_n)=\\theta$，则称 $\\hat\\theta_n$ 为 $\\theta$ 的**渐近无偏估计**。**有效性**：设 $\\hat\\theta_1,\\hat\\theta_2$ 都是 $\\theta$ 的无偏估计，若 $Var(\\hat\\theta_1)\\le Var(\\hat\\theta_2)$ 且至少存在一个 $\\theta$ 使严格不等号成立，则称 $\\hat\\theta_1$ 比 $\\hat\\theta_2$ **有效**，即在无偏估计中方差越小越优。**相合性（一致性）**：若对任意 $\\varepsilon>0$，$\\lim_{n\\to\\infty}P(|\\hat\\theta_n-\\theta|\\ge\\varepsilon)=0$，即 $\\hat\\theta_n\\xrightarrow{P}\\theta$，则称 $\\hat\\theta_n$ 为 $\\theta$ 的**相合估计**。此外还常用**均方误差** $MSE(\\hat\\theta)=E[(\\hat\\theta-\\theta)^2]=Var(\\hat\\theta)+[E(\\hat\\theta)-\\theta]^2$ 综合衡量偏差与方差。",
+  "formula_latex": "E(\\hat\\theta)=\\theta\\ (\\text{无偏}),\\quad Var(\\hat\\theta_1)\\le Var(\\hat\\theta_2)\\ (\\text{有效}),\\quad \\hat\\theta_n\\xrightarrow{P}\\theta\\ (\\text{相合})",
+  "properties": [
+    {
+      "title": "无偏性",
+      "latex": "E(\\hat\\theta)=\\theta",
+      "description": "估计量的期望等于真参数，无系统偏差"
+    },
+    {
+      "title": "渐近无偏",
+      "latex": "\\lim_{n\\to\\infty}E(\\hat\\theta_n)=\\theta",
+      "description": "样本量增大时偏差趋于 0"
+    },
+    {
+      "title": "有效性",
+      "latex": "Var(\\hat\\theta_1)\\le Var(\\hat\\theta_2)",
+      "description": "同为无偏估计时，方差小者更有效"
+    },
+    {
+      "title": "相合性（一致性）",
+      "latex": "\\hat\\theta_n\\xrightarrow{P}\\theta",
+      "description": "估计量依概率收敛于真参数，样本越多越准"
+    },
+    {
+      "title": "均方误差分解",
+      "latex": "MSE(\\hat\\theta)=Var(\\hat\\theta)+[E(\\hat\\theta)-\\theta]^2",
+      "description": "均方误差=方差+偏差平方，可比较有偏与无偏估计"
+    }
+  ],
+  "derivation": "（1）样本均值的无偏性：由期望线性性 $E(\\bar X)=\\frac{1}{n}\\sum_{i=1}^{n}E(X_i)=\\mu$。（2）样本方差的无偏性：利用 $\\sum_{i=1}^{n}(X_i-\\bar X)^2=\\sum_{i=1}^{n}X_i^2-n\\bar X^2$，$E(X_i^2)=\\sigma^2+\\mu^2$，$E(\\bar X^2)=\\sigma^2/n+\\mu^2$，得 $E[\\sum_{i=1}^{n}(X_i-\\bar X)^2]=(n-1)\\sigma^2$，故 $E(S^2)=\\sigma^2$，这就是样本方差除以 $n-1$ 的原因。（3）样本均值的相合性：$Var(\\bar X)=\\sigma^2/n\\to0$，由切比雪夫不等式 $P(|\\bar X-\\mu|\\ge\\varepsilon)\\le\\frac{\\sigma^2}{n\\varepsilon^2}\\to0$，故 $\\bar X\\xrightarrow{P}\\mu$。（4）有效性：对正态总体 $N(\\mu,\\sigma^2)$，$\\bar X\\sim N(\\mu,\\sigma^2/n)$ 的方差达到 Cramér–Rao 下界 $\\sigma^2/n$，因此 $\\bar X$ 是 $\\mu$ 的有效估计（最小方差无偏估计）。",
+  "applications": [
+    "判断矩估计与极大似然估计是否无偏、相合",
+    "从多个无偏估计中选择最小方差者",
+    "样本方差除以 n-1 的合理性依据",
+    "质量控制图中估计量的选用"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {
+    "criteria": [
+      "无偏性",
+      "有效性",
+      "相合性"
+    ],
+    "n": 30
+  },
+  "aliases": [
+    {
+      "alias": "估计量的评选标准",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Criteria for Evaluating Estimators",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "无偏性",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "有效性",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "相合性",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "一致性",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "unbiasedness",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "efficiency",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "consistency",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "E(\\hat\\theta)=\\theta",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 75
+    },
+    {
+      "alias": "无偏估计",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "相合估计",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "无偏性、相合性与有效性的综合判别",
+      "question": "设 $X_1,\\dots,X_n$ 是来自正态总体 $N(\\mu,\\sigma^2)$ 的样本。① 证明 $\\bar X$ 是 $\\mu$ 的无偏且相合估计；② 证明 $S^2$ 是 $\\sigma^2$ 的无偏估计；③ 比较 $\\mu$ 的两个无偏估计 $\\hat\\mu_1=\\bar X$ 与 $\\hat\\mu_2=\\frac{X_1+X_n}{2}$ 的有效性。",
+      "solution": "① $E(\\bar X)=\\frac{1}{n}\\sum_{i=1}^{n}E(X_i)=\\mu$，故 $\\bar X$ 无偏；又 $Var(\\bar X)=\\sigma^2/n\\to0$，由切比雪夫不等式 $P(|\\bar X-\\mu|\\ge\\varepsilon)\\le\\frac{\\sigma^2}{n\\varepsilon^2}\\to0$，故 $\\bar X\\xrightarrow{P}\\mu$，即 $\\bar X$ 是 $\\mu$ 的相合估计。② 由 $E[\\sum_{i=1}^{n}(X_i-\\bar X)^2]=(n-1)\\sigma^2$，得 $E(S^2)=\\frac{1}{n-1}(n-1)\\sigma^2=\\sigma^2$，故 $S^2$ 是 $\\sigma^2$ 的无偏估计。③ $E(\\hat\\mu_2)=\\frac{1}{2}(\\mu+\\mu)=\\mu$，故 $\\hat\\mu_2$ 无偏；$Var(\\hat\\mu_1)=\\sigma^2/n$，$Var(\\hat\\mu_2)=\\frac{1}{4}(\\sigma^2+\\sigma^2)=\\sigma^2/2$。当 $n>2$ 时 $\\sigma^2/n<\\sigma^2/2$，所以 $\\hat\\mu_1=\\bar X$ 比 $\\hat\\mu_2$ 有效。",
+      "answer": "$\\bar X$ 是 $\\mu$ 的无偏、相合估计；$S^2$ 是 $\\sigma^2$ 的无偏估计；当 $n>2$ 时 $\\bar X$ 比 $(X_1+X_n)/2$ 更有效。"
+    }
+  ]
+}

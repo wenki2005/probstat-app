@@ -1,0 +1,145 @@
+{
+  "kind": "knowledge",
+  "slug": "infinite-series",
+  "name_zh": "数项级数",
+  "name_en": "Infinite Series of Numbers",
+  "category": "高等数学",
+  "subcategory": "级数",
+  "sort_order": 18,
+  "summary": "数项级数是无穷求和，正项审敛法与莱布尼茨判别法是核心。",
+  "definition": "设数列 $\\{u_n\\}$，称 $$\\sum_{n=1}^{\\infty}u_n=u_1+u_2+\\cdots+u_n+\\cdots$$ 为**无穷级数**（数项级数），$u_n$ 称为通项，前 $n$ 项和 $S_n=\\sum_{k=1}^{n}u_k$ 称为部分和。若部分和数列 $\\{S_n\\}$ 的极限 $\\lim\\limits_{n\\to\\infty}S_n=S$ 存在且有限，则称级数**收敛**，$S$ 称为级数的和；否则称级数**发散**。",
+  "formula_latex": "\\sum_{n=1}^{\\infty}u_n=S,\\quad S_n=\\sum_{k=1}^{n}u_k",
+  "properties": [
+    {
+      "title": "收敛必要条件",
+      "latex": "\\sum u_n\\ \\text{收敛}\\ \\Rightarrow\\ \\lim_{n\\to\\infty}u_n=0",
+      "description": "通项不趋于 0 必发散；但通项趋于 0 不一定收敛（如调和级数）"
+    },
+    {
+      "title": "几何级数",
+      "latex": "\\sum_{n=0}^{\\infty}ar^n=\\frac{a}{1-r}\\ (|r|<1)",
+      "description": "|r|≥1 时发散，是比较审敛法的标准级数"
+    },
+    {
+      "title": "p-级数",
+      "latex": "\\sum_{n=1}^{\\infty}\\frac{1}{n^p}:\\ \\text{收敛当且仅当}\\ p>1",
+      "description": "p=1 即调和级数，发散"
+    },
+    {
+      "title": "比较审敛法",
+      "latex": "0\\le u_n\\le v_n,\\ \\sum v_n\\ \\text{收敛}\\ \\Rightarrow\\ \\sum u_n\\ \\text{收敛}",
+      "description": "大收敛则小收敛；小发散则大发散"
+    },
+    {
+      "title": "比值审敛法（达朗贝尔）",
+      "latex": "\\lim_{n\\to\\infty}\\left|\\frac{u_{n+1}}{u_n}\\right|=\\rho",
+      "description": "ρ<1 收敛，ρ>1 发散，ρ=1 失效；适用于含阶乘或 n 次幂的级数"
+    },
+    {
+      "title": "根值审敛法（柯西）",
+      "latex": "\\lim_{n\\to\\infty}\\sqrt[n]{|u_n|}=\\rho",
+      "description": "ρ<1 收敛，ρ>1 发散，ρ=1 失效；适用于通项为 n 次幂的级数"
+    },
+    {
+      "title": "莱布尼茨判别法",
+      "latex": "a_n\\ge0,\\ a_n\\searrow0\\ \\Rightarrow\\ \\sum_{n=1}^{\\infty}(-1)^{n+1}a_n\\ \\text{收敛}",
+      "description": "交错级数通项单调趋于 0 即收敛，且余项 |r_n|≤a_{n+1}"
+    },
+    {
+      "title": "绝对收敛与条件收敛",
+      "latex": "\\sum|u_n|\\ \\text{收敛}\\ \\Rightarrow\\ \\sum u_n\\ \\text{收敛}",
+      "description": "绝对收敛蕴含收敛；收敛但不绝对收敛称为条件收敛"
+    }
+  ],
+  "derivation": "比值审敛法的证明思路：设 $\\lim\\limits_{n\\to\\infty}\\left|\\frac{u_{n+1}}{u_n}\\right|=\\rho<1$，取 $q$ 使 $\\rho<q<1$，则从某 $N$ 起 $|u_{n+1}|\\le q|u_n|$，递推得 $|u_n|\\le Cq^n$，与收敛的几何级数比较，由比较审敛法知 $\\sum|u_n|$ 收敛（绝对收敛）；若 $\\rho>1$，从某 $N$ 起 $|u_{n+1}|>|u_n|$，通项不趋于 0，级数发散。根值审敛法同理，由 $\\sqrt[n]{|u_n|}\\to\\rho<1$ 得 $|u_n|\\le q^n$ 与几何级数比较。莱布尼茨判别法的证明思路：交错级数 $\\sum(-1)^{n+1}a_n$（$a_n\\ge0$ 单调递减趋于 0）的偶部分和 $S_{2n}$ 单调增加且有上界，奇部分和 $S_{2n+1}$ 单调减少且有下界，两者收敛于同一极限 $S$，故级数收敛于 $S$，且余项 $|S-S_n|\\le a_{n+1}$。",
+  "applications": [
+    "判断级数敛散性与近似求和（余项估计给出误差界）",
+    "概率论中矩母函数与特征函数的级数展开",
+    "数值计算中 π、e、ln2 等常数的级数表示",
+    "傅里叶级数与幂级数收敛性的理论基础"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "数项级数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Infinite series",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "Σ",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "级数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 95
+    },
+    {
+      "alias": "收敛",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "比值审敛法",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "莱布尼茨判别法",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "绝对收敛",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "条件收敛",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "Convergence test",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "裂项求和",
+      "question": "判断级数 $\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}$ 的敛散性；若收敛，求其和。",
+      "solution": "由 $\\frac{1}{n(n+1)}=\\frac{1}{n}-\\frac{1}{n+1}$ 裂项，部分和 $$S_n=\\left(1-\\frac12\\right)+\\left(\\frac12-\\frac13\\right)+\\cdots+\\left(\\frac1n-\\frac1{n+1}\\right)=1-\\frac{1}{n+1}\\to1$$ 故级数收敛且和为 1。",
+      "answer": "收敛，和为 1。"
+    },
+    {
+      "title": "比值审敛法",
+      "question": "用比值审敛法判断 $\\sum_{n=1}^{\\infty}\\frac{n!}{n^n}$ 的敛散性。",
+      "solution": "$$\\rho=\\lim_{n\\to\\infty}\\frac{(n+1)!/(n+1)^{n+1}}{n!/n^n}=\\lim_{n\\to\\infty}\\left(\\frac{n}{n+1}\\right)^n=\\frac{1}{e}<1$$ 故级数收敛。",
+      "answer": "收敛（ρ=1/e<1）。"
+    },
+    {
+      "title": "交错级数",
+      "question": "判断交错级数 $\\sum_{n=1}^{\\infty}(-1)^{n+1}\\frac{1}{n}$ 是否收敛？是否绝对收敛？",
+      "solution": "$a_n=\\frac1n$ 单调递减且趋于 0，由莱布尼茨判别法知级数收敛；但 $\\sum\\left|(-1)^{n+1}\\frac1n\\right|=\\sum_{n=1}^{\\infty}\\frac1n$ 为调和级数，发散，故原级数收敛但不绝对收敛，即条件收敛。",
+      "answer": "收敛但条件收敛。"
+    }
+  ]
+}

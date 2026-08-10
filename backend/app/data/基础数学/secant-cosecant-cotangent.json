@@ -1,0 +1,139 @@
+{
+  "kind": "knowledge",
+  "slug": "secant-cosecant-cotangent",
+  "name_zh": "正割、余割与余切函数",
+  "name_en": "Secant, Cosecant and Cotangent Functions",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 13,
+  "summary": "三个倒数三角函数：sec x=1/cos x、csc x=1/sin x、cot x=1/tan x。",
+  "definition": "设角 $x$ 的余弦、正弦、正切不为 0，则定义正割、余割、余切函数：$\\sec x=\\frac{1}{\\cos x}$，$\\csc x=\\frac{1}{\\sin x}$，$\\cot x=\\frac{1}{\\tan x}=\\frac{\\cos x}{\\sin x}$。由定义可知，$\\sec x$ 在 $\\cos x=0$，即 $x=\\frac{\\pi}{2}+k\\pi$ 处无定义；$\\csc x$ 与 $\\cot x$ 在 $\\sin x=0$，即 $x=k\\pi$ 处无定义。",
+  "formula_latex": "\\sec x=\\frac{1}{\\cos x},\\quad \\csc x=\\frac{1}{\\sin x},\\quad \\cot x=\\frac{1}{\\tan x}=\\frac{\\cos x}{\\sin x}",
+  "properties": [
+    {
+      "title": "定义域",
+      "latex": "D_{\\sec}=\\{x\\mid x\\ne\\frac{\\pi}{2}+k\\pi\\},\\quad D_{\\csc}=D_{\\cot}=\\{x\\mid x\\ne k\\pi\\}",
+      "description": "sec 在 cos x=0 处无定义，csc、cot 在 sin x=0 处无定义"
+    },
+    {
+      "title": "值域",
+      "latex": "|\\sec x|\\ge 1,\\quad |\\csc x|\\ge 1,\\quad \\cot x\\in\\mathbb{R}",
+      "description": "sec、csc 的绝对值不小于 1，cot 可取任意实数"
+    },
+    {
+      "title": "周期性",
+      "latex": "\\sec(x+2\\pi)=\\sec x,\\quad \\csc(x+2\\pi)=\\csc x,\\quad \\cot(x+\\pi)=\\cot x",
+      "description": "sec、csc 的最小正周期为 2π，cot 的最小正周期为 π"
+    },
+    {
+      "title": "奇偶性",
+      "latex": "\\sec(-x)=\\sec x,\\quad \\csc(-x)=-\\csc x,\\quad \\cot(-x)=-\\cot x",
+      "description": "sec 为偶函数，csc、cot 为奇函数"
+    },
+    {
+      "title": "平方恒等式",
+      "latex": "1+\\tan^2 x=\\sec^2 x,\\quad 1+\\cot^2 x=\\csc^2 x",
+      "description": "由 sin²x+cos²x=1 两边同除 cos²x 或 sin²x 得到"
+    }
+  ],
+  "derivation": "由 $\\sin^2 x+\\cos^2 x=1$ 两边同除以 $\\cos^2 x$ 得 $1+\\frac{\\sin^2 x}{\\cos^2 x}=\\frac{1}{\\cos^2 x}$，即 $1+\\tan^2 x=\\sec^2 x$；两边同除以 $\\sin^2 x$ 得 $1+\\cot^2 x=\\csc^2 x$。图像形状：$\\sec x=\\frac{1}{\\cos x}$ 在 $\\cos x>0$ 时位于 $y=1$ 上方、在 $\\cos x<0$ 时位于 $y=-1$ 下方，并在 $x=\\frac{\\pi}{2}+k\\pi$ 处有竖直渐近线，形成一串开口向上或向下的 U 形分支；$\\csc x$ 同理，其竖直渐近线在 $x=k\\pi$；$\\cot x=\\frac{\\cos x}{\\sin x}$ 在相邻渐近线之间单调递减。",
+  "applications": [
+    "光学折射与全反射中的正割形式几何计算",
+    "三角函数积分 ∫sec x dx=ln|sec x+tan x|+C 与 ∫csc x dx",
+    "交流电路与振动分析中的幅值与相位计算",
+    "极坐标与圆锥曲线焦半径中的余割、余切表达"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "sec(x)",
+        "label": "y = sec(x)",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "csc(x)",
+        "label": "y = csc(x)",
+        "color": "#f59e0b"
+      },
+      {
+        "expr": "cot(x)",
+        "label": "y = cot(x)",
+        "color": "#10b981"
+      }
+    ],
+    "x_range": [
+      -6.5,
+      6.5
+    ],
+    "y_range": [
+      -10,
+      10
+    ],
+    "notes": "三条曲线在分母为零处出现竖直渐近线；sec、csc 的绝对值≥1，cot 在相邻渐近线间单调递减。"
+  },
+  "aliases": [
+    {
+      "alias": "正割、余割与余切函数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Secant, Cosecant and Cotangent Functions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "正割",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "余割",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "余切",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "sec",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "csc",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "cot",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "cosecant",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "由 sin 值求 sec、csc、cot",
+      "question": "已知 $\\sin\\alpha=\\frac{3}{5}$ 且 $\\alpha$ 为第一象限角，求 $\\sec\\alpha$、$\\csc\\alpha$、$\\cot\\alpha$。",
+      "solution": "由 $\\sin^2\\alpha+\\cos^2\\alpha=1$ 得 $\\cos\\alpha=\\sqrt{1-(\\frac{3}{5})^2}=\\frac{4}{5}$。于是 $\\sec\\alpha=\\frac{1}{\\cos\\alpha}=\\frac{5}{4}$，$\\csc\\alpha=\\frac{1}{\\sin\\alpha}=\\frac{5}{3}$，$\\cot\\alpha=\\frac{\\cos\\alpha}{\\sin\\alpha}=\\frac{4}{3}$。也可用 $1+\\cot^2\\alpha=\\csc^2\\alpha$ 检验：$(\\frac{4}{3})^2+1=(\\frac{5}{3})^2$ 成立。",
+      "answer": "$\\sec\\alpha=\\frac{5}{4}$，$\\csc\\alpha=\\frac{5}{3}$，$\\cot\\alpha=\\frac{4}{3}$。"
+    }
+  ]
+}

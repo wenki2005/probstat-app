@@ -1,0 +1,134 @@
+{
+  "kind": "knowledge",
+  "slug": "indefinite-integral",
+  "name_zh": "不定积分",
+  "name_en": "Indefinite integral",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 2,
+  "summary": "求导的逆运算，由原函数构成，基本积分表是积分运算的基础。",
+  "definition": "设函数 $f(x)$ 在区间 $I$ 上有定义，若存在函数 $F(x)$ 使 $F'(x)=f(x)$，则称 $F(x)$ 为 $f(x)$ 在 $I$ 上的一个**原函数**。$f(x)$ 的全部原函数 $F(x)+C$（$C$ 为任意常数）称为 $f(x)$ 的**不定积分**，记作 $$\\int f(x)\\,dx=F(x)+C$$ 求不定积分是求导的逆运算。**基本积分表**包括：$\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\ (n\\ne -1)$，$\\int \\frac{1}{x}\\,dx=\\ln|x|+C$，$\\int a^x\\,dx=\\frac{a^x}{\\ln a}+C$，$\\int e^x\\,dx=e^x+C$，$\\int \\sin x\\,dx=-\\cos x+C$，$\\int \\cos x\\,dx=\\sin x+C$，$\\int \\sec^2 x\\,dx=\\tan x+C$，$\\int \\frac{1}{1+x^2}\\,dx=\\arctan x+C$ 等。",
+  "formula_latex": "\\int f(x)\\,dx=F(x)+C,\\qquad F'(x)=f(x)",
+  "properties": [
+    {
+      "title": "原函数存在定理",
+      "latex": "f\\in C(I)\\Rightarrow f\\text{ 在 }I\\text{ 上存在原函数}",
+      "description": "连续函数必有原函数，变上限积分即为一个原函数"
+    },
+    {
+      "title": "原函数族",
+      "latex": "F'(x)=G'(x)=f(x)\\Rightarrow G(x)=F(x)+C",
+      "description": "同一函数的任意两个原函数只差一个常数"
+    },
+    {
+      "title": "线性性",
+      "latex": "\\int[k_1f(x)+k_2g(x)]\\,dx=k_1\\int f(x)\\,dx+k_2\\int g(x)\\,dx",
+      "description": "不定积分对线性组合可逐项拆分"
+    },
+    {
+      "title": "幂函数积分",
+      "latex": "\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\quad(n\\ne -1)",
+      "description": "n=-1 时为 ∫1/x dx=ln|x|+C"
+    },
+    {
+      "title": "验证方法",
+      "latex": "\\left(\\int f(x)\\,dx\\right)'=f(x)",
+      "description": "对积分结果求导应回到被积函数"
+    }
+  ],
+  "derivation": "先证原函数族只差常数：若 $F,G$ 都是 $f$ 的原函数，则 $(F-G)'=0$，由拉格朗日中值定理的推论知 $F-G$ 在区间上为常数，故全部原函数为 $F(x)+C$。线性性由求导的线性性反推：$(k_1F+k_2G)'=k_1f+k_2g$，故 $\\int(k_1f+k_2g)\\,dx=k_1F+k_2G+C$。基本积分表中的每一项都可通过求导验证，例如 $\\left(\\frac{x^{n+1}}{n+1}\\right)'=x^n$，$\\frac{d}{dx}\\ln|x|=\\frac{1}{x}$，$\\frac{d}{dx}\\arctan x=\\frac{1}{1+x^2}$。",
+  "applications": [
+    "由导函数还原原函数，如由速度求位移",
+    "为定积分计算（牛顿-莱布尼茨公式）提供工具",
+    "微分方程求解的基本步骤",
+    "物理中由加速度积分求速度与位置"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x^2",
+        "label": "y = x^2",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "x^3/3",
+        "label": "y = x^3/3",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      -3,
+      3
+    ],
+    "y_range": [
+      -3,
+      9
+    ],
+    "notes": "y = x^3/3 是 y = x^2 的一个原函数：(x^3/3)' = x^2。不定积分表示一族相差任意常数的原函数，此处取常数为 0。"
+  },
+  "aliases": [
+    {
+      "alias": "不定积分",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Indefinite integral",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "原函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "antiderivative",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "∫",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "∫f(x)dx",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "F(x)+C",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "primitive function",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "逐项求不定积分",
+      "question": "求 $\\int\\left(3x^2+\\frac{2}{x}+\\sqrt{x}\\right)dx$。",
+      "solution": "由线性性逐项积分：$$\\int\\left(3x^2+\\frac{2}{x}+\\sqrt{x}\\right)dx=3\\cdot\\frac{x^3}{3}+2\\ln|x|+\\int x^{1/2}\\,dx=x^3+2\\ln|x|+\\frac{x^{3/2}}{3/2}+C=x^3+2\\ln|x|+\\frac{2}{3}x^{3/2}+C$$ 验证：$\\left(x^3+2\\ln|x|+\\frac{2}{3}x^{3/2}+C\\right)'=3x^2+\\frac{2}{x}+x^{1/2}$，正确。",
+      "answer": "$x^3+2\\ln|x|+\\frac{2}{3}x^{3/2}+C$。"
+    },
+    {
+      "title": "由切线斜率求曲线方程",
+      "question": "已知曲线上任一点 $(x,y)$ 处的切线斜率为 $3x^2$，且曲线过点 $(1,2)$，求该曲线方程。",
+      "solution": "设曲线为 $y=F(x)$，则 $F'(x)=3x^2$，故 $F(x)=\\int 3x^2\\,dx=x^3+C$。代入 $F(1)=1+C=2$，得 $C=1$。",
+      "answer": "$y=x^3+1$。"
+    }
+  ]
+}

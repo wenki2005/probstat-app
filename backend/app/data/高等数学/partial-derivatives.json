@@ -1,0 +1,140 @@
+{
+  "kind": "knowledge",
+  "slug": "partial-derivatives",
+  "name_zh": "多元函数与偏导数",
+  "name_en": "Partial Derivatives of Multivariable Functions",
+  "category": "高等数学",
+  "subcategory": "多元微积分",
+  "sort_order": 16,
+  "summary": "多元函数偏导数、全微分与链式法则，是多元微积分核心。",
+  "definition": "设函数 $z=f(x,y)$ 在点 $(x_0,y_0)$ 的某邻域内有定义，若极限 $$\\frac{\\partial z}{\\partial x}\\bigg|_{(x_0,y_0)}=\\lim_{\\Delta x\\to0}\\frac{f(x_0+\\Delta x,y_0)-f(x_0,y_0)}{\\Delta x}$$ 存在，则称该极限为 $f$ 对 $x$ 的**偏导数**，类似可定义对 $y$ 的偏导数。若全增量可表示为 $$\\Delta z=f_x(x_0,y_0)\\Delta x+f_y(x_0,y_0)\\Delta y+o(\\rho),\\qquad \\rho=\\sqrt{(\\Delta x)^2+(\\Delta y)^2}$$ 则称 $f$ 在 $(x_0,y_0)$ 处**可微**，并称 $dz=f_x(x_0,y_0)\\,dx+f_y(x_0,y_0)\\,dy$ 为该点的**全微分**。",
+  "formula_latex": "dz=\\frac{\\partial z}{\\partial x}\\,dx+\\frac{\\partial z}{\\partial y}\\,dy",
+  "properties": [
+    {
+      "title": "偏导数的几何意义",
+      "latex": "\\frac{\\partial z}{\\partial x}=f_x(x_0,y_0)=\\tan\\alpha",
+      "description": "曲面 z=f(x,y) 被平面 y=y_0 所截曲线在 (x_0,y_0,f(x_0,y_0)) 处切线的斜率"
+    },
+    {
+      "title": "可微的充分条件",
+      "latex": "f_x,\\ f_y\\ \\text{在}\\ (x_0,y_0)\\ \\text{连续}\\ \\Rightarrow\\ f\\ \\text{在该点可微}",
+      "description": "偏导数连续是可微的充分条件"
+    },
+    {
+      "title": "可微与偏导数的关系",
+      "latex": "\\text{可微}\\ \\Rightarrow\\ \\text{偏导数存在；反之不然}",
+      "description": "偏导数存在不一定可微，如 f(x,y)=xy/\\sqrt{x^2+y^2} 在原点处偏导数存在但不可微"
+    },
+    {
+      "title": "全微分近似",
+      "latex": "\\Delta z\\approx dz=f_x\\Delta x+f_y\\Delta y",
+      "description": "|Δx|、|Δy| 很小时用全微分作近似计算与误差估计"
+    },
+    {
+      "title": "混合偏导相等",
+      "latex": "f_{xy}=f_{yx}",
+      "description": "二阶混合偏导数在连续的条件下与求导次序无关"
+    },
+    {
+      "title": "链式法则",
+      "latex": "\\frac{\\partial z}{\\partial x}=\\frac{\\partial z}{\\partial u}\\frac{\\partial u}{\\partial x}+\\frac{\\partial z}{\\partial v}\\frac{\\partial v}{\\partial x}",
+      "description": "复合函数 z=f(u,v)，u=u(x,y)，v=v(x,y) 的链式法则"
+    },
+    {
+      "title": "隐函数求偏导",
+      "latex": "F(x,y,z)=0\\ \\Rightarrow\\ \\frac{\\partial z}{\\partial x}=-\\frac{F_x}{F_z},\\quad \\frac{\\partial z}{\\partial y}=-\\frac{F_y}{F_z}",
+      "description": "由方程 F(x,y,z)=0 确定的隐函数 z=z(x,y)，要求 F_z≠0"
+    }
+  ],
+  "derivation": "全微分的来源：按两个方向分解增量，由偏导数定义得 $\\Delta z=f_x\\Delta x+f_y\\Delta y+o(\\rho)$，略去高阶无穷小 $o(\\rho)$ 得 $\\Delta z\\approx dz$，这就是用切平面近似曲面的局部线性化思想。链式法则的推导：对 $z=f(u,v)$ 写出全微分 $dz=f_u\\,du+f_v\\,dv$，代入 $du=u_x\\,dx+u_y\\,dy$、$dv=v_x\\,dx+v_y\\,dy$，整理后比较 $dx$ 的系数即得 $z_x=f_u u_x+f_v v_x$。隐函数求导：对方程 $F(x,y,z)=0$ 两边取全微分得 $F_x\\,dx+F_y\\,dy+F_z\\,dz=0$，即 $dz=-\\frac{F_x}{F_z}\\,dx-\\frac{F_y}{F_z}\\,dy$，比较系数得隐函数偏导公式。",
+  "applications": [
+    "求曲面的切平面与法线",
+    "多元函数极值与最优化（含拉格朗日乘数法）",
+    "经济学的边际分析与多变量弹性分析",
+    "场论中的梯度、方向导数与等值面"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "偏导数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Partial derivative",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "多元函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Multivariable function",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "∂f/∂x",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "全微分",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Total differential",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "链式法则",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "隐函数求导",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "dz",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "求偏导数与全微分",
+      "question": "求 $z=x^2y+y^3$ 在点 $(1,2)$ 处的偏导数与全微分。",
+      "solution": "$f_x=2xy$，$f_y=x^2+3y^2$。在 $(1,2)$ 处 $f_x(1,2)=4$，$f_y(1,2)=1+12=13$，故 $$dz=f_x(1,2)\\,dx+f_y(1,2)\\,dy=4\\,dx+13\\,dy$$",
+      "answer": "$f_x(1,2)=4,\\ f_y(1,2)=13$，全微分 $dz=4\\,dx+13\\,dy$。"
+    },
+    {
+      "title": "隐函数求偏导",
+      "question": "设 $e^z=xyz$ 确定隐函数 $z=z(x,y)$，求 $\\frac{\\partial z}{\\partial x}$。",
+      "solution": "令 $F(x,y,z)=e^z-xyz$，则 $F_x=-yz$，$F_z=e^z-xy$。当 $F_z\\neq0$ 时由隐函数求导公式 $$\\frac{\\partial z}{\\partial x}=-\\frac{F_x}{F_z}=\\frac{yz}{e^z-xy}$$ 又由 $e^z=xyz$，$e^z-xy=xy(z-1)$，故也可写成 $\\frac{\\partial z}{\\partial x}=\\frac{z}{x(z-1)}$。",
+      "answer": "$\\frac{\\partial z}{\\partial x}=\\frac{yz}{e^z-xy}$（等价地 $=\\frac{z}{x(z-1)}$）。"
+    },
+    {
+      "title": "复合函数链式法则",
+      "question": "设 $z=u^2v$，$u=\\sin x$，$v=e^x$，求全导数 $\\frac{dz}{dx}$。",
+      "solution": "由链式法则 $$\\frac{dz}{dx}=\\frac{\\partial z}{\\partial u}\\frac{du}{dx}+\\frac{\\partial z}{\\partial v}\\frac{dv}{dx}=2uv\\cos x+u^2e^x=2\\sin x\\cdot e^x\\cos x+\\sin^2x\\cdot e^x$$",
+      "answer": "$\\frac{dz}{dx}=e^x\\sin x(2\\cos x+\\sin x)$。"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "kind": "distribution",
+  "slug": "geometric-distribution",
+  "name_zh": "几何分布",
+  "name_en": "Geometric distribution",
+  "category": "离散分布",
+  "subcategory": "",
+  "sort_order": 3,
+  "summary": "首次成功所需试验次数的分布，具有无记忆性。",
+  "type": "discrete",
+  "support": "k \\in \\{1,2,3,\\ldots\\}",
+  "params": [
+    {
+      "name": "p",
+      "latex": "p",
+      "description": "每次试验成功的概率（0<p≤1）",
+      "default": 0.3,
+      "min": 0.05,
+      "max": 1,
+      "step": 0.05
+    }
+  ],
+  "pmf_or_pdf_latex": "P(X=k)=(1-p)^{k-1}p,\\quad k=1,2,3,\\ldots",
+  "cdf_latex": "F(x)=1-(1-p)^{\\lfloor x\\rfloor},\\quad x\\ge1",
+  "mean_formula": "E(X)=\\frac{1}{p}",
+  "variance_formula": "Var(X)=\\frac{1-p}{p^2}",
+  "mgf_formula": "M_X(t)=\\frac{pe^t}{1-(1-p)e^t},\\quad t<-\\ln(1-p)",
+  "graph_config": {
+    "discrete": true,
+    "x_range": [
+      1,
+      50
+    ],
+    "default_params": {
+      "p": 0.3
+    },
+    "notes": "本约定中 X 表示首次成功时的试验次数（从 1 开始）"
+  },
+  "aliases": [
+    {
+      "alias": "几何分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Geometric distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "Geo(p)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "X~Ge(p)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "首次成功所需试验次数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 60
+    },
+    {
+      "alias": "waiting time distribution",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 55
+    }
+  ],
+  "examples": [
+    {
+      "title": "首次出现正面所需次数",
+      "question": "掷一枚均匀硬币直到出现正面为止，求恰好第 3 次才首次出现正面的概率，并求所需次数的期望。",
+      "solution": "设 X 为首次出现正面所需的次数，则 $X\\sim \\mathrm{Geo}(0.5)$。$P(X=3)=(1-0.5)^2\\times0.5=0.125$。$E(X)=\\frac{1}{p}=\\frac{1}{0.5}=2$。",
+      "answer": "$P(X=3)=0.125$，$E(X)=2$（次）"
+    },
+    {
+      "title": "无记忆性",
+      "question": "设 $X\\sim \\mathrm{Geo}(0.2)$，求 $P(X>4)$。",
+      "solution": "$P(X>4)=1-F(4)=1-[1-(1-p)^4]=(1-p)^4=0.8^4=0.4096$。",
+      "answer": "$0.4096$"
+    }
+  ]
+}

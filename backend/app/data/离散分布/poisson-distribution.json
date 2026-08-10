@@ -1,0 +1,91 @@
+{
+  "kind": "distribution",
+  "slug": "poisson-distribution",
+  "name_zh": "泊松分布",
+  "name_en": "Poisson distribution",
+  "category": "离散分布",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "刻画单位时间或空间内稀有事件发生次数的分布。",
+  "type": "discrete",
+  "support": "k \\in \\{0,1,2,\\ldots\\}",
+  "params": [
+    {
+      "name": "lambda",
+      "latex": "\\lambda",
+      "description": "强度参数（单位时间/空间内平均发生次数，λ>0）",
+      "default": 3,
+      "min": 0.1,
+      "max": 30,
+      "step": 0.5
+    }
+  ],
+  "pmf_or_pdf_latex": "P(X=k)=\\frac{\\lambda^k}{k!}e^{-\\lambda},\\quad k=0,1,2,\\ldots",
+  "cdf_latex": "F(x)=e^{-\\lambda}\\sum_{k=0}^{\\lfloor x\\rfloor}\\frac{\\lambda^k}{k!}",
+  "mean_formula": "E(X)=\\lambda",
+  "variance_formula": "Var(X)=\\lambda",
+  "mgf_formula": "M_X(t)=e^{\\lambda(e^t-1)}",
+  "graph_config": {
+    "discrete": true,
+    "x_range": [
+      0,
+      60
+    ],
+    "default_params": {
+      "lambda": 3
+    },
+    "notes": "当 λ 较大时可用正态分布近似"
+  },
+  "aliases": [
+    {
+      "alias": "泊松分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Poisson distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "Poi(lambda)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "X~P(λ)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "普哇松分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 75
+    },
+    {
+      "alias": "Poisson process",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 60
+    }
+  ],
+  "examples": [
+    {
+      "title": "呼叫次数",
+      "question": "某电话交换台每分钟接到的呼叫次数服从 $P(2)$，求 1 分钟内恰好接到 3 次呼叫的概率。",
+      "solution": "设 $X\\sim P(2)$，则 $P(X=3)=\\frac{2^3}{3!}e^{-2}=\\frac{8}{6}e^{-2}\\approx0.1804$。",
+      "answer": "约 $0.1804$"
+    },
+    {
+      "title": "至少接到一次",
+      "question": "求该交换台 1 分钟内至少接到 1 次呼叫的概率。",
+      "solution": "$P(X\\ge1)=1-P(X=0)=1-e^{-2}\\approx1-0.1353=0.8647$。",
+      "answer": "约 $0.8647$"
+    }
+  ]
+}

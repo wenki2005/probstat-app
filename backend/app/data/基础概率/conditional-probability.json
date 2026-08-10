@@ -1,0 +1,38 @@
+{
+  "kind": "knowledge",
+  "slug": "conditional-probability",
+  "name_zh": "条件概率",
+  "name_en": "Conditional probability",
+  "category": "基础概率",
+  "subcategory": "条件概率",
+  "sort_order": 4,
+  "summary": "在事件 B 已发生的条件下事件 A 的概率，记为 P(A|B)。",
+  "definition": "设 $A$、$B$ 是两个事件且 $P(B)>0$，称 $$P(A|B)=\\frac{P(A\\cap B)}{P(B)}$$ 为在事件 $B$ 发生的条件下事件 $A$ 的**条件概率**。条件概率仍满足概率的三条公理，因此一切概率的性质对它都成立。由定义立即得到**乘法公式** $$P(A\\cap B)=P(B)P(A|B)=P(A)P(B|A)$$ 对多个事件，$P(A_1A_2\\cdots A_n)=P(A_1)P(A_2|A_1)P(A_3|A_1A_2)\\cdots P(A_n|A_1A_2\\cdots A_{n-1})$。",
+  "formula_latex": "P(A|B)=\\frac{P(A\\cap B)}{P(B)},\\quad P(B)>0",
+  "properties": [
+    {"title": "条件概率是概率", "latex": "0\\le P(A|B)\\le 1,\\quad P(\\Omega|B)=1", "description": "满足非负性、规范性与可列可加性"},
+    {"title": "乘法公式", "latex": "P(A\\cap B)=P(B)P(A|B)", "description": "交事件概率化为条件概率之积"},
+    {"title": "对立事件的条件概率", "latex": "P(A|B)+P(\\overline{A}|B)=1", "description": "在 B 条件下对 A 取补"},
+    {"title": "可加性", "latex": "P(A_1\\cup A_2|B)=P(A_1|B)+P(A_2|B)-P(A_1\\cap A_2|B)", "description": "条件概率下的加法公式"}
+  ],
+  "derivation": "直观推导：已知 $B$ 发生，相当于把样本空间缩小为 $B$，在缩小的空间内 $A$ 对应的事件为 $A\\cap B$，其测度相对 $B$ 的比例即 $$P(A|B)=\\frac{P(A\\cap B)}{P(B)}$$ 验证规范性：$P(\\Omega|B)=\\frac{P(\\Omega\\cap B)}{P(B)}=\\frac{P(B)}{P(B)}=1$。可列可加性：若 $A_1,A_2,\\dots$ 两两互斥，则 $A_1\\cap B,A_2\\cap B,\\dots$ 也两两互斥，故 $$P\\left(\\bigcup_{i=1}^{\\infty}A_i\\Big|B\\right)=\\frac{P\\left(\\bigcup_{i=1}^{\\infty}(A_i\\cap B)\\right)}{P(B)}=\\sum_{i=1}^{\\infty}\\frac{P(A_i\\cap B)}{P(B)}=\\sum_{i=1}^{\\infty}P(A_i|B)$$",
+  "applications": ["医学诊断：已知症状求患病概率", "产品检验：已知来源求不合格率", "决策树与贝叶斯网络中的条件概率表", "马尔可夫链的转移概率矩阵"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "条件概率", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Conditional probability", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "P(A|B)", "lang": "math", "kind": "notation", "weight": 90},
+    {"alias": "conditional", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "在B条件下A的概率", "lang": "zh", "kind": "alias", "weight": 70},
+    {"alias": "乘法公式", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "不放回取球的条件概率",
+      "question": "袋中有 3 个红球、2 个白球，不放回地连取两次。设 $A_1$=第一次取到红球，$A_2$=第二次取到红球。求 $P(A_2)$ 与 $P(A_2|A_1)$。",
+      "solution": "取到红球与次序无关，$P(A_2)=\\frac{3}{5}$（也可用全概率公式验证：$P(A_2)=P(A_1)P(A_2|A_1)+P(\\overline{A_1})P(A_2|\\overline{A_1})=\\frac35\\cdot\\frac24+\\frac25\\cdot\\frac34=\\frac35$）。已知第一次取到红球后，袋中剩 2 红 2 白，故 $$P(A_2|A_1)=\\frac{2}{4}=\\frac{1}{2}$$",
+      "answer": "$P(A_2)=\\frac{3}{5}$，$P(A_2|A_1)=\\frac{1}{2}$。"
+    }
+  ]
+}

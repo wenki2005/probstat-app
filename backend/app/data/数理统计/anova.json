@@ -1,0 +1,43 @@
+{
+  "kind": "knowledge",
+  "slug": "anova",
+  "name_zh": "方差分析",
+  "name_en": "Analysis of Variance (ANOVA)",
+  "category": "数理统计",
+  "subcategory": "单因素方差分析",
+  "sort_order": 7,
+  "summary": "通过分解总变异检验多个总体均值是否相等的 F 检验方法。",
+  "definition": "**方差分析**（ANOVA）用于检验**多个**总体均值是否相等。**单因素方差分析**研究一个因素 $A$ 对指标的影响：设因素有 $r$ 个水平，第 $i$ 个水平重复试验 $n_i$ 次，观测值记为 $x_{ij}\\ (i=1,\\dots,r;\\ j=1,\\dots,n_i)$，模型为 $$x_{ij}=\\mu+\\alpha_i+\\varepsilon_{ij},\\qquad \\varepsilon_{ij}\\stackrel{iid}{\\sim}N(0,\\sigma^2)$$ 其中 $\\mu_i=\\mu+\\alpha_i$ 为第 $i$ 个水平的均值。检验 $$H_0:\\mu_1=\\mu_2=\\cdots=\\mu_r\\quad\\text{vs}\\quad H_1:\\text{不全相等}$$ 核心是**平方和分解**：总离差平方和 $SST=SSA+SSE$，其中组间平方和 $SSA$ 反映水平间差异，组内平方和（误差平方和）$SSE$ 反映随机误差。在原假设成立时 $$F=\\frac{SSA/(r-1)}{SSE/(n-r)}\\sim F(r-1,\\,n-r)$$ 其中 $n=\\sum_{i=1}^{r}n_i$。",
+  "formula_latex": "F=\\frac{SSA/(r-1)}{SSE/(n-r)}\\sim F(r-1,\\,n-r)",
+  "properties": [
+    {"title": "总离差平方和", "latex": "SST=\\sum_{i=1}^{r}\\sum_{j=1}^{n_i}(x_{ij}-\\bar x_{\\cdot\\cdot})^2", "description": "所有观测相对总均值的偏差平方和，自由度 n-1"},
+    {"title": "组间平方和", "latex": "SSA=\\sum_{i=1}^{r}n_i(\\bar x_{i\\cdot}-\\bar x_{\\cdot\\cdot})^2", "description": "各水平均值相对总均值的偏差平方和，自由度 r-1"},
+    {"title": "组内平方和", "latex": "SSE=\\sum_{i=1}^{r}\\sum_{j=1}^{n_i}(x_{ij}-\\bar x_{i\\cdot})^2", "description": "各水平内部随机误差的平方和，自由度 n-r"},
+    {"title": "平方和分解", "latex": "SST=SSA+SSE", "description": "总变异分解为水平间变异与随机误差两部分"},
+    {"title": "均方与 F 统计量", "latex": "F=\\frac{MSA}{MSE}=\\frac{SSA/(r-1)}{SSE/(n-r)}", "description": "组间均方与组内均方之比，H0 真时服从 F(r-1,n-r)"}
+  ],
+  "derivation": "先证平方和分解。记总均值 $\\bar x_{\\cdot\\cdot}$、第 $i$ 水平均值 $\\bar x_{i\\cdot}$，则 $$\\sum_{i=1}^{r}\\sum_{j=1}^{n_i}(x_{ij}-\\bar x_{\\cdot\\cdot})^2=\\sum_{i,j}\\left[(x_{ij}-\\bar x_{i\\cdot})+(\\bar x_{i\\cdot}-\\bar x_{\\cdot\\cdot})\\right]^2$$ $$=\\sum_{i,j}(x_{ij}-\\bar x_{i\\cdot})^2+2\\sum_{i=1}^{r}(\\bar x_{i\\cdot}-\\bar x_{\\cdot\\cdot})\\sum_{j=1}^{n_i}(x_{ij}-\\bar x_{i\\cdot})+\\sum_{i,j}(\\bar x_{i\\cdot}-\\bar x_{\\cdot\\cdot})^2$$ 因 $\\sum_{j=1}^{n_i}(x_{ij}-\\bar x_{i\\cdot})=0$，交叉项为零，得 $SST=SSA+SSE$。在原假设 $H_0$ 下，$\\frac{SSA}{\\sigma^2}\\sim\\chi^2(r-1)$、$\\frac{SSE}{\\sigma^2}\\sim\\chi^2(n-r)$ 且相互独立，故 $F=\\frac{SSA/(r-1)}{SSE/(n-r)}\\sim F(r-1,n-r)$。若 $H_0$ 不真，$SSA$ 因包含水平间差异而偏大，$F$ 倾向于取大值，故当 $F\\ge F_{\\alpha}(r-1,n-r)$ 时拒绝 $H_0$。",
+  "applications": ["不同工艺条件下的产品质量比较", "多种教学方法的学习成绩比较", "不同品种（肥料）的农作物产量试验", "不同饲料对动物增重的影响"],
+  "visualization_type": "formula",
+  "graph_config": {"r": 3, "n_per_group": 5},
+  "aliases": [
+    {"alias": "方差分析", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Analysis of Variance", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "ANOVA", "lang": "en", "kind": "alias", "weight": 90},
+    {"alias": "单因素方差分析", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "one-way ANOVA", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "F检验", "lang": "zh", "kind": "alias", "weight": 75},
+    {"alias": "F test", "lang": "en", "kind": "keyword", "weight": 75},
+    {"alias": "组间平方和", "lang": "zh", "kind": "keyword", "weight": 65},
+    {"alias": "组内平方和", "lang": "zh", "kind": "keyword", "weight": 65},
+    {"alias": "SSA/SSE/SST", "lang": "math", "kind": "notation", "weight": 65}
+  ],
+  "examples": [
+    {
+      "title": "三种肥料对产量的影响",
+      "question": "为比较三种肥料（A、B、C）对小麦产量的影响，每种肥料试验 4 块田，产量数据（kg）如下：A: 82, 84, 80, 86；B: 90, 92, 88, 94；C: 74, 76, 78, 72。试在 $\\alpha=0.05$ 下检验三种肥料平均产量是否有显著差异。",
+      "solution": "$r=3$，$n=12$。各水平均值：$\\bar x_{1\\cdot}=83$，$\\bar x_{2\\cdot}=91$，$\\bar x_{3\\cdot}=75$，总均值 $\\bar x_{\\cdot\\cdot}=83$。 $$SSA=4\\left[(83-83)^2+(91-83)^2+(75-83)^2\\right]=4\\times128=512$$ 各水平内离差平方和：$SSE_1=1+1+9+9=20$，$SSE_2=1+1+9+9=20$，$SSE_3=1+1+9+9=20$，故 $SSE=60$。 $$F=\\frac{512/(3-1)}{60/(12-3)}=\\frac{256}{6.667}\\approx38.4$$ 查表 $F_{0.05}(2,9)=4.26$。",
+      "answer": "$F\\approx38.4>F_{0.05}(2,9)=4.26$，拒绝 $H_0$，三种肥料的平均产量存在显著差异。"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.db
+.env
+
+# Node
+node_modules/
+dist/
+*.local
+
+# 编辑器
+.vscode/
+.idea/
+# 应用设置（含 AI API Key，勿提交）
+settings.json
+
+desktop.log
+.pytest_cache/
+backend/probstat.db
+build/
+*.spec
+dist/*.exe

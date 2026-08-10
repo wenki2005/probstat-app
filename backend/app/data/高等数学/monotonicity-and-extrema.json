@@ -1,0 +1,123 @@
+{
+  "kind": "knowledge",
+  "slug": "monotonicity-and-extrema",
+  "name_zh": "函数的单调性与极值",
+  "name_en": "Monotonicity and extrema of functions",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 1,
+  "summary": "判定函数增减、极值与凹凸性的工具，是导数应用的核心。",
+  "definition": "设函数 $f(x)$ 在区间 $I$ 上有定义：若对 $I$ 内任意 $x_1<x_2$ 都有 $f(x_1)<f(x_2)$，称 $f$ 在 $I$ 上**单调增加**；若 $f(x_1)>f(x_2)$，称**单调减少**。设 $x_0$ 是 $f$ 定义域内一点，若存在 $x_0$ 的邻域 $U(x_0)$，使 $U(x_0)$ 内一切 $x$ 都有 $f(x)\\le f(x_0)$（或 $f(x)\\ge f(x_0)$），则称 $f(x_0)$ 为 $f$ 的**极大值**（或**极小值**），$x_0$ 称为**极大值点**（或**极小值点**）。若曲线 $y=f(x)$ 在区间 $I$ 上位于其任一点切线的上方，称曲线在 $I$ 上是**凹的**；位于切线下方称**凸的**；连续曲线上凹凸性发生改变的分界点称为**拐点**。",
+  "formula_latex": "f'(x)>0\\Rightarrow f(x)\\ \\text{单调增加},\\qquad f'(x)<0\\Rightarrow f(x)\\ \\text{单调减少}",
+  "properties": [
+    {
+      "title": "极值必要条件（费马引理）",
+      "latex": "f'(x_0)=0",
+      "description": "可导函数在极值点处的导数必为 0，是找极值候选点的方法"
+    },
+    {
+      "title": "极值第一充分条件",
+      "latex": "f'(x_0)=0,\\ f'(x)\\text{ 在 }x_0\\text{ 两侧由正变负}\\Rightarrow x_0\\text{ 为极大值点}",
+      "description": "两侧导数值异号时判定极大或极小"
+    },
+    {
+      "title": "极值第二充分条件",
+      "latex": "f'(x_0)=0,\\ f''(x_0)<0\\Rightarrow x_0\\text{ 为极大值点};\\quad f''(x_0)>0\\Rightarrow x_0\\text{ 为极小值点}",
+      "description": "二阶导非零时直接判定，f''(x_0)=0 时失效"
+    },
+    {
+      "title": "凹凸性判定",
+      "latex": "f''(x)>0\\Rightarrow\\text{曲线凹（开口向上）},\\qquad f''(x)<0\\Rightarrow\\text{曲线凸（开口向下）}",
+      "description": "二阶导符号决定曲线弯曲方向"
+    },
+    {
+      "title": "拐点必要条件",
+      "latex": "f''(x_0)=0",
+      "description": "凹凸性改变处二阶导为零，还需验证两侧 f'' 变号"
+    }
+  ],
+  "derivation": "单调性定理用拉格朗日中值定理证明：任取 $x_1<x_2$，$f(x_2)-f(x_1)=f'(\\xi)(x_2-x_1)$，若在区间内 $f'(x)>0$，则 $f'(\\xi)>0$，故 $f(x_2)>f(x_1)$，函数单调增加；$f'(x)<0$ 时同理单调减少。极值必要条件由费马引理：若 $x_0$ 是可导函数 $f$ 的极值点而 $f'(x_0)\\ne0$，则 $f'(x_0)>0$ 或 $f'(x_0)<0$，由导数保号性，$f$ 在 $x_0$ 附近严格单调，与极值定义矛盾。极值第二充分条件：$f''(x_0)=\\lim_{x\\to x_0}\\frac{f'(x)-f'(x_0)}{x-x_0}=\\lim_{x\\to x_0}\\frac{f'(x)}{x-x_0}<0$ 表明 $f'(x)$ 在 $x_0$ 左侧为正、右侧为负，由第一充分条件知 $x_0$ 为极大值点。凹凸性判定：$f''(x)>0$ 时 $f'(x)$ 单调增加，切线斜率递增，曲线位于切线上方，即曲线是凹的。",
+  "applications": [
+    "最优化：求最大利润、最小成本等极值问题",
+    "经济学：边际分析中判断收益与成本的增减",
+    "绘图：由单调性与凹凸性描绘函数图像",
+    "工程：梁的挠度、电路功率等极值设计"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "2*x^3-9*x^2+12*x-3",
+        "label": "y = 2x^3 - 9x^2 + 12x - 3",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -1,
+      4
+    ],
+    "y_range": [
+      -8,
+      6
+    ],
+    "notes": "f'(x) = 6(x-1)(x-2)，驻点为 x = 1（极大值点，f(1)=2）与 x = 2（极小值点，f(2)=1），图中可见单调区间与极值。"
+  },
+  "aliases": [
+    {
+      "alias": "函数的单调性与极值",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Monotonicity and extrema",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "单调性",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "极值",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "极大值/极小值",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 75
+    },
+    {
+      "alias": "凹凸性与拐点",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 70
+    },
+    {
+      "alias": "f'(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "inflection point",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 65
+    }
+  ],
+  "examples": [
+    {
+      "title": "求单调区间、极值、凹凸区间与拐点",
+      "question": "求函数 $y=2x^3-9x^2+12x-3$ 的单调区间、极值、凹凸区间与拐点。",
+      "solution": "$y'=6x^2-18x+12=6(x-1)(x-2)$。考察 $y'$ 的符号：$x<1$ 时 $y'>0$，函数单调增加；$1<x<2$ 时 $y'<0$，单调减少；$x>2$ 时 $y'>0$，单调增加。故 $x=1$ 为极大值点，$y(1)=2$；$x=2$ 为极小值点，$y(2)=1$。又 $y''=12x-18=6(2x-3)$，当 $x<\\frac{3}{2}$ 时 $y''<0$，曲线凸（开口向下）；$x>\\frac{3}{2}$ 时 $y''>0$，曲线凹（开口向上）；$x=\\frac{3}{2}$ 两侧 $y''$ 变号，故拐点为 $\\left(\\frac{3}{2},\\frac{3}{2}\\right)$。",
+      "answer": "单调增区间 $(-\\infty,1)\\cup(2,+\\infty)$，单调减区间 $(1,2)$；极大值 $y(1)=2$，极小值 $y(2)=1$；凸区间 $(-\\infty,\\frac{3}{2})$，凹区间 $(\\frac{3}{2},+\\infty)$，拐点 $(\\frac{3}{2},\\frac{3}{2})$。"
+    }
+  ]
+}

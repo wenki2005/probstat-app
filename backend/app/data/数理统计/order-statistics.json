@@ -1,0 +1,133 @@
+{
+  "kind": "knowledge",
+  "slug": "order-statistics",
+  "name_zh": "顺序统计量与经验分布函数",
+  "name_en": "Order Statistics and Empirical Distribution Function",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 13,
+  "summary": "将样本排序得到次序统计量，用经验分布函数逼近总体分布函数。",
+  "definition": "设 $X_1,\\dots,X_n$ 是来自总体 $X$ 的样本，把观测值按大小排列为 $X_{(1)}\\le X_{(2)}\\le\\dots\\le X_{(n)}$，称 $X_{(k)}$ 为第 $k$ 个**次序统计量**（又称顺序统计量），其中 $X_{(1)}=\\min_iX_i$ 为最小次序统计量，$X_{(n)}=\\max_iX_i$ 为最大次序统计量。若总体分布函数为 $F(x)$、密度为 $f(x)$，则第 $k$ 个次序统计量的密度为 $$f_{(k)}(x)=\\frac{n!}{(k-1)!(n-k)!}[F(x)]^{k-1}[1-F(x)]^{n-k}f(x)$$ **经验分布函数**定义为 $$F_n(x)=\\frac{1}{n}\\sum_{i=1}^{n}\\mathbf 1_{\\{X_i\\le x\\}}=\\frac{\\text{样本中不超过 }x\\text{ 的个数}}{n}$$ 对固定的 $x$，$nF_n(x)\\sim B(n,F(x))$；由格利文科–坎泰利（Glivenko–Cantelli）定理，当 $n\\to\\infty$ 时 $F_n(x)$ 在 $x$ 上一致地几乎必然收敛于 $F(x)$。",
+  "formula_latex": "F_n(x)=\\frac{1}{n}\\sum_{i=1}^{n}\\mathbf 1_{\\{X_i\\le x\\}},\\qquad f_{(k)}(x)=\\frac{n!}{(k-1)!(n-k)!}[F(x)]^{k-1}[1-F(x)]^{n-k}f(x)",
+  "properties": [
+    {
+      "title": "最小次序统计量",
+      "latex": "F_{X_{(1)}}(x)=1-[1-F(x)]^n",
+      "description": "至少一个样本不超过 x"
+    },
+    {
+      "title": "最大次序统计量",
+      "latex": "F_{X_{(n)}}(x)=[F(x)]^n",
+      "description": "所有样本都不超过 x"
+    },
+    {
+      "title": "第 k 个次序统计量的密度",
+      "latex": "f_{(k)}(x)=\\frac{n!}{(k-1)!(n-k)!}[F(x)]^{k-1}[1-F(x)]^{n-k}f(x)",
+      "description": "k-1 个在左侧、1 个落入 dx、n-k 个在右侧"
+    },
+    {
+      "title": "经验分布函数的分布",
+      "latex": "nF_n(x)\\sim B(n,F(x))",
+      "description": "每个观测独立地以概率 F(x) 不超过 x"
+    },
+    {
+      "title": "格利文科–坎泰利定理",
+      "latex": "\\sup_x|F_n(x)-F(x)|\\xrightarrow{\\text{a.s.}}0",
+      "description": "经验分布函数一致收敛于总体分布函数"
+    },
+    {
+      "title": "样本中位数与极差",
+      "latex": "M_e=X_{((n+1)/2)},\\quad R=X_{(n)}-X_{(1)}",
+      "description": "常用的位置与散布次序统计量"
+    }
+  ],
+  "derivation": "第 $k$ 个次序统计量密度的推导：取 $x$ 的小邻域 $(x,x+dx)$，事件 $\\{x<X_{(k)}<x+dx\\}$ 等价于恰有 $k-1$ 个样本落在 $(-\\infty,x]$、1 个落在 $(x,x+dx)$、$n-k$ 个落在 $[x+dx,\\infty)$。由多项分布概率并除以 $dx$ 取极限：$$f_{(k)}(x)=\\frac{n!}{(k-1)!\\,1!\\,(n-k)!}[F(x)]^{k-1}f(x)[1-F(x)]^{n-k}=\\frac{n!}{(k-1)!(n-k)!}[F(x)]^{k-1}[1-F(x)]^{n-k}f(x)$$ 特别地，最小次序统计量：$P(X_{(1)}>x)=P(X_1>x,\\dots,X_n>x)=[1-F(x)]^n$，故 $F_{X_{(1)}}(x)=1-[1-F(x)]^n$；最大次序统计量：$P(X_{(n)}\\le x)=[F(x)]^n$。经验分布函数方面，对固定的 $x$，$\\mathbf 1_{\\{X_i\\le x\\}}$ 独立同 0-1 分布、成功概率 $F(x)$，故 $nF_n(x)\\sim B(n,F(x))$，$E(F_n(x))=F(x)$，$Var(F_n(x))=F(x)[1-F(x)]/n$，即 $F_n(x)$ 是 $F(x)$ 的无偏且相合估计。",
+  "applications": [
+    "样本中位数作为稳健的位置估计",
+    "用经验分布函数作分布检验（KS 检验）",
+    "可靠性工程中的寿命数据分析",
+    "随机模拟中极值分布的推导"
+  ],
+  "visualization_type": "distribution",
+  "graph_config": {
+    "n": 10,
+    "k": 5,
+    "dist": "uniform"
+  },
+  "aliases": [
+    {
+      "alias": "顺序统计量",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Order Statistics",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "次序统计量",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 95
+    },
+    {
+      "alias": "经验分布函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 95
+    },
+    {
+      "alias": "empirical distribution function",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "F_n(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "X_{(k)}",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "样本中位数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "样本极差",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "Glivenko-Cantelli 定理",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "均匀总体次序统计量的分布",
+      "question": "设 $X_1,\\dots,X_5$ 是来自 $U(0,1)$ 的样本。① 求最大次序统计量 $X_{(5)}$ 的密度函数；② 求 $P(X_{(5)}>0.9)$。",
+      "solution": "均匀分布 $U(0,1)$ 有 $F(x)=x\\ (0<x<1)$，$f(x)=1$。最大次序统计量（$k=n=5$）的密度 $$f_{(5)}(x)=5[F(x)]^{4}f(x)=5x^{4},\\quad 0<x<1$$ 其分布函数 $F_{X_{(5)}}(x)=x^5$，故 $$P(X_{(5)}>0.9)=1-F_{X_{(5)}}(0.9)=1-0.9^5=1-0.59049=0.40951$$",
+      "answer": "① $f_{(5)}(x)=5x^4\\ (0<x<1)$；② $P(X_{(5)}>0.9)=0.4095$。"
+    },
+    {
+      "title": "经验分布函数的计算",
+      "question": "测得 5 个样本值：1.2, 1.8, 1.5, 2.1, 1.8。写出经验分布函数 $F_5(x)$ 的表达式，并求 $F_5(1.5)$、$F_5(1.8)$、$F_5(2.0)$。",
+      "solution": "样本排序为 1.2, 1.5, 1.8, 1.8, 2.1。经验分布函数为阶梯函数：$$F_5(x)=\\begin{cases}0,&x<1.2\\\\1/5,&1.2\\le x<1.5\\\\2/5,&1.5\\le x<1.8\\\\4/5,&1.8\\le x<2.1\\\\1,&x\\ge2.1\\end{cases}$$ 故 $F_5(1.5)=2/5=0.4$，$F_5(1.8)=4/5=0.8$，$F_5(2.0)=4/5=0.8$。",
+      "answer": "$F_5(1.5)=0.4$，$F_5(1.8)=0.8$，$F_5(2.0)=0.8$。"
+    }
+  ]
+}

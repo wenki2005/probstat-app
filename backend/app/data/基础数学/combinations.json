@@ -1,0 +1,100 @@
+{
+  "kind": "knowledge",
+  "slug": "combinations",
+  "name_zh": "组合",
+  "name_en": "Combinations",
+  "category": "基础数学",
+  "subcategory": "计数原理",
+  "sort_order": 9,
+  "summary": "组合数与组合恒等式，计算无序取法的种数。",
+  "definition": "从 $n$ 个不同元素中取出 $m$（$m\\le n$）个元素并成一组，不考虑顺序，称为从 $n$ 个元素中取出 $m$ 个元素的一个**组合**；组合的总数记 $C_n^m$（或 $\\binom{n}{m}$），有 $$C_n^m=\\frac{n!}{m!(n-m)!}$$ 排列与组合的关系是“先组合后排列”：$A_n^m=C_n^m\\cdot m!$。",
+  "formula_latex": "C_n^m=\\binom{n}{m}=\\frac{n!}{m!(n-m)!}",
+  "properties": [
+    {
+      "title": "对称性",
+      "latex": "C_n^m=C_n^{n-m}",
+      "description": "选出 m 个等价于留下 n-m 个"
+    },
+    {
+      "title": "递推公式",
+      "latex": "C_n^m=C_{n-1}^{m-1}+C_{n-1}^{m}",
+      "description": "杨辉三角的构造规律"
+    },
+    {
+      "title": "边界值",
+      "latex": "C_n^0=C_n^n=1,\\quad C_n^1=n",
+      "description": "不取或全取都只有一种方式"
+    },
+    {
+      "title": "与排列的关系",
+      "latex": "A_n^m=C_n^m\\cdot m!",
+      "description": "排列是先选后排"
+    },
+    {
+      "title": "组合总数",
+      "latex": "\\sum_{k=0}^{n}C_n^k=2^n",
+      "description": "n 个元素全部子集的个数"
+    }
+  ],
+  "derivation": "由排列与组合的关系推导组合数公式：排列是“先选后排”，故 $A_n^m=C_n^m\\cdot m!$，从而 $C_n^m=\\frac{A_n^m}{m!}=\\frac{n!}{m!(n-m)!}$。对称性：从 $n$ 个元素中选出 $m$ 个，等价于确定不被选出的 $n-m$ 个，故 $C_n^m=C_n^{n-m}$。递推公式：考虑 $n$ 个元素中的特定元素 $a$，选 $m$ 个可分为“含 $a$”与“不含 $a$”两类，分别有 $C_{n-1}^{m-1}$、$C_{n-1}^{m}$ 种，由加法原理得 $C_n^m=C_{n-1}^{m-1}+C_{n-1}^{m}$，这就是杨辉三角。组合总数：每个元素都有“选/不选”两种状态，故 $n$ 个元素的全部子集数为 $2^n$。",
+  "applications": [
+    "彩票中奖概率与抽签问题",
+    "从人群中选代表、组队",
+    "二项式展开的系数",
+    "超几何分布的计数基础"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "组合",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Combination",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "组合数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "C(n,m)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "C_n^m",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "二项式系数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "binom",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 60
+    }
+  ],
+  "examples": [
+    {
+      "title": "组合数与分类计数",
+      "question": "从 10 名同学中选出 3 名参加演讲比赛。(1) 共有多少种选法？(2) 若甲、乙两人中恰有 1 人被选中，有多少种选法？",
+      "solution": "(1) $C_{10}^3=\\frac{10!}{3!\\,7!}=\\frac{10\\times9\\times8}{3\\times2\\times1}=120$ 种。(2) 先从甲、乙中选 1 人，有 $C_2^1=2$ 种；再从其余 8 人中选 2 人，有 $C_8^2=28$ 种。由乘法原理共 $2\\times28=56$ 种。",
+      "answer": "(1) 120 种；(2) 56 种。"
+    }
+  ]
+}

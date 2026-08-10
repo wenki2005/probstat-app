@@ -1,0 +1,123 @@
+{
+  "kind": "knowledge",
+  "slug": "conditional-expectation",
+  "name_zh": "条件期望与全期望公式",
+  "name_en": "Conditional expectation and the law of total expectation",
+  "category": "随机变量",
+  "subcategory": "数字特征",
+  "sort_order": 12,
+  "summary": "E(X|Y=y) 是给定 Y 后 X 的条件均值，E(X)=E[E(X|Y)]。",
+  "definition": "设条件分布存在。离散型：给定 $Y=y_j$ 时，$$E(X|Y=y_j)=\\sum_{i}x_i\\,P\\{X=x_i|Y=y_j\\}$$ 连续型：$$E(X|Y=y)=\\int_{-\\infty}^{+\\infty}x\\,f_{X|Y}(x|y)\\,dx$$ 把 $E(X|Y=y)$ 看作 $y$ 的函数 $g(y)$，则 $E(X|Y)=g(Y)$ 是随机变量。**全期望公式**（重期望公式）：$$E(X)=E[E(X|Y)]$$ 即无条件期望等于条件期望再对 $Y$ 求期望。",
+  "formula_latex": "E(X)=E[E(X|Y)],\\qquad E(X|Y=y)=\\int_{-\\infty}^{+\\infty}x\\,f_{X|Y}(x|y)\\,dx",
+  "properties": [
+    {
+      "title": "条件期望是 Y 的函数",
+      "latex": "E(X|Y=y)=g(y),\\quad E(X|Y)=g(Y)",
+      "description": "条件期望可看作 Y 的（随机）函数"
+    },
+    {
+      "title": "线性性",
+      "latex": "E(aX+b|Y)=aE(X|Y)+b",
+      "description": "条件期望保持线性"
+    },
+    {
+      "title": "可提取 Y 的函数",
+      "latex": "E[h(Y)X|Y]=h(Y)E(X|Y)",
+      "description": "在条件期望中已知量 h(Y) 可当常数提出"
+    },
+    {
+      "title": "独立时退化",
+      "latex": "X,Y\\text{ 独立}\\Rightarrow E(X|Y)=E(X)",
+      "description": "独立时条件期望等于无条件期望"
+    },
+    {
+      "title": "全期望公式",
+      "latex": "E(X)=E[E(X|Y)]",
+      "description": "无条件期望等于条件期望再取期望"
+    },
+    {
+      "title": "塔性质",
+      "latex": "E[E(X|Y,Z)|Y]=E(X|Y)",
+      "description": "多步条件后取较小信息集，得到条件期望的塔性质"
+    }
+  ],
+  "derivation": "全期望公式的推导（连续型）：$$E(X)=\\int_{-\\infty}^{+\\infty}x\\,f_X(x)\\,dx=\\int_{-\\infty}^{+\\infty}x\\left(\\int_{-\\infty}^{+\\infty}f_{X|Y}(x|y)f_Y(y)\\,dy\\right)dx$$ 交换积分次序 $$=\\int_{-\\infty}^{+\\infty}\\left(\\int_{-\\infty}^{+\\infty}x\\,f_{X|Y}(x|y)\\,dx\\right)f_Y(y)\\,dy=\\int_{-\\infty}^{+\\infty}E(X|Y=y)f_Y(y)\\,dy=E[E(X|Y)]$$ 离散情形同理：$E(X)=\\sum_{j}E(X|Y=y_j)P\\{Y=y_j\\}$。",
+  "applications": [
+    "保险精算中按年龄/性别等类别分层求期望赔付",
+    "随机过程的鞅理论与停时定理（塔性质）",
+    "分层抽样中按层条件期望加权估计总体均值",
+    "两阶段随机实验中的期望收益递推计算"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "条件期望与全期望公式",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Conditional expectation and the law of total expectation",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "条件期望",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "全期望公式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "重期望公式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "law of total expectation",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "E(X|Y)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "E(X|Y=y)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "塔性质",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "全期望公式求期望",
+      "question": "掷一枚均匀骰子，点数记为 $N$；再掷一枚均匀硬币 $N$ 次，记 $Y$ 为正面出现的次数。求 $E(Y)$。",
+      "solution": "给定 $N=n$ 时 $Y\\sim B(n,1/2)$，故 $E(Y|N=n)=n/2$，即 $E(Y|N)=N/2$。由全期望公式 $$E(Y)=E[E(Y|N)]=E(N/2)=\\frac12E(N)=\\frac12\\times\\frac{1+2+3+4+5+6}{6}=\\frac{7}{4}$$",
+      "answer": "$E(Y)=7/4=1.75$。"
+    },
+    {
+      "title": "连续型全期望公式",
+      "question": "设 $X\\sim U(0,1)$，给定 $X=x$ 时 $Y$ 在 $(0,x)$ 上服从均匀分布，求 $E(Y)$。",
+      "solution": "给定 $X=x$ 时 $E(Y|X=x)=x/2$，且 $X\\sim U(0,1)$ 的密度为 $f_X(x)=1$（$0<x<1$）。由全期望公式 $$E(Y)=E[E(Y|X)]=E(X/2)=\\frac12\\int_0^1 x\\,dx=\\frac12\\times\\frac12=\\frac14$$",
+      "answer": "$E(Y)=1/4$。"
+    }
+  ]
+}

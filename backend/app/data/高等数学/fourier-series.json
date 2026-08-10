@@ -1,0 +1,129 @@
+{
+  "kind": "knowledge",
+  "slug": "fourier-series",
+  "name_zh": "傅里叶级数",
+  "name_en": "Fourier Series",
+  "category": "高等数学",
+  "subcategory": "级数",
+  "sort_order": 20,
+  "summary": "把周期函数分解为正弦余弦的叠加，是信号分析的基础。",
+  "definition": "设 $f(x)$ 是以 $2\\pi$ 为周期的函数，称三角级数 $$\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}\\left(a_n\\cos nx+b_n\\sin nx\\right)$$ 为 $f$ 的**傅里叶级数**（记作 $f(x)\\sim\\cdots$），其中系数由欧拉-傅里叶公式给出：$$a_0=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\,dx,\\quad a_n=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\cos nx\\,dx,\\quad b_n=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\sin nx\\,dx\\ (n=1,2,\\dots)$$",
+  "formula_latex": "f(x)\\sim\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}\\left(a_n\\cos nx+b_n\\sin nx\\right)",
+  "properties": [
+    {
+      "title": "狄利克雷充分条件",
+      "latex": "f\\ \\text{在一个周期内连续或有有限个第一类间断点，且只有有限个极值点}",
+      "description": "满足该条件时 f 的傅里叶级数处处收敛"
+    },
+    {
+      "title": "收敛值",
+      "latex": "\\text{连续点收敛于}\\ f(x);\\quad \\text{间断点}\\ x_0\\ \\text{收敛于}\\ \\frac{f(x_0^-)+f(x_0^+)}{2}",
+      "description": "在间断点处收敛于左右极限的平均值"
+    },
+    {
+      "title": "奇函数展开（正弦级数）",
+      "latex": "a_n=0,\\quad f(x)\\sim\\sum_{n=1}^{\\infty}b_n\\sin nx",
+      "description": "奇函数只含正弦项"
+    },
+    {
+      "title": "偶函数展开（余弦级数）",
+      "latex": "b_n=0,\\quad f(x)\\sim\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}a_n\\cos nx",
+      "description": "偶函数只含余弦项"
+    },
+    {
+      "title": "周期 2l 的推广",
+      "latex": "f(x)\\sim\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}\\left(a_n\\cos\\frac{n\\pi x}{l}+b_n\\sin\\frac{n\\pi x}{l}\\right)",
+      "description": "系数中 1/π 换成 1/l，cos nx 换成 cos(nπx/l)"
+    },
+    {
+      "title": "帕塞瓦尔恒等式",
+      "latex": "\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f^2(x)\\,dx=\\frac{a_0^2}{2}+\\sum_{n=1}^{\\infty}(a_n^2+b_n^2)",
+      "description": "时域能量等于各频率分量能量之和"
+    }
+  ],
+  "derivation": "傅里叶系数的推导核心是三角函数的**正交性**：在 $[-\\pi,\\pi]$ 上，函数族 $\\{1,\\cos x,\\sin x,\\cos2x,\\sin2x,\\dots\\}$ 中任意两个不同函数的乘积积分为 0，且 $$\\int_{-\\pi}^{\\pi}\\cos^2nx\\,dx=\\int_{-\\pi}^{\\pi}\\sin^2nx\\,dx=\\pi,\\qquad \\int_{-\\pi}^{\\pi}1^2\\,dx=2\\pi$$ 对傅里叶级数两边同乘 $\\cos kx$ 后逐项积分，利用正交性除 $a_k$ 对应项外其余项全部消失，解得 $a_k=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\cos kx\\,dx$；两边同乘 $\\sin kx$ 可得 $b_k$。逐项积分的合理性由狄利克雷条件保证。在间断点处收敛于左右极限平均值 $\\frac{f(x^-)+f(x^+)}{2}$，这是傅里叶级数收敛定理的结论；对定义在 $[0,\\pi]$ 上的函数，可作奇延拓得到正弦级数或偶延拓得到余弦级数。",
+  "applications": [
+    "信号与系统的频谱分析与滤波",
+    "音频与图像压缩（JPEG 的基础是离散余弦变换）",
+    "用分离变量法求解热传导方程与波动方程",
+    "概率论中平稳过程的谱分析"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "傅里叶级数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Fourier series",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "傅里叶",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 95
+    },
+    {
+      "alias": "Fourier",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "三角级数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "狄利克雷条件",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "Dirichlet conditions",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "傅里叶系数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "a_n, b_n",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "正弦级数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "展开周期函数 f(x)=x",
+      "question": "设 $f(x)=x$（$-\\pi\\le x<\\pi$）作周期延拓，将其展开为傅里叶级数，并求 $\\sum_{k=0}^{\\infty}\\frac{(-1)^k}{2k+1}$。",
+      "solution": "$f$ 为奇函数，故 $a_0=a_n=0$；$$b_n=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}x\\sin nx\\,dx=\\frac{2}{\\pi}\\int_0^{\\pi}x\\sin nx\\,dx=\\frac{2(-1)^{n+1}}{n}$$ 于是 $x\\sim 2\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}\\sin nx$（$x\\in(-\\pi,\\pi)$）。代入 $x=\\frac{\\pi}{2}$ 得 $$\\frac{\\pi}{2}=2\\left(1-\\frac13+\\frac15-\\cdots\\right)\\ \\Rightarrow\\ \\sum_{k=0}^{\\infty}\\frac{(-1)^k}{2k+1}=\\frac{\\pi}{4}$$",
+      "answer": "$x\\sim 2\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}\\sin nx$，且 $1-\\frac13+\\frac15-\\cdots=\\frac{\\pi}{4}$。"
+    },
+    {
+      "title": "展开偶函数 f(x)=|x|",
+      "question": "将 $f(x)=|x|$（$|x|\\le\\pi$）展开为傅里叶级数，并求 $\\sum_{k=1}^{\\infty}\\frac{1}{(2k-1)^2}$。",
+      "solution": "$f$ 为偶函数，$b_n=0$；$$a_0=\\frac{2}{\\pi}\\int_0^{\\pi}x\\,dx=\\pi,\\qquad a_n=\\frac{2}{\\pi}\\int_0^{\\pi}x\\cos nx\\,dx=\\frac{2}{\\pi}\\cdot\\frac{(-1)^n-1}{n^2}$$ 故 $a_{2k}=0$，$a_{2k-1}=-\\frac{4}{\\pi(2k-1)^2}$，于是 $$|x|=\\frac{\\pi}{2}-\\frac{4}{\\pi}\\sum_{k=1}^{\\infty}\\frac{\\cos(2k-1)x}{(2k-1)^2},\\quad |x|\\le\\pi$$ 代入 $x=0$：$0=\\frac{\\pi}{2}-\\frac{4}{\\pi}\\sum_{k=1}^{\\infty}\\frac{1}{(2k-1)^2}$，得 $\\sum_{k=1}^{\\infty}\\frac{1}{(2k-1)^2}=\\frac{\\pi^2}{8}$。",
+      "answer": "$|x|=\\frac{\\pi}{2}-\\frac{4}{\\pi}\\sum_{k=1}^{\\infty}\\frac{\\cos(2k-1)x}{(2k-1)^2}$，且 $\\sum_{k=1}^{\\infty}\\frac{1}{(2k-1)^2}=\\frac{\\pi^2}{8}$。"
+    }
+  ]
+}

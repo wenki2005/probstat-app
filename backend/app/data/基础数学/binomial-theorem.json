@@ -1,0 +1,99 @@
+{
+  "kind": "knowledge",
+  "slug": "binomial-theorem",
+  "name_zh": "二项式定理",
+  "name_en": "Binomial theorem",
+  "category": "基础数学",
+  "subcategory": "计数原理",
+  "sort_order": 10,
+  "summary": "(a+b)^n 的展开公式，各项系数为组合数 C(n,k)。",
+  "definition": "对任意正整数 $n$，**二项式定理**给出 $$(a+b)^n=\\sum_{k=0}^{n}C_n^k\\,a^{n-k}b^k=C_n^0a^n+C_n^1a^{n-1}b+\\cdots+C_n^n b^n$$ 其中 $C_n^k$（或 $\\binom{n}{k}$）称为二项式系数，展开式共 $n+1$ 项。第 $k+1$ 项 $T_{k+1}=C_n^k a^{n-k}b^k$ 称为二项展开式的通项。",
+  "formula_latex": "(a+b)^n=\\sum_{k=0}^{n}C_n^k\\,a^{n-k}b^k",
+  "properties": [
+    {
+      "title": "项数与结构",
+      "latex": "a^{n-k}b^k,\\quad k=0,1,\\dots,n",
+      "description": "展开共 n+1 项，每项中 a、b 的次数和为 n"
+    },
+    {
+      "title": "系数对称",
+      "latex": "C_n^k=C_n^{n-k}",
+      "description": "二项式系数首尾对称相等"
+    },
+    {
+      "title": "各项系数和",
+      "latex": "\\sum_{k=0}^{n}C_n^k=2^n",
+      "description": "令 a=b=1 得到"
+    },
+    {
+      "title": "交错系数和",
+      "latex": "\\sum_{k=0}^{n}(-1)^k C_n^k=0",
+      "description": "令 a=1, b=-1 得到"
+    },
+    {
+      "title": "最大系数",
+      "latex": "n\\ \\text{为偶数时中间项最大，}n\\ \\text{为奇数时中间两项相等且最大}",
+      "description": "二项式系数先增后减"
+    },
+    {
+      "title": "与杨辉三角",
+      "latex": "C_n^0,\\ C_n^1,\\ \\dots,\\ C_n^n",
+      "description": "展开式系数构成杨辉三角第 n+1 行"
+    }
+  ],
+  "derivation": "$(a+b)^n$ 是 $n$ 个 $(a+b)$ 相乘，展开后的每一项都从每个括号中各取一个因子相乘得到。要使 $b$ 出现 $k$ 次、$a$ 出现 $n-k$ 次，只需确定哪 $k$ 个括号取 $b$，共有 $C_n^k$ 种选法，故 $b^k$ 的系数为 $C_n^k$，即 $(a+b)^n=\\sum_{k=0}^{n}C_n^k a^{n-k}b^k$。令 $a=b=1$ 得 $\\sum_{k=0}^{n}C_n^k=2^n$；令 $a=1,\\ b=-1$ 得 $\\sum_{k=0}^{n}(-1)^k C_n^k=(1-1)^n=0$。",
+  "applications": [
+    "近似计算：|x| 很小时 (1+x)^n≈1+nx",
+    "求展开式中指定项的系数",
+    "二项分布 P(X=k)=C_n^k p^k (1-p)^(n-k)",
+    "证明组合恒等式与母函数方法"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "二项式定理",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Binomial theorem",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "二项展开式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "二项式系数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "(a+b)^n",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "通项",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "求展开式中指定项的系数",
+      "question": "求 $(2x-1)^6$ 的展开式中含 $x^4$ 的项。",
+      "solution": "通项 $T_{k+1}=C_6^k(2x)^{6-k}(-1)^k=C_6^k\\,2^{6-k}(-1)^k x^{6-k}$。令 $6-k=4$ 得 $k=2$。该项系数 $C_6^2\\cdot2^4\\cdot(-1)^2=15\\times16\\times1=240$，故含 $x^4$ 的项为 $240x^4$。",
+      "answer": "$240x^4$。"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "maximum-likelihood-estimation",
+  "name_zh": "最大似然估计",
+  "name_en": "Maximum Likelihood Estimation",
+  "category": "数理统计",
+  "subcategory": "参数估计",
+  "sort_order": 4,
+  "summary": "选取使样本出现概率最大的参数值作为估计，统计推断中最常用的估计方法。",
+  "definition": "**最大似然估计**（MLE）的思想：在参数的所有可能取值中，选取使“当前样本出现的概率（似然）”达到最大的那一个作为参数的估计。设总体 $X$ 的概率密度（或分布列）为 $f(x;\\theta)$（$\\theta$ 为未知参数），$X_1,\\dots,X_n$ 为样本，则**似然函数**为 $$L(\\theta)=L(x_1,\\dots,x_n;\\theta)=\\prod_{i=1}^{n}f(x_i;\\theta)$$ 若存在 $\\hat\\theta=\\hat\\theta(x_1,\\dots,x_n)$ 使 $L(\\hat\\theta)=\\max_{\\theta}L(\\theta)$，则称 $\\hat\\theta$ 为 $\\theta$ 的**最大似然估计值**，相应的统计量 $\\hat\\theta(X_1,\\dots,X_n)$ 称为**最大似然估计量**。由于 $\\ln$ 单调递增，常最大化对数似然函数 $\\ell(\\theta)=\\ln L(\\theta)$，并解**似然方程** $\\frac{d\\ell(\\theta)}{d\\theta}=0$。",
+  "formula_latex": "\\hat\\theta_{MLE}=\\arg\\max_{\\theta}\\ L(\\theta)=\\arg\\max_{\\theta}\\prod_{i=1}^{n}f(x_i;\\theta)",
+  "properties": [
+    {"title": "似然函数", "latex": "L(\\theta)=\\prod_{i=1}^{n}f(x_i;\\theta)", "description": "样本联合密度（或联合分布列）看成参数 θ 的函数"},
+    {"title": "对数似然", "latex": "\\ell(\\theta)=\\ln L(\\theta)=\\sum_{i=1}^{n}\\ln f(x_i;\\theta)", "description": "取对数把乘积化为求和，便于求导"},
+    {"title": "似然方程", "latex": "\\frac{d\\ell(\\theta)}{d\\theta}=0", "description": "多参数时对各参数求偏导联立求解"},
+    {"title": "不变性", "latex": "\\widehat{g(\\theta)}=g(\\hat\\theta)", "description": "若 θ̂ 是 θ 的 MLE，则 g(θ̂) 是 g(θ) 的 MLE（g 单调时尤其常用）"},
+    {"title": "相合性", "latex": "\\hat\\theta \\xrightarrow{P} \\theta", "description": "在正则条件下，MLE 是相合估计（n→∞ 时依概率收敛于真值）"}
+  ],
+  "derivation": "以正态总体 $X\\sim N(\\mu,\\sigma^2)$ 为例求 $\\mu,\\sigma^2$ 的 MLE。似然函数 $$L(\\mu,\\sigma^2)=\\prod_{i=1}^{n}\\frac{1}{\\sqrt{2\\pi}\\sigma}e^{-\\frac{(x_i-\\mu)^2}{2\\sigma^2}}=(2\\pi\\sigma^2)^{-n/2}e^{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^{n}(x_i-\\mu)^2}$$ 对数似然 $$\\ell(\\mu,\\sigma^2)=-\\frac{n}{2}\\ln(2\\pi)-\\frac{n}{2}\\ln\\sigma^2-\\frac{1}{2\\sigma^2}\\sum_{i=1}^{n}(x_i-\\mu)^2$$ 对 $\\mu$ 求偏导并令其为零：$\\frac{\\partial\\ell}{\\partial\\mu}=\\frac{1}{\\sigma^2}\\sum_{i=1}^{n}(x_i-\\mu)=0$，得 $\\hat\\mu=\\bar x$。对 $\\sigma^2$ 求偏导并令其为零：$\\frac{\\partial\\ell}{\\partial\\sigma^2}=-\\frac{n}{2\\sigma^2}+\\frac{1}{2\\sigma^4}\\sum_{i=1}^{n}(x_i-\\bar x)^2=0$，得 $\\hat\\sigma^2=\\frac{1}{n}\\sum_{i=1}^{n}(x_i-\\bar x)^2$。二阶偏导为负可验证这是极大值点。注意 $E(\\hat\\sigma^2)=\\frac{n-1}{n}\\sigma^2$，即 MLE 的方差估计是有偏的，但与矩估计在此情形结果一致。",
+  "applications": ["正态分布 μ 与 σ² 的参数估计", "指数分布（元件寿命）参数估计", "二项分布 p 与泊松分布 λ 的估计", "回归与机器学习模型的参数训练（极大似然准则）"],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "最大似然估计", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Maximum Likelihood Estimation", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "MLE", "lang": "en", "kind": "alias", "weight": 90},
+    {"alias": "极大似然估计", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "最大似然法", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "似然函数", "lang": "zh", "kind": "keyword", "weight": 75},
+    {"alias": "likelihood", "lang": "en", "kind": "keyword", "weight": 70},
+    {"alias": "L(θ)", "lang": "math", "kind": "notation", "weight": 80}
+  ],
+  "examples": [
+    {
+      "title": "正态分布参数的 MLE",
+      "question": "设 $X_1,\\dots,X_n$ 是来自 $N(\\mu,\\sigma^2)$ 的样本，求 $\\mu$ 与 $\\sigma^2$ 的最大似然估计。",
+      "solution": "似然函数与对数似然为 $$L(\\mu,\\sigma^2)=(2\\pi\\sigma^2)^{-n/2}\\exp\\left[-\\frac{1}{2\\sigma^2}\\sum_{i=1}^{n}(x_i-\\mu)^2\\right],\\qquad \\ell=-\\frac{n}{2}\\ln(2\\pi)-\\frac{n}{2}\\ln\\sigma^2-\\frac{1}{2\\sigma^2}\\sum_{i=1}^{n}(x_i-\\mu)^2$$ 令 $\\frac{\\partial\\ell}{\\partial\\mu}=0$ 得 $\\hat\\mu=\\bar x$；令 $\\frac{\\partial\\ell}{\\partial\\sigma^2}=0$ 得 $\\hat\\sigma^2=\\frac{1}{n}\\sum_{i=1}^{n}(x_i-\\bar x)^2$。",
+      "answer": "$\\hat\\mu_{MLE}=\\bar X$，$\\hat\\sigma^2_{MLE}=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^2=\\frac{n-1}{n}S^2$（注意为有偏估计）。"
+    }
+  ]
+}

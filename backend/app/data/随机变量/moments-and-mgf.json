@@ -1,0 +1,118 @@
+{
+  "kind": "knowledge",
+  "slug": "moments-and-mgf",
+  "name_zh": "矩与矩母函数",
+  "name_en": "Moments and moment generating functions",
+  "category": "随机变量",
+  "subcategory": "数字特征",
+  "sort_order": 14,
+  "summary": "k 阶原点矩/中心矩刻画分布形状，M_X(t)=E(e^{tX}) 可生成各阶矩。",
+  "definition": "设 $X$ 为随机变量、$k$ 为正整数。称 $\\alpha_k=E(X^k)$ 为 $X$ 的 **$k$ 阶原点矩**，$\\mu_k=E[(X-E(X))^k]$ 为 **$k$ 阶中心矩**。一阶原点矩即期望 $E(X)$，二阶中心矩即方差 $Var(X)$。若 $E(e^{tX})$ 在 $t=0$ 的某邻域内存在，称 $$M_X(t)=E(e^{tX})$$ 为 $X$ 的**矩母函数**（MGF）。矩母函数在 $t=0$ 处的 $k$ 阶导数等于 $k$ 阶原点矩：$M_X^{(k)}(0)=E(X^k)$。矩母函数与分布一一对应（若存在），可用于求矩与证明分布的可加性。",
+  "formula_latex": "M_X(t)=E(e^{tX}),\\qquad M_X^{(k)}(0)=E(X^k)",
+  "properties": [
+    {
+      "title": "生成原点矩",
+      "latex": "M_X^{(k)}(0)=E(X^k)",
+      "description": "对 MGF 求 k 阶导后在 0 处取值得到 k 阶原点矩"
+    },
+    {
+      "title": "中心矩",
+      "latex": "\\mu_k=E[(X-E(X))^k]",
+      "description": "k 阶中心矩围绕期望展开，二阶即方差"
+    },
+    {
+      "title": "零点的值",
+      "latex": "M_X(0)=1",
+      "description": "代入 t=0 得 E(1)=1"
+    },
+    {
+      "title": "线性变换",
+      "latex": "M_{aX+b}(t)=e^{bt}M_X(at)",
+      "description": "随机变量线性变换的矩母函数"
+    },
+    {
+      "title": "独立和的 MGF",
+      "latex": "X,Y\\text{ 独立}\\Rightarrow M_{X+Y}(t)=M_X(t)M_Y(t)",
+      "description": "独立变量之和的 MGF 等于 MGF 之积"
+    }
+  ],
+  "derivation": "由指数函数的级数展开与期望线性性（可交换时）：$$M_X(t)=E(e^{tX})=E\\!\\left(\\sum_{k=0}^{\\infty}\\frac{(tX)^k}{k!}\\right)=\\sum_{k=0}^{\\infty}\\frac{t^k}{k!}E(X^k)$$ 对 $t$ 求导并在 $t=0$ 处取值，$$M_X'(0)=E(X),\\quad M_X''(0)=E(X^2),\\quad M_X^{(k)}(0)=E(X^k)$$ 独立和的 MGF：$$M_{X+Y}(t)=E(e^{tX}e^{tY})=E(e^{tX})E(e^{tY})=M_X(t)M_Y(t)$$ 由 MGF 的唯一性，可由 $e^{bt}M_X(at)$ 等识别线性变换后的分布。",
+  "applications": [
+    "用 MGF 证明泊松、正态、卡方分布的可加性",
+    "计算分布的偏度与峰度（三、四阶中心矩）",
+    "大偏差理论中 Cramér 变换与速率函数",
+    "由样本矩匹配总体矩的矩估计方法"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "矩与矩母函数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Moments and moment generating functions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "矩母函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "原点矩",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "中心矩",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "MGF",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "M_X(t)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "E(X^k)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "moment generating function",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "由矩母函数求各阶矩",
+      "question": "设 $X\\sim N(0,1)$，其矩母函数为 $M_X(t)=e^{t^2/2}$。利用 $M_X(t)$ 求 $E(X)$、$E(X^2)$、$E(X^4)$。",
+      "solution": "$$M_X'(t)=t\\,e^{t^2/2}\\Rightarrow E(X)=M_X'(0)=0$$ $$M_X''(t)=e^{t^2/2}+t^2e^{t^2/2}\\Rightarrow E(X^2)=M_X''(0)=1$$ 又 $e^{t^2/2}=1+\\dfrac{t^2}{2}+\\dfrac{t^4}{8}+\\cdots$，与 $M_X(t)=\\sum_{k}\\dfrac{t^k}{k!}E(X^k)$ 比较 $t^4$ 项系数：$\\dfrac18=\\dfrac{E(X^4)}{4!}$，故 $E(X^4)=\\dfrac{4!}{8}=3$。",
+      "answer": "$E(X)=0$，$E(X^2)=1$，$E(X^4)=3$；故 $Var(X)=E(X^2)-E(X)^2=1$。"
+    },
+    {
+      "title": "用 MGF 证明泊松分布可加性",
+      "question": "设 $X\\sim P(\\lambda_1)$、$Y\\sim P(\\lambda_2)$ 独立，用矩母函数证明 $X+Y\\sim P(\\lambda_1+\\lambda_2)$。",
+      "solution": "泊松分布 $P(\\lambda)$ 的 MGF：$$M_X(t)=\\sum_{k=0}^{\\infty}e^{tk}\\frac{\\lambda^k e^{-\\lambda}}{k!}=e^{-\\lambda}\\sum_{k=0}^{\\infty}\\frac{(\\lambda e^t)^k}{k!}=e^{\\lambda(e^t-1)}$$ 独立和的 MGF 相乘：$$M_{X+Y}(t)=e^{\\lambda_1(e^t-1)}e^{\\lambda_2(e^t-1)}=e^{(\\lambda_1+\\lambda_2)(e^t-1)}$$ 这正是 $P(\\lambda_1+\\lambda_2)$ 的 MGF，由 MGF 与分布的一一对应得 $X+Y\\sim P(\\lambda_1+\\lambda_2)$。",
+      "answer": "$X+Y\\sim P(\\lambda_1+\\lambda_2)$；矩母函数的唯一性给出了可加性的简洁证明。"
+    }
+  ]
+}

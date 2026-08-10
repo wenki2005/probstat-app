@@ -1,0 +1,124 @@
+{
+  "kind": "knowledge",
+  "slug": "differentiation-rules",
+  "name_zh": "求导法则",
+  "name_en": "Differentiation Rules",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 5,
+  "summary": "四则、复合链式、隐函数、参数方程与高阶导数的系统求导方法。",
+  "definition": "设 $u=u(x)$、$v=v(x)$ 可导，则有四则运算法则：$(u\\pm v)'=u'\\pm v'$，$(uv)'=u'v+uv'$，$\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}\\ (v\\neq0)$。复合函数 $y=f(g(x))$ 按**链式法则**求导：$\\frac{dy}{dx}=f'(g(x))g'(x)$。由方程 $F(x,y)=0$ 确定的隐函数，可在方程两边对 $x$ 求导并解出 $\\frac{dy}{dx}$；由参数方程 $\\begin{cases}x=x(t)\\\\y=y(t)\\end{cases}$ 确定的函数满足 $\\frac{dy}{dx}=\\frac{y'(t)}{x'(t)}$。函数导数的导数称为二阶导数 $f''(x)$，一般地 $f^{(n)}(x)$ 称为 $n$ 阶导数。",
+  "formula_latex": "(uv)'=u'v+uv',\\quad\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx},\\quad\\frac{dy}{dx}=\\frac{y'(t)}{x'(t)}",
+  "properties": [
+    {
+      "title": "基本导数公式",
+      "latex": "(x^\\mu)'=\\mu x^{\\mu-1},\\ (e^x)'=e^x,\\ (\\ln x)'=\\frac{1}{x},\\ (\\sin x)'=\\cos x",
+      "description": "基本初等函数的导数表是求导的基础"
+    },
+    {
+      "title": "链式法则",
+      "latex": "\\frac{dy}{dx}=f'(g(x))g'(x)",
+      "description": "外层导数乘以内层导数，由外到内逐层求导"
+    },
+    {
+      "title": "隐函数求导",
+      "latex": "F(x,y)=0\\Rightarrow\\frac{dy}{dx}=-\\frac{F_x}{F_y}\\ (F_y\\neq0)",
+      "description": "方程两端对 x 求导后解出 y'"
+    },
+    {
+      "title": "参数方程求导",
+      "latex": "\\frac{dy}{dx}=\\frac{y'(t)}{x'(t)},\\quad\\frac{d^2y}{dx^2}=\\frac{y''(t)x'(t)-y'(t)x''(t)}{(x'(t))^3}",
+      "description": "参数方程确定函数的一阶与二阶导数公式"
+    },
+    {
+      "title": "高阶导数",
+      "latex": "(x^n)^{(n)}=n!,\\quad(\\sin x)^{(n)}=\\sin\\left(x+\\frac{n\\pi}{2}\\right)",
+      "description": "常用高阶导数可归纳为一般公式"
+    }
+  ],
+  "derivation": "乘积法则的推导：$$(uv)'=\\lim_{h\\to0}\\frac{u(x+h)v(x+h)-u(x)v(x)}{h}=\\lim_{h\\to0}\\left[u'(x)v(x+h)+u(x)\\frac{v(x+h)-v(x)}{h}\\right]=u'v+uv'$$ 链式法则：当 $\\Delta u\\neq0$ 时 $\\frac{\\Delta y}{\\Delta x}=\\frac{\\Delta y}{\\Delta u}\\cdot\\frac{\\Delta u}{\\Delta x}$，令 $\\Delta x\\to0$ 取极限即得 $\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}$（$\\Delta u=0$ 的情形可用可导的增量线性表达式处理）。隐函数求导正是链式法则在方程 $F(x,y)=0$ 两端同时对 $x$ 求导的应用。",
+  "applications": [
+    "求复合函数、分式、幂指函数的导数",
+    "边际函数与弹性等经济分析",
+    "曲线的切线、法线与相关变化率问题",
+    "泰勒展开、微分方程的基础工具"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x**3",
+        "label": "y = x³",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "derivative_of": "x**3",
+    "x_range": [
+      -3,
+      3
+    ],
+    "y_range": [
+      -10,
+      10
+    ],
+    "notes": "绿色虚线为导数 y'=3x²（幂函数求导法则）。"
+  },
+  "aliases": [
+    {
+      "alias": "求导法则",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Differentiation Rules",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "链式法则",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Chain rule",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "隐函数求导",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "参数方程求导",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    },
+    {
+      "alias": "f''(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "高阶导数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "用链式法则求复合函数导数",
+      "question": "求 $y=\\sin(x^2+1)$ 的导数 $\\frac{dy}{dx}$。",
+      "solution": "令 $u=x^2+1$，则 $y=\\sin u$。由链式法则 $$\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}=\\cos u\\cdot2x=2x\\cos(x^2+1)$$",
+      "answer": "$\\frac{dy}{dx}=2x\\cos(x^2+1)$。"
+    }
+  ]
+}

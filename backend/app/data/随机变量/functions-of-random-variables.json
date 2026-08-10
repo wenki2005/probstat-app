@@ -1,0 +1,124 @@
+{
+  "kind": "knowledge",
+  "slug": "functions-of-random-variables",
+  "name_zh": "随机变量函数的分布",
+  "name_en": "Distributions of functions of random variables",
+  "category": "随机变量",
+  "subcategory": "随机变量函数的分布",
+  "sort_order": 11,
+  "summary": "由已知变量分布求 Z=g(X,Y) 或 Y=g(X) 的分布（卷积/变换/最值）。",
+  "definition": "设 $(X,Y)$ 的联合分布已知，$g$ 为二元实值函数，称 $Z=g(X,Y)$ 为随机变量的函数。离散情形：$P\\{Z=z_k\\}=\\sum_{g(x_i,y_j)=z_k}p_{ij}$；特别当 $X$、$Y$ 独立时，两独立离散变量之和满足**卷积公式** $p_Z(k)=\\sum_{i}p_X(i)\\,p_Y(k-i)$。连续情形：独立变量之和的密度 $f_Z(z)=\\int_{-\\infty}^{+\\infty}f_X(x)f_Y(z-x)\\,dx$；一般变换用**分布函数法**：先求 $F_Z(z)=P\\{g(X,Y)\\le z\\}$ 再求导得密度。对 $n$ 个独立同分布变量的**最值分布**：$F_{\\max}(z)=[F(z)]^n$，$F_{\\min}(z)=1-[1-F(z)]^n$。",
+  "formula_latex": "f_{X+Y}(z)=\\int_{-\\infty}^{+\\infty}f_X(x)f_Y(z-x)\\,dx,\\qquad F_{\\max}(z)=[F(z)]^n",
+  "properties": [
+    {
+      "title": "离散卷积",
+      "latex": "P\\{X+Y=k\\}=\\sum_{i}P\\{X=i\\}P\\{Y=k-i\\}",
+      "description": "独立离散变量之和的卷积公式"
+    },
+    {
+      "title": "连续卷积",
+      "latex": "f_{X+Y}(z)=\\int_{-\\infty}^{+\\infty}f_X(x)f_Y(z-x)\\,dx",
+      "description": "独立连续变量之和的密度为卷积"
+    },
+    {
+      "title": "单调变换公式",
+      "latex": "f_Y(y)=f_X(g^{-1}(y))\\,|(g^{-1})'(y)|",
+      "description": "Y=g(X) 严格单调可导时的密度公式"
+    },
+    {
+      "title": "最大值分布",
+      "latex": "F_{\\max}(z)=[F(z)]^n,\\qquad f_{\\max}(z)=n[F(z)]^{n-1}f(z)",
+      "description": "n 个 iid 变量的最大值分布"
+    },
+    {
+      "title": "最小值分布",
+      "latex": "F_{\\min}(z)=1-[1-F(z)]^n,\\qquad f_{\\min}(z)=n[1-F(z)]^{n-1}f(z)",
+      "description": "n 个 iid 变量的最小值分布"
+    }
+  ],
+  "derivation": "连续卷积的推导（$X$、$Y$ 独立）：令 $Z=X+Y$，由密度乘法公式其分布函数 $$F_Z(z)=\\iint_{x+y\\le z}f_X(x)f_Y(y)\\,dxdy=\\int_{-\\infty}^{+\\infty}f_X(x)\\left(\\int_{-\\infty}^{z-x}f_Y(y)\\,dy\\right)dx$$ 对 $z$ 求导得 $f_Z(z)=\\int_{-\\infty}^{+\\infty}f_X(x)f_Y(z-x)\\,dx$。最值分布：$\\{M\\le z\\}=\\bigcap_{i}\\{X_i\\le z\\}$，由独立性 $$F_M(z)=P\\{X_1\\le z\\}\\cdots P\\{X_n\\le z\\}=[F(z)]^n$$ 最小值由补事件 $\\{m>z\\}=\\bigcap_{i}\\{X_i>z\\}$ 得 $F_m(z)=1-[1-F(z)]^n$。",
+  "applications": [
+    "系统总负荷等于各部件需求之和的分布建模",
+    "串联/并联系统的寿命分布（最小值/最大值）",
+    "中心极限定理中样本和与样本均值的标准化",
+    "测量误差经非线性变换后的误差传播分析"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "随机变量函数的分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Distributions of functions of random variables",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "卷积公式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "最值分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "变换公式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "convolution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "Z=X+Y",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "F_{max}(z)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "g(X,Y)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    }
+  ],
+  "examples": [
+    {
+      "title": "独立泊松变量之和",
+      "question": "设 $X\\sim P(\\lambda_1)$、$Y\\sim P(\\lambda_2)$ 且相互独立，用卷积公式证明 $Z=X+Y\\sim P(\\lambda_1+\\lambda_2)$。",
+      "solution": "对 $k=0,1,2,\\dots$，由卷积公式 $$P\\{Z=k\\}=\\sum_{i=0}^{k}\\frac{\\lambda_1^i e^{-\\lambda_1}}{i!}\\cdot\\frac{\\lambda_2^{k-i}e^{-\\lambda_2}}{(k-i)!}=\\frac{e^{-(\\lambda_1+\\lambda_2)}}{k!}\\sum_{i=0}^{k}\\binom{k}{i}\\lambda_1^i\\lambda_2^{k-i}=\\frac{(\\lambda_1+\\lambda_2)^k e^{-(\\lambda_1+\\lambda_2)}}{k!}$$ 这正是参数为 $\\lambda_1+\\lambda_2$ 的泊松分布律。",
+      "answer": "$X+Y\\sim P(\\lambda_1+\\lambda_2)$，即独立泊松变量之和仍为泊松分布，参数相加（泊松分布的可加性）。"
+    },
+    {
+      "title": "指数变量的平方变换",
+      "question": "设 $X\\sim Exp(1)$，其密度 $f_X(x)=e^{-x}$（$x>0$），求 $Y=X^2$ 的密度。",
+      "solution": "用分布函数法：对 $y>0$，$$F_Y(y)=P\\{X^2\\le y\\}=P\\{X\\le\\sqrt{y}\\}=1-e^{-\\sqrt{y}}$$ 求导得 $$f_Y(y)=\\frac{d}{dy}\\left(1-e^{-\\sqrt{y}}\\right)=\\frac{e^{-\\sqrt{y}}}{2\\sqrt{y}}\\quad(y>0)$$",
+      "answer": "$f_Y(y)=\\dfrac{e^{-\\sqrt{y}}}{2\\sqrt{y}}$（$y>0$）。"
+    },
+    {
+      "title": "独立均匀变量的最大值分布",
+      "question": "设 $X_1,X_2,X_3$ 独立同分布于 $U(0,1)$，求 $M=\\max\\{X_1,X_2,X_3\\}$ 的分布函数与密度，并求 $P\\{M>1/2\\}$。",
+      "solution": "$U(0,1)$ 的分布函数为 $F(x)=x$（$0<x<1$），由最大值公式 $$F_M(m)=[F(m)]^3=m^3\\quad(0<m<1)$$ 求导得 $f_M(m)=3m^2$（$0<m<1$）。于是 $$P\\{M>1/2\\}=1-F_M(1/2)=1-\\frac18=\\frac78$$",
+      "answer": "$F_M(m)=m^3$，$f_M(m)=3m^2$（$0<m<1$）；$P\\{M>1/2\\}=7/8$。"
+    }
+  ]
+}

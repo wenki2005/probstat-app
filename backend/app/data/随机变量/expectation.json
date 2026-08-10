@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "expectation",
+  "name_zh": "数学期望",
+  "name_en": "Expected value",
+  "category": "随机变量",
+  "subcategory": "数字特征",
+  "sort_order": 5,
+  "summary": "随机变量取值的加权平均，反映分布的集中位置，记作 E(X)。",
+  "definition": "设离散型随机变量 $X$ 的分布律为 $p(x_i)$，若级数绝对收敛，称 $$E(X)=\\sum_{i}x_i\\,p(x_i)$$ 为 $X$ 的**数学期望**；设连续型随机变量 $X$ 的密度为 $f(x)$，若积分绝对收敛，称 $$E(X)=\\int_{-\\infty}^{+\\infty}x\\,f(x)\\,dx$$ 为 $X$ 的数学期望。期望是随机变量所有可能取值的加权平均，反映分布的中心位置。随机变量函数 $g(X)$ 的期望为 $E[g(X)]=\\sum_i g(x_i)p(x_i)$（离散）或 $E[g(X)]=\\int g(x)f(x)\\,dx$（连续），无需先求 $g(X)$ 的分布。",
+  "formula_latex": "E(X)=\\sum_{i}x_i p(x_i)\\quad(\\text{离散}),\\qquad E(X)=\\int_{-\\infty}^{+\\infty}x f(x)\\,dx\\quad(\\text{连续})",
+  "properties": [
+    {"title": "常数的期望", "latex": "E(c)=c", "description": "常数本身的期望"},
+    {"title": "线性性", "latex": "E(aX+b)=aE(X)+b", "description": "常数可提出、可平移"},
+    {"title": "可加性", "latex": "E(X+Y)=E(X)+E(Y)", "description": "不需要独立性"},
+    {"title": "独立时乘积", "latex": "E(XY)=E(X)E(Y)\\ (X,Y\\text{ 独立})", "description": "独立随机变量乘积的期望等于期望之积（反之不成立）"},
+    {"title": "单调性", "latex": "X\\le Y\\Rightarrow E(X)\\le E(Y)", "description": "期望保序"}
+  ],
+  "derivation": "线性性（离散情形）：$$E(aX+b)=\\sum_i(ax_i+b)p(x_i)=a\\sum_i x_i p(x_i)+b\\sum_i p(x_i)=aE(X)+b$$ 可加性：对联合分布 $p(x_i,y_j)$，$$E(X+Y)=\\sum_i\\sum_j(x_i+y_j)p(x_i,y_j)=\\sum_i x_i\\sum_j p(x_i,y_j)+\\sum_j y_j\\sum_i p(x_i,y_j)=E(X)+E(Y)$$",
+  "applications": ["决策分析中的期望收益与期望损失", "保险精算中的期望赔付额", "算法平均时间复杂度的分析", "样本均值估计总体期望"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "数学期望", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Expected value", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "期望", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "期望值", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "expectation", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "E(X)", "lang": "math", "kind": "notation", "weight": 90},
+    {"alias": "均值", "lang": "zh", "kind": "alias", "weight": 80},
+    {"alias": "mean", "lang": "en", "kind": "alias", "weight": 80}
+  ],
+  "examples": [
+    {
+      "title": "离散型期望计算",
+      "question": "设 $X$ 的分布律为 $P(X=-1)=0.2$，$P(X=0)=0.3$，$P(X=2)=0.5$。求 $E(X)$ 与 $E(X^2)$。",
+      "solution": "$$E(X)=(-1)\\times0.2+0\\times0.3+2\\times0.5=-0.2+1.0=0.8$$ $$E(X^2)=(-1)^2\\times0.2+0^2\\times0.3+2^2\\times0.5=0.2+0+2.0=2.2$$",
+      "answer": "$E(X)=0.8$，$E(X^2)=2.2$。"
+    }
+  ]
+}

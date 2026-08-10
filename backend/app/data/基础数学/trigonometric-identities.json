@@ -1,0 +1,127 @@
+{
+  "kind": "knowledge",
+  "slug": "trigonometric-identities",
+  "name_zh": "三角恒等式与和差角公式",
+  "name_en": "Trigonometric identities and angle addition formulas",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 6,
+  "summary": "同角恒等式、和差角、倍角与半角公式，化简三角式的工具。",
+  "definition": "三角恒等式是对角的所有允许取值都成立的等式，主要包括**同角关系** $\\sin^2\\alpha+\\cos^2\\alpha=1$，$\\tan\\alpha=\\frac{\\sin\\alpha}{\\cos\\alpha}$；**和差角公式** $$\\sin(\\alpha\\pm\\beta)=\\sin\\alpha\\cos\\beta\\pm\\cos\\alpha\\sin\\beta,\\qquad \\cos(\\alpha\\pm\\beta)=\\cos\\alpha\\cos\\beta\\mp\\sin\\alpha\\sin\\beta$$ $$\\tan(\\alpha\\pm\\beta)=\\frac{\\tan\\alpha\\pm\\tan\\beta}{1\\mp\\tan\\alpha\\tan\\beta}$$ 以及由它们推出的**倍角公式**与**半角公式**。",
+  "formula_latex": "\\sin(\\alpha\\pm\\beta)=\\sin\\alpha\\cos\\beta\\pm\\cos\\alpha\\sin\\beta",
+  "properties": [
+    {
+      "title": "同角基本关系",
+      "latex": "\\sin^2\\alpha+\\cos^2\\alpha=1,\\quad \\tan\\alpha=\\frac{\\sin\\alpha}{\\cos\\alpha},\\quad 1+\\tan^2\\alpha=\\sec^2\\alpha",
+      "description": "由单位圆得到的同角恒等式"
+    },
+    {
+      "title": "倍角公式",
+      "latex": "\\sin2\\alpha=2\\sin\\alpha\\cos\\alpha,\\quad \\cos2\\alpha=2\\cos^2\\alpha-1=1-2\\sin^2\\alpha",
+      "description": "和角公式中令 β=α 得到"
+    },
+    {
+      "title": "半角公式",
+      "latex": "\\sin^2\\frac{\\alpha}{2}=\\frac{1-\\cos\\alpha}{2},\\quad \\cos^2\\frac{\\alpha}{2}=\\frac{1+\\cos\\alpha}{2}",
+      "description": "由倍角公式变形得到"
+    },
+    {
+      "title": "和差化积",
+      "latex": "\\sin A+\\sin B=2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}",
+      "description": "把和差形式化为乘积形式"
+    },
+    {
+      "title": "积化和差",
+      "latex": "\\sin\\alpha\\cos\\beta=\\frac{\\sin(\\alpha+\\beta)+\\sin(\\alpha-\\beta)}{2}",
+      "description": "把乘积形式化为和差形式"
+    },
+    {
+      "title": "辅助角公式",
+      "latex": "a\\sin x+b\\cos x=\\sqrt{a^2+b^2}\\sin(x+\\varphi),\\quad \\tan\\varphi=\\frac{b}{a}",
+      "description": "把 asinx+bcosx 合并为一个正弦函数"
+    }
+  ],
+  "derivation": "和角公式可用单位圆上的向量点积推导。取单位圆上两点 $A(\\cos\\alpha,\\sin\\alpha)$、$B(\\cos\\beta,\\sin\\beta)$，则 $\\vec{OA}\\cdot\\vec{OB}=\\cos\\alpha\\cos\\beta+\\sin\\alpha\\sin\\beta$；另一方面由点积的夹角公式 $\\vec{OA}\\cdot\\vec{OB}=|\\vec{OA}||\\vec{OB}|\\cos(\\alpha-\\beta)=\\cos(\\alpha-\\beta)$，故 $\\cos(\\alpha-\\beta)=\\cos\\alpha\\cos\\beta+\\sin\\alpha\\sin\\beta$。把 $\\beta$ 换成 $-\\beta$，利用 $\\cos$ 为偶函数、$\\sin$ 为奇函数，得 $\\cos(\\alpha+\\beta)=\\cos\\alpha\\cos\\beta-\\sin\\alpha\\sin\\beta$；再由 $\\sin\\theta=\\cos(\\frac{\\pi}{2}-\\theta)$ 得 $\\sin(\\alpha\\pm\\beta)$。令 $\\beta=\\alpha$ 即得倍角公式；由 $\\cos2\\alpha=1-2\\sin^2\\alpha$ 解出 $\\sin^2\\alpha=\\frac{1-\\cos2\\alpha}{2}$，把 $\\alpha$ 换成 $\\frac{\\alpha}{2}$ 即得半角公式。",
+  "applications": [
+    "求 15°、75° 等非特殊角的三角函数值",
+    "化简三角式与证明恒等式",
+    "辅助角公式求 y=A sin(ωx+φ) 的最值与周期",
+    "傅里叶级数中的正交性与和差化积"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "sin(x)",
+        "label": "y = sin(x)",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "cos(x)",
+        "label": "y = cos(x)",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      -6.5,
+      6.5
+    ],
+    "y_range": [
+      -1.5,
+      1.5
+    ],
+    "notes": "对照 sin 与 cos 曲线：cos(x)=sin(x+π/2)，两者相位差 π/2，且满足 sin²x+cos²x=1。"
+  },
+  "aliases": [
+    {
+      "alias": "三角恒等式",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Trigonometric identities",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "和差角公式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "倍角公式",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "半角公式",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "sin(α±β)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "辅助角公式",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "求 sin75° 并化简 sinx+cosx",
+      "question": "(1) 求 $\\sin75^\\circ$ 的值；(2) 化简 $f(x)=\\sin x+\\cos x$。",
+      "solution": "(1) $\\sin75^\\circ=\\sin(45^\\circ+30^\\circ)=\\sin45^\\circ\\cos30^\\circ+\\cos45^\\circ\\sin30^\\circ=\\frac{\\sqrt2}{2}\\cdot\\frac{\\sqrt3}{2}+\\frac{\\sqrt2}{2}\\cdot\\frac12=\\frac{\\sqrt6+\\sqrt2}{4}$。(2) $f(x)=\\sqrt2\\left(\\frac{\\sqrt2}{2}\\sin x+\\frac{\\sqrt2}{2}\\cos x\\right)=\\sqrt2\\sin\\left(x+\\frac{\\pi}{4}\\right)$。",
+      "answer": "(1) $\\sin75^\\circ=\\frac{\\sqrt6+\\sqrt2}{4}$；(2) $f(x)=\\sqrt2\\sin(x+\\frac{\\pi}{4})$。"
+    }
+  ]
+}

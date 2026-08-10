@@ -1,0 +1,38 @@
+{
+  "kind": "knowledge",
+  "slug": "total-probability-formula",
+  "name_zh": "全概率公式",
+  "name_en": "Law of total probability",
+  "category": "基础概率",
+  "subcategory": "全概率公式",
+  "sort_order": 6,
+  "summary": "把事件按互斥原因分层求和求总概率，是贝叶斯公式的分母。",
+  "definition": "设 $A_1,A_2,\\dots,A_n$ 是样本空间 $\\Omega$ 的一个**划分**（完备事件组）：$A_i$ 两两互斥且 $\\bigcup_{i=1}^{n}A_i=\\Omega$，$P(A_i)>0$。则对任一事件 $B$，有 $$P(B)=\\sum_{i=1}^{n}P(A_i)P(B|A_i)$$ 直观地说，事件 $B$ 只能在某个 $A_i$ 下发生，把 $B$ 按原因 $A_1,\\dots,A_n$ 分层，各层贡献 $P(A_i)P(B|A_i)$ 之和就是总概率。",
+  "formula_latex": "P(B)=\\sum_{i=1}^{n}P(A_i)P(B|A_i)",
+  "properties": [
+    {"title": "完备事件组", "latex": "\\bigcup_{i=1}^{n}A_i=\\Omega,\\quad A_i\\cap A_j=\\varnothing\\ (i\\neq j)", "description": "原因两两互斥且覆盖所有可能"},
+    {"title": "与贝叶斯公式的联系", "latex": "P(A_i|B)=\\frac{P(B|A_i)P(A_i)}{P(B)}", "description": "贝叶斯公式的分母正是全概率公式"},
+    {"title": "加权平均", "latex": "P(B)=\\sum_{i}P(A_i)P(B|A_i)", "description": "P(B) 是各条件概率以 P(A_i) 为权的加权平均"},
+    {"title": "两事件特殊情形", "latex": "P(B)=P(A)P(B|A)+P(\\overline{A})P(B|\\overline{A})", "description": "最常用的二分划分形式"}
+  ],
+  "derivation": "因为 $\\bigcup_i A_i=\\Omega$，所以 $$B=B\\cap\\Omega=B\\cap\\left(\\bigcup_{i=1}^{n}A_i\\right)=\\bigcup_{i=1}^{n}(B\\cap A_i)$$ 由于 $A_i$ 两两互斥，$B\\cap A_i$ 也两两互斥。由概率的有限可加性与乘法公式 $$P(B)=\\sum_{i=1}^{n}P(B\\cap A_i)=\\sum_{i=1}^{n}P(A_i)P(B|A_i)$$",
+  "applications": ["多车间生产：由各车间次品率求总次品率", "医学筛检：由各人群患病率与检出率求阳性率", "多路由通信：由各路由成功概率求整体成功概率", "贝叶斯推断中计算边际似然"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "全概率公式", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Law of total probability", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "全概率", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "total probability", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "P(B)=ΣP(Ai)P(B|Ai)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "完备事件组", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "两车间次品率",
+      "question": "甲、乙两车间产量分别占全厂的 60% 与 40%，次品率分别为 2% 与 1%。求全厂产品的次品率。",
+      "solution": "设 $A_1$=产品来自甲车间，$A_2$=产品来自乙车间，$B$=产品为次品。则 $P(A_1)=0.6$，$P(A_2)=0.4$，$P(B|A_1)=0.02$，$P(B|A_2)=0.01$。由全概率公式 $$P(B)=P(A_1)P(B|A_1)+P(A_2)P(B|A_2)=0.6\\times0.02+0.4\\times0.01=0.016$$",
+      "answer": "全厂次品率为 1.6%。"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "kind": "knowledge",
+  "slug": "derivative",
+  "name_zh": "导数与微分",
+  "name_en": "Derivative and Differential",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 4,
+  "summary": "导数是变化率的精确度量，微分 dy=f'(x)dx 是其线性主部。",
+  "definition": "设函数 $y=f(x)$ 在 $x_0$ 的某邻域内有定义，若极限 $\\lim\\limits_{\\Delta x\\to0}\\frac{f(x_0+\\Delta x)-f(x_0)}{\\Delta x}$ 存在，则称 $f$ 在 $x_0$ 处**可导**，该极限称为 $f$ 在 $x_0$ 处的**导数**，记作 $f'(x_0)$ 或 $\\left.\\frac{dy}{dx}\\right|_{x=x_0}$。若增量 $\\Delta y=f(x_0+\\Delta x)-f(x_0)$ 可表示为 $\\Delta y=A\\Delta x+o(\\Delta x)$，则称 $f$ 在 $x_0$ 处**可微**，其中 $A=f'(x_0)$，称 $dy=A\\Delta x=f'(x_0)dx$ 为 $f$ 在 $x_0$ 处的**微分**。",
+  "formula_latex": "f'(x_0)=\\lim_{\\Delta x\\to0}\\frac{f(x_0+\\Delta x)-f(x_0)}{\\Delta x},\\qquad dy=f'(x)\\,dx",
+  "properties": [
+    {
+      "title": "可导必连续",
+      "latex": "f\\ \\text{在}\\ x_0\\ \\text{可导}\\Rightarrow f\\ \\text{在}\\ x_0\\ \\text{连续}",
+      "description": "可导蕴含连续，但连续不一定可导（如 |x| 在 0 处）"
+    },
+    {
+      "title": "导数的几何意义",
+      "latex": "k=f'(x_0)=\\tan\\alpha",
+      "description": "导数是曲线 y=f(x) 在点 (x_0,f(x_0)) 处切线的斜率，α 为倾角"
+    },
+    {
+      "title": "切线方程",
+      "latex": "y-f(x_0)=f'(x_0)(x-x_0)",
+      "description": "曲线在一点处的切线由导数唯一确定"
+    },
+    {
+      "title": "微分的几何意义",
+      "latex": "dy=f'(x_0)\\Delta x",
+      "description": "dy 是切线上纵坐标的增量，|Δx| 很小时 Δy≈dy"
+    },
+    {
+      "title": "可微与可导等价",
+      "latex": "f\\ \\text{可微}\\iff f\\ \\text{可导}",
+      "description": "一元函数可微与可导互为充要条件，且线性主部系数为 f'(x_0)"
+    }
+  ],
+  "derivation": "由导数定义 $f'(x_0)=\\lim\\limits_{\\Delta x\\to0}\\frac{\\Delta y}{\\Delta x}$。证明可导必连续：因为 $\\Delta y=\\frac{\\Delta y}{\\Delta x}\\cdot\\Delta x$，取极限得 $\\lim\\limits_{\\Delta x\\to0}\\Delta y=f'(x_0)\\cdot0=0$。微分来自对增量的线性近似：$\\Delta y=f'(x_0)\\Delta x+o(\\Delta x)$，略去高阶无穷小得 $\\Delta y\\approx dy$，这正是用切线代替曲线的局部线性化思想，也是误差估计 $\\Delta y\\approx f'(x_0)\\Delta x$ 的依据。",
+  "applications": [
+    "求曲线切线斜率、法线方程",
+    "瞬时速度、加速度等运动学问题",
+    "边际成本、边际收益等经济分析",
+    "用微分做近似计算与误差估计"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x^2",
+        "label": "y = x^2",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -2.5,
+      2.5
+    ],
+    "y_range": [
+      -2,
+      6
+    ],
+    "tangent_at": 1,
+    "notes": "在 x = 1 处画出切线：f(1) = 1，斜率 f'(1) = 2，切线方程为 y = 2x - 1，直观体现导数的几何意义。"
+  },
+  "aliases": [
+    {
+      "alias": "导数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Derivative",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "f'(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "dy/dx",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "微分",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Differential",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "切线斜率",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "求抛物线在一点处的导数、切线方程与微分",
+      "question": "求 $y=x^2$ 在 $x=1$ 处的导数、切线方程与微分。",
+      "solution": "由定义 $$f'(1)=\\lim_{\\Delta x\\to0}\\frac{(1+\\Delta x)^2-1}{\\Delta x}=\\lim_{\\Delta x\\to0}(2+\\Delta x)=2$$ 切线过点 $(1,1)$，斜率为 2，方程为 $y-1=2(x-1)$，即 $y=2x-1$。微分 $dy=f'(1)dx=2dx$。",
+      "answer": "$f'(1)=2$，切线 $y=2x-1$，微分 $dy=2dx$。"
+    }
+  ]
+}

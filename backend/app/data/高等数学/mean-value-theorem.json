@@ -1,0 +1,124 @@
+{
+  "kind": "knowledge",
+  "slug": "mean-value-theorem",
+  "name_zh": "微分中值定理",
+  "name_en": "Mean Value Theorems of Differentiation",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 6,
+  "summary": "罗尔、拉格朗日、柯西三大中值定理，沟通函数增量与导数。",
+  "definition": "**罗尔定理**：若 $f(x)$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导且 $f(a)=f(b)$，则存在 $\\xi\\in(a,b)$ 使 $f'(\\xi)=0$。**拉格朗日中值定理**：若 $f(x)$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，则存在 $\\xi\\in(a,b)$ 使 $f(b)-f(a)=f'(\\xi)(b-a)$。**柯西中值定理**：若 $f,g$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导且 $g'(x)\\neq0$，则存在 $\\xi\\in(a,b)$ 使 $\\frac{f(b)-f(a)}{g(b)-g(a)}=\\frac{f'(\\xi)}{g'(\\xi)}$。拉格朗日定理是柯西定理取 $g(x)=x$ 的特殊情形，罗尔定理是拉格朗日定理取 $f(a)=f(b)$ 的特殊情形。",
+  "formula_latex": "f(b)-f(a)=f'(\\xi)(b-a),\\qquad\\frac{f(b)-f(a)}{g(b)-g(a)}=\\frac{f'(\\xi)}{g'(\\xi)}",
+  "properties": [
+    {
+      "title": "罗尔定理",
+      "latex": "f(a)=f(b)\\Rightarrow\\exists\\xi\\in(a,b),\\ f'(\\xi)=0",
+      "description": "端点值相等时区间内至少存在一点使导数为零"
+    },
+    {
+      "title": "拉格朗日中值定理",
+      "latex": "f(b)-f(a)=f'(\\xi)(b-a)",
+      "description": "函数增量等于区间内某点导数与区间长度的乘积"
+    },
+    {
+      "title": "柯西中值定理",
+      "latex": "\\frac{f(b)-f(a)}{g(b)-g(a)}=\\frac{f'(\\xi)}{g'(\\xi)}",
+      "description": "两函数增量之比等于某点处导数之比，是洛必达法则的依据"
+    },
+    {
+      "title": "推论：导数为零则函数为常数",
+      "latex": "f'(x)\\equiv0\\ (x\\in(a,b))\\Rightarrow f(x)\\equiv C",
+      "description": "区间内导数为零的函数在该区间上必为常数"
+    },
+    {
+      "title": "推论：导数相等函数相差常数",
+      "latex": "f'(x)=g'(x)\\Rightarrow f(x)-g(x)=C",
+      "description": "导数相等的两个函数只相差一个常数"
+    }
+  ],
+  "derivation": "罗尔定理：$f$ 在 $[a,b]$ 上连续故存在最大值 $M$ 与最小值 $m$。若 $M=m$，$f$ 为常数，结论成立；否则最值至少一个在 $(a,b)$ 内部取得，由费马引理（可导函数的极值点处导数为零）得 $f'(\\xi)=0$。拉格朗日定理：作辅助函数 $\\varphi(x)=f(x)-f(a)-\\frac{f(b)-f(a)}{b-a}(x-a)$，其满足 $\\varphi(a)=\\varphi(b)=0$ 及可导条件，由罗尔定理存在 $\\xi$ 使 $\\varphi'(\\xi)=0$，即 $f'(\\xi)=\\frac{f(b)-f(a)}{b-a}$。柯西定理：作辅助函数 $\\psi(x)=f(x)-f(a)-\\frac{f(b)-f(a)}{g(b)-g(a)}\\big(g(x)-g(a)\\big)$，同理用罗尔定理证得。",
+  "applications": [
+    "证明恒等式与不等式",
+    "洛必达法则的证明基础",
+    "泰勒公式余项（拉格朗日余项）的推导",
+    "函数单调性、极值判别等导数应用的理论基础"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x**2",
+        "label": "y = x²（区间[1,3]）",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "tangent_at": 2,
+    "x_range": [
+      0,
+      4
+    ],
+    "y_range": [
+      -1,
+      12
+    ],
+    "notes": "在[1,3]上 f'(2)=(f(3)-f(1))/(3-1)=4，即拉格朗日中值定理的切点。"
+  },
+  "aliases": [
+    {
+      "alias": "微分中值定理",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Mean Value Theorem",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "罗尔定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Rolle's theorem",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "拉格朗日中值定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Lagrange MVT",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "柯西中值定理",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "MVT",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "验证拉格朗日中值定理",
+      "question": "对函数 $f(x)=x^2$ 在区间 $[1,3]$ 上验证拉格朗日中值定理，并求出相应的 $\\xi$。",
+      "solution": "$f(x)=x^2$ 是多项式，在 $[1,3]$ 上连续、在 $(1,3)$ 内可导，满足定理条件。$f(3)-f(1)=9-1=8$，故 $\\frac{f(3)-f(1)}{3-1}=4$。由拉格朗日中值定理存在 $\\xi\\in(1,3)$ 使 $f'(\\xi)=\\frac{f(3)-f(1)}{3-1}$，即 $2\\xi=4$，解得 $\\xi=2\\in(1,3)$。",
+      "answer": "$\\xi=2$，拉格朗日中值定理成立。"
+    }
+  ]
+}

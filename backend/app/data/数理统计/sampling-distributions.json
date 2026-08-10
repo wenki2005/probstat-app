@@ -1,0 +1,145 @@
+{
+  "kind": "knowledge",
+  "slug": "sampling-distributions",
+  "name_zh": "抽样分布",
+  "name_en": "Sampling Distributions",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 10,
+  "summary": "正态总体下样本均值、样本方差及 t、χ²、F 统计量的分布。",
+  "definition": "统计量的分布称为**抽样分布**。设 $X_1,\\dots,X_n$ 是来自正态总体 $N(\\mu,\\sigma^2)$ 的样本，$\\bar X=\\frac{1}{n}\\sum_{i=1}^{n}X_i$，$S^2=\\frac{1}{n-1}\\sum_{i=1}^{n}(X_i-\\bar X)^2$，则有基本定理：① $\\bar X\\sim N\\left(\\mu,\\frac{\\sigma^2}{n}\\right)$，即 $\\frac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\sim N(0,1)$；② $\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2(n-1)$；③ $\\bar X$ 与 $S^2$ 相互独立；④ $\\frac{\\bar X-\\mu}{S/\\sqrt n}\\sim t(n-1)$（t 分布，自由度 $n-1$）；⑤ 若 $X_1,\\dots,X_{n_1}$ 与 $Y_1,\\dots,Y_{n_2}$ 分别是来自两个独立正态总体 $N(\\mu_1,\\sigma_1^2)$ 与 $N(\\mu_2,\\sigma_2^2)$ 的样本，则 $\\frac{S_1^2/\\sigma_1^2}{S_2^2/\\sigma_2^2}\\sim F(n_1-1,n_2-1)$。$\\chi^2(n)$、$t(n)$、$F(m,n)$ 分别称为卡方分布、t（学生氏）分布、F 分布，它们由正态分布派生，是区间估计与假设检验的基础。",
+  "formula_latex": "\\bar X\\sim N\\left(\\mu,\\frac{\\sigma^2}{n}\\right),\\qquad \\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2(n-1)",
+  "properties": [
+    {
+      "title": "样本均值的分布",
+      "latex": "\\bar X\\sim N\\left(\\mu,\\frac{\\sigma^2}{n}\\right)",
+      "description": "正态总体的样本均值仍为正态，均值不变、方差缩小 n 倍"
+    },
+    {
+      "title": "标准化形式",
+      "latex": "Z=\\frac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\sim N(0,1)",
+      "description": "总体方差已知时标准化，可查标准正态分布表"
+    },
+    {
+      "title": "样本方差的分布",
+      "latex": "\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2(n-1)",
+      "description": "自由度为 n-1 的卡方分布"
+    },
+    {
+      "title": "独立性",
+      "latex": "\\bar X\\text{ 与 }S^2\\text{ 相互独立}",
+      "description": "正态总体下样本均值与样本方差独立，是 t 分布的前提"
+    },
+    {
+      "title": "t 统计量",
+      "latex": "T=\\frac{\\bar X-\\mu}{S/\\sqrt n}\\sim t(n-1)",
+      "description": "总体方差未知时用样本标准差 S 代替 σ"
+    },
+    {
+      "title": "F 统计量",
+      "latex": "F=\\frac{S_1^2/\\sigma_1^2}{S_2^2/\\sigma_2^2}\\sim F(n_1-1,n_2-1)",
+      "description": "两个独立正态总体方差比检验的统计量"
+    }
+  ],
+  "derivation": "用正交变换证明。令 $Z_i=(X_i-\\mu)/\\sigma$，则 $Z_1,\\dots,Z_n$ 独立同 $N(0,1)$。取正交矩阵 $U$（第一行为 $(1/\\sqrt n,\\dots,1/\\sqrt n)$），令 $\\mathbf W=U\\mathbf Z$，则 $W_1,\\dots,W_n$ 仍独立同 $N(0,1)$，且 $W_1=\\frac{1}{\\sqrt n}\\sum_{i=1}^{n}Z_i=\\frac{\\bar X-\\mu}{\\sigma/\\sqrt n}$。由正交变换保长度：$$\\sum_{i=1}^{n}Z_i^2=\\sum_{i=1}^{n}W_i^2=W_1^2+\\sum_{i=2}^{n}W_i^2$$ 而 $\\sum_{i=1}^{n}Z_i^2=\\frac{(n-1)S^2}{\\sigma^2}+\\frac{n(\\bar X-\\mu)^2}{\\sigma^2}=\\frac{(n-1)S^2}{\\sigma^2}+W_1^2$，比较两式得 $$\\frac{(n-1)S^2}{\\sigma^2}=\\sum_{i=2}^{n}W_i^2\\sim\\chi^2(n-1)$$ 且它与 $W_1$（从而与 $\\bar X$）独立。再由 t 分布定义：$T=\\frac{Z}{\\sqrt{W/(n-1)}}$，其中 $Z\\sim N(0,1)$、$W\\sim\\chi^2(n-1)$ 独立，代入即得 $T=\\frac{\\bar X-\\mu}{S/\\sqrt n}\\sim t(n-1)$。",
+  "applications": [
+    "总体均值的区间估计与 t 检验",
+    "总体方差的卡方检验",
+    "两总体方差比的 F 检验",
+    "质量控制图与抽样方案设计"
+  ],
+  "visualization_type": "distribution",
+  "graph_config": {
+    "n": 16,
+    "mu": 0,
+    "sigma": 1
+  },
+  "aliases": [
+    {
+      "alias": "抽样分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Sampling Distributions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "样本均值的分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "样本方差的分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "\\bar{X}",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "S^2",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "\\chi^2(n-1)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "t(n-1)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "F(n_1-1,n_2-1)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "卡方分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "t 分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "F 分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "正态总体抽样分布",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "正态总体抽样分布定理的应用",
+      "question": "设 $X_1,\\dots,X_{16}$ 是来自正态总体 $N(\\mu,\\sigma^2)$ 的样本。① 求 $P(|\\bar X-\\mu|<\\sigma/2)$；② 指出 $T=\\frac{\\bar X-\\mu}{S/\\sqrt{16}}$ 服从的分布。",
+      "solution": "① 由抽样分布定理，$\\bar X\\sim N(\\mu,\\sigma^2/16)$，故 $Z=\\frac{\\bar X-\\mu}{\\sigma/4}\\sim N(0,1)$，于是 $$P(|\\bar X-\\mu|<\\sigma/2)=P(|Z|<2)=2\\Phi(2)-1=2\\times0.9772-1=0.9544$$ ② 总体方差未知，用 $S$ 代替 $\\sigma$；因 $\\bar X$ 与 $S^2$ 独立且 $\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2(15)$，由 t 分布定义得 $T=\\frac{\\bar X-\\mu}{S/\\sqrt{16}}\\sim t(15)$。",
+      "answer": "① $P(|\\bar X-\\mu|<\\sigma/2)=0.9544$；② $T\\sim t(15)$。"
+    }
+  ]
+}

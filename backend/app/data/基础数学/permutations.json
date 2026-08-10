@@ -1,0 +1,100 @@
+{
+  "kind": "knowledge",
+  "slug": "permutations",
+  "name_zh": "排列",
+  "name_en": "Permutations",
+  "category": "基础数学",
+  "subcategory": "计数原理",
+  "sort_order": 8,
+  "summary": "乘法原理与排列数公式，计算有序取法的种数。",
+  "definition": "**乘法原理（分步计数原理）**：完成一件事需要 $n$ 个步骤，第 $i$ 步有 $m_i$ 种不同方法，且各步相互独立，则完成这件事共有 $m_1m_2\\cdots m_n$ 种方法。从 $n$ 个不同元素中取出 $m$（$m\\le n$）个元素按一定顺序排成一列，称为从 $n$ 个元素中取出 $m$ 个元素的一个**排列**；排列的总数记 $A_n^m$（或 $P_n^m$），有 $$A_n^m=n(n-1)\\cdots(n-m+1)=\\frac{n!}{(n-m)!}$$ 特别地，$m=n$ 时称为全排列，$A_n^n=n!$。",
+  "formula_latex": "A_n^m=n(n-1)\\cdots(n-m+1)=\\frac{n!}{(n-m)!}",
+  "properties": [
+    {
+      "title": "排列数公式",
+      "latex": "A_n^m=\\frac{n!}{(n-m)!}",
+      "description": "从 n 个不同元素中取出 m 个的排列数"
+    },
+    {
+      "title": "全排列",
+      "latex": "A_n^n=n!",
+      "description": "n 个元素全部取出排列"
+    },
+    {
+      "title": "阶乘性质",
+      "latex": "0!=1,\\quad n!=n(n-1)!",
+      "description": "规定 0!=1，阶乘满足递推"
+    },
+    {
+      "title": "递推关系",
+      "latex": "A_n^m=nA_{n-1}^{m-1}",
+      "description": "先确定第一个位置再排列其余"
+    },
+    {
+      "title": "加法原理",
+      "latex": "N=n_1+n_2+\\cdots+n_k",
+      "description": "分类计数时各类方法数相加"
+    }
+  ],
+  "derivation": "按乘法原理推导排列数公式：排第 1 个位置有 $n$ 种选法，第 2 个位置从余下 $n-1$ 个元素中选，有 $n-1$ 种，……，第 $m$ 个位置有 $n-m+1$ 种选法。分步相乘得 $A_n^m=n(n-1)\\cdots(n-m+1)$。又 $n!=n(n-1)\\cdots(n-m+1)\\cdot(n-m)!$，故 $A_n^m=\\frac{n!}{(n-m)!}$。递推式 $A_n^m=nA_{n-1}^{m-1}$ 可理解为：先确定第 1 个位置（$n$ 种），再对剩余 $n-1$ 个元素选 $m-1$ 个排列。加法原理与乘法原理的区别在于分类与分步：分类用加法、分步用乘法。",
+  "applications": [
+    "排队、站队、安排座次的计数",
+    "密码与编号方案计数",
+    "比赛对阵、抽奖顺序安排",
+    "概率论中等可能样本点的计数"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "排列",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Permutation",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "排列数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "乘法原理",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "A(n,m)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "A_n^m",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "P(n,m)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "全排列与指定位置排列",
+      "question": "5 名同学排成一排合影。(1) 共有多少种排法？(2) 若甲必须站在最左边，有多少种排法？",
+      "solution": "(1) 全排列 $A_5^5=5!=120$ 种。(2) 甲固定在最左边，其余 4 人任意排列，共 $A_4^4=4!=24$ 种。",
+      "answer": "(1) 120 种；(2) 24 种。"
+    }
+  ]
+}

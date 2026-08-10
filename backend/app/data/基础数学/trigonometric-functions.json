@@ -1,0 +1,138 @@
+{
+  "kind": "knowledge",
+  "slug": "trigonometric-functions",
+  "name_zh": "三角函数",
+  "name_en": "Trigonometric functions",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 5,
+  "summary": "正弦、余弦、正切函数，以单位圆定义，具有周期性。",
+  "definition": "设角 $\\alpha$ 的终边与单位圆 $x^2+y^2=1$ 交于点 $P(x,y)$，则定义 $\\sin\\alpha=y$，$\\cos\\alpha=x$，$\\tan\\alpha=\\frac{y}{x}$（$x\\ne0$）。这就是三角函数的**单位圆定义**，对任意实数角均适用。由此得到正弦函数 $y=\\sin x$、余弦函数 $y=\\cos x$、正切函数 $y=\\tan x$，它们都是周期函数：$\\sin x$ 与 $\\cos x$ 的最小正周期为 $2\\pi$，$\\tan x$ 的最小正周期为 $\\pi$。",
+  "formula_latex": "\\sin\\alpha=y,\\quad \\cos\\alpha=x,\\quad \\tan\\alpha=\\frac{\\sin\\alpha}{\\cos\\alpha}",
+  "properties": [
+    {
+      "title": "值域",
+      "latex": "-1\\le\\sin x\\le1,\\quad -1\\le\\cos x\\le1,\\quad \\tan x\\in\\mathbb{R}",
+      "description": "正弦、余弦取值于 [-1,1]，正切可取任意实数"
+    },
+    {
+      "title": "奇偶性",
+      "latex": "\\sin(-x)=-\\sin x,\\quad \\cos(-x)=\\cos x,\\quad \\tan(-x)=-\\tan x",
+      "description": "正弦、正切为奇函数，余弦为偶函数"
+    },
+    {
+      "title": "周期性",
+      "latex": "\\sin(x+2\\pi)=\\sin x,\\quad \\cos(x+2\\pi)=\\cos x,\\quad \\tan(x+\\pi)=\\tan x",
+      "description": "正弦、余弦最小正周期为 2π，正切为 π"
+    },
+    {
+      "title": "特殊角值",
+      "latex": "\\sin0=0,\\quad \\sin\\frac{\\pi}{2}=1,\\quad \\cos0=1,\\quad \\cos\\pi=-1",
+      "description": "0、π/2、π 等特殊角的三角函数值"
+    },
+    {
+      "title": "基本恒等式",
+      "latex": "\\sin^2\\alpha+\\cos^2\\alpha=1,\\quad \\tan\\alpha=\\frac{\\sin\\alpha}{\\cos\\alpha}",
+      "description": "同角三角函数之间的基本关系"
+    },
+    {
+      "title": "诱导公式",
+      "latex": "\\sin(\\pi-\\alpha)=\\sin\\alpha,\\quad \\cos(\\pi-\\alpha)=-\\cos\\alpha",
+      "description": "利用对称性化简任意角的三角函数"
+    }
+  ],
+  "derivation": "**单位圆定义与基本恒等式**：点 $P(\\cos\\alpha,\\sin\\alpha)$ 在单位圆 $x^2+y^2=1$ 上，故 $\\sin^2\\alpha+\\cos^2\\alpha=1$；又 $\\tan\\alpha=\\frac{y}{x}=\\frac{\\sin\\alpha}{\\cos\\alpha}$，两边同除以 $\\cos^2\\alpha$ 得 $1+\\tan^2\\alpha=\\frac{1}{\\cos^2\\alpha}$。周期性：角旋转 $2\\pi$ 后终边回到原位置，故 $\\sin(x+2\\pi)=\\sin x$；而 $\\sin(x+\\pi)=-\\sin x$、$\\cos(x+\\pi)=-\\cos x$，所以 $\\tan x$ 的周期为 $\\pi$。奇偶性：终边关于 $x$ 轴对称时 $y$ 变号而 $x$ 不变，得 $\\sin$ 奇、$\\cos$ 偶。图象性质：$y=\\cos x=\\sin(x+\\frac{\\pi}{2})$ 是正弦曲线向左平移 $\\frac{\\pi}{2}$；$y=\\tan x$ 在 $x=\\frac{\\pi}{2}+k\\pi$ 处有竖直渐近线，在区间 $(-\\frac{\\pi}{2}+k\\pi,\\frac{\\pi}{2}+k\\pi)$ 上单调递增。",
+  "applications": [
+    "简谐运动与波动 x=A sin(ωt+φ)",
+    "三角测量、航海与天文定位",
+    "交流电与信号处理中的傅里叶分析",
+    "周期现象的建模"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "sin(x)",
+        "label": "y = sin(x)",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "cos(x)",
+        "label": "y = cos(x)",
+        "color": "#f59e0b"
+      },
+      {
+        "expr": "tan(x)",
+        "label": "y = tan(x)",
+        "color": "#10b981"
+      }
+    ],
+    "x_range": [
+      -6.5,
+      6.5
+    ],
+    "y_range": [
+      -2,
+      2
+    ],
+    "notes": "sin、cos 取值于 [-1,1]；tan 在 x=π/2+kπ 处有竖直渐近线，此处用 y_range=[-2,2] 截断显示。"
+  },
+  "aliases": [
+    {
+      "alias": "三角函数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Trigonometric functions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "正弦",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "余弦",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "正切",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "sin",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "cos",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "tan",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    }
+  ],
+  "examples": [
+    {
+      "title": "由终边上的点求三角函数值",
+      "question": "已知角 $\\alpha$ 的终边经过点 $P(-3,4)$，求 $\\sin\\alpha$、$\\cos\\alpha$、$\\tan\\alpha$。",
+      "solution": "点 $P$ 到原点的距离 $r=\\sqrt{(-3)^2+4^2}=5$。由三角函数定义 $\\sin\\alpha=\\frac{y}{r}=\\frac{4}{5}$，$\\cos\\alpha=\\frac{x}{r}=-\\frac{3}{5}$，$\\tan\\alpha=\\frac{y}{x}=-\\frac{4}{3}$。",
+      "answer": "$\\sin\\alpha=\\frac{4}{5}$，$\\cos\\alpha=-\\frac{3}{5}$，$\\tan\\alpha=-\\frac{4}{3}$。"
+    }
+  ]
+}

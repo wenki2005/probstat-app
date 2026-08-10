@@ -1,0 +1,40 @@
+{
+  "kind": "knowledge",
+  "slug": "moment-estimation",
+  "name_zh": "矩估计",
+  "name_en": "Method of Moments Estimation",
+  "category": "数理统计",
+  "subcategory": "参数估计",
+  "sort_order": 3,
+  "summary": "用样本矩代替总体矩解方程求参数估计，直观简便的经典方法。",
+  "definition": "**矩估计法**（method of moments）的基本思想是：用**样本矩**作为相应**总体矩**的估计量。设总体 $X$ 的分布含未知参数 $\\theta_1,\\dots,\\theta_m$，总体 $k$ 阶矩为 $\\mu_k=E(X^k)$（是参数的函数），样本 $k$ 阶矩为 $A_k=\\frac{1}{n}\\sum_{i=1}^{n}X_i^k$。令前 $m$ 个总体矩等于相应的样本矩：$$\\mu_k(\\theta_1,\\dots,\\theta_m)=A_k,\\quad k=1,2,\\dots,m$$ 解此方程组得到的 $\\hat\\theta_1,\\dots,\\hat\\theta_m$ 称为参数的**矩估计量**，其观测值称为**矩估计值**。",
+  "formula_latex": "\\mu_k(\\theta_1,\\dots,\\theta_m)=A_k=\\frac{1}{n}\\sum_{i=1}^{n}X_i^k,\\quad k=1,\\dots,m",
+  "properties": [
+    {"title": "一阶矩方程", "latex": "E(X)=\\bar X", "description": "用样本均值估计总体均值"},
+    {"title": "二阶中心矩估计", "latex": "\\hat\\sigma^2=B_2=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^2", "description": "总体方差（二阶中心矩）的矩估计，是有偏的"},
+    {"title": "正态分布参数的矩估计", "latex": "\\hat\\mu=\\bar X,\\quad \\hat\\sigma^2=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^2", "description": "N(μ,σ²) 两个参数的矩估计"},
+    {"title": "理论依据：大数定律", "latex": "A_k \\xrightarrow{P} E(X^k)", "description": "样本矩依概率收敛于总体矩，保证矩估计的相合性"}
+  ],
+  "derivation": "矩估计的合理性来自**辛钦大数定律**：对独立同分布样本，样本 $k$ 阶矩 $A_k=\\frac{1}{n}\\sum_{i=1}^{n}X_i^k$ 依概率收敛于总体 $k$ 阶矩 $E(X^k)$。因此当 $n$ 充分大时，$A_k$ 与 $\\mu_k$ 应“几乎相等”，自然令二者相等解出参数。以正态总体 $X\\sim N(\\mu,\\sigma^2)$ 为例：由 $E(X)=\\mu$、$E(X^2)=\\mu^2+\\sigma^2$，令 $$\\bar X=\\mu,\\qquad \\frac{1}{n}\\sum_{i=1}^{n}X_i^2=\\mu^2+\\sigma^2$$ 解得 $\\hat\\mu=\\bar X$，$\\hat\\sigma^2=\\frac{1}{n}\\sum_{i=1}^{n}X_i^2-\\bar X^2=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^2$。",
+  "applications": ["正态总体 μ 与 σ² 的估计", "指数分布参数（如元件寿命）估计", "均匀分布 U(0,θ) 的 θ 估计", "二项分布中 p 的估计"],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "矩估计", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Method of Moments", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "矩估计法", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "矩法估计", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "MoM", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "moment estimation", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "样本矩", "lang": "zh", "kind": "keyword", "weight": 70},
+    {"alias": "A_k=(1/n)ΣX_i^k", "lang": "math", "kind": "notation", "weight": 65}
+  ],
+  "examples": [
+    {
+      "title": "均匀分布 U(a,b) 的矩估计",
+      "question": "设总体 $X\\sim U(a,b)$，$a<b$ 均未知，$X_1,\\dots,X_n$ 为样本。用矩估计法求 $a,b$ 的估计量。",
+      "solution": "均匀分布的均值与方差为 $E(X)=\\frac{a+b}{2}$，$Var(X)=\\frac{(b-a)^2}{12}$。令总体一阶矩等于样本均值、总体二阶中心矩等于样本二阶中心矩：$$\\frac{a+b}{2}=\\bar X,\\qquad \\frac{(b-a)^2}{12}=B_2=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^2$$ 由第一式 $b=2\\bar X-a$，代入第二式得 $(2\\bar X-2a)^2=12B_2$，即 $\\bar X-a=\\sqrt{3B_2}$，解得 $$\\hat a=\\bar X-\\sqrt{3B_2},\\qquad \\hat b=\\bar X+\\sqrt{3B_2}$$",
+      "answer": "$\\hat a=\\bar X-\\sqrt{3B_2}$，$\\hat b=\\bar X+\\sqrt{3B_2}$，其中 $B_2=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^2$。"
+    }
+  ]
+}

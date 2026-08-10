@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "probability-axioms",
+  "name_zh": "概率的公理化定义",
+  "name_en": "Axiomatic definition of probability",
+  "category": "基础概率",
+  "subcategory": "",
+  "sort_order": 3,
+  "summary": "柯尔莫哥洛夫提出的三条公理，用测度论严格刻画概率。",
+  "definition": "设 $\\Omega$ 为样本空间，$\\mathcal{F}$ 为 $\\Omega$ 上事件构成的 $\\sigma$ 代数。定义在 $\\mathcal{F}$ 上的实值函数 $P$ 若满足三条公理，则称 $P$ 为**概率**，称 $P(A)$ 为事件 $A$ 的概率：$$(1)\\ P(A)\\ge 0;\\qquad (2)\\ P(\\Omega)=1;\\qquad (3)\\ P\\left(\\bigcup_{i=1}^{\\infty}A_i\\right)=\\sum_{i=1}^{\\infty}P(A_i)\\ (\\text{其中 }A_i\\text{ 两两互斥})$$ 由公理可推出 $P(\\varnothing)=0$、对立事件 $P(\\overline{A})=1-P(A)$、加法公式等常用结论。",
+  "formula_latex": "P(A)\\ge 0,\\quad P(\\Omega)=1,\\quad P\\left(\\bigcup_{i=1}^{\\infty}A_i\\right)=\\sum_{i=1}^{\\infty}P(A_i)",
+  "properties": [
+    {"title": "非负性", "latex": "P(A)\\ge 0", "description": "任何事件的概率非负"},
+    {"title": "规范性", "latex": "P(\\Omega)=1", "description": "必然事件的概率为 1"},
+    {"title": "可列可加性", "latex": "P(\\bigcup_{i=1}^{\\infty}A_i)=\\sum_{i=1}^{\\infty}P(A_i)", "description": "两两互斥事件的并的概率等于各概率之和"},
+    {"title": "不可能事件", "latex": "P(\\varnothing)=0", "description": "由可列可加性推出的基本结论"},
+    {"title": "对立事件", "latex": "P(\\overline{A})=1-P(A)", "description": "常用“求反面”的技巧"},
+    {"title": "加法公式", "latex": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)", "description": "两个事件并的概率，减去重复计算的部分"}
+  ],
+  "derivation": "证 $P(\\varnothing)=0$：在可列可加性中取 $A_1=\\Omega$，$A_2=A_3=\\cdots=\\varnothing$，则 $$P(\\Omega)=P(\\Omega)+P(\\varnothing)+P(\\varnothing)+\\cdots$$ 由 $P(\\Omega)=1<+\\infty$ 得 $P(\\varnothing)=0$。再证加法公式：$A\\cup B$ 可分解为互斥的三部分 $A\\setminus B$、$B\\setminus A$、$A\\cap B$，由可加性 $$P(A\\cup B)=P(A\\setminus B)+P(B\\setminus A)+P(A\\cap B)=P(A)+P(B)-P(A\\cap B)$$ 其中 $P(A\\setminus B)=P(A)-P(A\\cap B)$，$P(B\\setminus A)=P(B)-P(A\\cap B)$。",
+  "applications": ["统一古典概型、几何概型与频率定义", "验证分布律与密度函数满足归一性", "测度论概率与随机过程理论的严格基础", "假设检验中显著性水平的公理化约束"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "概率的公理化定义", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Axiomatic definition of probability", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "概率测度", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "柯尔莫哥洛夫公理", "lang": "zh", "kind": "alias", "weight": 80},
+    {"alias": "probability measure", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "P(A)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "三条公理", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "由公理推出的概率计算",
+      "question": "设 $P(A)=0.5$，$P(B)=0.4$，$P(A\\cap B)=0.1$，求 $P(A\\cup B)$、$P(\\overline{A})$ 与 $P(A\\cap\\overline{B})$。",
+      "solution": "由加法公式 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0.5+0.4-0.1=0.8$。由对立事件公式 $P(\\overline{A})=1-P(A)=0.5$。又 $A=(A\\cap B)\\cup(A\\cap\\overline{B})$ 为互斥分解，故 $$P(A\\cap\\overline{B})=P(A)-P(A\\cap B)=0.5-0.1=0.4$$",
+      "answer": "$P(A\\cup B)=0.8$，$P(\\overline{A})=0.5$，$P(A\\cap\\overline{B})=0.4$。"
+    }
+  ]
+}

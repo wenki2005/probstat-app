@@ -1,0 +1,105 @@
+{
+  "kind": "knowledge",
+  "slug": "complex-numbers",
+  "name_zh": "复数基础",
+  "name_en": "Complex numbers",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 12,
+  "summary": "复数 z=a+bi 的代数形式、模、共轭与三角形式。",
+  "definition": "形如 $z=a+bi$ 的数称为复数，其中 $a,b\\in\\mathbb{R}$，$i$ 为虚数单位且 $i^2=-1$。$a$ 称为实部，$b$ 称为虚部；$b=0$ 时为实数，$a=0$ 且 $b\\ne0$ 时为纯虚数。复数 $z=a+bi$ 的**模**为 $|z|=\\sqrt{a^2+b^2}$，**共轭复数**为 $\\bar z=a-bi$。在复平面中 $z$ 对应点 $(a,b)$，设 $r=|z|$，辐角为 $\\theta$，则 $a=r\\cos\\theta$，$b=r\\sin\\theta$，于是 $$z=r(\\cos\\theta+i\\sin\\theta)$$ 称为复数的**三角形式**（极坐标形式）。",
+  "formula_latex": "z=a+bi=r(\\cos\\theta+i\\sin\\theta),\\quad |z|=\\sqrt{a^2+b^2}",
+  "properties": [
+    {
+      "title": "模的平方",
+      "latex": "|z|^2=z\\bar z=a^2+b^2",
+      "description": "模的平方等于复数与共轭的乘积"
+    },
+    {
+      "title": "共轭",
+      "latex": "\\bar z=a-bi,\\quad z+\\bar z=2a,\\quad z-\\bar z=2bi",
+      "description": "共轭在实轴上对称，与 z 的和差给出实部虚部"
+    },
+    {
+      "title": "共轭的运算",
+      "latex": "\\overline{z_1\\pm z_2}=\\bar z_1\\pm\\bar z_2,\\quad \\overline{z_1z_2}=\\bar z_1\\bar z_2",
+      "description": "共轭运算与加减乘相容"
+    },
+    {
+      "title": "模的运算",
+      "latex": "|z_1z_2|=|z_1||z_2|,\\quad \\left|\\frac{z_1}{z_2}\\right|=\\frac{|z_1|}{|z_2|}",
+      "description": "积的模等于模的积，商的模等于模的商"
+    },
+    {
+      "title": "三角形式乘法",
+      "latex": "r_1(\\cos\\theta_1+i\\sin\\theta_1)\\cdot r_2(\\cos\\theta_2+i\\sin\\theta_2)=r_1r_2[\\cos(\\theta_1+\\theta_2)+i\\sin(\\theta_1+\\theta_2)]",
+      "description": "模相乘、辐角相加"
+    },
+    {
+      "title": "棣莫弗公式",
+      "latex": "(\\cos\\theta+i\\sin\\theta)^n=\\cos(n\\theta)+i\\sin(n\\theta)",
+      "description": "三角形式的 n 次方即模的 n 次方、辐角 n 倍"
+    }
+  ],
+  "derivation": "由 $i^2=-1$ 可直接验证 $z\\bar z=(a+bi)(a-bi)=a^2-(bi)^2=a^2+b^2=|z|^2$。三角形式来自极坐标：点 $(a,b)$ 到原点距离 $r=\\sqrt{a^2+b^2}$，且 $a=r\\cos\\theta$、$b=r\\sin\\theta$，代入 $z=a+bi$ 即得 $z=r(\\cos\\theta+i\\sin\\theta)$。三角形式的乘法利用和角公式：$(\\cos\\theta_1+i\\sin\\theta_1)(\\cos\\theta_2+i\\sin\\theta_2)=\\cos\\theta_1\\cos\\theta_2-\\sin\\theta_1\\sin\\theta_2+i(\\sin\\theta_1\\cos\\theta_2+\\cos\\theta_1\\sin\\theta_2)=\\cos(\\theta_1+\\theta_2)+i\\sin(\\theta_1+\\theta_2)$，即模相乘、辐角相加。重复应用即得棣莫弗公式，这是复数开方与相量运算的基础。",
+  "applications": [
+    "解实系数一元二次方程的虚根",
+    "电路分析中的相量表示",
+    "傅里叶变换与信号处理",
+    "复平面几何与分形（曼德博集合）"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "复数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Complex numbers",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "虚数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "共轭复数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "i",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "|z|",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "z̄",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "复数的模与共轭",
+      "question": "已知 $z=3+4i$，求 $|z|$、$\\bar z$ 与 $z\\bar z$。",
+      "solution": "$|z|=\\sqrt{3^2+4^2}=5$；$\\bar z=3-4i$；$z\\bar z=(3+4i)(3-4i)=9-16i^2=9+16=25$，恰好等于 $|z|^2$。",
+      "answer": "$|z|=5$，$\\bar z=3-4i$，$z\\bar z=25$。"
+    }
+  ]
+}

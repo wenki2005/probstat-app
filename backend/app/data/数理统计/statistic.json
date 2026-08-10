@@ -1,0 +1,42 @@
+{
+  "kind": "knowledge",
+  "slug": "statistic",
+  "name_zh": "统计量",
+  "name_en": "Statistic",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "不含未知参数的样本函数，是进行参数估计与假设检验的基本工具。",
+  "definition": "设 $X_1,X_2,\\dots,X_n$ 是来自总体 $X$ 的样本，$g(X_1,\\dots,X_n)$ 是样本的连续函数，且 $g$ **不含任何未知参数**，则称 $g(X_1,\\dots,X_n)$ 为一个**统计量**。统计量是样本的函数，本身也是随机变量；代入样本观测值 $x_1,\\dots,x_n$ 后得到统计量的观测值。常用统计量：**样本均值** $\\bar X=\\frac{1}{n}\\sum_{i=1}^{n}X_i$，**样本方差** $S^2=\\frac{1}{n-1}\\sum_{i=1}^{n}(X_i-\\bar X)^2$，样本标准差 $S=\\sqrt{S^2}$，样本 $k$ 阶原点矩 $A_k=\\frac{1}{n}\\sum_{i=1}^{n}X_i^k$，样本 $k$ 阶中心矩 $B_k=\\frac{1}{n}\\sum_{i=1}^{n}(X_i-\\bar X)^k$，以及次序统计量、样本中位数、样本极差等。",
+  "formula_latex": "\\bar{X}=\\frac{1}{n}\\sum_{i=1}^{n}X_i,\\qquad S^2=\\frac{1}{n-1}\\sum_{i=1}^{n}(X_i-\\bar{X})^2",
+  "properties": [
+    {"title": "样本均值的期望", "latex": "E(\\bar X)=E(X)=\\mu", "description": "样本均值是总体均值的无偏估计"},
+    {"title": "样本均值的方差", "latex": "Var(\\bar X)=\\frac{\\sigma^2}{n}", "description": "样本均值的波动随 n 增大而减小，是中心极限定理的基础"},
+    {"title": "样本方差的无偏性", "latex": "E(S^2)=\\sigma^2", "description": "除以 n-1 而非 n，使样本方差成为总体方差的无偏估计"},
+    {"title": "离差和为零", "latex": "\\sum_{i=1}^{n}(X_i-\\bar X)=0", "description": "样本值相对均值的偏差之和恒为零"},
+    {"title": "均值的抽样分布（正态总体）", "latex": "\\bar X \\sim N\\left(\\mu,\\frac{\\sigma^2}{n}\\right)", "description": "正态总体的样本均值仍服从正态分布"}
+  ],
+  "derivation": "（1）样本均值：由期望线性性 $$E(\\bar X)=\\frac{1}{n}\\sum_{i=1}^{n}E(X_i)=\\frac{1}{n}\\cdot n\\mu=\\mu$$ 由独立性 $$Var(\\bar X)=\\frac{1}{n^2}\\sum_{i=1}^{n}Var(X_i)=\\frac{n\\sigma^2}{n^2}=\\frac{\\sigma^2}{n}$$ （2）样本方差：利用 $\\sum(X_i-\\bar X)^2=\\sum X_i^2-n\\bar X^2$、$E(X_i^2)=\\sigma^2+\\mu^2$ 与 $E(\\bar X^2)=\\frac{\\sigma^2}{n}+\\mu^2$，得 $$E\\left[\\sum_{i=1}^{n}(X_i-\\bar X)^2\\right]=\\sum_{i=1}^{n}(\\sigma^2+\\mu^2)-n\\left(\\frac{\\sigma^2}{n}+\\mu^2\\right)=(n-1)\\sigma^2$$ 故 $E(S^2)=\\frac{1}{n-1}(n-1)\\sigma^2=\\sigma^2$，这就是样本方差除以 $n-1$ 的原因。",
+  "applications": ["用样本均值估计总体均值", "用样本方差估计总体方差", "构造 t、F 等检验统计量进行假设检验", "过程能力分析（样本均值控制图）"],
+  "visualization_type": "formula",
+  "graph_config": {"show_sample_mean": true},
+  "aliases": [
+    {"alias": "统计量", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Statistic", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "样本均值", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "样本方差", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "sample mean", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "sample variance", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "Xbar", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "\\bar{X}", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "S^2", "lang": "math", "kind": "notation", "weight": 80}
+  ],
+  "examples": [
+    {
+      "title": "样本均值与样本方差的计算",
+      "question": "测得某零件直径（mm）的样本为 9.9, 10.1, 10.0, 10.2, 9.8，求样本均值 $\\bar x$ 与样本方差 $s^2$。",
+      "solution": "$$\\bar x=\\frac{9.9+10.1+10.0+10.2+9.8}{5}=\\frac{50.0}{5}=10.0$$ 各偏差为 $-0.1,0.1,0.0,0.2,-0.2$，偏差平方和为 $0.01+0.01+0+0.04+0.04=0.10$，故 $$s^2=\\frac{1}{5-1}\\times0.10=0.025$$",
+      "answer": "$\\bar x=10.0\\,\\text{mm}$，$s^2=0.025\\,\\text{mm}^2$。"
+    }
+  ]
+}

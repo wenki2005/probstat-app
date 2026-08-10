@@ -1,0 +1,39 @@
+{
+  "kind": "knowledge",
+  "slug": "random-variable",
+  "name_zh": "随机变量",
+  "name_en": "Random variable",
+  "category": "随机变量",
+  "subcategory": "",
+  "sort_order": 1,
+  "summary": "把随机试验结果映射为实数的函数，是量化研究随机现象的工具。",
+  "definition": "设 $\\Omega$ 为样本空间，若对每一个样本点 $\\omega\\in\\Omega$，都有唯一确定的实数 $X(\\omega)$ 与之对应，则称 $X=X(\\omega)$ 为定义在 $\\Omega$ 上的**随机变量**，即 $$X:\\Omega\\to\\mathbb{R},\\quad \\omega\\mapsto X(\\omega)$$ 随机变量按取值特征分为**离散型随机变量**（取值有限或可列）与**连续型随机变量**（取值充满某个区间）。对任意实数 $x$，事件 $\\{X\\le x\\}$ 应有确定的概率，这是随机变量可计算性的基本要求。",
+  "formula_latex": "X:\\Omega\\to\\mathbb{R},\\quad \\omega\\mapsto X(\\omega)",
+  "properties": [
+    {"title": "本质是函数", "latex": "X=X(\\omega)", "description": "每个样本点对应唯一实数"},
+    {"title": "事件表示", "latex": "\\{X\\le x\\}=\\{\\omega\\mid X(\\omega)\\le x\\}", "description": "随机变量取值落入集合对应样本空间中的事件"},
+    {"title": "离散型", "latex": "X(\\Omega)=\\{x_1,x_2,\\dots\\}", "description": "取值集合为有限集或可列集"},
+    {"title": "连续型", "latex": "X(\\Omega)\\text{ 为区间}", "description": "取值充满某个实数区间"}
+  ],
+  "derivation": "以实例说明：抛 3 枚均匀硬币，定义 $X$ 为正面出现的次数。样本空间含 $2^3=8$ 个样本点，$X$ 的取值为 $0,1,2,3$。例如 $$\\{X=1\\}=\\{HTT,THT,TTH\\},\\quad P(X=1)=\\frac{3}{8}$$ 可见随机变量把复杂的样本空间压缩为实数轴上的一组取值，并在取值上诱导出概率分布，使概率问题转化为数值函数的分析。",
+  "applications": ["考试成绩、测量误差等观测值的量化", "伯努利试验中成功次数的计数", "股票收益、寿命、等待时间等连续量的建模", "统计推断中样本统计量的表达"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "随机变量", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Random variable", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "随机变数", "lang": "zh", "kind": "alias", "weight": 85},
+    {"alias": "random variable", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "X(ω)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "X:Ω→R", "lang": "math", "kind": "notation", "weight": 80},
+    {"alias": "随机变量的函数", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "等可能取值的随机变量",
+      "question": "从 1,2,3,4,5 中随机等可能地取一个数，记为 $X$。写出 $X$ 的取值集合，并求 $P(X\\le 3)$。",
+      "solution": "$X$ 的取值集合为 $\\{1,2,3,4,5\\}$，且各取值等概率 $\\frac{1}{5}$。事件 $\\{X\\le 3\\}$ 对应取值 $1,2,3$，故 $$P(X\\le 3)=\\frac{3}{5}$$",
+      "answer": "取值集合为 $\\{1,2,3,4,5\\}$，$P(X\\le 3)=3/5$。"
+    }
+  ]
+}

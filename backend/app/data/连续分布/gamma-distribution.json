@@ -1,0 +1,101 @@
+{
+  "kind": "distribution",
+  "slug": "gamma-distribution",
+  "name_zh": "Gamma 分布",
+  "name_en": "Gamma distribution",
+  "category": "连续分布",
+  "subcategory": "",
+  "sort_order": 4,
+  "summary": "由形状与率参数控制的两参数分布族，涵盖指数分布与卡方分布。",
+  "type": "continuous",
+  "support": "x \\in (0,+\\infty)",
+  "params": [
+    {
+      "name": "alpha",
+      "latex": "\\alpha",
+      "description": "形状参数（α>0）",
+      "default": 2,
+      "min": 0.5,
+      "max": 10,
+      "step": 0.5
+    },
+    {
+      "name": "beta",
+      "latex": "\\beta",
+      "description": "率参数（β>0）",
+      "default": 1,
+      "min": 0.2,
+      "max": 5,
+      "step": 0.2
+    }
+  ],
+  "pmf_or_pdf_latex": "f(x)=\\frac{\\beta^{\\alpha}}{\\Gamma(\\alpha)}x^{\\alpha-1}e^{-\\beta x},\\quad x>0",
+  "cdf_latex": "F(x)=\\frac{\\gamma(\\alpha,\\beta x)}{\\Gamma(\\alpha)},\\quad x>0",
+  "mean_formula": "E(X)=\\frac{\\alpha}{\\beta}",
+  "variance_formula": "Var(X)=\\frac{\\alpha}{\\beta^2}",
+  "mgf_formula": "M_X(t)=\\left(\\frac{\\beta}{\\beta-t}\\right)^{\\alpha},\\quad t<\\beta",
+  "graph_config": {
+    "discrete": false,
+    "x_range": [
+      0,
+      15
+    ],
+    "default_params": {
+      "alpha": 2,
+      "beta": 1
+    },
+    "notes": "γ(·,·) 为下不完全伽马函数；α=1 时退化为指数分布"
+  },
+  "aliases": [
+    {
+      "alias": "Gamma 分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Gamma distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "Gamma(alpha,beta)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "Γ(α,β)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "X~Γ(α,β)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "伽马分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "Erlang distribution",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 55
+    }
+  ],
+  "examples": [
+    {
+      "title": "伽马分布的期望与概率",
+      "question": "设某设备寿命 $X\\sim\\Gamma(2,1)$（率参数 β=1，单位：年），求 E(X)、Var(X) 及 P(X>2)。",
+      "solution": "$E(X)=\\frac{\\alpha}{\\beta}=2$，$\\mathrm{Var}(X)=\\frac{\\alpha}{\\beta^2}=2$。对 $\\Gamma(2,1)$ 有分布函数 $F(x)=1-e^{-x}(1+x)$，故 $P(X>2)=1-F(2)=e^{-2}(1+2)=3e^{-2}\\approx0.4060$。",
+      "answer": "$E(X)=2$，$\\mathrm{Var}(X)=2$，$P(X>2)=3e^{-2}\\approx0.4060$"
+    }
+  ]
+}

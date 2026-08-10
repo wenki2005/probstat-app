@@ -1,0 +1,45 @@
+{
+  "kind": "knowledge",
+  "slug": "hypothesis-testing",
+  "name_zh": "假设检验",
+  "name_en": "Hypothesis Testing",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 6,
+  "summary": "依据样本对关于总体的假设作出拒绝或不拒绝的统计决策方法。",
+  "definition": "**假设检验**（又称**显著性检验**）是先对总体参数或分布提出**原假设** $H_0$ 与**备择假设** $H_1$，再根据样本构造检验统计量，在给定**显著性水平** $\\alpha$ 下判断是否拒绝 $H_0$ 的统计方法。其依据是**小概率原理**：概率很小的事件在一次试验中几乎不发生。若在 $H_0$ 成立的条件下，样本观测使检验统计量落入小概率区域（**拒绝域**），则拒绝 $H_0$，否则不拒绝 $H_0$。两类错误：**第一类错误（弃真）** $\\alpha=P(\\text{拒绝}H_0\\mid H_0\\text{为真})$；**第二类错误（纳伪）** $\\beta=P(\\text{不拒绝}H_0\\mid H_0\\text{为假})$。现代实践常报告 **p 值**：$H_0$ 成立时观测到当前或更极端样本结果的概率，当 $p<\\alpha$ 时拒绝 $H_0$。",
+  "formula_latex": "H_0:\\mu=\\mu_0,\\qquad H_1:\\mu\\ne\\mu_0,\\qquad T=\\frac{\\bar X-\\mu_0}{S/\\sqrt n}\\sim t(n-1)",
+  "properties": [
+    {"title": "Z 检验（σ² 已知）", "latex": "Z=\\frac{\\bar X-\\mu_0}{\\sigma/\\sqrt n}\\sim N(0,1)", "description": "正态总体方差已知时检验均值用标准正态检验统计量"},
+    {"title": "t 检验（σ² 未知）", "latex": "T=\\frac{\\bar X-\\mu_0}{S/\\sqrt n}\\sim t(n-1)", "description": "方差未知时用样本标准差 S 代替 σ，自由度 n-1"},
+    {"title": "拒绝域（双侧）", "latex": "|Z|\\ge z_{\\alpha/2}\\ \\ \\text{或}\\ \\ |T|\\ge t_{\\alpha/2}(n-1)", "description": "检验统计量绝对值超过双侧分位点时拒绝 H0"},
+    {"title": "第一类错误", "latex": "\\alpha=P(\\text{拒绝}H_0\\mid H_0\\text{为真})", "description": "显著性水平即控制弃真错误的概率上限"},
+    {"title": "第二类错误", "latex": "\\beta=P(\\text{不拒绝}H_0\\mid H_0\\text{为假})", "description": "纳伪概率，增大样本量可使 α、β 同时减小"},
+    {"title": "p 值", "latex": "p=P_{H_0}(\\text{取到更极端的统计量值})", "description": "p<α 时拒绝 H0；p 越小拒绝证据越强"}
+  ],
+  "derivation": "以单样本 t 检验的推导为例。设 $X_1,\\dots,X_n\\stackrel{iid}{\\sim}N(\\mu,\\sigma^2)$，$\\sigma^2$ 未知，检验 $H_0:\\mu=\\mu_0$ 对 $H_1:\\mu\\ne\\mu_0$。在 $H_0$ 成立时 $\\bar X\\sim N(\\mu_0,\\sigma^2/n)$ 且 $\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2(n-1)$，二者独立，故检验统计量 $$T=\\frac{\\bar X-\\mu_0}{S/\\sqrt n}\\sim t(n-1)$$ 检验思路：若 $H_0$ 为真，$T$ 应取值较小（集中在 0 附近），$|T|$ 很大属于小概率事件。对显著性水平 $\\alpha$，取拒绝域 $W=\\{|T|\\ge t_{\\alpha/2}(n-1)\\}$，使得 $P(T\\in W\\mid H_0)=\\alpha$。将样本观测值代入 $T$，若落入拒绝域则拒绝 $H_0$，否则不拒绝 $H_0$。",
+  "applications": ["药品是否有效（疗效显著性检验）", "生产线是否达标（均值、方差检验）", "A/B 测试中方案差异是否显著", "两种教学方法成绩差异的比较"],
+  "visualization_type": "formula",
+  "graph_config": {"show_rejection_region": true},
+  "aliases": [
+    {"alias": "假设检验", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Hypothesis Testing", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "显著性检验", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "significance test", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "H0", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "H1", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "原假设", "lang": "zh", "kind": "keyword", "weight": 80},
+    {"alias": "备择假设", "lang": "zh", "kind": "keyword", "weight": 80},
+    {"alias": "t检验", "lang": "zh", "kind": "alias", "weight": 75},
+    {"alias": "p值", "lang": "zh", "kind": "keyword", "weight": 70},
+    {"alias": "p-value", "lang": "en", "kind": "keyword", "weight": 70}
+  ],
+  "examples": [
+    {
+      "title": "单样本 t 检验：包装机是否正常",
+      "question": "某包装机装袋量（kg）服从正态分布，额定为 50 kg。抽查 9 袋得 $\\bar x=49.6$，$s=0.6$。在显著性水平 $\\alpha=0.05$ 下，检验包装机装袋量是否显著偏离额定值。",
+      "solution": "提出假设 $H_0:\\mu=50$，$H_1:\\mu\\ne50$（$\\sigma^2$ 未知，用 t 检验）。检验统计量 $$T=\\frac{\\bar x-\\mu_0}{s/\\sqrt n}=\\frac{49.6-50}{0.6/3}=-2.0$$ 查表 $t_{0.025}(8)=2.306$，拒绝域为 $|T|\\ge2.306$。因 $|T|=2.0<2.306$，样本未落入拒绝域。",
+      "answer": "在 0.05 显著性水平下不拒绝 $H_0$，即没有充分证据认为装袋量显著偏离额定值 50 kg。"
+    }
+  ]
+}

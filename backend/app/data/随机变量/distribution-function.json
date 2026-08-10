@@ -1,0 +1,39 @@
+{
+  "kind": "knowledge",
+  "slug": "distribution-function",
+  "name_zh": "分布函数",
+  "name_en": "Distribution function",
+  "category": "随机变量",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "F(x)=P(X≤x)，完整刻画随机变量的概率分布。",
+  "definition": "设 $X$ 是一个随机变量，对任意实数 $x$，称函数 $$F(x)=P(X\\le x)$$ 为 $X$ 的**分布函数**（累积分布函数）。分布函数满足三条基本性质：单调不减、$0\\le F(x)\\le 1$ 且 $F(-\\infty)=0,\\ F(+\\infty)=1$、右连续 $F(x+0)=F(x)$。由分布函数可求任意区间概率：$P(a<X\\le b)=F(b)-F(a)$，单点概率 $P(X=a)=F(a)-F(a-0)$。分布函数唯一决定随机变量的概率分布。",
+  "formula_latex": "F(x)=P(X\\le x),\\quad x\\in\\mathbb{R}",
+  "properties": [
+    {"title": "单调不减", "latex": "x_1<x_2\\Rightarrow F(x_1)\\le F(x_2)", "description": "概率随阈值增大而不减"},
+    {"title": "有界性与极限", "latex": "0\\le F(x)\\le 1,\\quad F(-\\infty)=0,\\ F(+\\infty)=1", "description": "两端极限确定"},
+    {"title": "右连续", "latex": "F(x+0)=F(x)", "description": "在任意点右连续"},
+    {"title": "区间概率", "latex": "P(a<X\\le b)=F(b)-F(a)", "description": "任意区间概率由分布函数差给出"},
+    {"title": "单点概率", "latex": "P(X=a)=F(a)-F(a-0)", "description": "等于分布函数在该点的跃度"}
+  ],
+  "derivation": "单调性：当 $x_1<x_2$ 时，$\\{X\\le x_1\\}\\subseteq\\{X\\le x_2\\}$，由概率单调性 $F(x_1)\\le F(x_2)$。区间概率：事件 $\\{X\\le b\\}=\\{X\\le a\\}\\cup\\{a<X\\le b\\}$ 且两项互斥，故 $$P(a<X\\le b)=F(b)-F(a)$$ 右连续性来自概率的上连续性：当 $h\\downarrow 0$ 时，$\\{X\\le x+h\\}\\downarrow\\{X\\le x\\}$，故 $F(x+h)\\to F(x)$。",
+  "applications": ["统一计算离散与连续变量的各类区间概率", "分位数（中位数、VaR 等）的定义基础", "随机变量的随机占优比较", "经验分布函数与 K-S 检验"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "分布函数", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Distribution function", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "累积分布函数", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "CDF", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "cumulative distribution function", "lang": "en", "kind": "alias", "weight": 80},
+    {"alias": "F(x)", "lang": "math", "kind": "notation", "weight": 85}
+  ],
+  "examples": [
+    {
+      "title": "离散变量分布函数与区间概率",
+      "question": "设 $X$ 的分布律为 $P(X=1)=0.2$，$P(X=2)=0.5$，$P(X=3)=0.3$。写出 $F(x)$ 并求 $P(1<X\\le 2)$ 与 $P(X=2)$。",
+      "solution": "由 $F(x)=P(X\\le x)$ 逐段求和：$$F(x)=\\begin{cases}0,&x<1\\\\0.2,&1\\le x<2\\\\0.7,&2\\le x<3\\\\1,&x\\ge 3\\end{cases}$$ 于是 $P(1<X\\le 2)=F(2)-F(1)=0.7-0.2=0.5$，$P(X=2)=F(2)-F(2-0)=0.7-0.2=0.5$。",
+      "answer": "$P(1<X\\le 2)=0.5$，$P(X=2)=0.5$，且 $F$ 为阶梯函数，跃度分别为 0.2、0.5、0.3。"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "kind": "knowledge",
+  "slug": "goodness-of-fit-test",
+  "name_zh": "拟合优度检验",
+  "name_en": "Goodness-of-Fit Test",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 11,
+  "summary": "用 χ² 统计量检验总体分布假设与列联表独立性。",
+  "definition": "**拟合优度检验**用于检验样本是否来自某个指定的总体分布，最常用的是皮尔逊 $\\chi^2$ 拟合优度检验。设要检验 $H_0:F=F_0$，把样本观测值分成 $k$ 个互不相交的组，记第 $i$ 组实际频数为 $n_i$（$\\sum_{i=1}^{k}n_i=n$），在原假设下第 $i$ 组的概率为 $p_i$（若 $F_0$ 含 $r$ 个未知参数，则先估计参数再求 $p_i$），期望频数为 $np_i$。皮尔逊定理：当 $H_0$ 成立且 $n$ 充分大时，统计量 $$\\chi^2=\\sum_{i=1}^{k}\\frac{(n_i-np_i)^2}{np_i}\\sim\\chi^2(k-1-r)$$ 当 $\\chi^2\\ge\\chi_\\alpha^2(k-1-r)$ 时在水平 $\\alpha$ 下拒绝 $H_0$。**列联表独立性检验**：对 $r\\times s$ 列联表检验两属性是否独立，统计量为 $$\\chi^2=n\\left(\\sum_{i=1}^{r}\\sum_{j=1}^{s}\\frac{n_{ij}^2}{n_{i\\cdot}n_{\\cdot j}}-1\\right)\\sim\\chi^2((r-1)(s-1))$$ 其中 $n_{i\\cdot}$、$n_{\\cdot j}$ 分别为行、列合计，当 $\\chi^2\\ge\\chi_\\alpha^2((r-1)(s-1))$ 时拒绝独立性假设。",
+  "formula_latex": "\\chi^2=\\sum_{i=1}^{k}\\frac{(n_i-np_i)^2}{np_i}\\sim\\chi^2(k-1-r)",
+  "properties": [
+    {
+      "title": "皮尔逊统计量",
+      "latex": "\\chi^2=\\sum_{i=1}^{k}\\frac{(n_i-np_i)^2}{np_i}",
+      "description": "实际频数与期望频数偏差的加权平方和"
+    },
+    {
+      "title": "自由度",
+      "latex": "df=k-1-r",
+      "description": "k 为组数，r 为需估计的未知参数个数"
+    },
+    {
+      "title": "列联表独立性检验",
+      "latex": "\\chi^2=n\\left(\\sum_{i,j}\\frac{n_{ij}^2}{n_{i\\cdot}n_{\\cdot j}}-1\\right)",
+      "description": "自由度 (r-1)(s-1) 的卡方检验"
+    },
+    {
+      "title": "检验规则",
+      "latex": "\\chi^2\\ge\\chi_\\alpha^2(df)\\Rightarrow\\text{拒绝 }H_0",
+      "description": "卡方值越大越不支持原假设"
+    },
+    {
+      "title": "期望频数条件",
+      "latex": "np_i\\ge5",
+      "description": "经验准则：期望频数过小的组应合并"
+    }
+  ],
+  "derivation": "皮尔逊定理的证明思路：记 $\\nu_i=n_i/n$，$\\boldsymbol{\\nu}=(\\nu_1,\\dots,\\nu_k)$。当 $H_0$ 成立时 $n\\boldsymbol{\\nu}$ 服从多项分布 $M(n;p_1,\\dots,p_k)$，由中心极限定理，$\\sqrt n(\\boldsymbol{\\nu}-\\mathbf p)$ 依分布收敛于均值 $\\mathbf 0$、协方差阵 $\\Sigma=\\mathrm{diag}(\\mathbf p)-\\mathbf p\\mathbf p^{T}$ 的正态分布。作变换 $Y_i=(\\nu_i-p_i)/\\sqrt{p_i}$ 后，二次型 $\\sum_{i=1}^{k}Y_i^2=\\sum_{i=1}^{k}\\frac{(n_i-np_i)^2}{np_i}$ 的极限分布为 $\\chi^2(k-1)$（因 $\\sum_{i=1}^{k}Y_i\\sqrt{p_i}$ 退化，自由度少 1）。当分布含 $r$ 个未知参数需用样本估计时，自由度再减少 $r$，得 $\\chi^2(k-1-r)$。列联表独立性检验可看作 $k=rs$ 个格子、概率 $p_{ij}=p_{i\\cdot}p_{\\cdot j}$ 的拟合优度检验，需估计的行、列边缘概率个数为 $(r-1)+(s-1)$，故自由度 $rs-1-(r-1)-(s-1)=(r-1)(s-1)$。",
+  "applications": [
+    "检验随机数发生器是否服从均匀分布",
+    "遗传学中检验性状分离比是否符合孟德尔定律",
+    "市场调研中检验问卷选项的分布假设",
+    "检验两个分类变量是否独立（列联表分析）"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {
+    "k": 4,
+    "alpha": 0.05
+  },
+  "aliases": [
+    {
+      "alias": "拟合优度检验",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Goodness-of-Fit Test",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "χ² 拟合优度检验",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "卡方检验",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "皮尔逊 χ² 检验",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "列联表独立性检验",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "chi-squared test",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "Pearson chi-square test",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "contingency table",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 75
+    },
+    {
+      "alias": "χ²",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "独立性检验",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "孟德尔豌豆实验的 9:3:3:1 拟合检验",
+      "question": "孟德尔豌豆杂交实验中，观察 556 粒豌豆，按“圆黄、圆绿、皱黄、皱绿”四类统计，频数分别为 315、108、101、32。取显著性水平 $\\alpha=0.05$，检验观测频数是否符合分离比 $9:3:3:1$。",
+      "solution": "原假设 $H_0$：四类概率 $p=(9/16,3/16,3/16,1/16)$，$n=556$，无未知参数（$r=0$）。期望频数：$np_1=556\\times9/16=312.75$，$np_2=np_3=556\\times3/16=104.25$，$np_4=556\\times1/16=34.75$。计算 $$\\chi^2=\\frac{(315-312.75)^2}{312.75}+\\frac{(108-104.25)^2}{104.25}+\\frac{(101-104.25)^2}{104.25}+\\frac{(32-34.75)^2}{34.75}\\approx0.0162+0.1349+0.1013+0.2176=0.4700$$ 自由度 $k-1-r=4-1=3$，查表 $\\chi^2_{0.05}(3)=7.815$。因为 $0.4700<7.815$，故不拒绝 $H_0$。",
+      "answer": "在 $\\alpha=0.05$ 下不拒绝 $H_0$，观测数据与 $9:3:3:1$ 分离比相符（$\\chi^2\\approx0.47<7.815$）。"
+    },
+    {
+      "title": "吸烟与患病独立性检验（2×2 列联表）",
+      "question": "调查 300 人得列联表：吸烟者中患病 50 人、未患病 100 人；不吸烟者中患病 10 人、未患病 140 人。取 $\\alpha=0.05$，检验“吸烟与患病是否相互独立”。",
+      "solution": "$H_0$：吸烟与患病相互独立。行合计均为 150，列合计为 60 与 240，$n=300$。期望频数 $E_{ij}=n_{i\\cdot}n_{\\cdot j}/n$：$E_{11}=150\\times60/300=30$，$E_{12}=150\\times240/300=120$，$E_{21}=30$，$E_{22}=120$。$$\\chi^2=\\frac{(50-30)^2}{30}+\\frac{(100-120)^2}{120}+\\frac{(10-30)^2}{30}+\\frac{(140-120)^2}{120}=\\frac{400}{30}+\\frac{400}{120}+\\frac{400}{30}+\\frac{400}{120}\\approx33.33$$ 自由度 $(2-1)(2-1)=1$，$\\chi^2_{0.05}(1)=3.841$。因 $33.33>3.841$，拒绝 $H_0$。",
+      "answer": "拒绝 $H_0$，认为吸烟与患病不独立（$\\chi^2\\approx33.33>3.841$）。"
+    }
+  ]
+}

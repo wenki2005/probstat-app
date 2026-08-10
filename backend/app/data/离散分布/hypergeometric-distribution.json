@@ -1,0 +1,105 @@
+{
+  "kind": "distribution",
+  "slug": "hypergeometric-distribution",
+  "name_zh": "超几何分布",
+  "name_en": "Hypergeometric distribution",
+  "category": "离散分布",
+  "subcategory": "",
+  "sort_order": 4,
+  "summary": "不放回抽样中成功次数的分布，N 很大时近似二项分布。",
+  "type": "discrete",
+  "support": "k \\in \\{\\max(0,\\,n-(N-M)),\\,\\ldots,\\,\\min(n,M)\\}",
+  "params": [
+    {
+      "name": "N",
+      "latex": "N",
+      "description": "总体容量（M≤N）",
+      "default": 50,
+      "min": 2,
+      "max": 500,
+      "step": 1
+    },
+    {
+      "name": "M",
+      "latex": "M",
+      "description": "总体中成功（次品）个数（M≤N）",
+      "default": 20,
+      "min": 1,
+      "max": 500,
+      "step": 1
+    },
+    {
+      "name": "n",
+      "latex": "n",
+      "description": "不放回抽取的样本量（n≤N）",
+      "default": 10,
+      "min": 1,
+      "max": 500,
+      "step": 1
+    }
+  ],
+  "pmf_or_pdf_latex": "P(X=k)=\\frac{\\binom{M}{k}\\binom{N-M}{n-k}}{\\binom{N}{n}}",
+  "cdf_latex": "F(x)=\\sum_{k=0}^{\\lfloor x\\rfloor}\\frac{\\binom{M}{k}\\binom{N-M}{n-k}}{\\binom{N}{n}}",
+  "mean_formula": "E(X)=\\frac{nM}{N}",
+  "variance_formula": "Var(X)=\\frac{nM}{N}\\left(1-\\frac{M}{N}\\right)\\frac{N-n}{N-1}",
+  "mgf_formula": "",
+  "graph_config": {
+    "discrete": true,
+    "x_range": [
+      0,
+      100
+    ],
+    "default_params": {
+      "N": 50,
+      "M": 20,
+      "n": 10
+    },
+    "notes": "需满足 0≤k≤M 且 0≤n-k≤N-M；N 很大时近似二项分布 B(n, M/N)"
+  },
+  "aliases": [
+    {
+      "alias": "超几何分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Hypergeometric distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "HyperGeo(N,M,n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "X~H(N,M,n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "不放回抽样分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 70
+    },
+    {
+      "alias": "sampling without replacement",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 55
+    }
+  ],
+  "examples": [
+    {
+      "title": "不放回抽样中的次品数",
+      "question": "一批产品共 10 件，其中 3 件次品。从中不放回地任取 4 件，求恰有 1 件次品的概率。",
+      "solution": "设 X 为取出的次品数，则 $X\\sim H(10,3,4)$。$P(X=1)=\\frac{\\binom{3}{1}\\binom{7}{3}}{\\binom{10}{4}}=\\frac{3\\times35}{210}=\\frac{105}{210}=0.5$。",
+      "answer": "$0.5$"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "random-event",
+  "name_zh": "随机事件",
+  "name_en": "Random event",
+  "category": "基础概率",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "可能发生也可能不发生的结果集合，即样本空间的子集。",
+  "definition": "在随机试验中，把试验的**可能结果中具有某种性质而可能发生也可能不发生**的事件称为**随机事件**，简称事件，通常用大写字母 $A,B,C$ 表示。从集合角度看，事件 $A$ 是样本空间 $\\Omega$ 的一个子集：当且仅当试验结果 $\\omega\\in A$ 时，称事件 $A$ 发生。只含一个样本点的事件称为**基本事件**；必然发生的事件称为**必然事件** $\\Omega$；不可能发生的事件称为**不可能事件** $\\varnothing$。事件间可进行并、交、差、补等运算。",
+  "formula_latex": "\\overline{A\\cup B}=\\overline{A}\\cap\\overline{B},\\quad \\overline{A\\cap B}=\\overline{A}\\cup\\overline{B}",
+  "properties": [
+    {"title": "包含关系", "latex": "A\\subseteq B", "description": "A 发生必然导致 B 发生"},
+    {"title": "和事件（并）", "latex": "A\\cup B", "description": "A 与 B 至少有一个发生"},
+    {"title": "积事件（交）", "latex": "A\\cap B", "description": "A 与 B 同时发生"},
+    {"title": "差事件", "latex": "A\\setminus B", "description": "A 发生而 B 不发生"},
+    {"title": "对立事件", "latex": "\\overline{A}=\\Omega\\setminus A", "description": "A 不发生的补事件"},
+    {"title": "互斥", "latex": "A\\cap B=\\varnothing", "description": "A 与 B 不能同时发生"}
+  ],
+  "derivation": "以德摩根律 $\\overline{A\\cup B}=\\overline{A}\\cap\\overline{B}$ 为例证明：对任意样本点 $\\omega$，有 $$\\omega\\in\\overline{A\\cup B}\\iff \\omega\\notin A\\cup B\\iff \\omega\\notin A\\ \\text{且}\\ \\omega\\notin B\\iff \\omega\\in\\overline{A}\\ \\text{且}\\ \\omega\\in\\overline{B}\\iff \\omega\\in\\overline{A}\\cap\\overline{B}$$ 两边互相包含，故等式成立。",
+  "applications": ["可靠性分析中串联、并联系统的失效事件", "质量控制中合格与不合格事件", "保险精算中理赔发生事件", "通信系统中误码事件"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "随机事件", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Random event", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "事件", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "event", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "A∩B", "lang": "math", "kind": "notation", "weight": 80},
+    {"alias": "A∪B", "lang": "math", "kind": "notation", "weight": 80},
+    {"alias": "必然事件", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "掷骰子事件的运算",
+      "question": "掷一枚均匀骰子，设 $A$=“点数大于 4”，$B$=“点数为偶数”。求 $A\\cup B$、$A\\cap B$、$\\overline{A}$，并判断 $A$ 与 $B$ 是否互斥。",
+      "solution": "$\\Omega=\\{1,2,3,4,5,6\\}$，$A=\\{5,6\\}$，$B=\\{2,4,6\\}$。于是 $$A\\cup B=\\{2,4,5,6\\},\\quad A\\cap B=\\{6\\},\\quad \\overline{A}=\\{1,2,3,4\\}$$ 因为 $A\\cap B=\\{6\\}\\neq\\varnothing$，所以 $A$ 与 $B$ 不互斥。",
+      "answer": "$A\\cup B=\\{2,4,5,6\\}$，$A\\cap B=\\{6\\}$，$\\overline{A}=\\{1,2,3,4\\}$；$A$ 与 $B$ 不互斥。"
+    }
+  ]
+}

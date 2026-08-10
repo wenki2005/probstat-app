@@ -1,0 +1,163 @@
+{
+  "kind": "knowledge",
+  "slug": "ordinary-differential-equations",
+  "name_zh": "常微分方程",
+  "name_en": "Ordinary Differential Equations",
+  "category": "高等数学",
+  "subcategory": "微分方程",
+  "sort_order": 21,
+  "summary": "常微分方程求解可分离变量、一阶线性与二阶常系数线性方程。",
+  "definition": "含有未知函数 $y=y(x)$ 的导数（或微分）的方程称为**微分方程**；未知函数为一元函数时称为**常微分方程**，方程中出现的最高阶导数的阶数称为方程的**阶**。若函数 $y=\\varphi(x)$ 代入方程后使其成为恒等式，则称其为方程的解；含有的任意常数的个数等于方程阶数的解称为**通解**，满足初值条件（如 $y(x_0)=y_0$）的解称为**特解**。核心类型：可分离变量方程 $\\frac{dy}{dx}=g(x)h(y)$、一阶线性方程 $y'+P(x)y=Q(x)$、二阶常系数线性方程 $y''+py'+qy=f(x)$。",
+  "formula_latex": "y'+P(x)y=Q(x),\\qquad y''+py'+qy=f(x)",
+  "properties": [
+    {
+      "title": "可分离变量方程",
+      "latex": "\\frac{dy}{dx}=g(x)h(y)\\ \\Rightarrow\\ \\int\\frac{dy}{h(y)}=\\int g(x)\\,dx+C",
+      "description": "分离变量后两边分别积分"
+    },
+    {
+      "title": "一阶线性方程通解公式",
+      "latex": "y=e^{-\\int P(x)\\,dx}\\left(\\int Q(x)e^{\\int P(x)\\,dx}\\,dx+C\\right)",
+      "description": "Q(x)≡0 时是齐次方程，通解 y=Ce^{-∫P dx}"
+    },
+    {
+      "title": "伯努利方程",
+      "latex": "y'+P(x)y=Q(x)y^n\\ \\xrightarrow{z=y^{1-n}}\\ z'+(1-n)P(x)z=(1-n)Q(x)",
+      "description": "换元化为一阶线性方程（n≠0,1）"
+    },
+    {
+      "title": "二阶常系数齐次特征方程",
+      "latex": "r^2+pr+q=0",
+      "description": "令 y=e^{rx} 代入方程所得，特征根决定通解形式"
+    },
+    {
+      "title": "两不等实根的通解",
+      "latex": "r_1\\neq r_2:\\ y=C_1e^{r_1x}+C_2e^{r_2x}",
+      "description": "两个线性无关解 e^{r_1x}、e^{r_2x} 的线性组合"
+    },
+    {
+      "title": "重根的通解",
+      "latex": "r_1=r_2=r:\\ y=(C_1+C_2x)e^{rx}",
+      "description": "重根时用 xe^{rx} 作为第二个线性无关解"
+    },
+    {
+      "title": "共轭复根的通解",
+      "latex": "r=\\alpha\\pm i\\beta:\\ y=e^{\\alpha x}(C_1\\cos\\beta x+C_2\\sin\\beta x)",
+      "description": "由欧拉公式将复指数化为三角函数"
+    },
+    {
+      "title": "非齐次方程解的结构",
+      "latex": "y=Y+y^*,\\quad Y\\ \\text{为齐次通解},\\ y^*\\ \\text{为特解}",
+      "description": "非齐次通解=对应齐次通解+一个特解，特解常用待定系数法"
+    }
+  ],
+  "derivation": "一阶线性方程通解公式的推导（常数变易法）：先解齐次方程 $y'+P(x)y=0$，分离变量得 $\\frac{dy}{y}=-P(x)\\,dx$，积分得 $y=Ce^{-\\int P(x)\\,dx}$；再把常数 $C$ 变易为函数 $C(x)$，令 $y=C(x)e^{-\\int P\\,dx}$ 代入原方程，可得 $C'(x)=Q(x)e^{\\int P\\,dx}$，积分即得通解公式。二阶常系数齐次方程的推导：设 $y=e^{rx}$ 代入 $y''+py'+qy=0$ 得特征方程 $r^2+pr+q=0$。若两不等实根 $r_1,r_2$，$e^{r_1x},e^{r_2x}$ 线性无关，通解为其线性组合；若重根 $r$，验证 $xe^{rx}$ 是另一个线性无关解；若共轭复根 $\\alpha\\pm i\\beta$，由欧拉公式 $e^{i\\beta x}=\\cos\\beta x+i\\sin\\beta x$ 取实部、虚部的线性组合得含三角函数的通解。非齐次方程由线性方程解的结构知通解=齐次通解+特解，特解常用待定系数法：按 $f(x)$ 的形式（多项式、$e^{\\lambda x}$、$\\cos\\omega x$、$\\sin\\omega x$ 及其乘积）设出含待定系数的 $y^*$，若 $\\lambda$（或 $i\\omega$）为特征根则相应乘以 $x$（重根乘 $x^2$），代入方程定出系数。",
+  "applications": [
+    "人口增长与放射性衰变的指数模型 dy/dt=ky",
+    "牛顿冷却定律与物体温度变化过程",
+    "RC/RL 电路中的暂态电流与电压",
+    "弹簧-质量系统的自由与受迫振动（二阶线性方程）",
+    "化学反应速率的动力学建模"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "exp(-x)",
+        "label": "y = e^(-x)（y'+y=0 的解）",
+        "color": "rgba(79,70,229,0.95)"
+      }
+    ],
+    "x_range": [
+      -1,
+      6
+    ],
+    "y_range": [
+      -1,
+      5
+    ],
+    "notes": "一阶线性齐次方程 y'+y=0 的通解 y=Ce^(-x)。"
+  },
+  "aliases": [
+    {
+      "alias": "常微分方程",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Ordinary differential equation",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "ODE",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 95
+    },
+    {
+      "alias": "微分方程",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 95
+    },
+    {
+      "alias": "可分离变量",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "一阶线性",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "二阶常系数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "特征方程",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "常数变易法",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "dy/dx",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "可分离变量方程",
+      "question": "求初值问题 $y'=2xy,\\ y(0)=1$ 的解。",
+      "solution": "分离变量 $\\frac{dy}{y}=2x\\,dx$，两边积分得 $\\ln|y|=x^2+C$，即 $y=Ce^{x^2}$；代入初值 $y(0)=1$ 得 $C=1$，故 $y=e^{x^2}$。",
+      "answer": "$y=e^{x^2}$。"
+    },
+    {
+      "title": "一阶线性方程",
+      "question": "求微分方程 $y'+y=e^{-x}$ 的通解。",
+      "solution": "$P(x)=1,\\ Q(x)=e^{-x}$，由通解公式 $$y=e^{-\\int 1\\,dx}\\left(\\int e^{-x}e^{\\int 1\\,dx}\\,dx+C\\right)=e^{-x}\\left(\\int e^{-x}\\cdot e^x\\,dx+C\\right)=e^{-x}(x+C)$$",
+      "answer": "$y=e^{-x}(x+C)$。"
+    },
+    {
+      "title": "二阶常系数非齐次方程",
+      "question": "求微分方程 $y''-3y'+2y=e^{2x}$ 的通解。",
+      "solution": "特征方程 $r^2-3r+2=0$ 的根为 $r_1=1,\\ r_2=2$，齐次通解 $Y=C_1e^x+C_2e^{2x}$。因 $\\lambda=2$ 是单重特征根，设特解 $y^*=Axe^{2x}$，则 $y^{*'}=Ae^{2x}(1+2x)$，$y^{*''}=Ae^{2x}(4+4x)$，代入原方程得 $Ae^{2x}[(4+4x)-3(1+2x)+2x]=Ae^{2x}=e^{2x}$，故 $A=1$，$y^*=xe^{2x}$。通解为 $y=Y+y^*=C_1e^x+C_2e^{2x}+xe^{2x}$。",
+      "answer": "$y=C_1e^x+(C_2+x)e^{2x}$。"
+    }
+  ]
+}

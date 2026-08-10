@@ -1,0 +1,40 @@
+{
+  "kind": "knowledge",
+  "slug": "variance",
+  "name_zh": "方差",
+  "name_en": "Variance",
+  "category": "随机变量",
+  "subcategory": "数字特征",
+  "sort_order": 6,
+  "summary": "随机变量取值围绕期望的离散程度，记作 Var(X)。",
+  "definition": "设随机变量 $X$ 的期望 $E(X)$ 存在，若 $E[(X-E(X))^2]$ 存在，称 $$Var(X)=E[(X-E(X))^2]$$ 为 $X$ 的**方差**，称 $\\sigma(X)=\\sqrt{Var(X)}$ 为**标准差**。方差度量取值相对期望的分散程度：方差越大越分散。常用计算公式 $$Var(X)=E(X^2)-[E(X)]^2$$",
+  "formula_latex": "Var(X)=E[(X-E(X))^2]=E(X^2)-[E(X)]^2",
+  "properties": [
+    {"title": "常数的方差为 0", "latex": "Var(c)=0", "description": "常数不波动"},
+    {"title": "平移不变", "latex": "Var(X+c)=Var(X)", "description": "整体平移不改变离散程度"},
+    {"title": "缩放", "latex": "Var(aX)=a^2Var(X)", "description": "放大 a 倍后方差放大 a² 倍"},
+    {"title": "线性变换", "latex": "Var(aX+b)=a^2Var(X)", "description": "平移加缩放的统一公式"},
+    {"title": "独立可加", "latex": "Var(X+Y)=Var(X)+Var(Y)\\ (X,Y\\text{ 独立})", "description": "独立变量和的方差等于方差之和"},
+    {"title": "非负性", "latex": "Var(X)\\ge 0", "description": "方差非负，等于 0 当且仅当 X 为常数"}
+  ],
+  "derivation": "展开平方得常用公式：$$Var(X)=E[X^2-2XE(X)+(E(X))^2]=E(X^2)-2E(X)E(X)+(E(X))^2=E(X^2)-[E(X)]^2$$ 线性变换：$$Var(aX+b)=E[(aX+b-E(aX+b))^2]=E[a^2(X-E(X))^2]=a^2Var(X)$$ 独立可加：展开 $Var(X+Y)$ 得到 $Var(X)+Var(Y)+2Cov(X,Y)$，独立时协方差为 0。",
+  "applications": ["金融收益波动率（风险）的度量", "质量控制中过程波动的监控（6σ）", "估计量有效性比较（最小方差准则）", "蒙特卡洛模拟的误差分析"],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "方差", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Variance", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "Var(X)", "lang": "math", "kind": "notation", "weight": 90},
+    {"alias": "D(X)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "variance", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "离散程度", "lang": "zh", "kind": "keyword", "weight": 60}
+  ],
+  "examples": [
+    {
+      "title": "伯努利型变量的方差",
+      "question": "设 $X$ 的分布律为 $P(X=0)=0.4$，$P(X=1)=0.6$，求 $Var(X)$。",
+      "solution": "$E(X)=0\\times0.4+1\\times0.6=0.6$，$E(X^2)=0^2\\times0.4+1^2\\times0.6=0.6$。由常用公式 $$Var(X)=E(X^2)-[E(X)]^2=0.6-0.6^2=0.6-0.36=0.24$$",
+      "answer": "$Var(X)=0.24$。"
+    }
+  ]
+}

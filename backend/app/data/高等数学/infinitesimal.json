@@ -1,0 +1,41 @@
+{
+  "kind": "knowledge",
+  "slug": "infinitesimal",
+  "name_zh": "无穷小与无穷大",
+  "name_en": "Infinitesimal and Infinity",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 2,
+  "summary": "极限为零的变量及等价无穷小替换，是简化极限计算的核心工具。",
+  "definition": "若 $\\lim\\limits_{x\\to x_0}\\alpha(x)=0$，则称 $\\alpha(x)$ 为 $x\\to x_0$ 时的**无穷小**。若对任意 $M>0$，总存在 $\\delta>0$，当 $0<|x-x_0|<\\delta$ 时 $|f(x)|>M$，则称 $f(x)$ 为 $x\\to x_0$ 时的**无穷大**，记作 $\\lim\\limits_{x\\to x_0}f(x)=\\infty$。设 $\\alpha,\\beta$ 为无穷小：若 $\\lim\\frac{\\beta}{\\alpha}=0$，则称 $\\beta$ 是比 $\\alpha$ 高阶的无穷小，记 $\\beta=o(\\alpha)$；若 $\\lim\\frac{\\beta}{\\alpha}=C\\neq0$，则称 $\\beta$ 与 $\\alpha$ 同阶；若 $\\lim\\frac{\\beta}{\\alpha}=1$，则称 $\\beta$ 与 $\\alpha$ 是**等价无穷小**，记作 $\\beta\\sim\\alpha$。",
+  "formula_latex": "x\\to0:\\quad\\sin x\\sim x,\\quad 1-\\cos x\\sim\\frac{x^2}{2},\\quad\\ln(1+x)\\sim x,\\quad e^x-1\\sim x",
+  "properties": [
+    {"title": "有限个无穷小之和", "latex": "\\lim\\alpha_i=0\\ (i=1,\\dots,n)\\Rightarrow\\lim(\\alpha_1+\\cdots+\\alpha_n)=0", "description": "有限个无穷小的和仍为无穷小"},
+    {"title": "有界函数乘无穷小", "latex": "|u(x)|\\le M,\\ \\lim\\alpha=0\\Rightarrow\\lim u\\alpha=0", "description": "有界函数与无穷小之积仍为无穷小"},
+    {"title": "等价无穷小替换定理", "latex": "\\alpha\\sim\\alpha_1,\\ \\beta\\sim\\beta_1\\Rightarrow\\lim\\frac{\\alpha}{\\beta}=\\lim\\frac{\\alpha_1}{\\beta_1}", "description": "乘积与商的因子可用等价无穷小替换以简化计算"},
+    {"title": "无穷小与无穷大关系", "latex": "\\lim f=\\infty\\iff\\lim\\frac{1}{f}=0", "description": "非零无穷大的倒数为无穷小，非零无穷小的倒数为无穷大"},
+    {"title": "无穷小阶的比较", "latex": "\\beta=o(\\alpha)\\iff\\lim\\frac{\\beta}{\\alpha}=0", "description": "高阶无穷小在数量级上更快地趋近于零"}
+  ],
+  "derivation": "由两个重要极限推导常用等价无穷小：$\\lim\\limits_{x\\to0}\\frac{\\sin x}{x}=1$ 得 $\\sin x\\sim x$；由 $1-\\cos x=2\\sin^2\\frac{x}{2}$ 及 $\\lim\\limits_{t\\to0}\\frac{\\sin t}{t}=1$ 得 $\\lim\\limits_{x\\to0}\\frac{1-\\cos x}{x^2/2}=1$，即 $1-\\cos x\\sim\\frac{x^2}{2}$；令 $t=\\ln(1+x)$ 即 $x=e^t-1$，由 $\\lim\\limits_{t\\to0}\\frac{e^t-1}{t}=1$ 得 $\\ln(1+x)\\sim x$ 与 $e^x-1\\sim x$。注意：等价无穷小替换只适用于乘积或商中的因子；对加减项直接替换可能出错，须先提取公因子或通分化为乘除结构。",
+  "applications": ["快速求 0/0 型极限", "比较函数趋于零或无穷大的速度", "数值分析中的局部线性化与误差分析", "判断反常积分与级数的敛散性"],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {"alias": "无穷小", "lang": "zh", "kind": "name", "weight": 100},
+    {"alias": "Infinitesimal", "lang": "en", "kind": "name", "weight": 90},
+    {"alias": "无穷大", "lang": "zh", "kind": "alias", "weight": 90},
+    {"alias": "Infinity", "lang": "en", "kind": "alias", "weight": 85},
+    {"alias": "等价无穷小", "lang": "zh", "kind": "keyword", "weight": 90},
+    {"alias": "o(1)", "lang": "math", "kind": "notation", "weight": 85},
+    {"alias": "sinx~x", "lang": "math", "kind": "notation", "weight": 80},
+    {"alias": "equivalent infinitesimal", "lang": "en", "kind": "keyword", "weight": 75}
+  ],
+  "examples": [
+    {
+      "title": "等价无穷小替换求极限",
+      "question": "求 $\\lim\\limits_{x\\to0}\\frac{\\tan x-\\sin x}{x^3}$。",
+      "solution": "先变形：$$\\tan x-\\sin x=\\sin x\\left(\\frac{1}{\\cos x}-1\\right)=\\frac{\\sin x(1-\\cos x)}{\\cos x}$$ 当 $x\\to0$ 时 $\\sin x\\sim x$、$1-\\cos x\\sim\\frac{x^2}{2}$、$\\cos x\\to1$，故 $$\\lim_{x\\to0}\\frac{\\tan x-\\sin x}{x^3}=\\lim_{x\\to0}\\frac{x\\cdot\\frac{x^2}{2}}{x^3}=\\frac{1}{2}$$",
+      "answer": "极限为 $\\frac{1}{2}$。"
+    }
+  ]
+}

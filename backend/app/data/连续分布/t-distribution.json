@@ -1,0 +1,85 @@
+{
+  "kind": "distribution",
+  "slug": "t-distribution",
+  "name_zh": "t 分布",
+  "name_en": "Student's t distribution",
+  "category": "连续分布",
+  "subcategory": "",
+  "sort_order": 6,
+  "summary": "标准正态变量与独立卡方变量自由度平方根之比构成的分布，小样本推断的基础。",
+  "type": "continuous",
+  "support": "x \\in (-\\infty,+\\infty)",
+  "params": [
+    {
+      "name": "n",
+      "latex": "n",
+      "description": "自由度（正整数）",
+      "default": 10,
+      "min": 1,
+      "max": 100,
+      "step": 1
+    }
+  ],
+  "pmf_or_pdf_latex": "f(x)=\\frac{\\Gamma\\left(\\frac{n+1}{2}\\right)}{\\sqrt{n\\pi}\\,\\Gamma\\left(\\frac{n}{2}\\right)}\\left(1+\\frac{x^2}{n}\\right)^{-\\frac{n+1}{2}},\\quad x\\in(-\\infty,+\\infty)",
+  "cdf_latex": "F(x)=\\begin{cases}\\frac{1}{2}I_{\\frac{n}{n+x^2}}\\left(\\frac{n}{2},\\frac{1}{2}\\right),&x\\le0\\\\1-\\frac{1}{2}I_{\\frac{n}{n+x^2}}\\left(\\frac{n}{2},\\frac{1}{2}\\right),&x>0\\end{cases}",
+  "mean_formula": "E(X)=0,\\quad n>1",
+  "variance_formula": "Var(X)=\\frac{n}{n-2},\\quad n>2",
+  "mgf_formula": "",
+  "graph_config": {
+    "discrete": false,
+    "x_range": [
+      -5,
+      5
+    ],
+    "default_params": {
+      "n": 10
+    },
+    "notes": "I_x(·,·) 为正则化不完全贝塔函数；n→∞ 时趋近 N(0,1)"
+  },
+  "aliases": [
+    {
+      "alias": "t 分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Student's t distribution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "t(n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "X~t(n)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 80
+    },
+    {
+      "alias": "学生氏分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "Student t",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 60
+    }
+  ],
+  "examples": [
+    {
+      "title": "t 分布分位数",
+      "question": "设 $X\\sim t(15)$，已知 $t_{0.025}(15)=2.131$，求 $P(X>2.131)$ 与 $P(|X|>2.131)$。",
+      "solution": "由分位数定义 $P(X>2.131)=0.025$。由对称性 $P(X<-2.131)=0.025$，故 $P(|X|>2.131)=P(X>2.131)+P(X<-2.131)=0.05$。",
+      "answer": "$P(X>2.131)=0.025$；$P(|X|>2.131)=0.05$"
+    }
+  ]
+}

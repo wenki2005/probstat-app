@@ -1,0 +1,100 @@
+{
+  "kind": "knowledge",
+  "slug": "inequalities",
+  "name_zh": "常用不等式",
+  "name_en": "Common inequalities",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 11,
+  "summary": "均值、柯西、伯努利与绝对值不等式，证明与最值问题的利器。",
+  "definition": "常用不等式是证明不等式与求最值的基本工具，主要包括：**均值不等式**：对任意非负实数 $a,b$ 有 $\\frac{a+b}{2}\\ge\\sqrt{ab}$，等号当且仅当 $a=b$；推广为 $n$ 个正数的均值不等式 $\\frac{a_1+\\cdots+a_n}{n}\\ge\\sqrt[n]{a_1\\cdots a_n}$。**柯西不等式**：$(a_1^2+\\cdots+a_n^2)(b_1^2+\\cdots+b_n^2)\\ge(a_1b_1+\\cdots+a_nb_n)^2$。**伯努利不等式**：对 $x>-1$ 与正整数 $n$，$(1+x)^n\\ge1+nx$。**绝对值不等式**：$\\bigl||a|-|b|\\bigr|\\le|a\\pm b|\\le|a|+|b|$。",
+  "formula_latex": "\\frac{a_1+a_2+\\cdots+a_n}{n}\\ge\\sqrt[n]{a_1a_2\\cdots a_n}",
+  "properties": [
+    {
+      "title": "二元均值不等式",
+      "latex": "\\frac{a+b}{2}\\ge\\sqrt{ab}\\quad(a,b\\ge0)",
+      "description": "算术平均不小于几何平均，等号当且仅当 a=b"
+    },
+    {
+      "title": "柯西不等式",
+      "latex": "(\\sum_{i=1}^{n}a_i^2)(\\sum_{i=1}^{n}b_i^2)\\ge(\\sum_{i=1}^{n}a_ib_i)^2",
+      "description": "两组数的平方和之积不小于内积平方"
+    },
+    {
+      "title": "伯努利不等式",
+      "latex": "(1+x)^n\\ge1+nx\\quad(x>-1)",
+      "description": "x>-1 时 (1+x)^n 的线性下界"
+    },
+    {
+      "title": "三角不等式",
+      "latex": "|a+b|\\le|a|+|b|",
+      "description": "和的绝对值不超过绝对值之和"
+    },
+    {
+      "title": "绝对值不等式",
+      "latex": "\\bigl||a|-|b|\\bigr|\\le|a-b|",
+      "description": "差的绝对值不小于绝对值之差"
+    }
+  ],
+  "derivation": "二元均值不等式由平方非负直接得到：$(\\sqrt a-\\sqrt b)^2\\ge0$ 展开得 $a+b-2\\sqrt{ab}\\ge0$，即 $\\frac{a+b}{2}\\ge\\sqrt{ab}$，等号当且仅当 $a=b$；一般 $n$ 元情形可用柯西归纳法证明。柯西不等式：对任意实数 $t$，$\\sum_i(a_i t+b_i)^2\\ge0$ 是关于 $t$ 的二次式，其判别式 $\\Delta=4(\\sum a_ib_i)^2-4(\\sum a_i^2)(\\sum b_i^2)\\le0$，移项即得。伯努利不等式用数学归纳法：设 $(1+x)^k\\ge1+kx$，则 $(1+x)^{k+1}\\ge(1+kx)(1+x)=1+(k+1)x+kx^2\\ge1+(k+1)x$。绝对值不等式由 $-|a|\\le a\\le|a|$ 与 $-|b|\\le b\\le|b|$ 相加得 $|a+b|\\le|a|+|b|$，再替换变量得其他形式。",
+  "applications": [
+    "已知和为定值求积的最大值、积为定值求和的最小值",
+    "证明不等式的标准工具",
+    "向量与内积理论（柯西不等式）",
+    "推导马尔可夫、切比雪夫不等式"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "常用不等式",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Common inequalities",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "均值不等式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "柯西不等式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "伯努利不等式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "绝对值不等式",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "AM-GM",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "均值不等式求最值",
+      "question": "已知 $x>0$，$y>0$，且 $x+2y=6$，求 $xy$ 的最大值。",
+      "solution": "对两个正数 $x$ 与 $2y$ 用均值不等式：$\\frac{x+2y}{2}\\ge\\sqrt{2xy}$，即 $3\\ge\\sqrt{2xy}$，两边平方得 $2xy\\le9$，故 $xy\\le\\frac{9}{2}$。等号当且仅当 $x=2y$，即 $x=3$，$y=\\frac{3}{2}$ 时成立。",
+      "answer": "$xy$ 的最大值为 $\\frac{9}{2}$，当 $x=3$，$y=\\frac{3}{2}$ 时取得。"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "kind": "knowledge",
+  "slug": "inverse-trigonometric-functions",
+  "name_zh": "反三角函数",
+  "name_en": "Inverse Trigonometric Functions",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 14,
+  "summary": "反正弦、反余弦、反正切：定义域值域、图像与导数公式。",
+  "definition": "反三角函数是三角函数在指定单调区间上的反函数。$y=\\arcsin x$ 是 $\\sin y$ 在 $[-\\frac{\\pi}{2},\\frac{\\pi}{2}]$ 上的反函数，定义域 $x\\in[-1,1]$，值域 $y\\in[-\\frac{\\pi}{2},\\frac{\\pi}{2}]$；$y=\\arccos x$ 是 $\\cos y$ 在 $[0,\\pi]$ 上的反函数，定义域 $x\\in[-1,1]$，值域 $y\\in[0,\\pi]$；$y=\\arctan x$ 是 $\\tan y$ 在 $(-\\frac{\\pi}{2},\\frac{\\pi}{2})$ 上的反函数，定义域 $x\\in\\mathbb{R}$，值域 $y\\in(-\\frac{\\pi}{2},\\frac{\\pi}{2})$。",
+  "formula_latex": "y=\\arcsin x,\\quad y=\\arccos x,\\quad y=\\arctan x",
+  "properties": [
+    {
+      "title": "定义域与值域",
+      "latex": "\\arcsin:[-1,1]\\to[-\\frac{\\pi}{2},\\frac{\\pi}{2}],\\quad \\arccos:[-1,1]\\to[0,\\pi],\\quad \\arctan:\\mathbb{R}\\to(-\\frac{\\pi}{2},\\frac{\\pi}{2})",
+      "description": "arcsin、arccos 定义域为 [-1,1]，arctan 定义域为全体实数"
+    },
+    {
+      "title": "导数公式",
+      "latex": "(\\arcsin x)'=\\frac{1}{\\sqrt{1-x^2}},\\quad (\\arccos x)'=-\\frac{1}{\\sqrt{1-x^2}},\\quad (\\arctan x)'=\\frac{1}{1+x^2}",
+      "description": "三个反三角函数的求导公式"
+    },
+    {
+      "title": "互余恒等式",
+      "latex": "\\arcsin x+\\arccos x=\\frac{\\pi}{2}",
+      "description": "反正弦与反余弦互为余函数"
+    },
+    {
+      "title": "奇偶性",
+      "latex": "\\arcsin(-x)=-\\arcsin x,\\quad \\arctan(-x)=-\\arctan x",
+      "description": "arcsin、arctan 为奇函数，arccos 既非奇函数也非偶函数"
+    },
+    {
+      "title": "复合还原",
+      "latex": "\\sin(\\arcsin x)=x\\ (x\\in[-1,1]),\\quad \\tan(\\arctan x)=x",
+      "description": "反函数与函数复合后还原为自变量"
+    }
+  ],
+  "derivation": "以 $y=\\arcsin x$ 为例用反函数求导法：由 $\\sin y=x$，两边对 $x$ 求导得 $\\cos y\\cdot y'=1$，故 $y'=\\frac{1}{\\cos y}$；因 $y\\in[-\\frac{\\pi}{2},\\frac{\\pi}{2}]$ 时 $\\cos y\\ge0$，所以 $\\cos y=\\sqrt{1-\\sin^2 y}=\\sqrt{1-x^2}$，故 $(\\arcsin x)'=\\frac{1}{\\sqrt{1-x^2}}$。同理，由 $\\cos y=x$ 求导得 $(\\arccos x)'=-\\frac{1}{\\sqrt{1-x^2}}$；由 $\\tan y=x$ 求导得 $\\sec^2 y\\cdot y'=1$，即 $y'=\\frac{1}{1+\\tan^2 y}=\\frac{1}{1+x^2}$。图像：$y=\\arcsin x$ 在 [-1,1] 上单调递增，$y=\\arccos x$ 在 [-1,1] 上单调递减，$y=\\arctan x$ 在 $\\mathbb{R}$ 上单调递增，且以 $y=\\pm\\frac{\\pi}{2}$ 为水平渐近线。",
+  "applications": [
+    "求解三角方程与反三角函数方程",
+    "不定积分中的反三角换元（∫dx/√(1-x²)=arcsin x+C）",
+    "物理中计算角度与相位（如方位角、仰角）",
+    "利用 arctan 的级数展开计算圆周率 π"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "asin(x)",
+        "label": "y = arcsin(x)",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "acos(x)",
+        "label": "y = arccos(x)",
+        "color": "#f59e0b"
+      },
+      {
+        "expr": "atan(x)",
+        "label": "y = arctan(x)",
+        "color": "#10b981"
+      }
+    ],
+    "x_range": [
+      -1.5,
+      1.5
+    ],
+    "y_range": [
+      -2,
+      2
+    ],
+    "notes": "arcsin、arccos 仅在 [-1,1] 上有定义（区间外曲线不显示）；arctan 有水平渐近线 y=±π/2≈±1.57。"
+  },
+  "aliases": [
+    {
+      "alias": "反三角函数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Inverse trigonometric functions",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "反正弦",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "反余弦",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "反正切",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "arcsin",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "arccos",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    },
+    {
+      "alias": "arctan",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 95
+    }
+  ],
+  "examples": [
+    {
+      "title": "反三角函数求值",
+      "question": "求值：(1) $\\arcsin\\frac{1}{2}$；(2) $\\arccos(-\\frac{\\sqrt{2}}{2})$；(3) $\\arctan\\sqrt{3}$。",
+      "solution": "(1) 因 $\\sin\\frac{\\pi}{6}=\\frac{1}{2}$ 且 $\\frac{\\pi}{6}\\in[-\\frac{\\pi}{2},\\frac{\\pi}{2}]$，故 $\\arcsin\\frac{1}{2}=\\frac{\\pi}{6}$。(2) 因 $\\cos\\frac{3\\pi}{4}=-\\frac{\\sqrt{2}}{2}$ 且 $\\frac{3\\pi}{4}\\in[0,\\pi]$，故 $\\arccos(-\\frac{\\sqrt{2}}{2})=\\frac{3\\pi}{4}$。(3) 因 $\\tan\\frac{\\pi}{3}=\\sqrt{3}$，故 $\\arctan\\sqrt{3}=\\frac{\\pi}{3}$。",
+      "answer": "(1) $\\frac{\\pi}{6}$；(2) $\\frac{3\\pi}{4}$；(3) $\\frac{\\pi}{3}$。"
+    }
+  ]
+}

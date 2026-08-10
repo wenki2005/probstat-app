@@ -1,0 +1,161 @@
+{
+  "kind": "knowledge",
+  "slug": "power-series",
+  "name_zh": "幂级数",
+  "name_en": "Power Series",
+  "category": "高等数学",
+  "subcategory": "级数",
+  "sort_order": 19,
+  "summary": "幂级数研究收敛半径、收敛域与和函数，是函数展开的基础。",
+  "definition": "形如 $$\\sum_{n=0}^{\\infty}a_nx^n=a_0+a_1x+a_2x^2+\\cdots$$ 的级数称为关于 $x$ 的**幂级数**（一般形式为 $\\sum_{n=0}^{\\infty}a_n(x-x_0)^n$）。由阿贝尔定理，幂级数的收敛域是以原点（或 $x_0$）为中心的区间，存在**收敛半径** $R$：当 $|x|<R$ 时绝对收敛，当 $|x|>R$ 时发散，端点 $x=\\pm R$ 处的敛散性需单独判断。",
+  "formula_latex": "\\sum_{n=0}^{\\infty}a_nx^n,\\qquad R=\\lim_{n\\to\\infty}\\left|\\frac{a_n}{a_{n+1}}\\right|",
+  "properties": [
+    {
+      "title": "阿贝尔定理",
+      "latex": "\\text{在}\\ x_0\\ \\text{处收敛}\\ \\Rightarrow\\ |x|<|x_0|\\ \\text{处绝对收敛}",
+      "description": "幂级数的收敛域为以中心对称的区间"
+    },
+    {
+      "title": "收敛半径（比值公式）",
+      "latex": "R=\\lim_{n\\to\\infty}\\left|\\frac{a_n}{a_{n+1}}\\right|",
+      "description": "极限存在时由相邻项系数之比求 R"
+    },
+    {
+      "title": "收敛半径（根值公式）",
+      "latex": "R=\\frac{1}{\\lim\\limits_{n\\to\\infty}\\sqrt[n]{|a_n|}}",
+      "description": "R=0 时仅中心点收敛，R=+∞ 时在整个实轴上收敛"
+    },
+    {
+      "title": "端点判断",
+      "latex": "x=\\pm R\\ \\text{时需代入原级数单独判断}",
+      "description": "端点是收敛与发散的边界，可能收敛也可能发散"
+    },
+    {
+      "title": "逐项求导",
+      "latex": "\\left(\\sum_{n=0}^{\\infty}a_nx^n\\right)'=\\sum_{n=1}^{\\infty}na_nx^{n-1}\\ (|x|<R)",
+      "description": "收敛区间内可逐项求导，收敛半径不变"
+    },
+    {
+      "title": "逐项积分",
+      "latex": "\\int_0^x\\left(\\sum_{n=0}^{\\infty}a_nt^n\\right)dt=\\sum_{n=0}^{\\infty}\\frac{a_n}{n+1}x^{n+1}\\ (|x|<R)",
+      "description": "收敛区间内可逐项积分，收敛半径不变"
+    },
+    {
+      "title": "几何级数展开",
+      "latex": "\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n\\ (|x|<1)",
+      "description": "最基本的展开式，是和函数计算与幂级数运算的出发点"
+    },
+    {
+      "title": "指数函数展开",
+      "latex": "e^x=\\sum_{n=0}^{\\infty}\\frac{x^n}{n!}\\ (|x|<\\infty)",
+      "description": "收敛半径无穷大的麦克劳林展开"
+    }
+  ],
+  "derivation": "收敛半径的推导：把幂级数看作数项级数，用比值审敛法 $$\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}x^{n+1}}{a_nx^n}\\right|=|x|\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{|x|}{R}$$ 故 $|x|<R$ 时比值小于 1，级数绝对收敛；$|x|>R$ 时比值大于 1，级数发散；$|x|=R$ 时比值审敛法失效，需把端点代入原级数逐点判断。逐项求导与逐项积分的理论依据是幂级数在其收敛区间内的任意闭子区间上一致收敛（内闭一致收敛），因而极限、求导、积分可与求和交换次序，且收敛半径不变。求已知幂级数的和函数常用方法：先逐项求导或积分把它化为 $\\frac{1}{1-x}$ 之类的几何级数，求出后再反过来积分或求导还原。",
+  "applications": [
+    "函数的近似计算（e^x、sin x、cos x、ln(1+x) 的展开式）",
+    "计算机与计算器实现初等函数的算法基础",
+    "解微分方程的幂级数解法",
+    "概率论中的概率生成函数与矩母函数"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "exp(x)",
+        "label": "e^x",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "1+x+x**2/2+x**3/6",
+        "label": "麦克劳林3阶",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      -3,
+      3
+    ],
+    "y_range": [
+      -2,
+      10
+    ],
+    "notes": "幂级数展开（麦克劳林）在 x=0 附近逼近 e^x。"
+  },
+  "aliases": [
+    {
+      "alias": "幂级数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Power series",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "收敛半径",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "Radius of convergence",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "R",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "Σ a_n x^n",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "和函数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "收敛域",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "泰勒级数",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "求收敛半径与收敛域",
+      "question": "求幂级数 $\\sum_{n=1}^{\\infty}\\frac{x^n}{n}$ 的收敛半径与收敛域。",
+      "solution": "$$R=\\lim_{n\\to\\infty}\\left|\\frac{a_n}{a_{n+1}}\\right|=\\lim_{n\\to\\infty}\\frac{n+1}{n}=1$$ 端点处：$x=1$ 时级数为调和级数 $\\sum\\frac1n$，发散；$x=-1$ 时为交错级数 $\\sum\\frac{(-1)^n}{n}$，收敛。故收敛域为 $[-1,1)$。",
+      "answer": "收敛半径 R=1，收敛域为 [-1,1)。"
+    },
+    {
+      "title": "求幂级数的和函数",
+      "question": "求幂级数 $\\sum_{n=1}^{\\infty}nx^{n-1}$ 在收敛域内的和函数。",
+      "solution": "该级数可看成几何级数 $\\sum_{n=0}^{\\infty}x^n=\\frac{1}{1-x}$（|x|<1）逐项求导的结果，故 $$\\sum_{n=1}^{\\infty}nx^{n-1}=\\left(\\frac{1}{1-x}\\right)'=\\frac{1}{(1-x)^2},\\quad |x|<1$$",
+      "answer": "和函数为 $\\frac{1}{(1-x)^2}$（|x|<1）。"
+    },
+    {
+      "title": "麦克劳林展开 e^x",
+      "question": "证明 $e^x=\\sum_{n=0}^{\\infty}\\frac{x^n}{n!}$ 并求其收敛半径。",
+      "solution": "$f(x)=e^x$ 满足 $f^{(n)}(0)=1$，麦克劳林展开系数 $a_n=\\frac{f^{(n)}(0)}{n!}=\\frac{1}{n!}$；收敛半径 $$R=\\lim_{n\\to\\infty}\\left|\\frac{a_n}{a_{n+1}}\\right|=\\lim_{n\\to\\infty}(n+1)=+\\infty$$ 故该级数在整个实轴上收敛，且由泰勒公式余项趋于 0 知其和等于 $e^x$。",
+      "answer": "成立，收敛半径 R=+∞。"
+    }
+  ]
+}

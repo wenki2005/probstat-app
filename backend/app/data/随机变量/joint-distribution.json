@@ -1,0 +1,118 @@
+{
+  "kind": "knowledge",
+  "slug": "joint-distribution",
+  "name_zh": "二维随机变量及其联合分布",
+  "name_en": "Joint distribution of bivariate random variables",
+  "category": "随机变量",
+  "subcategory": "多维随机变量",
+  "sort_order": 8,
+  "summary": "用联合分布函数/分布律/密度完整刻画二维随机变量 (X,Y)。",
+  "definition": "设 $X$、$Y$ 是定义在同一样本空间上的两个随机变量，称 $(X,Y)$ 为**二维随机变量**（二维随机向量）。对任意实数 $x,y$，称 $$F(x,y)=P\\{X\\le x,\\ Y\\le y\\}$$ 为 $(X,Y)$ 的**联合分布函数**。若 $(X,Y)$ 只取有限或可列个值 $(x_i,y_j)$，记 $p_{ij}=P\\{X=x_i,Y=y_j\\}$ 为**联合分布律**；若存在非负函数 $f(x,y)$ 使 $F(x,y)=\\int_{-\\infty}^{x}\\int_{-\\infty}^{y}f(u,v)\\,du\\,dv$，则称 $(X,Y)$ 为连续型，$f(x,y)$ 为**联合概率密度**。联合分布完整刻画两个变量一起取值的统计规律。",
+  "formula_latex": "F(x,y)=P\\{X\\le x,\\ Y\\le y\\}=\\int_{-\\infty}^{x}\\int_{-\\infty}^{y}f(u,v)\\,du\\,dv",
+  "properties": [
+    {
+      "title": "有界性",
+      "latex": "0\\le F(x,y)\\le 1",
+      "description": "联合分布函数取值于 [0,1]"
+    },
+    {
+      "title": "单调不减",
+      "latex": "F(x,y)\\ \\text{关于 }x,y\\ \\text{分别单调不减}",
+      "description": "变量增大时事件范围扩大，概率不减"
+    },
+    {
+      "title": "端点取值",
+      "latex": "F(-\\infty,y)=F(x,-\\infty)=0,\\quad F(+\\infty,+\\infty)=1",
+      "description": "某一变量趋于负无穷时概率趋于 0，两者都趋于正无穷时为 1"
+    },
+    {
+      "title": "矩形概率",
+      "latex": "P\\{x_1<X\\le x_2,\\,y_1<Y\\le y_2\\}=F(x_2,y_2)-F(x_2,y_1)-F(x_1,y_2)+F(x_1,y_1)",
+      "description": "由联合分布函数可求任意矩形区域的概率"
+    },
+    {
+      "title": "连续型密度",
+      "latex": "f(x,y)=\\frac{\\partial^2F(x,y)}{\\partial x\\,\\partial y}\\ge 0,\\quad \\iint_{\\mathbb{R}^2}f(x,y)\\,dxdy=1",
+      "description": "密度非负且全平面积分为 1"
+    }
+  ],
+  "derivation": "矩形概率的推导：事件 $\\{X\\le x_2,Y\\le y_2\\}$ 可分解为四个互不相交的矩形事件之并，由概率的可加性 $$P\\{x_1<X\\le x_2,\\ y_1<Y\\le y_2\\}=F(x_2,y_2)-F(x_2,y_1)-F(x_1,y_2)+F(x_1,y_1)$$ 对连续型 $(X,Y)$，由二重积分与累次积分的关系，$$F(x,y)=\\int_{-\\infty}^{x}\\int_{-\\infty}^{y}f(u,v)\\,du\\,dv$$ 即联合分布函数是密度的二重积分；对 $x,y$ 求混合偏导得 $f(x,y)=\\dfrac{\\partial^2F(x,y)}{\\partial x\\,\\partial y}$。",
+  "applications": [
+    "通信系统中二维信号星座点的联合建模",
+    "图像处理中相邻像素灰度的联合分布",
+    "金融风险管理中两资产收益率的联合分布",
+    "可靠性分析中系统寿命与维修时间的联合描述"
+  ],
+  "visualization_type": "none",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "二维随机变量及其联合分布",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Joint distribution of bivariate random variables",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "联合分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "二维随机向量",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "joint distribution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "F(x,y)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 90
+    },
+    {
+      "alias": "f(x,y)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "联合分布函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "联合分布律",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    }
+  ],
+  "examples": [
+    {
+      "title": "由联合分布函数求矩形概率",
+      "question": "设 $(X,Y)$ 的联合分布函数为 $F(x,y)$，且 $F(1,2)=0.6$，$F(1,1)=0.35$，$F(0,2)=0.25$，$F(0,1)=0.15$。求 $P\\{0<X\\le 1,\\,1<Y\\le 2\\}$。",
+      "solution": "由矩形概率公式 $$P\\{0<X\\le1,\\,1<Y\\le2\\}=F(1,2)-F(1,1)-F(0,2)+F(0,1)=0.6-0.35-0.25+0.15=0.15$$",
+      "answer": "$P\\{0<X\\le1,\\,1<Y\\le2\\}=0.15$。"
+    },
+    {
+      "title": "二维均匀分布的联合密度",
+      "question": "设 $(X,Y)$ 在矩形区域 $D=\\{(x,y):0\\le x\\le2,\\ 0\\le y\\le1\\}$ 上服从二维均匀分布，求联合密度 $f(x,y)$ 及概率 $P\\{X+Y\\ge2\\}$。",
+      "solution": "二维均匀分布的密度为 $f(x,y)=1/S_D$（$(x,y)\\in D$），其中 $S_D=2$，故 $f(x,y)=\\dfrac12$（$(x,y)\\in D$），否则为 0。区域 $\\{X+Y\\ge2\\}\\cap D$ 是三角形，其面积 $$\\iint_{x+y\\ge2}dxdy=\\int_1^2\\int_{2-x}^{1}dydx=\\int_1^2(x-1)\\,dx=\\frac12$$ 于是 $$P\\{X+Y\\ge2\\}=\\iint_{x+y\\ge2}\\frac12\\,dxdy=\\frac12\\times\\frac12=\\frac14$$",
+      "answer": "$f(x,y)=1/2$（$(x,y)\\in D$，否则为 0）；$P\\{X+Y\\ge2\\}=1/4$。"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "kind": "knowledge",
+  "slug": "function-and-inverse",
+  "name_zh": "函数与反函数",
+  "name_en": "Functions and inverse functions",
+  "category": "基础数学",
+  "subcategory": "",
+  "sort_order": 2,
+  "summary": "函数是从定义域到值域的映射，反函数与其复合恒等。",
+  "definition": "设 $A,B$ 是两个非空数集，若按照某种确定的对应关系 $f$，对于集合 $A$ 中的每一个元素 $x$，在集合 $B$ 中都有唯一确定的 $y$ 与之对应，则称 $f$ 为从 $A$ 到 $B$ 的函数，记 $y=f(x)$（$x\\in A$）。$A$ 称为定义域，值域为 $\\{y\\mid y=f(x),\\,x\\in A\\}$。若 $y=f(x)$ 是定义域到值域的一一映射，则可定义其反函数：由 $y=f(x)$ 解出 $x=f^{-1}(y)$，习惯上仍以 $x$ 记自变量，写作 $y=f^{-1}(x)$。",
+  "formula_latex": "y=f^{-1}(x)\\ \\Longleftrightarrow\\ x=f(y)",
+  "properties": [
+    {
+      "title": "定义域与值域互换",
+      "latex": "D_{f^{-1}}=R_f,\\quad R_{f^{-1}}=D_f",
+      "description": "反函数的定义域是原函数的值域，值域是原函数的定义域"
+    },
+    {
+      "title": "复合恒等",
+      "latex": "f^{-1}(f(x))=x,\\quad f(f^{-1}(y))=y",
+      "description": "函数与其反函数复合后均为恒等映射"
+    },
+    {
+      "title": "图象对称",
+      "latex": "y=f(x)\\ \\text{与}\\ y=f^{-1}(x)\\ \\text{关于直线}\\ y=x\\ \\text{对称}",
+      "description": "两函数图象关于直线 y=x 对称"
+    },
+    {
+      "title": "存在条件",
+      "latex": "x_1\\neq x_2\\Rightarrow f(x_1)\\neq f(x_2)",
+      "description": "严格单调函数必有反函数，且反函数与原函数同单调"
+    }
+  ],
+  "derivation": "函数存在反函数的充要条件是 $f$ 为定义域到值域的一一映射（单射且满射）。若 $f$ 严格单调，则 $x_1\\ne x_2$ 时必有 $f(x_1)\\ne f(x_2)$，故为单射，反函数存在；且由单调性可证反函数与原函数具有相同的单调性。几何上，点 $(a,b)$ 在 $y=f(x)$ 图象上当且仅当 $b=f(a)$，即 $a=f^{-1}(b)$，故点 $(b,a)$ 在 $y=f^{-1}(x)$ 的图象上；而 $(a,b)$ 与 $(b,a)$ 关于直线 $y=x$ 对称，所以两图象关于 $y=x$ 对称。",
+  "applications": [
+    "指数函数与对数函数互为反函数",
+    "由因变量反解自变量的建模问题",
+    "经济学中的需求函数与反需求函数",
+    "概率论中分布函数与分位数函数互为反函数"
+  ],
+  "visualization_type": "function",
+  "graph_config": {
+    "functions": [
+      {
+        "expr": "x**2",
+        "label": "y = x²",
+        "color": "rgba(79,70,229,0.95)"
+      },
+      {
+        "expr": "sqrt(x)",
+        "label": "y = √x（反函数）",
+        "color": "#f59e0b"
+      }
+    ],
+    "x_range": [
+      0,
+      3
+    ],
+    "y_range": [
+      0,
+      3
+    ],
+    "notes": "y=x²（x≥0）与 y=√x 互为反函数，图像关于 y=x 对称。"
+  },
+  "aliases": [
+    {
+      "alias": "函数",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Function",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "反函数",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "f(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "f^{-1}(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 85
+    },
+    {
+      "alias": "inverse function",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "映射",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "求一次函数的反函数",
+      "question": "已知 $f(x)=2x+3\\ (x\\in\\mathbb{R})$，求 $f^{-1}(x)$，并验证 $f(f^{-1}(x))=x$。",
+      "solution": "令 $y=2x+3$，解得 $x=\\frac{y-3}{2}$。交换 $x,y$ 得 $y=\\frac{x-3}{2}$，故 $f^{-1}(x)=\\frac{x-3}{2}$。验证：$f(f^{-1}(x))=2\\cdot\\frac{x-3}{2}+3=x$。",
+      "answer": "$f^{-1}(x)=\\frac{x-3}{2}$。"
+    }
+  ]
+}

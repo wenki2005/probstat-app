@@ -1,0 +1,112 @@
+{
+  "kind": "knowledge",
+  "slug": "integration-by-substitution",
+  "name_zh": "换元积分法",
+  "name_en": "Integration by substitution",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 3,
+  "summary": "通过变量替换化简被积函数，含凑微分与三角代换两类。",
+  "definition": "**第一类换元（凑微分）**：若 $\\int f(u)\\,du=F(u)+C$，则 $$\\int f(\\varphi(x))\\varphi'(x)\\,dx=F(\\varphi(x))+C$$ 即把 $\\varphi'(x)\\,dx$ 凑成 $d\\varphi(x)$ 后令 $u=\\varphi(x)$。**第二类换元**：设 $x=\\varphi(t)$ 单调可导且 $\\varphi'(t)\\ne0$，则 $$\\int f(x)\\,dx=\\left.\\int f(\\varphi(t))\\varphi'(t)\\,dt\\right|_{t=\\varphi^{-1}(x)}$$ 常用**三角代换**：被积函数含 $\\sqrt{a^2-x^2}$ 时令 $x=a\\sin t$；含 $\\sqrt{a^2+x^2}$ 时令 $x=a\\tan t$；含 $\\sqrt{x^2-a^2}$ 时令 $x=a\\sec t$，利用平方关系消去根号。",
+  "formula_latex": "\\int f(\\varphi(x))\\varphi'(x)\\,dx=\\left[\\int f(u)\\,du\\right]_{u=\\varphi(x)}",
+  "properties": [
+    {
+      "title": "凑微分形式",
+      "latex": "\\int f(\\varphi(x))\\,d\\varphi(x)=\\left[\\int f(u)\\,du\\right]_{u=\\varphi(x)}",
+      "description": "把 φ'(x)dx 整体看作 dφ(x)"
+    },
+    {
+      "title": "一次函数换元",
+      "latex": "\\int f(ax+b)\\,dx=\\frac{1}{a}\\int f(ax+b)\\,d(ax+b)",
+      "description": "最常见的凑微分，注意补系数 1/a"
+    },
+    {
+      "title": "第二类换元条件",
+      "latex": "x=\\varphi(t)\\text{ 单调可导},\\ \\varphi'(t)\\ne0\\Rightarrow\\int f(x)\\,dx=\\int f(\\varphi(t))\\varphi'(t)\\,dt",
+      "description": "保证反函数 t=φ^{-1}(x) 存在，积分后需回代"
+    },
+    {
+      "title": "三角代换（平方差）",
+      "latex": "\\sqrt{a^2-x^2}:\\ x=a\\sin t,\\ t\\in\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]",
+      "description": "化为 a cos t 消去根号"
+    },
+    {
+      "title": "三角代换（平方和/差）",
+      "latex": "\\sqrt{x^2+a^2}:\\ x=a\\tan t;\\qquad\\sqrt{x^2-a^2}:\\ x=a\\sec t",
+      "description": "利用 1+tan^2 t=sec^2 t 恒等式"
+    }
+  ],
+  "derivation": "第一类换元是复合函数求导链式法则的逆过程：$\\frac{d}{dx}F(\\varphi(x))=F'(\\varphi(x))\\varphi'(x)=f(\\varphi(x))\\varphi'(x)$，两边取不定积分即得。第二类换元相当于把第一类换元反方向使用：令 $x=\\varphi(t)$，形式地有 $dx=\\varphi'(t)\\,dt$，代入原积分得 $\\int f(\\varphi(t))\\varphi'(t)\\,dt$，求出关于 $t$ 的积分后，用反函数 $t=\\varphi^{-1}(x)$ 回代到 $x$；要求 $\\varphi'(t)\\ne0$ 是为了保证反函数存在且可导。三角代换的根据是 $\\sin^2t+\\cos^2t=1$ 与 $1+\\tan^2t=\\sec^2t$：如 $x=a\\sin t$ 时 $\\sqrt{a^2-x^2}=a|\\cos t|$，在 $t\\in\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$ 上 $\\cos t\\ge0$，可去掉绝对值。",
+  "applications": [
+    "化简含根号、复合函数的积分",
+    "概率论中正态分布密度函数积分的换元",
+    "信号处理中傅里叶变换的变量替换",
+    "物理中换元后利用已知积分表快速求值"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "换元积分法",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Integration by substitution",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "凑微分",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "u-substitution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "三角代换",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "trigonometric substitution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 75
+    },
+    {
+      "alias": "第一类换元",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    },
+    {
+      "alias": "第二类换元",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 70
+    }
+  ],
+  "examples": [
+    {
+      "title": "第一类换元（凑微分）",
+      "question": "求 $\\int 2x\\cos(x^2)\\,dx$。",
+      "solution": "令 $u=x^2$，则 $du=2x\\,dx$，$$\\int 2x\\cos(x^2)\\,dx=\\int\\cos u\\,du=\\sin u+C=\\sin(x^2)+C$$",
+      "answer": "$\\sin(x^2)+C$。"
+    },
+    {
+      "title": "第二类换元（三角代换）",
+      "question": "求 $\\int\\sqrt{4-x^2}\\,dx$。",
+      "solution": "令 $x=2\\sin t$（$t\\in\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$），则 $dx=2\\cos t\\,dt$，$\\sqrt{4-x^2}=2\\cos t$，原积分化为 $$\\int 4\\cos^2t\\,dt=2\\int(1+\\cos2t)\\,dt=2t+\\sin2t+C=2t+2\\sin t\\cos t+C$$ 回代 $\\sin t=\\frac{x}{2}$，$\\cos t=\\frac{\\sqrt{4-x^2}}{2}$，得 $$\\int\\sqrt{4-x^2}\\,dx=2\\arcsin\\frac{x}{2}+\\frac{x}{2}\\sqrt{4-x^2}+C$$",
+      "answer": "$2\\arcsin\\frac{x}{2}+\\frac{x}{2}\\sqrt{4-x^2}+C$。"
+    }
+  ]
+}

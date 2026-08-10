@@ -1,0 +1,106 @@
+{
+  "kind": "knowledge",
+  "slug": "lhopital-rule",
+  "name_zh": "洛必达法则",
+  "name_en": "L'Hôpital's Rule",
+  "category": "高等数学",
+  "subcategory": "一元微积分",
+  "sort_order": 7,
+  "summary": "用分子分母导数之比求 0/0 与 ∞/∞ 型未定式极限。",
+  "definition": "若 (1) 当 $x\\to x_0$ 时 $f(x)\\to0$、$g(x)\\to0$（或 $f(x)\\to\\infty$、$g(x)\\to\\infty$）；(2) 在 $x_0$ 的某去心邻域内 $f,g$ 可导且 $g'(x)\\neq0$；(3) 极限 $\\lim\\limits_{x\\to x_0}\\frac{f'(x)}{g'(x)}$ 存在（或为无穷大），则 $$\\lim_{x\\to x_0}\\frac{f(x)}{g(x)}=\\lim_{x\\to x_0}\\frac{f'(x)}{g'(x)}$$ 此即**洛必达法则**。对 $x\\to\\infty$ 及单侧极限情形同样成立。其它未定式 $0\\cdot\\infty$、$\\infty-\\infty$、$1^\\infty$、$0^0$、$\\infty^0$ 需先化为 $\\frac{0}{0}$ 或 $\\frac{\\infty}{\\infty}$ 型再使用。",
+  "formula_latex": "\\lim_{x\\to x_0}\\frac{f(x)}{g(x)}=\\lim_{x\\to x_0}\\frac{f'(x)}{g'(x)}",
+  "properties": [
+    {
+      "title": "0/0 型",
+      "latex": "\\lim f=\\lim g=0\\Rightarrow\\lim\\frac{f}{g}=\\lim\\frac{f'}{g'}",
+      "description": "分子分母同趋于零时的极限等于其导数之比的极限"
+    },
+    {
+      "title": "∞/∞ 型",
+      "latex": "\\lim f=\\lim g=\\infty\\Rightarrow\\lim\\frac{f}{g}=\\lim\\frac{f'}{g'}",
+      "description": "分子分母同趋于无穷大时法则同样成立"
+    },
+    {
+      "title": "可反复使用",
+      "latex": "\\lim\\frac{f'}{g'}\\ \\text{仍为未定式}\\Rightarrow\\lim\\frac{f''}{g''}",
+      "description": "一次求导后仍为 0/0 或 ∞/∞ 型时可继续使用"
+    },
+    {
+      "title": "未定式化归",
+      "latex": "fg=\\frac{f}{1/g},\\quad f-g=\\frac{1/g-1/f}{1/(fg)}",
+      "description": "0·∞ 与 ∞-∞ 型可化为 0/0 或 ∞/∞ 型"
+    },
+    {
+      "title": "条件不满足须慎用",
+      "latex": "\\lim\\frac{f'}{g'}\\ \\text{不存在}\\nRightarrow\\lim\\frac{f}{g}\\ \\text{不存在}",
+      "description": "求导后极限不存在时原极限仍可能存在，应改用其它方法"
+    }
+  ],
+  "derivation": "以 $\\frac{0}{0}$ 型证明（$x\\to x_0$ 情形）：补充定义 $f(x_0)=g(x_0)=0$。在 $[x_0,x]$（或 $[x,x_0]$）上对 $f,g$ 应用柯西中值定理，存在 $\\xi$ 介于 $x_0$ 与 $x$ 之间，使 $$\\frac{f(x)}{g(x)}=\\frac{f(x)-f(x_0)}{g(x)-g(x_0)}=\\frac{f'(\\xi)}{g'(\\xi)}$$ 当 $x\\to x_0$ 时 $\\xi\\to x_0$，两边取极限即得 $$\\lim_{x\\to x_0}\\frac{f(x)}{g(x)}=\\lim_{x\\to x_0}\\frac{f'(x)}{g'(x)}$$ $\\frac{\\infty}{\\infty}$ 型可先取倒数化为 $\\frac{0}{0}$ 型，或通过恒等变形直接证明。",
+  "applications": [
+    "求 0/0 与 ∞/∞ 型极限",
+    "比较函数趋于零或无穷大的速度",
+    "与等价无穷小配合快速求极限",
+    "级数敛散性判别中的极限计算"
+  ],
+  "visualization_type": "formula",
+  "graph_config": {},
+  "aliases": [
+    {
+      "alias": "洛必达法则",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "L'Hôpital's Rule",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "洛必达",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "L'Hospital",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "0/0型",
+      "lang": "math",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "∞/∞型",
+      "lang": "math",
+      "kind": "keyword",
+      "weight": 85
+    },
+    {
+      "alias": "l'Hopital",
+      "lang": "en",
+      "kind": "keyword",
+      "weight": 80
+    },
+    {
+      "alias": "f'(x)/g'(x)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "连续两次使用洛必达法则",
+      "question": "求 $\\lim\\limits_{x\\to0}\\frac{e^x-1-x}{x^2}$。",
+      "solution": "当 $x\\to0$ 时分子 $e^x-1-x\\to0$、分母 $x^2\\to0$，为 $\\frac{0}{0}$ 型。由洛必达法则 $$\\lim_{x\\to0}\\frac{e^x-1-x}{x^2}=\\lim_{x\\to0}\\frac{e^x-1}{2x}$$ 仍为 $\\frac{0}{0}$ 型，继续用洛必达法则得 $$\\lim_{x\\to0}\\frac{e^x}{2}=\\frac{1}{2}$$",
+      "answer": "极限为 $\\frac{1}{2}$。"
+    }
+  ]
+}

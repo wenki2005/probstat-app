@@ -1,0 +1,140 @@
+{
+  "kind": "knowledge",
+  "slug": "bayesian-estimation",
+  "name_zh": "贝叶斯估计",
+  "name_en": "Bayesian Estimation",
+  "category": "数理统计",
+  "subcategory": "",
+  "sort_order": 12,
+  "summary": "把参数视为随机变量，用先验分布结合样本得到后验并估计参数。",
+  "definition": "**贝叶斯学派**把未知参数 $\\theta$ 视为随机变量，其分布称为**先验分布** $\\pi(\\theta)$，反映抽样之前对 $\\theta$ 的认识。设样本 $X_1,\\dots,X_n$ 的联合密度（似然函数）为 $L(\\mathbf x|\\theta)=f(x_1,\\dots,x_n|\\theta)$，由贝叶斯公式，$\\theta$ 在给定样本后的**后验分布**为 $$\\pi(\\theta|\\mathbf x)=\\frac{L(\\mathbf x|\\theta)\\pi(\\theta)}{\\int L(\\mathbf x|\\theta)\\pi(\\theta)d\\theta}\\propto L(\\mathbf x|\\theta)\\pi(\\theta)$$ 后验分布综合了先验信息与样本信息。常用贝叶斯估计量：**后验期望估计** $\\hat\\theta_{BE}=E(\\theta|\\mathbf x)=\\int\\theta\\,\\pi(\\theta|\\mathbf x)d\\theta$（平方损失下最优）；**后验最大估计（MAP）** $\\hat\\theta_{MAP}=\\arg\\max_{\\theta}\\pi(\\theta|\\mathbf x)$。若后验分布与先验分布属于同一分布族，则称该先验为**共轭先验**：二项分布成功概率 $p$ 的共轭先验是 Beta 分布，正态均值 $\\mu$（方差已知）的共轭先验是正态分布，泊松均值 $\\lambda$ 的共轭先验是 Gamma 分布。",
+  "formula_latex": "\\pi(\\theta|\\mathbf x)\\propto L(\\mathbf x|\\theta)\\pi(\\theta),\\qquad \\hat\\theta_{BE}=E(\\theta|\\mathbf x)=\\int\\theta\\,\\pi(\\theta|\\mathbf x)d\\theta",
+  "properties": [
+    {
+      "title": "贝叶斯公式（密度形式）",
+      "latex": "\\pi(\\theta|\\mathbf x)=\\frac{L(\\mathbf x|\\theta)\\pi(\\theta)}{\\int L(\\mathbf x|\\theta)\\pi(\\theta)d\\theta}",
+      "description": "后验分布=似然×先验÷归一化常数"
+    },
+    {
+      "title": "后验期望估计",
+      "latex": "\\hat\\theta_{BE}=E(\\theta|\\mathbf x)",
+      "description": "平方损失函数下最优的贝叶斯估计"
+    },
+    {
+      "title": "后验最大估计 MAP",
+      "latex": "\\hat\\theta_{MAP}=\\arg\\max_{\\theta}\\pi(\\theta|\\mathbf x)",
+      "description": "后验密度最大点，等价于带先验惩罚的极大似然"
+    },
+    {
+      "title": "共轭先验（Beta-二项）",
+      "latex": "p\\sim\\mathrm{Beta}(\\alpha,\\beta)\\Rightarrow p|\\mathbf x\\sim\\mathrm{Beta}(\\alpha+\\sum x_i,\\beta+n-\\sum x_i)",
+      "description": "先验与后验同为 Beta 族，计算方便"
+    },
+    {
+      "title": "共轭先验（正态-正态）",
+      "latex": "\\mu\\sim N(m,\\tau^2)\\Rightarrow \\mu|\\mathbf x\\sim N\\left(\\frac{\\frac{n}{\\sigma^2}\\bar x+\\frac{m}{\\tau^2}}{\\frac{n}{\\sigma^2}+\\frac{1}{\\tau^2}},\\frac{1}{\\frac{n}{\\sigma^2}+\\frac{1}{\\tau^2}}\\right)",
+      "description": "后验均值是先验均值与样本均值的加权平均"
+    },
+    {
+      "title": "后验预测分布",
+      "latex": "f(x_{\\text{new}}|\\mathbf x)=\\int f(x_{\\text{new}}|\\theta)\\pi(\\theta|\\mathbf x)d\\theta",
+      "description": "对新观测预测时对参数后验取平均"
+    }
+  ],
+  "derivation": "以二项分布成功概率 $p$ 的共轭先验为例。设 $X_1,\\dots,X_n$ 独立同 $B(1,p)$，先验 $p\\sim\\mathrm{Beta}(\\alpha,\\beta)$，其密度 $\\pi(p)\\propto p^{\\alpha-1}(1-p)^{\\beta-1}$。似然函数 $L(\\mathbf x|p)=p^{\\sum x_i}(1-p)^{n-\\sum x_i}$，于是后验密度 $$\\pi(p|\\mathbf x)\\propto p^{\\sum x_i}(1-p)^{n-\\sum x_i}\\cdot p^{\\alpha-1}(1-p)^{\\beta-1}=p^{\\alpha+\\sum x_i-1}(1-p)^{\\beta+n-\\sum x_i-1}$$ 即 $p|\\mathbf x\\sim\\mathrm{Beta}(\\alpha+\\sum x_i,\\ \\beta+n-\\sum x_i)$，与先验同为 Beta 族，故 Beta 分布是 Bernoulli 成功概率的共轭先验。后验期望估计 $$\\hat p_{BE}=E(p|\\mathbf x)=\\frac{\\alpha+\\sum x_i}{\\alpha+\\beta+n}$$ 当取均匀先验 $\\alpha=\\beta=1$ 时，$\\hat p_{BE}=\\frac{1+\\sum x_i}{n+2}$，与极大似然估计 $\\hat p_{MLE}=\\bar x$ 略有差异；当 $n$ 增大时二者趋于一致，体现先验信息随样本增大而“淡化”。",
+  "applications": [
+    "A/B 测试中转化率的分层估计与平滑",
+    "贝叶斯垃圾邮件过滤与推荐系统",
+    "医学诊断中利用先验患病率修正后验概率",
+    "机器学习中 MAP 估计与正则化"
+  ],
+  "visualization_type": "bayes",
+  "graph_config": {
+    "alpha": 2,
+    "beta": 2,
+    "n": 10,
+    "successes": 7
+  },
+  "aliases": [
+    {
+      "alias": "贝叶斯估计",
+      "lang": "zh",
+      "kind": "name",
+      "weight": 100
+    },
+    {
+      "alias": "Bayesian Estimation",
+      "lang": "en",
+      "kind": "name",
+      "weight": 90
+    },
+    {
+      "alias": "先验分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "后验分布",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "共轭先验",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 90
+    },
+    {
+      "alias": "后验期望估计",
+      "lang": "zh",
+      "kind": "alias",
+      "weight": 85
+    },
+    {
+      "alias": "prior distribution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "posterior distribution",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "conjugate prior",
+      "lang": "en",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "MAP",
+      "lang": "math",
+      "kind": "alias",
+      "weight": 80
+    },
+    {
+      "alias": "\\mathrm{Beta}(\\alpha,\\beta)",
+      "lang": "math",
+      "kind": "notation",
+      "weight": 75
+    },
+    {
+      "alias": "贝叶斯公式",
+      "lang": "zh",
+      "kind": "keyword",
+      "weight": 75
+    }
+  ],
+  "examples": [
+    {
+      "title": "抛硬币试验的贝叶斯估计",
+      "question": "独立抛一枚硬币 $n=10$ 次，正面出现 $\\sum x_i=7$ 次，设正面概率为 $p$。取共轭先验 $p\\sim\\mathrm{Beta}(2,2)$。求 $p$ 的后验分布与后验期望估计 $\\hat p_{BE}$，并与极大似然估计比较。",
+      "solution": "似然 $L(\\mathbf x|p)\\propto p^{7}(1-p)^{3}$，先验 $\\pi(p)\\propto p^{2-1}(1-p)^{2-1}=p(1-p)$。后验密度 $$\\pi(p|\\mathbf x)\\propto p^{7}(1-p)^{3}\\cdot p(1-p)=p^{8}(1-p)^{4}$$ 故 $p|\\mathbf x\\sim\\mathrm{Beta}(9,5)$。后验期望估计 $$\\hat p_{BE}=\\frac{9}{9+5}=\\frac{9}{14}\\approx0.643$$ 极大似然估计 $\\hat p_{MLE}=\\bar x=7/10=0.7$，先验均值 $E(p)=2/4=0.5$。后验估计 $0.643$ 介于先验均值 $0.5$ 与样本频率 $0.7$ 之间，体现了先验与样本信息的综合。",
+      "answer": "$p|\\mathbf x\\sim\\mathrm{Beta}(9,5)$，$\\hat p_{BE}=9/14\\approx0.643$（MLE 为 0.7）。"
+    }
+  ]
+}
