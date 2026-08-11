@@ -170,7 +170,16 @@ def related(item_type: str, slug: str, limit: int = 6) -> list[dict[str, Any]]:
         ]
 
 
-def generate_example(item_type: str, slug: str) -> dict[str, Any]:
+def generate_example(item_type: str | None, slug: str) -> dict[str, Any]:
+    if item_type is None:
+        # 自动识别：先查分布，再查知识点
+        with SessionLocal() as s:
+            if s.query(Distribution).filter_by(slug=slug).first() is not None:
+                item_type = "distribution"
+            elif s.query(KnowledgeItem).filter_by(slug=slug).first() is not None:
+                item_type = "knowledge"
+            else:
+                raise LookupError(f"未找到知识点或分布：{slug}")
     if item_type == "distribution":
         with SessionLocal() as s:
             row = s.query(Distribution).filter_by(slug=slug).first()

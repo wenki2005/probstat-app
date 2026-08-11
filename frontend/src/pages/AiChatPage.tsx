@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import api, { type AiChatResult, type AiExampleResult, type SearchItemType } from '../api/client'
+import api, { type AiChatResult } from '../api/client'
 import Markdown from '../components/Markdown'
 
 interface Msg {
@@ -18,21 +18,12 @@ const suggestions = [
   '洛必达法则怎么用？',
 ]
 
-const exampleChips: { label: string; itemType: SearchItemType; slug: string }[] = [
-  { label: '贝叶斯公式', itemType: 'knowledge', slug: 'bayes-theorem' },
-  { label: '正态分布', itemType: 'distribution', slug: 'normal-distribution' },
-  { label: '洛必达法则', itemType: 'knowledge', slug: 'lhopital-rule' },
-  { label: '定积分', itemType: 'knowledge', slug: 'definite-integral' },
-]
 
 export default function AiChatPage() {
   const [messages, setMessages] = useState<Msg[]>([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [last, setLast] = useState<AiChatResult | null>(null)
-  const [exSlug, setExSlug] = useState('normal-distribution')
-  const [ex, setEx] = useState<AiExampleResult | null>(null)
-  const [exLoading, setExLoading] = useState(false)
 
   const send = async (text?: string) => {
     const q = (text ?? input).trim()
@@ -49,20 +40,6 @@ export default function AiChatPage() {
       setMessages((m) => [...m, { role: 'assistant', content: `⚠️ 请求失败：${String(e)}` }])
     } finally {
       setLoading(false)
-    }
-  }
-
-  const genExample = async (slug?: string, itemType?: SearchItemType) => {
-    const s = (slug ?? exSlug).trim()
-    if (!s) return
-    setExLoading(true)
-    try {
-      setEx(await api.aiExample(itemType ?? 'distribution', s))
-    } catch (e) {
-      setEx(null)
-      setMessages((m) => [...m, { role: 'assistant', content: `⚠️ 出题失败：${String(e)}` }])
-    } finally {
-      setExLoading(false)
     }
   }
 
@@ -143,48 +120,6 @@ export default function AiChatPage() {
       </section>
 
       <aside className="space-y-6">
-        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="font-semibold text-slate-800">🎲 自动出题</h2>
-          <p className="mt-1 text-xs text-slate-500">输入知识点 slug 生成一道练习题（分布类会随机参数并计算答案）。</p>
-          <div className="mt-3 flex gap-2">
-            <input
-              value={exSlug}
-              onChange={(e) => setExSlug(e.target.value)}
-              placeholder="slug，如 normal-distribution"
-              className="flex-1 rounded-lg border border-slate-200 px-3 py-1.5 text-sm outline-none focus:border-indigo-400"
-            />
-            <button
-              onClick={() => genExample()}
-              disabled={exLoading}
-              className="rounded-lg bg-violet-600 px-4 py-1.5 text-sm text-white hover:bg-violet-700 disabled:opacity-50"
-            >
-              出题
-            </button>
-          </div>
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {exampleChips.map((c) => (
-              <button
-                key={c.slug}
-                onClick={() => {
-                  setExSlug(c.slug)
-                  genExample(c.slug, c.itemType)
-                }}
-                className="rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-600 hover:bg-slate-200"
-              >
-                {c.label}
-              </button>
-            ))}
-          </div>
-          {ex && (
-            <div className="mt-3 space-y-2 rounded-lg bg-slate-50 p-3 text-sm">
-              <p className="font-medium text-slate-800">{ex.title}</p>
-              <p className="text-slate-600">📝 {ex.question}</p>
-              {ex.solution && <p className="text-xs text-slate-500">解法：{ex.solution}</p>}
-              <p className="text-sm font-semibold text-emerald-700">✅ 答案：{ex.answer}</p>
-            </div>
-          )}
-        </section>
-
         <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="font-semibold text-slate-800">💡 AI 使用说明</h2>
           <p className="mt-2 text-xs leading-relaxed text-slate-500">

@@ -21,7 +21,7 @@ class ChatRequest(BaseModel):
 
 
 class ExampleRequest(BaseModel):
-    item_type: str = Field("knowledge", description="knowledge / distribution")
+    item_type: str | None = Field(None, description="knowledge / distribution，留空自动识别")
     slug: str
 
 

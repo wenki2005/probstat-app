@@ -61,3 +61,21 @@ def test_generate_example_knowledge():
     ex = generate_example("knowledge", "bayes-theorem")
     assert ex["title"]
     assert ex["question"]
+
+def test_generate_example_autodetect_knowledge():
+    """未指定类型时自动识别知识点 slug。"""
+    ex = generate_example(None, "lhopital-rule")
+    assert ex["item_type"] == "knowledge"
+    assert "洛必达" in ex["title"] or ex["question"]
+
+
+def test_generate_example_autodetect_distribution():
+    ex = generate_example(None, "normal-distribution")
+    assert ex["item_type"] == "distribution"
+
+
+def test_generate_example_not_found():
+    import pytest as _p
+
+    with _p.raises(LookupError):
+        generate_example(None, "不存在的slug")

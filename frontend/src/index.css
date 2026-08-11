@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -81,4 +81,17 @@ body {
 }
 .markdown-body a {
   @apply text-indigo-600 underline;
+}
+
+/* 允许全文文本选择与右键复制 */
+html,
+body,
+* {
+  user-select: text;
+  -webkit-user-select: text;
+}
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
 }

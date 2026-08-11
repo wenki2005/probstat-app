@@ -23,7 +23,7 @@ function detectParams(curves: Curve[]): string[] {
   for (const c of curves) {
     const tokens = c.expr.match(/[A-Za-z_][A-Za-z0-9_]*/g) ?? []
     for (const t of tokens) {
-      if (t === 'x') continue
+      if (t === 'x' || t === 'y') continue  // x/y 是自变量/因变量，不作为参数
       if (FUNCTION_NAMES.has(t.toLowerCase())) continue
       found.add(t)
     }

@@ -39,3 +39,46 @@ def test_simple_value():
 def test_invalid_symbol():
     with pytest.raises(Exception):
         compute_expression("evil(x)")
+
+def test_symbolic_integral_notation():
+    r = compute_expression("∫_0^1 x^2 dx")
+    assert abs(r["numeric"] - 1 / 3) < 1e-9
+
+
+def test_symbolic_derivative_notation():
+    r = compute_expression("d/dx sin(x)*x^2")
+    assert r["kind"] == "derivative"
+
+
+def test_symbolic_limit_notation():
+    r = compute_expression("lim_{x→0} sin(x)/x")
+    assert r["numeric"] == pytest.approx(1.0)
+
+
+def test_symbolic_sum_notation():
+    r = compute_expression("Σ_{n=1}^{∞} 1/n^2")
+    assert abs(r["numeric"] - 3.141592653589793**2 / 6) < 1e-6
+
+
+def test_symbolic_sqrt():
+    r = compute_expression("√2+1")
+    assert r["numeric"] == pytest.approx(2.41421356)
+
+def test_symbolic_product_notation():
+    r = compute_expression("∏_{n=1}^{5} n")
+    assert r["numeric"] == 120
+
+
+def test_symbolic_integral_braces():
+    r = compute_expression("∫_{0}^{1} x^2 dx")
+    assert abs(r["numeric"] - 1 / 3) < 1e-9
+
+def test_symbolic_integral_bounds_after():
+    """定积分上下限写在被积函数后也应支持：∫x^2_0^1 dx == 1/3。"""
+    r = compute_expression("∫x^2_0^1 dx")
+    assert abs(r["numeric"] - 1 / 3) < 1e-9
+
+
+def test_symbolic_integral_bounds_after_space():
+    r = compute_expression("∫ x^2 _0^1 dx")
+    assert abs(r["numeric"] - 1 / 3) < 1e-9

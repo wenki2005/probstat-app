@@ -272,6 +272,7 @@ export interface VizFunctionRequest {
 export interface VizFunctionResponse {
   traces: unknown[]
   layout: Record<string, unknown>
+  messages?: string[]
 }
 
 export interface VizLlnResponse {
@@ -438,10 +439,10 @@ export const api = {
     }),
   aiRelated: (itemType: SearchItemType, slug: string, limit = 6) =>
     request<AiRelatedResult>(`/ai/related/${itemType}/${slug}?limit=${limit}`),
-  aiExample: (itemType: SearchItemType, slug: string) =>
+  aiExample: (itemType: SearchItemType | undefined, slug: string) =>
     request<AiExampleResult>('/ai/example', {
       method: 'POST',
-      body: { item_type: itemType, slug },
+      body: { item_type: itemType, slug }, // item_type 省略时后端自动识别知识点/分布
     }),
 }
 

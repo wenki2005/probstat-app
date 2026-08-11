@@ -102,6 +102,15 @@ export default function FunctionPlot({ config, height = 460 }: FunctionPlotProps
           更新中…
         </div>
       )}
+      {data.messages && data.messages.length > 0 && (
+        <div className="mb-2 flex flex-wrap gap-1.5">
+          {data.messages.map((m, i) => (
+            <span key={i} className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] text-amber-700">
+              {m}
+            </span>
+          ))}
+        </div>
+      )}
       {paramDefs.length > 0 && (
         <div className="mb-2 grid gap-2 sm:grid-cols-2">
           {paramDefs.map((p) => (

@@ -1,7 +1,10 @@
-"""Wolfram Alpha 风格符号计算：求导/积分/极限/求和/解方程 + 通用表达式化简求值。
+"""Wolfram Alpha 风格符号计算。
+
+支持两种输入并存：
+- 函数式：derivative(...) / integral(...) / limit(...) / solve(...) / sum(...) / 普通表达式
+- 符号式：∫x^2 dx、∫_0^1 x^2 dx、d/dx F、lim_{x→0} F、Σ_{n=1}^{∞} F、√x（更直观）
 
 安全：仅允许白名单数学函数与白名单符号，禁用 eval；解析后校验自由符号与未定义函数。
-支持隐式乘法（x^3-3x 等用户友好写法）。
 """
 import re
 from typing import Any
@@ -19,6 +22,14 @@ ALLOWED_FUNCS = [
 ALLOWED_SYMBOLS = {"x", "y", "z", "t", "a", "b", "c", "d", "n", "k", "m", "p", "q", "r", "theta"}
 
 _CALL = re.compile(r"^(derivative|diff|integral|integrate|limit|solve|sum|summation)\s*\((.*)\)$", re.S)
+
+_SYM_MAP = {
+    "∫": "int", "∬": "iint", "Σ": "sum", "∏": "prod", "∞": "inf",
+    "→": "to", "×": "*", "⋅": "*", "·": "*", "−": "-",
+    "π": "pi", "∂": "d", "≤": "<=", "≥": ">=", "θ": "theta",
+    "μ": "mu", "σ": "sigma", "α": "alpha", "β": "beta", "λ": "lambda",
+    "γ": "gamma", "ξ": "xi", "φ": "phi", "ε": "epsilon",
+}
 
 
 def _local_dict() -> dict[str, Any]:
@@ -42,6 +53,19 @@ def _split_args(inner: str) -> list[str]:
     return [p.strip() for p in parts]
 
 
+def _sym_number(tok: str):
+    tok = (tok or "").strip()
+    if tok in ("inf", "oo", "infinity"):
+        return sp.oo
+    if tok in ("-inf", "-oo"):
+        return -sp.oo
+    try:
+        v = float(tok)
+        return int(v) if v.is_integer() else v
+    except Exception:
+        return sp.Symbol(tok)
+
+
 def _arg_expr(text: str):
     """解析参数：支持隐式乘法，可能含 = 方程。"""
     text = implicit_mul(text.strip())
@@ -49,6 +73,70 @@ def _arg_expr(text: str):
         left, right = text.split("=", 1)
         return sp.Eq(sp.sympify(left, locals=_local_dict()), sp.sympify(right, locals=_local_dict()))
     return sp.sympify(text, locals=_local_dict())
+
+
+# ============ 符号式解析（∫、d/dx、lim、Σ），与函数式并存 ============
+
+
+
+
+def _build_integral(integrand: str, a=None, b=None):
+    f = sp.sympify(implicit_mul(integrand), locals=_local_dict())
+    x = sp.Symbol("x")
+    if a is not None:
+        return sp.integrate(f, (x, _sym_number(a), _sym_number(b)))
+    return sp.integrate(f, x)
+
+def _parse_symbolic(s: str):
+    """解析符号式：int f dx、int_a^b f dx、d/dx F、lim_{x to a} F、sum_{k=1}^{inf} F。"""
+    s = s.strip()
+    # 积分：int f dx / int_a^b f dx（上下限紧跟 int） / int f_a^b dx（上下限在函数后）
+    if s.startswith("int_"):
+        # 上下限在前：int_a^b f dx
+        m = re.match(r"^int_\{?([^\s}]+)\}?\^\{?([^\s}]+)\}?\s*(.+?)\s*d\s*x\s*$", s)
+        if m:
+            a, b, integrand = m.groups()
+            return _build_integral(integrand, a, b)
+    else:
+        # 上下限在后：int f_a^b dx（也兼容 int f _a^b dx）
+        m = re.match(r"^int\s*(.+?)\s*_\{?([^\s}]+)\}?\^\{?([^\s}]+)\}?\s*(?:d\s*x)?\s*$", s)
+        if m:
+            integrand, a, b = m.groups()
+            return _build_integral(integrand, a, b)
+    # 不定积分：int f dx
+    m = re.match(r"^int\s*(.+?)\s*d\s*x\s*$", s)
+    if m:
+        return _build_integral(m.group(1))
+    # 导数：d/dx F
+    m = re.match(r"^d/dx\s*(.+)$", s)
+    if m:
+        f = sp.sympify(implicit_mul(m.group(1)), locals=_local_dict())
+        return sp.diff(f, sp.Symbol("x"))
+    # 极限：lim_{x to a} F
+    m = re.match(r"^lim\s*_\{([^{}]+?)\s*to\s*([^{}]+)\}\s*(.+)$", s)
+    if m:
+        var_s, at_s, f_s = m.groups()
+        f = sp.sympify(implicit_mul(f_s), locals=_local_dict())
+        return sp.limit(f, sp.Symbol(var_s.strip()), _sym_number(at_s))
+    # 级数 sum_{k=a}^{b} F / 累乘 prod_{k=a}^{b} F（上下标可带花括号）
+    m = re.match(r"^(sum|prod)\s*_\{([^{}]+?)\}\s*\^\{?([^{}\s]+)\}?\s*(.+)$", s)
+    if m:
+        op, idx_s, hi_s, f_s = m.groups()
+        var_name, _, lo_s = idx_s.partition("=")
+        k = sp.Symbol(var_name.strip() or "k")
+        f = sp.sympify(implicit_mul(f_s), locals=_local_dict())
+        fn = sp.summation if op == "sum" else sp.product
+        return fn(f, (k, _sym_number(lo_s), _sym_number(hi_s)))
+    return None
+
+
+def _looks_symbolic(s: str) -> bool:
+    low = s.strip().lower()
+    if low.startswith(("integral(", "integrate(", "int(", "summation(", "sum(", "limit(", "diff(", "derivative(", "solve(")):
+        return False  # 函数式调用，走原解析
+    return low.startswith(("int ", "int_", "int-", "sum_", "prod_", "lim_", "d/dx")) or (
+        low.startswith("int") and " dx" in low
+    )
 
 
 def _handle_call(m: re.Match) -> Any:
@@ -86,7 +174,19 @@ def _handle_call(m: re.Match) -> Any:
 
 
 def _parse_expr(text: str) -> Any:
-    text = implicit_mul(text.strip())
+    raw = text.strip()
+    # 先做 Unicode 符号归一化（在 implicit_mul 之前，避免 ^ 被提前转换）
+    s = raw
+    for k, v in _SYM_MAP.items():
+        s = s.replace(k, v)
+    s = re.sub(r"√\(([^)]*)\)", r"sqrt(\1)", s)
+    s = re.sub(r"√([A-Za-z]\w*|\d+(?:\.\d+)?)", r"sqrt(\1)", s)
+    # 符号式输入（∫、lim、Σ、d/dx）
+    if _looks_symbolic(s):
+        parsed = _parse_symbolic(s)
+        if parsed is not None:
+            return parsed
+    text = implicit_mul(s)
     m = _CALL.match(text)
     if m:
         return _handle_call(m)
@@ -114,7 +214,14 @@ def _validate(result) -> None:
 
 
 def compute_expression(expr: str) -> dict[str, Any]:
-    result = _parse_expr(expr)
+    try:
+        result = _parse_expr(expr)
+    except Exception as exc:
+        raise ValueError(
+            f"表达式无法解析（{exc}）。\n"
+            "提示：定积分写 ∫_0^1 函数 dx（上下限紧跟 ∫，或写在函数后如 ∫x^2_0^1 dx）；"
+            "上下标用 ^ 与 _；也可用函数式 integral(函数, x, 0, 1)。"
+        )
     _validate(result)
 
     if isinstance(result, list):  # solve 的解列表
@@ -148,13 +255,13 @@ def compute_expression(expr: str) -> dict[str, Any]:
 
     kind = "symbolic"
     low = expr.strip().lower()
-    if low.startswith(("derivative", "diff")):
+    if low.startswith(("derivative", "diff")) or low.startswith("d/dx"):
         kind = "derivative"
-    elif low.startswith(("integral", "integrate")):
+    elif low.startswith(("integral", "integrate")) or low.startswith("∫") or low.startswith("int"):
         kind = "integral"
-    elif low.startswith("limit"):
+    elif low.startswith("limit") or low.startswith("lim"):
         kind = "limit"
-    elif low.startswith(("sum", "summation")):
+    elif low.startswith(("sum", "summation")) or low.startswith("Σ"):
         kind = "sum"
 
     return {

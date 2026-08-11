@@ -52,3 +52,19 @@ def test_param_only_function():
     data = function_chart([{"expr": "a"}], x_range=[-2, 2], params={"a": 2.5})
     ys = [y for y in data["traces"][0]["y"] if y is not None]
     assert all(abs(v - 2.5) < 1e-9 for v in ys)
+
+def test_implicit_equation_circle():
+    data = function_chart([{"expr": "x^2+y^2=1"}], x_range=[-2, 2])
+    assert any(t.get("name", "").startswith("x^2+y^2=1") for t in data["traces"])
+    assert data["messages"]  # 有“隐式方程”提示
+
+
+def test_implicit_explicit_y():
+    data = function_chart([{"expr": "y = sin(x)"}], x_range=[-3, 3])
+    assert data["traces"][0]["type"] == "scatter"
+
+
+def test_two_var_surface():
+    data = function_chart([{"expr": "x^2+y^2"}], x_range=[-2, 2])
+    assert data["traces"][0]["type"] == "surface"
+    assert "scene" in data["layout"]

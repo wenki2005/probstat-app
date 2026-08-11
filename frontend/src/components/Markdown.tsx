@@ -23,17 +23,28 @@ const katexOptions = {
  * 已用 $ / $$ 包裹的保持不变。
  */
 export function autoWrapLatex(text: string): string {
+  // 1) 修复模型常见「丢反斜杠」的记号（approx -> \approx 等），使符号正确渲染
+  const fixed = text
+    .replace(/(?<!\\)\bapprox\b/g, '\\approx')
+    .replace(/(?<!\\)\binfty\b/g, '\\infty')
+    .replace(/(?<!\\)\bleq\b/g, '\\leq')
+    .replace(/(?<!\\)\bgeq\b/g, '\\geq')
+    .replace(/(?<!\\)\blim(?=_)/g, '\\lim')
+    .replace(/(?<!\\)\bsum(?=_)/g, '\\sum')
+  // 2) 保护已包裹的 $...$ 与 $$...$$，避免二次包裹
   const wrapped = /(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g
   const parts: string[] = []
   let last = 0
   let m: RegExpExecArray | null
-  while ((m = wrapped.exec(text)) !== null) {
-    parts.push(text.slice(last, m.index))
+  while ((m = wrapped.exec(fixed)) !== null) {
+    parts.push(fixed.slice(last, m.index))
     parts.push(m[0])
     last = m.index + m[0].length
   }
-  parts.push(text.slice(last))
-  const bare = /(\\[a-zA-Z]{2,}(?:\\[a-zA-Z]{2,}|[^$\n，。；：、？（）【】\u4e00-\u9fff])*)/g
+  parts.push(fixed.slice(last))
+  // 3) 裸 LaTeX 整段包裹：向前扩展到数学字符（P(|X-\mu|... 整段），向后到中文/标点/$/换行
+  const bare =
+    /([A-Za-z0-9|()\[\]{}<>=+\-*/^_,.!;:'"\\]*\\[a-zA-Z]{2,}(?:\\[a-zA-Z]{2,}|[^$\n，。；：、？（）【】\u4e00-\u9fff])*)/g
   return parts
     .map((p, i) => {
       if (i % 2 === 1) return p
